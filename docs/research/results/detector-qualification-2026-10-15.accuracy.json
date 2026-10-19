@@ -1,0 +1,1098 @@
+{
+  "dataset_group": "PUBLIC_DIAGNOSTIC",
+  "operating_point": "confidence .25, IoU .50; descriptive anchor only",
+  "metrics": {
+    "yolo26n-640": {
+      "confidence": 0.25,
+      "iou_threshold": 0.5,
+      "tp": 129,
+      "fp": 37,
+      "fn": 83,
+      "precision": 0.7771084337349398,
+      "p0_micro_recall": 0.6084905660377359,
+      "miss_rate": 0.3915094339622642,
+      "attributes": {
+        "occlusion": {
+          "UNKNOWN": {
+            "matched": 129,
+            "total": 212,
+            "recall": 0.6084905660377359
+          }
+        },
+        "visibility": {
+          "UNKNOWN": {
+            "matched": 129,
+            "total": 212,
+            "recall": 0.6084905660377359
+          }
+        },
+        "truncation": {
+          "UNKNOWN": {
+            "matched": 129,
+            "total": 212,
+            "recall": 0.6084905660377359
+          }
+        }
+      },
+      "slices": {
+        "scenario": {
+          "UNKNOWN": {
+            "tp": 129,
+            "fp": 37,
+            "fn": 83,
+            "frames": 36,
+            "recall": 0.6084905660377359
+          }
+        },
+        "lighting": {
+          "UNKNOWN": {
+            "tp": 129,
+            "fp": 37,
+            "fn": 83,
+            "frames": 36,
+            "recall": 0.6084905660377359
+          }
+        },
+        "motion": {
+          "UNKNOWN": {
+            "tp": 129,
+            "fp": 37,
+            "fn": 83,
+            "frames": 36,
+            "recall": 0.6084905660377359
+          }
+        },
+        "blur": {
+          "UNKNOWN": {
+            "tp": 129,
+            "fp": 37,
+            "fn": 83,
+            "frames": 36,
+            "recall": 0.6084905660377359
+          }
+        },
+        "person_density_proxy": {
+          "UNDER_5_ANNOTATED_PEOPLE": {
+            "tp": 85,
+            "fp": 25,
+            "fn": 53,
+            "frames": 29,
+            "recall": 0.6159420289855072
+          },
+          "AT_LEAST_5_ANNOTATED_PEOPLE": {
+            "tp": 44,
+            "fp": 12,
+            "fn": 30,
+            "frames": 7,
+            "recall": 0.5945945945945946
+          }
+        }
+      },
+      "f1": 0.6825396825396826,
+      "fp_per_100_frames": 102.77777777777777,
+      "classes": {
+        "BICYCLE": {
+          "tp": 7,
+          "fp": 2,
+          "fn": 7,
+          "recall": 0.5
+        },
+        "BUS": {
+          "tp": 11,
+          "fp": 3,
+          "fn": 7,
+          "recall": 0.6111111111111112
+        },
+        "CAR": {
+          "tp": 25,
+          "fp": 13,
+          "fn": 21,
+          "recall": 0.5434782608695652
+        },
+        "DOG": {
+          "tp": 7,
+          "fp": 0,
+          "fn": 2,
+          "recall": 0.7777777777777778
+        },
+        "MOTORCYCLE": {
+          "tp": 4,
+          "fp": 1,
+          "fn": 3,
+          "recall": 0.5714285714285714
+        },
+        "PERSON": {
+          "tp": 67,
+          "fp": 17,
+          "fn": 31,
+          "recall": 0.6836734693877551
+        },
+        "TRAIN": {
+          "tp": 6,
+          "fp": 0,
+          "fn": 0,
+          "recall": 1.0
+        },
+        "TRUCK": {
+          "tp": 2,
+          "fp": 1,
+          "fn": 12,
+          "recall": 0.14285714285714285
+        }
+      },
+      "sizes": {
+        "TINY": {
+          "matched": 5,
+          "total": 24,
+          "recall": 0.20833333333333334
+        },
+        "SMALL": {
+          "matched": 36,
+          "total": 81,
+          "recall": 0.4444444444444444
+        },
+        "MEDIUM": {
+          "matched": 47,
+          "total": 66,
+          "recall": 0.7121212121212122
+        },
+        "LARGE": {
+          "matched": 41,
+          "total": 41,
+          "recall": 1.0
+        }
+      },
+      "matched_mean_iou": 0.8274315438716987,
+      "matched_mean_center_error": 0.01541599942308347,
+      "matched_mean_bottom_error": 0.018286758815141437,
+      "bottom_center_by_group": {
+        "PERSON": {
+          "matched_count": 67,
+          "mean_normalized_error": 0.02262645887855351
+        },
+        "BICYCLE": {
+          "matched_count": 7,
+          "mean_normalized_error": 0.01781465649874837
+        },
+        "MOTORCYCLE": {
+          "matched_count": 4,
+          "mean_normalized_error": 0.017126326493018467
+        },
+        "VEHICLE": {
+          "matched_count": 44,
+          "mean_normalized_error": 0.013852168950242093
+        }
+      }
+    },
+    "yolo26s-640": {
+      "confidence": 0.25,
+      "iou_threshold": 0.5,
+      "tp": 152,
+      "fp": 54,
+      "fn": 60,
+      "precision": 0.7378640776699029,
+      "p0_micro_recall": 0.7169811320754716,
+      "miss_rate": 0.2830188679245283,
+      "attributes": {
+        "occlusion": {
+          "UNKNOWN": {
+            "matched": 152,
+            "total": 212,
+            "recall": 0.7169811320754716
+          }
+        },
+        "visibility": {
+          "UNKNOWN": {
+            "matched": 152,
+            "total": 212,
+            "recall": 0.7169811320754716
+          }
+        },
+        "truncation": {
+          "UNKNOWN": {
+            "matched": 152,
+            "total": 212,
+            "recall": 0.7169811320754716
+          }
+        }
+      },
+      "slices": {
+        "scenario": {
+          "UNKNOWN": {
+            "tp": 152,
+            "fp": 54,
+            "fn": 60,
+            "frames": 36,
+            "recall": 0.7169811320754716
+          }
+        },
+        "lighting": {
+          "UNKNOWN": {
+            "tp": 152,
+            "fp": 54,
+            "fn": 60,
+            "frames": 36,
+            "recall": 0.7169811320754716
+          }
+        },
+        "motion": {
+          "UNKNOWN": {
+            "tp": 152,
+            "fp": 54,
+            "fn": 60,
+            "frames": 36,
+            "recall": 0.7169811320754716
+          }
+        },
+        "blur": {
+          "UNKNOWN": {
+            "tp": 152,
+            "fp": 54,
+            "fn": 60,
+            "frames": 36,
+            "recall": 0.7169811320754716
+          }
+        },
+        "person_density_proxy": {
+          "UNDER_5_ANNOTATED_PEOPLE": {
+            "tp": 97,
+            "fp": 33,
+            "fn": 41,
+            "frames": 29,
+            "recall": 0.7028985507246377
+          },
+          "AT_LEAST_5_ANNOTATED_PEOPLE": {
+            "tp": 55,
+            "fp": 21,
+            "fn": 19,
+            "frames": 7,
+            "recall": 0.7432432432432432
+          }
+        }
+      },
+      "f1": 0.7272727272727273,
+      "fp_per_100_frames": 150.0,
+      "classes": {
+        "BICYCLE": {
+          "tp": 8,
+          "fp": 3,
+          "fn": 6,
+          "recall": 0.5714285714285714
+        },
+        "BUS": {
+          "tp": 12,
+          "fp": 4,
+          "fn": 6,
+          "recall": 0.6666666666666666
+        },
+        "CAR": {
+          "tp": 31,
+          "fp": 16,
+          "fn": 15,
+          "recall": 0.6739130434782609
+        },
+        "DOG": {
+          "tp": 8,
+          "fp": 1,
+          "fn": 1,
+          "recall": 0.8888888888888888
+        },
+        "MOTORCYCLE": {
+          "tp": 5,
+          "fp": 1,
+          "fn": 2,
+          "recall": 0.7142857142857143
+        },
+        "PERSON": {
+          "tp": 78,
+          "fp": 28,
+          "fn": 20,
+          "recall": 0.7959183673469388
+        },
+        "TRAIN": {
+          "tp": 6,
+          "fp": 0,
+          "fn": 0,
+          "recall": 1.0
+        },
+        "TRUCK": {
+          "tp": 4,
+          "fp": 1,
+          "fn": 10,
+          "recall": 0.2857142857142857
+        }
+      },
+      "sizes": {
+        "TINY": {
+          "matched": 9,
+          "total": 24,
+          "recall": 0.375
+        },
+        "SMALL": {
+          "matched": 50,
+          "total": 81,
+          "recall": 0.6172839506172839
+        },
+        "MEDIUM": {
+          "matched": 54,
+          "total": 66,
+          "recall": 0.8181818181818182
+        },
+        "LARGE": {
+          "matched": 39,
+          "total": 41,
+          "recall": 0.9512195121951219
+        }
+      },
+      "matched_mean_iou": 0.8424028387716216,
+      "matched_mean_center_error": 0.010127831693253956,
+      "matched_mean_bottom_error": 0.011748592016175976,
+      "bottom_center_by_group": {
+        "PERSON": {
+          "matched_count": 78,
+          "mean_normalized_error": 0.012158365285571572
+        },
+        "BICYCLE": {
+          "matched_count": 8,
+          "mean_normalized_error": 0.01747857727926689
+        },
+        "MOTORCYCLE": {
+          "matched_count": 5,
+          "mean_normalized_error": 0.011393714384033983
+        },
+        "VEHICLE": {
+          "matched_count": 53,
+          "mean_normalized_error": 0.010457936268916715
+        }
+      }
+    },
+    "yolo11n-640": {
+      "confidence": 0.25,
+      "iou_threshold": 0.5,
+      "tp": 132,
+      "fp": 47,
+      "fn": 80,
+      "precision": 0.7374301675977654,
+      "p0_micro_recall": 0.6226415094339622,
+      "miss_rate": 0.37735849056603776,
+      "attributes": {
+        "occlusion": {
+          "UNKNOWN": {
+            "matched": 132,
+            "total": 212,
+            "recall": 0.6226415094339622
+          }
+        },
+        "visibility": {
+          "UNKNOWN": {
+            "matched": 132,
+            "total": 212,
+            "recall": 0.6226415094339622
+          }
+        },
+        "truncation": {
+          "UNKNOWN": {
+            "matched": 132,
+            "total": 212,
+            "recall": 0.6226415094339622
+          }
+        }
+      },
+      "slices": {
+        "scenario": {
+          "UNKNOWN": {
+            "tp": 132,
+            "fp": 47,
+            "fn": 80,
+            "frames": 36,
+            "recall": 0.6226415094339622
+          }
+        },
+        "lighting": {
+          "UNKNOWN": {
+            "tp": 132,
+            "fp": 47,
+            "fn": 80,
+            "frames": 36,
+            "recall": 0.6226415094339622
+          }
+        },
+        "motion": {
+          "UNKNOWN": {
+            "tp": 132,
+            "fp": 47,
+            "fn": 80,
+            "frames": 36,
+            "recall": 0.6226415094339622
+          }
+        },
+        "blur": {
+          "UNKNOWN": {
+            "tp": 132,
+            "fp": 47,
+            "fn": 80,
+            "frames": 36,
+            "recall": 0.6226415094339622
+          }
+        },
+        "person_density_proxy": {
+          "UNDER_5_ANNOTATED_PEOPLE": {
+            "tp": 87,
+            "fp": 30,
+            "fn": 51,
+            "frames": 29,
+            "recall": 0.6304347826086957
+          },
+          "AT_LEAST_5_ANNOTATED_PEOPLE": {
+            "tp": 45,
+            "fp": 17,
+            "fn": 29,
+            "frames": 7,
+            "recall": 0.6081081081081081
+          }
+        }
+      },
+      "f1": 0.6751918158567775,
+      "fp_per_100_frames": 130.55555555555554,
+      "classes": {
+        "BICYCLE": {
+          "tp": 7,
+          "fp": 0,
+          "fn": 7,
+          "recall": 0.5
+        },
+        "BUS": {
+          "tp": 9,
+          "fp": 4,
+          "fn": 9,
+          "recall": 0.5
+        },
+        "CAR": {
+          "tp": 27,
+          "fp": 16,
+          "fn": 19,
+          "recall": 0.5869565217391305
+        },
+        "DOG": {
+          "tp": 6,
+          "fp": 0,
+          "fn": 3,
+          "recall": 0.6666666666666666
+        },
+        "MOTORCYCLE": {
+          "tp": 5,
+          "fp": 1,
+          "fn": 2,
+          "recall": 0.7142857142857143
+        },
+        "PERSON": {
+          "tp": 69,
+          "fp": 23,
+          "fn": 29,
+          "recall": 0.7040816326530612
+        },
+        "TRAIN": {
+          "tp": 6,
+          "fp": 1,
+          "fn": 0,
+          "recall": 1.0
+        },
+        "TRUCK": {
+          "tp": 3,
+          "fp": 2,
+          "fn": 11,
+          "recall": 0.21428571428571427
+        }
+      },
+      "sizes": {
+        "TINY": {
+          "matched": 5,
+          "total": 24,
+          "recall": 0.20833333333333334
+        },
+        "SMALL": {
+          "matched": 39,
+          "total": 81,
+          "recall": 0.48148148148148145
+        },
+        "MEDIUM": {
+          "matched": 48,
+          "total": 66,
+          "recall": 0.7272727272727273
+        },
+        "LARGE": {
+          "matched": 40,
+          "total": 41,
+          "recall": 0.975609756097561
+        }
+      },
+      "matched_mean_iou": 0.8317468056879918,
+      "matched_mean_center_error": 0.012971725195617513,
+      "matched_mean_bottom_error": 0.014807048846385942,
+      "bottom_center_by_group": {
+        "PERSON": {
+          "matched_count": 69,
+          "mean_normalized_error": 0.016295259844891077
+        },
+        "BICYCLE": {
+          "matched_count": 7,
+          "mean_normalized_error": 0.01976069794945198
+        },
+        "MOTORCYCLE": {
+          "matched_count": 5,
+          "mean_normalized_error": 0.030602445776048592
+        },
+        "VEHICLE": {
+          "matched_count": 45,
+          "mean_normalized_error": 0.011118265167593027
+        }
+      }
+    },
+    "rtdetr-v2-r18-640": {
+      "confidence": 0.25,
+      "iou_threshold": 0.5,
+      "tp": 188,
+      "fp": 363,
+      "fn": 24,
+      "precision": 0.3411978221415608,
+      "p0_micro_recall": 0.8867924528301887,
+      "miss_rate": 0.11320754716981132,
+      "attributes": {
+        "occlusion": {
+          "UNKNOWN": {
+            "matched": 188,
+            "total": 212,
+            "recall": 0.8867924528301887
+          }
+        },
+        "visibility": {
+          "UNKNOWN": {
+            "matched": 188,
+            "total": 212,
+            "recall": 0.8867924528301887
+          }
+        },
+        "truncation": {
+          "UNKNOWN": {
+            "matched": 188,
+            "total": 212,
+            "recall": 0.8867924528301887
+          }
+        }
+      },
+      "slices": {
+        "scenario": {
+          "UNKNOWN": {
+            "tp": 188,
+            "fp": 363,
+            "fn": 24,
+            "frames": 36,
+            "recall": 0.8867924528301887
+          }
+        },
+        "lighting": {
+          "UNKNOWN": {
+            "tp": 188,
+            "fp": 363,
+            "fn": 24,
+            "frames": 36,
+            "recall": 0.8867924528301887
+          }
+        },
+        "motion": {
+          "UNKNOWN": {
+            "tp": 188,
+            "fp": 363,
+            "fn": 24,
+            "frames": 36,
+            "recall": 0.8867924528301887
+          }
+        },
+        "blur": {
+          "UNKNOWN": {
+            "tp": 188,
+            "fp": 363,
+            "fn": 24,
+            "frames": 36,
+            "recall": 0.8867924528301887
+          }
+        },
+        "person_density_proxy": {
+          "UNDER_5_ANNOTATED_PEOPLE": {
+            "tp": 121,
+            "fp": 257,
+            "fn": 17,
+            "frames": 29,
+            "recall": 0.8768115942028986
+          },
+          "AT_LEAST_5_ANNOTATED_PEOPLE": {
+            "tp": 67,
+            "fp": 106,
+            "fn": 7,
+            "frames": 7,
+            "recall": 0.9054054054054054
+          }
+        }
+      },
+      "f1": 0.4927916120576671,
+      "fp_per_100_frames": 1008.3333333333334,
+      "classes": {
+        "BICYCLE": {
+          "tp": 11,
+          "fp": 32,
+          "fn": 3,
+          "recall": 0.7857142857142857
+        },
+        "BUS": {
+          "tp": 17,
+          "fp": 20,
+          "fn": 1,
+          "recall": 0.9444444444444444
+        },
+        "CAR": {
+          "tp": 42,
+          "fp": 98,
+          "fn": 4,
+          "recall": 0.9130434782608695
+        },
+        "DOG": {
+          "tp": 8,
+          "fp": 2,
+          "fn": 1,
+          "recall": 0.8888888888888888
+        },
+        "MOTORCYCLE": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 7,
+          "recall": 0.0
+        },
+        "PERSON": {
+          "tp": 92,
+          "fp": 170,
+          "fn": 6,
+          "recall": 0.9387755102040817
+        },
+        "TRAIN": {
+          "tp": 6,
+          "fp": 5,
+          "fn": 0,
+          "recall": 1.0
+        },
+        "TRUCK": {
+          "tp": 12,
+          "fp": 36,
+          "fn": 2,
+          "recall": 0.8571428571428571
+        }
+      },
+      "sizes": {
+        "TINY": {
+          "matched": 19,
+          "total": 24,
+          "recall": 0.7916666666666666
+        },
+        "SMALL": {
+          "matched": 72,
+          "total": 81,
+          "recall": 0.8888888888888888
+        },
+        "MEDIUM": {
+          "matched": 60,
+          "total": 66,
+          "recall": 0.9090909090909091
+        },
+        "LARGE": {
+          "matched": 37,
+          "total": 41,
+          "recall": 0.9024390243902439
+        }
+      },
+      "matched_mean_iou": 0.8117305211310913,
+      "matched_mean_center_error": 0.010147430152798377,
+      "matched_mean_bottom_error": 0.011583029506815086,
+      "bottom_center_by_group": {
+        "PERSON": {
+          "matched_count": 92,
+          "mean_normalized_error": 0.01331429780953733
+        },
+        "BICYCLE": {
+          "matched_count": 11,
+          "mean_normalized_error": 0.017870421294056086
+        },
+        "MOTORCYCLE": {
+          "matched_count": 0,
+          "mean_normalized_error": null
+        },
+        "VEHICLE": {
+          "matched_count": 77,
+          "mean_normalized_error": 0.009089950053042004
+        }
+      }
+    },
+    "yolo26s-768": {
+      "confidence": 0.25,
+      "iou_threshold": 0.5,
+      "tp": 157,
+      "fp": 56,
+      "fn": 55,
+      "precision": 0.7370892018779343,
+      "p0_micro_recall": 0.7405660377358491,
+      "miss_rate": 0.25943396226415094,
+      "attributes": {
+        "occlusion": {
+          "UNKNOWN": {
+            "matched": 157,
+            "total": 212,
+            "recall": 0.7405660377358491
+          }
+        },
+        "visibility": {
+          "UNKNOWN": {
+            "matched": 157,
+            "total": 212,
+            "recall": 0.7405660377358491
+          }
+        },
+        "truncation": {
+          "UNKNOWN": {
+            "matched": 157,
+            "total": 212,
+            "recall": 0.7405660377358491
+          }
+        }
+      },
+      "slices": {
+        "scenario": {
+          "UNKNOWN": {
+            "tp": 157,
+            "fp": 56,
+            "fn": 55,
+            "frames": 36,
+            "recall": 0.7405660377358491
+          }
+        },
+        "lighting": {
+          "UNKNOWN": {
+            "tp": 157,
+            "fp": 56,
+            "fn": 55,
+            "frames": 36,
+            "recall": 0.7405660377358491
+          }
+        },
+        "motion": {
+          "UNKNOWN": {
+            "tp": 157,
+            "fp": 56,
+            "fn": 55,
+            "frames": 36,
+            "recall": 0.7405660377358491
+          }
+        },
+        "blur": {
+          "UNKNOWN": {
+            "tp": 157,
+            "fp": 56,
+            "fn": 55,
+            "frames": 36,
+            "recall": 0.7405660377358491
+          }
+        },
+        "person_density_proxy": {
+          "UNDER_5_ANNOTATED_PEOPLE": {
+            "tp": 104,
+            "fp": 34,
+            "fn": 34,
+            "frames": 29,
+            "recall": 0.7536231884057971
+          },
+          "AT_LEAST_5_ANNOTATED_PEOPLE": {
+            "tp": 53,
+            "fp": 22,
+            "fn": 21,
+            "frames": 7,
+            "recall": 0.7162162162162162
+          }
+        }
+      },
+      "f1": 0.7388235294117647,
+      "fp_per_100_frames": 155.55555555555554,
+      "classes": {
+        "BICYCLE": {
+          "tp": 9,
+          "fp": 3,
+          "fn": 5,
+          "recall": 0.6428571428571429
+        },
+        "BUS": {
+          "tp": 16,
+          "fp": 5,
+          "fn": 2,
+          "recall": 0.8888888888888888
+        },
+        "CAR": {
+          "tp": 33,
+          "fp": 16,
+          "fn": 13,
+          "recall": 0.717391304347826
+        },
+        "DOG": {
+          "tp": 7,
+          "fp": 1,
+          "fn": 2,
+          "recall": 0.7777777777777778
+        },
+        "MOTORCYCLE": {
+          "tp": 5,
+          "fp": 1,
+          "fn": 2,
+          "recall": 0.7142857142857143
+        },
+        "PERSON": {
+          "tp": 77,
+          "fp": 29,
+          "fn": 21,
+          "recall": 0.7857142857142857
+        },
+        "TRAIN": {
+          "tp": 6,
+          "fp": 0,
+          "fn": 0,
+          "recall": 1.0
+        },
+        "TRUCK": {
+          "tp": 4,
+          "fp": 1,
+          "fn": 10,
+          "recall": 0.2857142857142857
+        }
+      },
+      "sizes": {
+        "TINY": {
+          "matched": 10,
+          "total": 24,
+          "recall": 0.4166666666666667
+        },
+        "SMALL": {
+          "matched": 57,
+          "total": 81,
+          "recall": 0.7037037037037037
+        },
+        "MEDIUM": {
+          "matched": 51,
+          "total": 66,
+          "recall": 0.7727272727272727
+        },
+        "LARGE": {
+          "matched": 39,
+          "total": 41,
+          "recall": 0.9512195121951219
+        }
+      },
+      "matched_mean_iou": 0.8356401156348667,
+      "matched_mean_center_error": 0.011457178493338433,
+      "matched_mean_bottom_error": 0.013972178886434558,
+      "bottom_center_by_group": {
+        "PERSON": {
+          "matched_count": 77,
+          "mean_normalized_error": 0.016184634388598133
+        },
+        "BICYCLE": {
+          "matched_count": 9,
+          "mean_normalized_error": 0.019302069994107524
+        },
+        "MOTORCYCLE": {
+          "matched_count": 5,
+          "mean_normalized_error": 0.011667467528884135
+        },
+        "VEHICLE": {
+          "matched_count": 59,
+          "mean_normalized_error": 0.011583385362730804
+        }
+      }
+    },
+    "rtdetr-v2-r18-768": {
+      "confidence": 0.25,
+      "iou_threshold": 0.5,
+      "tp": 185,
+      "fp": 394,
+      "fn": 27,
+      "precision": 0.31951640759930916,
+      "p0_micro_recall": 0.8726415094339622,
+      "miss_rate": 0.12735849056603774,
+      "attributes": {
+        "occlusion": {
+          "UNKNOWN": {
+            "matched": 185,
+            "total": 212,
+            "recall": 0.8726415094339622
+          }
+        },
+        "visibility": {
+          "UNKNOWN": {
+            "matched": 185,
+            "total": 212,
+            "recall": 0.8726415094339622
+          }
+        },
+        "truncation": {
+          "UNKNOWN": {
+            "matched": 185,
+            "total": 212,
+            "recall": 0.8726415094339622
+          }
+        }
+      },
+      "slices": {
+        "scenario": {
+          "UNKNOWN": {
+            "tp": 185,
+            "fp": 394,
+            "fn": 27,
+            "frames": 36,
+            "recall": 0.8726415094339622
+          }
+        },
+        "lighting": {
+          "UNKNOWN": {
+            "tp": 185,
+            "fp": 394,
+            "fn": 27,
+            "frames": 36,
+            "recall": 0.8726415094339622
+          }
+        },
+        "motion": {
+          "UNKNOWN": {
+            "tp": 185,
+            "fp": 394,
+            "fn": 27,
+            "frames": 36,
+            "recall": 0.8726415094339622
+          }
+        },
+        "blur": {
+          "UNKNOWN": {
+            "tp": 185,
+            "fp": 394,
+            "fn": 27,
+            "frames": 36,
+            "recall": 0.8726415094339622
+          }
+        },
+        "person_density_proxy": {
+          "UNDER_5_ANNOTATED_PEOPLE": {
+            "tp": 121,
+            "fp": 270,
+            "fn": 17,
+            "frames": 29,
+            "recall": 0.8768115942028986
+          },
+          "AT_LEAST_5_ANNOTATED_PEOPLE": {
+            "tp": 64,
+            "fp": 124,
+            "fn": 10,
+            "frames": 7,
+            "recall": 0.8648648648648649
+          }
+        }
+      },
+      "f1": 0.46776232616940583,
+      "fp_per_100_frames": 1094.4444444444443,
+      "classes": {
+        "BICYCLE": {
+          "tp": 12,
+          "fp": 49,
+          "fn": 2,
+          "recall": 0.8571428571428571
+        },
+        "BUS": {
+          "tp": 18,
+          "fp": 22,
+          "fn": 0,
+          "recall": 1.0
+        },
+        "CAR": {
+          "tp": 41,
+          "fp": 111,
+          "fn": 5,
+          "recall": 0.8913043478260869
+        },
+        "DOG": {
+          "tp": 8,
+          "fp": 1,
+          "fn": 1,
+          "recall": 0.8888888888888888
+        },
+        "MOTORCYCLE": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 7,
+          "recall": 0.0
+        },
+        "PERSON": {
+          "tp": 90,
+          "fp": 172,
+          "fn": 8,
+          "recall": 0.9183673469387755
+        },
+        "TRAIN": {
+          "tp": 6,
+          "fp": 4,
+          "fn": 0,
+          "recall": 1.0
+        },
+        "TRUCK": {
+          "tp": 10,
+          "fp": 35,
+          "fn": 4,
+          "recall": 0.7142857142857143
+        }
+      },
+      "sizes": {
+        "TINY": {
+          "matched": 18,
+          "total": 24,
+          "recall": 0.75
+        },
+        "SMALL": {
+          "matched": 70,
+          "total": 81,
+          "recall": 0.8641975308641975
+        },
+        "MEDIUM": {
+          "matched": 60,
+          "total": 66,
+          "recall": 0.9090909090909091
+        },
+        "LARGE": {
+          "matched": 37,
+          "total": 41,
+          "recall": 0.9024390243902439
+        }
+      },
+      "matched_mean_iou": 0.8155086395456701,
+      "matched_mean_center_error": 0.010133673529749202,
+      "matched_mean_bottom_error": 0.011457632914814298,
+      "bottom_center_by_group": {
+        "PERSON": {
+          "matched_count": 90,
+          "mean_normalized_error": 0.01356702561629788
+        },
+        "BICYCLE": {
+          "matched_count": 12,
+          "mean_normalized_error": 0.01551125389450335
+        },
+        "MOTORCYCLE": {
+          "matched_count": 0,
+          "mean_normalized_error": null
+        },
+        "VEHICLE": {
+          "matched_count": 75,
+          "mean_normalized_error": 0.008760188280176577
+        }
+      }
+    }
+  }
+}

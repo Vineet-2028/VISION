@@ -1,0 +1,40 @@
+{
+  "name": "sentinel",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "apps/web"
+  ],
+  "engines": {
+    "node": ">=22.21.0 <23",
+    "npm": ">=10 <11"
+  },
+  "scripts": {
+    "doctor": "node tools/doctor.mjs",
+    "security": "node tools/security.mjs",
+    "smoke": "node tools/smoke.mjs",
+    "verify": "npm run doctor && npm run check && npm run security && npm run smoke",
+    "setup": "npm ci",
+    "dev:api": "node tools/api.mjs dev",
+    "dev:web": "npm run dev --workspace @sentinel/web",
+    "check": "npm run format:check && npm run check:core && npm run check:lab && npm run check:web && npm run build:web && npm run check:api",
+    "check:lab": "node tools/lab.mjs check",
+    "format:lab": "node tools/lab.mjs format",
+    "check:core": "node tools/api.mjs core-check",
+    "format:core": "node tools/api.mjs core-format",
+    "check:api": "node tools/api.mjs check",
+    "check:web": "npm run check --workspace @sentinel/web",
+    "build:api": "node tools/api.mjs check",
+    "build:web": "npm run build --workspace @sentinel/web",
+    "format:api": "node tools/api.mjs format",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "infra:config": "docker compose config --quiet",
+    "infra:up": "docker compose up -d --wait",
+    "infra:down": "docker compose down",
+    "infra:status": "docker compose ps"
+  },
+  "devDependencies": {
+    "prettier": "^3.6.2"
+  }
+}

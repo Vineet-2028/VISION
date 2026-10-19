@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+  <meta charset="utf-8" />
+  <meta
+    http-equiv="Content-Security-Policy"
+    content="default-src 'none'; img-src 'self' data:; script-src 'unsafe-inline'; style-src 'unsafe-inline'; connect-src 'none'"
+  />
+  <title>Sentinel local annotation review</title>
+  <style>
+    body {
+      font: 16px system-ui;
+      background: #14212a;
+      color: #eef5fa;
+      margin: 20px;
+    }
+    button,
+    input,
+    select {
+      font: inherit;
+      margin: 5px;
+      padding: 6px;
+    }
+    canvas {
+      width: 100%;
+      border: 1px solid #8ca;
+      touch-action: none;
+    }
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    #boxes button {
+      font-size: 13px;
+    }
+    .active {
+      outline: 3px solid orange;
+    }
+  </style>
+  <h1>Sentinel — local frame review</h1>
+  <p>
+    Draft model proposals are not ground truth. Inspect every object, add misses
+    and remove false positives. No uploads. Save progress before closing.
+    SHELTER is a context annotation excluded from the current P0 detector score.
+  </p>
+  <div class="row">
+    <button id="prev">Previous</button><button id="next">Next</button
+    ><label
+      >Frame
+      <input
+        id="frame-number"
+        type="number"
+        min="1"
+        value="1"
+        style="width: 6em" /></label
+    ><button id="jump">Go to frame</button><span id="status"></span
+    ><button id="save">Save review JSON</button
+    ><label
+      >Resume saved JSON <input id="resume" type="file" accept=".json"
+    /></label>
+  </div>
+  <div class="row">
+    <select id="category"></select
+    ><button id="add">Draw new box</button
+    ><button id="remove">Delete selected box</button
+    ><button id="redraw">Redraw selected box</button
+    ><button id="review">Mark entire frame reviewed</button>
+  </div>
+  <p>
+    Click a numbered box below to select it. Change its class using the menu;
+    drag inside it to move it, or use Redraw to resize it. Draw
+    corner-to-corner. Orange means selected.
+  </p>
+  <div id="attributes" class="row"></div>
+  <canvas id="canvas"></canvas>
+  <div id="boxes"></div>
+  <script>
+    "use strict";
+    let data = /*SENTINEL_DATA*/ null;
+    const original = structuredClone(data);
+    let index = 0,
+      selected = -1,
+      mode = "select",
+      anchor = null,
+      before = null,
+      dirty = false;
+    const $ = (id) => document.getElementById(id),
+      canvas = $("canvas"),
+      ctx = canvas.getContext("2d"),
+      img = new Image();
+    const classes = [
+      "PERSON",
+      "BICYCLE",
+      "MOTORCYCLE",
+      "CAR",
+      "BUS",
+      "TRUCK",
+      "TRAIN",
+      "DOG",
+      "SHELTER",
+    ];
+    for (const name of classes) $("category").add(new Option(name, name));
+    const attributes = {
+      lighting: ["UNKNOWN", "DAY", "DUSK", "NIGHT", "LOW_LIGHT"],
+      motion: ["UNKNOWN", "LOW", "MEDIUM", "HIGH"],
+      occlusion: ["UNKNOWN", "NONE", "PARTIAL", "HEAVY"],
+      environment: [
+        "UNKNOWN",
+        "CAMPUS",
+        "SIDEWALK",
+        "ROAD_EDGE",
+        "CROSSWALK",
+        "CROWD",
+        "OTHER",
+      ],
+      blur: ["UNKNOWN", "PRESENT", "ABSENT"],
+    };
+    for (const [key, values] of Object.entries(attributes)) {
+      const label = document.createElement("label");
+      label.textContent = key;
+      const select = document.createElement("select");
+      select.id = key;
+      for (const value of values) select.add(new Option(value, value));
+      select.onchange = () => {
+        frame().metadata[key] = select.value;
+        frame().metadata.provenance = "HUMAN_REVIEWED";
+        changed();
+      };
+      label.append(select);
+      $("attributes").append(label);
+    }
+    function frame() {
+      return data.images[index];
+    }
+    function changed() {
+      if (
+        data.images.some((f) =>
+          f.annotations.some((a) => a.label === "SHELTER"),
+        )
+      )
+        data.schema_version = 3;
+      dirty = true;
+      frame().annotations_reviewed = false;
+      draw();
+    }
+    function load() {
+      selected = -1;
+      mode = "select";
+      anchor = null;
+      const f = frame();
+      $("frame-number").value = index + 1;
+      $("frame-number").max = data.images.length;
+      canvas.width = f.width;
+      canvas.height = f.height;
+      for (const key of Object.keys(attributes)) $(key).value = f.metadata[key];
+      img.onload = draw;
+      img.onerror = () => {
+        $("status").textContent =
+          "Image unavailable. Keep review.html beside sampled_frames/.";
+      };
+      img.src = f.path;
+    }
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      if (img.complete) ctx.drawImage(img, 0, 0);
+      $("boxes").replaceChildren();
+      frame().annotations.forEach((a, i) => {
+        const [x1, y1, x2, y2] = a.box;
+        ctx.strokeStyle = i === selected ? "orange" : "#00ff88";
+        ctx.lineWidth = 3;
+        ctx.strokeRect(x1, y1, x2 - x1, y2 - y1);
+        ctx.fillStyle = ctx.strokeStyle;
+        ctx.font = "20px sans-serif";
+        ctx.fillText(`${i + 1} ${a.label}`, x1, Math.max(20, y1));
+        const b = document.createElement("button");
+        b.textContent = `${i + 1}: ${a.label}`;
+        if (i === selected) b.className = "active";
+        b.onclick = () => {
+          selected = i;
+          mode = "select";
+          $("category").value = a.label;
+          draw();
+        };
+        $("boxes").append(b);
+      });
+      $("status").textContent =
+        `${index + 1}/${data.images.length} · ${frame().split} · ${frame().annotations_reviewed ? "REVIEWED" : "DRAFT"} · reviewed ${data.images.filter((f) => f.annotations_reviewed).length}`;
+    }
+    function point(e) {
+      const r = canvas.getBoundingClientRect();
+      return [
+        Math.max(
+          0,
+          Math.min(
+            canvas.width,
+            ((e.clientX - r.left) * canvas.width) / r.width,
+          ),
+        ),
+        Math.max(
+          0,
+          Math.min(
+            canvas.height,
+            ((e.clientY - r.top) * canvas.height) / r.height,
+          ),
+        ),
+      ];
+    }
+    canvas.onpointerdown = (e) => {
+      anchor = point(e);
+      before = selected >= 0 ? [...frame().annotations[selected].box] : null;
+      canvas.setPointerCapture(e.pointerId);
+    };
+    canvas.onpointerup = (e) => {
+      if (!anchor) return;
+      const end = point(e);
+      if (mode === "draw" || mode === "redraw") {
+        const box = [
+          Math.min(anchor[0], end[0]),
+          Math.min(anchor[1], end[1]),
+          Math.max(anchor[0], end[0]),
+          Math.max(anchor[1], end[1]),
+        ];
+        if (box[2] - box[0] > 1 && box[3] - box[1] > 1) {
+          if (mode === "redraw" && selected >= 0)
+            frame().annotations[selected].box = box;
+          else {
+            frame().annotations.push({
+              label: $("category").value,
+              box,
+              ignore: false,
+              crowd: false,
+            });
+            selected = frame().annotations.length - 1;
+          }
+          changed();
+        }
+      } else if (
+        before &&
+        anchor[0] >= before[0] &&
+        anchor[0] <= before[2] &&
+        anchor[1] >= before[1] &&
+        anchor[1] <= before[3]
+      ) {
+        const dx = Math.max(
+            -before[0],
+            Math.min(canvas.width - before[2], end[0] - anchor[0]),
+          ),
+          dy = Math.max(
+            -before[1],
+            Math.min(canvas.height - before[3], end[1] - anchor[1]),
+          );
+        frame().annotations[selected].box = [
+          before[0] + dx,
+          before[1] + dy,
+          before[2] + dx,
+          before[3] + dy,
+        ];
+        changed();
+      }
+      anchor = null;
+      mode = "select";
+    };
+    $("category").onchange = () => {
+      if (selected >= 0) {
+        frame().annotations[selected].label = $("category").value;
+        changed();
+      }
+    };
+    $("add").onclick = () => {
+      selected = -1;
+      mode = "draw";
+      draw();
+    };
+    $("redraw").onclick = () => {
+      if (selected >= 0) mode = "redraw";
+    };
+    $("remove").onclick = () => {
+      if (selected >= 0) {
+        frame().annotations.splice(selected, 1);
+        selected = -1;
+        changed();
+      }
+    };
+    $("review").onclick = () => {
+      frame().annotations_reviewed = true;
+      dirty = true;
+      draw();
+    };
+    $("prev").onclick = () => {
+      if (index > 0) {
+        index--;
+        load();
+      }
+    };
+    $("jump").onclick = () => {
+      const number = Number($("frame-number").value);
+      if (
+        Number.isInteger(number) &&
+        number >= 1 &&
+        number <= data.images.length
+      ) {
+        index = number - 1;
+        load();
+      }
+    };
+    $("next").onclick = () => {
+      if (index < data.images.length - 1) {
+        index++;
+        load();
+      }
+    };
+    $("save").onclick = () => {
+      const url = URL.createObjectURL(
+        new Blob([JSON.stringify(data, null, 2)], { type: "application/json" }),
+      );
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "sentinel-review.json";
+      a.click();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+      dirty = false;
+    };
+    $("resume").onchange = async (e) => {
+      try {
+        const next = JSON.parse(await e.target.files[0].text());
+        if (
+          next.dataset !== original.dataset ||
+          next.images.length !== original.images.length ||
+          JSON.stringify(next.sequences) !==
+            JSON.stringify(original.sequences) ||
+          next.images.some(
+            (f, i) =>
+              f.image_id !== original.images[i].image_id ||
+              f.sha256 !== original.images[i].sha256 ||
+              f.path !== original.images[i].path,
+          )
+        )
+          throw Error("Dataset mismatch");
+        data = next;
+        index = 0;
+        dirty = false;
+        load();
+      } catch {
+        alert("Invalid review file or dataset mismatch");
+      }
+    };
+    window.onbeforeunload = (e) => {
+      if (dirty) {
+        e.preventDefault();
+        e.returnValue = "";
+      }
+    };
+    if (data) load();
+    else
+      $("status").textContent =
+        "Generate this review using review_first_person.py.";
+  </script>
+</html>

@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=78"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sentinel-perception-lab"
+version = "0.1.0"
+requires-python = ">=3.12,<3.14"
+dependencies = ["av>=16,<19", "numpy>=2.2,<3", "JPype1>=1.6,<2", "pydantic>=2.11,<3", "opencv-python==5.0.0.93"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<10", "ruff>=0.12,<1", "mypy>=1.17,<2"]
+
+[project.scripts]
+perception-lab = "perception_lab.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+files = ["src"]
+
+[[tool.mypy.overrides]]
+module = ["jpype", "jpype.*"]
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+# JVM uses handled native faults during startup; pytest's faulthandler misreports these.
+# Process crashes still return a failing exit code. See JPype issue #561.
+addopts = "-ra --strict-markers --strict-config -p no:faulthandler"
+

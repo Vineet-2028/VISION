@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "mode": "OFFLINE_REPLAY",
+  "source_id": "motion-example-video",
+  "input": "../datasets/raw/example.mkv",
+  "calibration": "calibration.synthetic.example.json",
+  "intervals_ns": { "optical_flow": 100000000 },
+  "motion": {
+    "schema_version": 1,
+    "flow_provider": "lk",
+    "max_features": 400,
+    "max_width": 640,
+    "max_gap_ns": 500000000,
+    "quality_level": 0.01,
+    "min_distance": 8,
+    "window": 21,
+    "pyramid_levels": 3,
+    "fb_threshold": 1.5,
+    "dis_preset": 1,
+    "estimator": "visual",
+    "dynamic_masking": true,
+    "minimum_features": 16,
+    "minimum_coverage": 0.375,
+    "minimum_inlier_ratio": 0.6,
+    "ransac_iterations": 100,
+    "ransac_pixels": 1.5,
+    "seed": 9
+  },
+  "record_session": false,
+  "visualization": false,
+  "output": "../benchmark-results"
+}

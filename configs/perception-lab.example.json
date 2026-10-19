@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "mode": "OFFLINE_REPLAY",
+  "source_type": "VIDEO_FILE",
+  "source_id": "example-video",
+  "input": "../datasets/raw/example.mkv",
+  "calibration": "calibration.synthetic.example.json",
+  "queue_capacity": 2,
+  "drop_policy": "PROCESS_ALL",
+  "intervals_ns": {
+    "detector": 100000000,
+    "depth": 200000000,
+    "segmentation": 250000000,
+    "optical_flow": 50000000
+  },
+  "preprocess": {
+    "operation": "identity",
+    "pixel_format": "RGB",
+    "layout": "NHWC"
+  },
+  "visualization": false,
+  "record_session": false,
+  "output": "../benchmark-results",
+  "debug_every_n": null,
+  "debug_max_frames": 0
+}

@@ -1,0 +1,1002 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-17",
+  "classification": "PUBLIC_DIAGNOSTIC_AND_LOCAL_REPLAY_NOT_QUALIFICATION",
+  "reviewed_frames": 0,
+  "draft_frames": 458,
+  "draft_boxes": 12328,
+  "code_sha256": {
+    "apps/perception-lab/src/perception_lab/pipeline.py": "6afa938f48a10757886f7286737728a1049b099f1e308fd7082ebdf51225d667",
+    "apps/perception-lab/src/perception_lab/edge_runtime.py": "d1de652fdf7a1fbe7c20d6fc67e4698e73a61385ffd8f7684aff1d51ab7184e6",
+    "apps/perception-lab/src/perception_lab/geometry.py": "a5a08a833aa9766c7e1264e91e9a5f864dad526b88f14219796fdd4f67fd4b63",
+    "tools/prepare_first_person.py": "09cf3f877885ddf45c8d6d62f5bb2be7bcec307d3d16404229957a06e0918926",
+    "tools/review_first_person.py": "5a68ce2747455760ae4b4c3bc0f23a6fd7a89fc87688f4384dea38a5f1301cff",
+    "tools/qualify_detectors.py": "aa22ad33b8284927b9985239e620210deac9e314d1029c2395085a773e020fc6",
+    "tools/measure_replay.py": "55c38580f6d66aa2377bf3ec83053454c6ce217a600ca398d4b123a33ad75cfc"
+  },
+  "diagnostics": [
+    {
+      "artifact": "yolox-bgr-round1.json",
+      "sha256": "2fda6659ed63d8f655e20270cffa6aad87d75566d5a50fc497cb99b2df993ef6",
+      "candidate": {
+        "name": "YoloXDetector",
+        "component_type": "detector",
+        "model_id": "yolox-nano",
+        "model_version": "c789161ed43c8269fcd4e67c67eeeb4e80c622da2eb296a20bc6007bd18a0b7d",
+        "runtime": "onnxruntime-1.24.4/cpu/fp32",
+        "configuration_hash": "7749a62f7c3bc6c02a9f7dd5da78b2224ece992feff5959ce99a4b0458d27792"
+      },
+      "configuration": {
+        "condition": "original",
+        "size": 416,
+        "batch": 1,
+        "confidence_floor": 0.03,
+        "nms_iou": 0.45,
+        "max_detections": 300,
+        "threads": 1,
+        "warmup": 5,
+        "device": "cpu",
+        "half": false
+      },
+      "dataset_sha256": "9b34810576150f24f848f79828055718f5879e3b86aba9768c1c686ce0706f04",
+      "tp": 106,
+      "fp": 47,
+      "fn": 106,
+      "steady_latency_ns": {
+        "preprocess_total": {
+          "count": 36,
+          "min_ns": 2040300,
+          "max_ns": 3369500,
+          "mean_ns": 2520144.4444444445,
+          "percentile_scope": "recent_window",
+          "window_count": 36,
+          "p50_ns": 2401500,
+          "p90_ns": 2970500,
+          "p95_ns": 3217300,
+          "p99_ns": 3369500
+        },
+        "inference": {
+          "count": 36,
+          "min_ns": 18346700,
+          "max_ns": 27780500,
+          "mean_ns": 20413513.888888888,
+          "percentile_scope": "recent_window",
+          "window_count": 36,
+          "p50_ns": 20091000,
+          "p90_ns": 22121000,
+          "p95_ns": 24129300,
+          "p99_ns": 27780500
+        },
+        "confidence_decode_nms": {
+          "count": 36,
+          "min_ns": 2074000,
+          "max_ns": 19483400,
+          "mean_ns": 4068830.5555555555,
+          "percentile_scope": "recent_window",
+          "window_count": 36,
+          "p50_ns": 3273400,
+          "p90_ns": 5170100,
+          "p95_ns": 6685400,
+          "p99_ns": 19483400
+        },
+        "coordinate_restoration_and_detection_creation": {
+          "count": 36,
+          "min_ns": 139200,
+          "max_ns": 2323500,
+          "mean_ns": 901808.3333333334,
+          "percentile_scope": "recent_window",
+          "window_count": 36,
+          "p50_ns": 793600,
+          "p90_ns": 1986300,
+          "p95_ns": 2175000,
+          "p99_ns": 2323500
+        },
+        "detection_batch_creation": {
+          "count": 36,
+          "min_ns": 86100,
+          "max_ns": 335600,
+          "mean_ns": 109780.55555555556,
+          "percentile_scope": "recent_window",
+          "window_count": 36,
+          "p50_ns": 95400,
+          "p90_ns": 130200,
+          "p95_ns": 181100,
+          "p99_ns": 335600
+        },
+        "end_to_end": {
+          "count": 36,
+          "min_ns": 23755600,
+          "max_ns": 44835200,
+          "mean_ns": 28215227.777777776,
+          "percentile_scope": "recent_window",
+          "window_count": 36,
+          "p50_ns": 27893300,
+          "p90_ns": 32965900,
+          "p95_ns": 36548100,
+          "p99_ns": 44835200
+        }
+      }
+    },
+    {
+      "artifact": "yolox-bgr-round2.json",
+      "sha256": "9155b652563154fe7a25cb0d48839813b775ebe005801b68843544c965dfdcdf",
+      "candidate": {
+        "name": "YoloXDetector",
+        "component_type": "detector",
+        "model_id": "yolox-nano",
+        "model_version": "c789161ed43c8269fcd4e67c67eeeb4e80c622da2eb296a20bc6007bd18a0b7d",
+        "runtime": "onnxruntime-1.24.4/cpu/fp32",
+        "configuration_hash": "7749a62f7c3bc6c02a9f7dd5da78b2224ece992feff5959ce99a4b0458d27792"
+      },
+      "configuration": {
+        "condition": "original",
+        "size": 416,
+        "batch": 1,
+        "confidence_floor": 0.03,
+        "nms_iou": 0.45,
+        "max_detections": 300,
+        "threads": 1,
+        "warmup": 5,
+        "device": "cpu",
+        "half": false
+      },
+      "dataset_sha256": "9b34810576150f24f848f79828055718f5879e3b86aba9768c1c686ce0706f04",
+      "tp": 106,
+      "fp": 47,
+      "fn": 106,
+      "steady_latency_ns": {
+        "preprocess_total": {
+          "count": 36,
+          "min_ns": 2201200,
+          "max_ns": 8655000,
+          "mean_ns": 4859197.222222222,
+          "percentile_scope": "recent_window",
+          "window_count": 36,
+          "p50_ns": 5531800,
+          "p90_ns": 7487800,
+          "p95_ns": 8040900,
+          "p99_ns": 8655000
+        },
+        "inference": {
+          "count": 36,
+          "min_ns": 18570100,
+          "max_ns": 105882400,
+          "mean_ns": 58646008.333333336,
+          "percentile_scope": "recent_window",
+          "window_count": 36,
+          "p50_ns": 78530900,
+          "p90_ns": 91702700,
+          "p95_ns": 94366300,
+          "p99_ns": 105882400
+        },
+        "confidence_decode_nms": {
+          "count": 36,
+          "min_ns": 2536700,
+          "max_ns": 21715900,
+          "mean_ns": 8695066.666666666,
+          "percentile_scope": "recent_window",
+          "window_count": 36,
+          "p50_ns": 7243800,
+          "p90_ns": 16275900,
+          "p95_ns": 20705500,
+          "p99_ns": 21715900
+        },
+        "coordinate_restoration_and_detection_creation": {
+          "count": 36,
+          "min_ns": 269000,
+          "max_ns": 10712200,
+          "mean_ns": 2449863.888888889,
+          "percentile_scope": "recent_window",
+          "window_count": 36,
+          "p50_ns": 1493400,
+          "p90_ns": 6189400,
+          "p95_ns": 6827000,
+          "p99_ns": 10712200
+        },
+        "detection_batch_creation": {
+          "count": 36,
+          "min_ns": 90600,
+          "max_ns": 808900,
+          "mean_ns": 241227.77777777778,
+          "percentile_scope": "recent_window",
+          "window_count": 36,
+          "p50_ns": 293300,
+          "p90_ns": 355900,
+          "p95_ns": 367200,
+          "p99_ns": 808900
+        },
+        "end_to_end": {
+          "count": 36,
+          "min_ns": 26026900,
+          "max_ns": 138494000,
+          "mean_ns": 75293994.44444445,
+          "percentile_scope": "recent_window",
+          "window_count": 36,
+          "p50_ns": 98435400,
+          "p90_ns": 114394300,
+          "p95_ns": 124539600,
+          "p99_ns": 138494000
+        }
+      }
+    },
+    {
+      "artifact": "picodet-final-round1.json",
+      "sha256": "94c2591d89861a0f2613abfde7221a74375f579f20ddcf40c58fd5299316a54a",
+      "candidate": {
+        "name": "PicoDetDetector",
+        "component_type": "detector",
+        "model_id": "picodet-s",
+        "model_version": "4b717e3f68f170fafd922c3c7978e52b6ad2ab3615d26b407e7d9aba44eb790f",
+        "runtime": "onnxruntime-1.24.4/cpu/fp32",
+        "configuration_hash": "7749a62f7c3bc6c02a9f7dd5da78b2224ece992feff5959ce99a4b0458d27792"
+      },
+      "configuration": {
+        "condition": "original",
+        "size": 416,
+        "batch": 1,
+        "confidence_floor": 0.03,
+        "nms_iou": 0.6,
+        "max_detections": null,
+        "threads": 1,
+        "warmup": 5,
+        "device": "cpu",
+        "half": false
+      },
+      "dataset_sha256": "9b34810576150f24f848f79828055718f5879e3b86aba9768c1c686ce0706f04",
+      "tp": 131,
+      "fp": 146,
+      "fn": 81,
+      "steady_latency_ns": {
+        "preprocess_total": {
+          "count": 36,
+          "min_ns": 4151500,
+          "max_ns": 11918600,
+          "mean_ns": 8549463.888888888,
+          "percentile_scope": "recent_window",
+          "window_count": 36,
+          "p50_ns": 9670400,
+          "p90_ns": 11540100,
+          "p95_ns": 11867400,
+          "p99_ns": 11918600
+        },
+        "inference": {
+          "count": 36,
+          "min_ns": 51809400,
+          "max_ns": 246488400,
+          "mean_ns": 159304994.44444445,
+          "percentile_scope": "recent_window",
+          "window_count": 36,
+          "p50_ns": 197386000,
+          "p90_ns": 228872500,
+          "p95_ns": 231644300,
+          "p99_ns": 246488400
+        },
+        "confidence_decode_nms": {
+          "count": 36,
+          "min_ns": 251000,
+          "max_ns": 1061300,
+          "mean_ns": 671169.4444444445,
+          "percentile_scope": "recent_window",
+          "window_count": 36,
+          "p50_ns": 859000,
+          "p90_ns": 925400,
+          "p95_ns": 1038700,
+          "p99_ns": 1061300
+        },
+        "coordinate_restoration_and_detection_creation": {
+          "count": 36,
+          "min_ns": 3462200,
+          "max_ns": 24139900,
+          "mean_ns": 13791366.666666666,
+          "percentile_scope": "recent_window",
+          "window_count": 36,
+          "p50_ns": 17278800,
+          "p90_ns": 19623800,
+          "p95_ns": 23221400,
+          "p99_ns": 24139900
+        },
+        "detection_batch_creation": {
+          "count": 36,
+          "min_ns": 91900,
+          "max_ns": 517900,
+          "mean_ns": 248997.22222222222,
+          "percentile_scope": "recent_window",
+          "window_count": 36,
+          "p50_ns": 283700,
+          "p90_ns": 344100,
+          "p95_ns": 445600,
+          "p99_ns": 517900
+        },
+        "end_to_end": {
+          "count": 36,
+          "min_ns": 60652100,
+          "max_ns": 279539700,
+          "mean_ns": 182949816.66666666,
+          "percentile_scope": "recent_window",
+          "window_count": 36,
+          "p50_ns": 228300500,
+          "p90_ns": 259906800,
+          "p95_ns": 266078500,
+          "p99_ns": 279539700
+        }
+      }
+    },
+    {
+      "artifact": "picodet-final-round2.json",
+      "sha256": "70565fbe93a9379f1fcd75752034b4331ccd61713e49f0d6ae90cef9b5580cfb",
+      "candidate": {
+        "name": "PicoDetDetector",
+        "component_type": "detector",
+        "model_id": "picodet-s",
+        "model_version": "4b717e3f68f170fafd922c3c7978e52b6ad2ab3615d26b407e7d9aba44eb790f",
+        "runtime": "onnxruntime-1.24.4/cpu/fp32",
+        "configuration_hash": "7749a62f7c3bc6c02a9f7dd5da78b2224ece992feff5959ce99a4b0458d27792"
+      },
+      "configuration": {
+        "condition": "original",
+        "size": 416,
+        "batch": 1,
+        "confidence_floor": 0.03,
+        "nms_iou": 0.6,
+        "max_detections": null,
+        "threads": 1,
+        "warmup": 5,
+        "device": "cpu",
+        "half": false
+      },
+      "dataset_sha256": "9b34810576150f24f848f79828055718f5879e3b86aba9768c1c686ce0706f04",
+      "tp": 131,
+      "fp": 146,
+      "fn": 81,
+      "steady_latency_ns": {
+        "preprocess_total": {
+          "count": 36,
+          "min_ns": 3810800,
+          "max_ns": 12399500,
+          "mean_ns": 8500150.0,
+          "percentile_scope": "recent_window",
+          "window_count": 36,
+          "p50_ns": 10133400,
+          "p90_ns": 11160500,
+          "p95_ns": 11699300,
+          "p99_ns": 12399500
+        },
+        "inference": {
+          "count": 36,
+          "min_ns": 53699200,
+          "max_ns": 246148900,
+          "mean_ns": 170863097.2222222,
+          "percentile_scope": "recent_window",
+          "window_count": 36,
+          "p50_ns": 221427200,
+          "p90_ns": 234662000,
+          "p95_ns": 240741300,
+          "p99_ns": 246148900
+        },
+        "confidence_decode_nms": {
+          "count": 36,
+          "min_ns": 249800,
+          "max_ns": 1016600,
+          "mean_ns": 693863.8888888889,
+          "percentile_scope": "recent_window",
+          "window_count": 36,
+          "p50_ns": 856600,
+          "p90_ns": 1000900,
+          "p95_ns": 1006600,
+          "p99_ns": 1016600
+        },
+        "coordinate_restoration_and_detection_creation": {
+          "count": 36,
+          "min_ns": 3394700,
+          "max_ns": 20402800,
+          "mean_ns": 14178605.555555556,
+          "percentile_scope": "recent_window",
+          "window_count": 36,
+          "p50_ns": 17647300,
+          "p90_ns": 20017500,
+          "p95_ns": 20263400,
+          "p99_ns": 20402800
+        },
+        "detection_batch_creation": {
+          "count": 36,
+          "min_ns": 92000,
+          "max_ns": 477600,
+          "mean_ns": 261452.77777777778,
+          "percentile_scope": "recent_window",
+          "window_count": 36,
+          "p50_ns": 318400,
+          "p90_ns": 367100,
+          "p95_ns": 399600,
+          "p99_ns": 477600
+        },
+        "end_to_end": {
+          "count": 36,
+          "min_ns": 63187100,
+          "max_ns": 274765300,
+          "mean_ns": 194929086.1111111,
+          "percentile_scope": "recent_window",
+          "window_count": 36,
+          "p50_ns": 253230100,
+          "p90_ns": 264645700,
+          "p95_ns": 272555500,
+          "p99_ns": 274765300
+        }
+      }
+    }
+  ],
+  "replays": [
+    {
+      "schema_version": 1,
+      "status": "MEASURED_LOCALLY",
+      "configuration_file_sha256": "4ba214322d4d0583dcc6b661037e3f9ab49d53727d81ef90f2cc5ef807ece10a",
+      "wall_seconds": 603.4840000000113,
+      "memory": {
+        "start_rss": 2351104,
+        "peak_sampled_rss": 217747456,
+        "end_sampled_rss": 137609216,
+        "samples": 602,
+        "interval_seconds": 1,
+        "scope": "child process tree; includes JVM; sampled peak"
+      },
+      "replay": {
+        "decode_fps": 29.98335452778063,
+        "drops": {
+          "QUEUE_OVERFLOW": 14585,
+          "USER_SKIP": 1
+        },
+        "effective_output_fps": 5.688192639985048,
+        "elapsed_processing_ns": 600366446100,
+        "frame_counts": {
+          "accepted": 18000,
+          "decoded": 18001,
+          "dropped": 14586,
+          "failed": 0,
+          "processed": 3415,
+          "source": 18001
+        },
+        "peak_queue_depth": 1,
+        "processing_fps": 5.688192639985048,
+        "session_id": "d55b2e5b-c32b-4186-bfec-5513da85fc04",
+        "source_duration_ns": 600000000000,
+        "source_fps": 30.0,
+        "termination_reason": "END_OF_STREAM",
+        "timing": {
+          "component": {
+            "count": 1459,
+            "max_ns": 379038700,
+            "mean_ns": 160377527.62165868,
+            "min_ns": 57327300,
+            "p50_ns": 186027900,
+            "p90_ns": 248506800,
+            "p95_ns": 260614000,
+            "p99_ns": 286324600,
+            "percentile_scope": "recent_window",
+            "window_count": 1459
+          },
+          "conversion": {
+            "count": 18001,
+            "max_ns": 141269400,
+            "mean_ns": 5308535.525804122,
+            "min_ns": 1621700,
+            "p50_ns": 5208000,
+            "p90_ns": 6581300,
+            "p95_ns": 7127400,
+            "p99_ns": 8430300,
+            "percentile_scope": "recent_window",
+            "window_count": 2048
+          },
+          "decode": {
+            "count": 18001,
+            "max_ns": 72239900,
+            "mean_ns": 11926041.75323593,
+            "min_ns": 1483900,
+            "p50_ns": 13874000,
+            "p90_ns": 17524200,
+            "p95_ns": 19089300,
+            "p99_ns": 26016800,
+            "percentile_scope": "recent_window",
+            "window_count": 2048
+          },
+          "postprocess": {
+            "count": 3415,
+            "max_ns": 162800,
+            "mean_ns": 16331.273792093703,
+            "min_ns": 8300,
+            "p50_ns": 13400,
+            "p90_ns": 26200,
+            "p95_ns": 28600,
+            "p99_ns": 44400,
+            "percentile_scope": "recent_window",
+            "window_count": 2048
+          },
+          "preprocess": {
+            "count": 3415,
+            "max_ns": 188100,
+            "mean_ns": 27688.989751098095,
+            "min_ns": 14400,
+            "p50_ns": 24700,
+            "p90_ns": 40900,
+            "p95_ns": 46500,
+            "p99_ns": 83200,
+            "percentile_scope": "recent_window",
+            "window_count": 2048
+          },
+          "queue": {
+            "count": 3415,
+            "max_ns": 37693600,
+            "mean_ns": 12276506.647144949,
+            "min_ns": 3429200,
+            "p50_ns": 10947700,
+            "p90_ns": 20271600,
+            "p95_ns": 22104200,
+            "p99_ns": 25262400,
+            "percentile_scope": "recent_window",
+            "window_count": 2048
+          },
+          "realtime_detector_result_age": {
+            "count": 1459,
+            "max_ns": 951691600,
+            "mean_ns": 182800467.73680604,
+            "min_ns": 63899600,
+            "p50_ns": 212286234,
+            "p90_ns": 276406267,
+            "p95_ns": 290742567,
+            "p99_ns": 355525000,
+            "percentile_scope": "recent_window",
+            "window_count": 1459
+          },
+          "realtime_result_age": {
+            "count": 3415,
+            "max_ns": 951691600,
+            "mean_ns": 86302043.19472913,
+            "min_ns": 3860934,
+            "p50_ns": 25270434,
+            "p90_ns": 257956134,
+            "p95_ns": 270370967,
+            "p99_ns": 297671067,
+            "percentile_scope": "recent_window",
+            "window_count": 2048
+          },
+          "record": {
+            "count": 3415,
+            "max_ns": 197200,
+            "mean_ns": 5197.159590043924,
+            "min_ns": 1900,
+            "p50_ns": 4200,
+            "p90_ns": 9000,
+            "p95_ns": 9700,
+            "p99_ns": 15000,
+            "percentile_scope": "recent_window",
+            "window_count": 2048
+          },
+          "render": {
+            "count": 0,
+            "max_ns": null,
+            "mean_ns": null,
+            "min_ns": null,
+            "p50_ns": null,
+            "p90_ns": null,
+            "p95_ns": null,
+            "p99_ns": null,
+            "percentile_scope": "recent_window",
+            "window_count": 0
+          },
+          "result": {
+            "count": 3415,
+            "max_ns": 410125400,
+            "mean_ns": 103603846.06149341,
+            "min_ns": 10569400,
+            "p50_ns": 45851500,
+            "p90_ns": 268308700,
+            "p95_ns": 280791300,
+            "p99_ns": 309396600,
+            "percentile_scope": "recent_window",
+            "window_count": 2048
+          },
+          "scheduler": {
+            "count": 3415,
+            "max_ns": 272000,
+            "mean_ns": 10114.28989751098,
+            "min_ns": 3800,
+            "p50_ns": 8700,
+            "p90_ns": 16100,
+            "p95_ns": 17900,
+            "p99_ns": 26100,
+            "percentile_scope": "recent_window",
+            "window_count": 2048
+          }
+        }
+      },
+      "artifact": "replay-picodet-5hz-bounded.json",
+      "sha256": "39f1c07d2f3340246ab4c6fae9dffbdcf01e7f855a5b4d016af668b15d738b24"
+    },
+    {
+      "schema_version": 1,
+      "status": "MEASURED_LOCALLY",
+      "configuration_file_sha256": "2925228dadb0f2aee76c69376d0f2c5a7721fe31edafbae9c97e4c68b6b1d91c",
+      "wall_seconds": 63.17200000000594,
+      "memory": {
+        "start_rss": 2351104,
+        "peak_sampled_rss": 218800128,
+        "end_sampled_rss": 144109568,
+        "samples": 63,
+        "interval_seconds": 1,
+        "scope": "child process tree; includes JVM; sampled peak"
+      },
+      "replay": {
+        "decode_fps": 30.012785063153142,
+        "drops": {
+          "QUEUE_OVERFLOW": 1184,
+          "USER_SKIP": 1
+        },
+        "effective_output_fps": 10.265339033260597,
+        "elapsed_processing_ns": 60007759900,
+        "frame_counts": {
+          "accepted": 1800,
+          "decoded": 1801,
+          "dropped": 1185,
+          "failed": 0,
+          "processed": 616,
+          "source": 1801
+        },
+        "peak_queue_depth": 1,
+        "processing_fps": 10.265339033260597,
+        "session_id": "d1e774dc-728f-414d-9420-0f268ddf4032",
+        "source_duration_ns": 60000000000,
+        "source_fps": 30.0,
+        "termination_reason": "END_OF_STREAM",
+        "timing": {
+          "component": {
+            "count": 361,
+            "max_ns": 306948700,
+            "mean_ns": 85810724.099723,
+            "min_ns": 54645300,
+            "p50_ns": 63539700,
+            "p90_ns": 212048700,
+            "p95_ns": 236205300,
+            "p99_ns": 265112000,
+            "percentile_scope": "recent_window",
+            "window_count": 361
+          },
+          "conversion": {
+            "count": 1801,
+            "max_ns": 124100800,
+            "mean_ns": 4449707.440310938,
+            "min_ns": 1638600,
+            "p50_ns": 3267900,
+            "p90_ns": 7217700,
+            "p95_ns": 8190900,
+            "p99_ns": 14104200,
+            "percentile_scope": "recent_window",
+            "window_count": 1801
+          },
+          "decode": {
+            "count": 1801,
+            "max_ns": 39410600,
+            "mean_ns": 9129521.37701277,
+            "min_ns": 1524600,
+            "p50_ns": 7457200,
+            "p90_ns": 15449800,
+            "p95_ns": 17133900,
+            "p99_ns": 24652000,
+            "percentile_scope": "recent_window",
+            "window_count": 1801
+          },
+          "postprocess": {
+            "count": 616,
+            "max_ns": 149900,
+            "mean_ns": 13372.727272727272,
+            "min_ns": 8200,
+            "p50_ns": 10600,
+            "p90_ns": 21000,
+            "p95_ns": 27800,
+            "p99_ns": 46100,
+            "percentile_scope": "recent_window",
+            "window_count": 616
+          },
+          "preprocess": {
+            "count": 616,
+            "max_ns": 216400,
+            "mean_ns": 21486.85064935065,
+            "min_ns": 13900,
+            "p50_ns": 17000,
+            "p90_ns": 32900,
+            "p95_ns": 40100,
+            "p99_ns": 58900,
+            "percentile_scope": "recent_window",
+            "window_count": 616
+          },
+          "queue": {
+            "count": 616,
+            "max_ns": 48223400,
+            "mean_ns": 9426935.876623377,
+            "min_ns": 3630100,
+            "p50_ns": 8306800,
+            "p90_ns": 14483000,
+            "p95_ns": 19016800,
+            "p99_ns": 22715900,
+            "percentile_scope": "recent_window",
+            "window_count": 616
+          },
+          "realtime_detector_result_age": {
+            "count": 361,
+            "max_ns": 613604900,
+            "mean_ns": 100206216.67590028,
+            "min_ns": 59850100,
+            "p50_ns": 75055200,
+            "p90_ns": 238172400,
+            "p95_ns": 262323600,
+            "p99_ns": 306478067,
+            "percentile_scope": "recent_window",
+            "window_count": 361
+          },
+          "realtime_result_age": {
+            "count": 616,
+            "max_ns": 613604900,
+            "mean_ns": 67678198.3603896,
+            "min_ns": 9414334,
+            "p50_ns": 67628400,
+            "p90_ns": 92690467,
+            "p95_ns": 252885200,
+            "p99_ns": 290991334,
+            "percentile_scope": "recent_window",
+            "window_count": 616
+          },
+          "record": {
+            "count": 616,
+            "max_ns": 36000,
+            "mean_ns": 3748.051948051948,
+            "min_ns": 1800,
+            "p50_ns": 3100,
+            "p90_ns": 5600,
+            "p95_ns": 8000,
+            "p99_ns": 13600,
+            "percentile_scope": "recent_window",
+            "window_count": 616
+          },
+          "render": {
+            "count": 0,
+            "max_ns": null,
+            "mean_ns": null,
+            "min_ns": null,
+            "p50_ns": null,
+            "p90_ns": null,
+            "p95_ns": null,
+            "p99_ns": null,
+            "percentile_scope": "recent_window",
+            "window_count": 0
+          },
+          "result": {
+            "count": 616,
+            "max_ns": 357857300,
+            "mean_ns": 73277716.55844156,
+            "min_ns": 10473800,
+            "p50_ns": 79179100,
+            "p90_ns": 111063200,
+            "p95_ns": 261534000,
+            "p99_ns": 297352700,
+            "percentile_scope": "recent_window",
+            "window_count": 616
+          },
+          "scheduler": {
+            "count": 616,
+            "max_ns": 48900,
+            "mean_ns": 8236.85064935065,
+            "min_ns": 4200,
+            "p50_ns": 6700,
+            "p90_ns": 13400,
+            "p95_ns": 16100,
+            "p99_ns": 31100,
+            "percentile_scope": "recent_window",
+            "window_count": 616
+          }
+        }
+      },
+      "artifact": "replay-picodet-10hz.json",
+      "sha256": "42cafc21e16d1b8ae907e80c63b373b43af55345c34e31ab0e5caffcdb9bd82c"
+    },
+    {
+      "schema_version": 1,
+      "status": "MEASURED_LOCALLY",
+      "configuration_file_sha256": "b7a7ba8aa60a7b8b12072c4e040207a3f84cb4cb24b657a397208fc096332250",
+      "wall_seconds": 22.078999999997905,
+      "memory": {
+        "start_rss": 2396160,
+        "peak_sampled_rss": 200445952,
+        "end_sampled_rss": 200396800,
+        "samples": 22,
+        "interval_seconds": 1,
+        "scope": "child process tree; includes JVM; sampled peak"
+      },
+      "replay": {
+        "decode_fps": 30.0360677699649,
+        "drops": {
+          "QUEUE_OVERFLOW": 10,
+          "USER_SKIP": 1
+        },
+        "effective_output_fps": 29.486322769183513,
+        "elapsed_processing_ns": 20009277000,
+        "frame_counts": {
+          "accepted": 600,
+          "decoded": 601,
+          "dropped": 11,
+          "failed": 0,
+          "processed": 590,
+          "source": 601
+        },
+        "peak_queue_depth": 1,
+        "processing_fps": 29.486322769183513,
+        "session_id": "1fc1d089-15ea-44cc-b685-059b9ff70084",
+        "source_duration_ns": 20000000000,
+        "source_fps": 30.0,
+        "termination_reason": "END_OF_STREAM",
+        "timing": {
+          "component": {
+            "count": 100,
+            "max_ns": 53750700,
+            "mean_ns": 33456832.0,
+            "min_ns": 24573700,
+            "p50_ns": 32396000,
+            "p90_ns": 41555200,
+            "p95_ns": 45727100,
+            "p99_ns": 51242900,
+            "percentile_scope": "recent_window",
+            "window_count": 100
+          },
+          "conversion": {
+            "count": 601,
+            "max_ns": 5779000,
+            "mean_ns": 2965568.7188019967,
+            "min_ns": 1670700,
+            "p50_ns": 2718600,
+            "p90_ns": 4337700,
+            "p95_ns": 4645200,
+            "p99_ns": 5177400,
+            "percentile_scope": "recent_window",
+            "window_count": 601
+          },
+          "decode": {
+            "count": 601,
+            "max_ns": 20442300,
+            "mean_ns": 9088151.414309485,
+            "min_ns": 1507800,
+            "p50_ns": 9092000,
+            "p90_ns": 13912600,
+            "p95_ns": 14646500,
+            "p99_ns": 17518000,
+            "percentile_scope": "recent_window",
+            "window_count": 601
+          },
+          "postprocess": {
+            "count": 590,
+            "max_ns": 73600,
+            "mean_ns": 12520.338983050848,
+            "min_ns": 7500,
+            "p50_ns": 11100,
+            "p90_ns": 17000,
+            "p95_ns": 19000,
+            "p99_ns": 33600,
+            "percentile_scope": "recent_window",
+            "window_count": 590
+          },
+          "preprocess": {
+            "count": 590,
+            "max_ns": 157500,
+            "mean_ns": 22621.35593220339,
+            "min_ns": 14000,
+            "p50_ns": 20300,
+            "p90_ns": 29400,
+            "p95_ns": 32100,
+            "p99_ns": 67300,
+            "percentile_scope": "recent_window",
+            "window_count": 590
+          },
+          "queue": {
+            "count": 590,
+            "max_ns": 24267400,
+            "mean_ns": 12458093.728813559,
+            "min_ns": 3703400,
+            "p50_ns": 12522100,
+            "p90_ns": 17856200,
+            "p95_ns": 18981600,
+            "p99_ns": 21957700,
+            "percentile_scope": "recent_window",
+            "window_count": 590
+          },
+          "realtime_detector_result_age": {
+            "count": 100,
+            "max_ns": 68902800,
+            "mean_ns": 47809337.0,
+            "min_ns": 33268900,
+            "p50_ns": 47387400,
+            "p90_ns": 56719900,
+            "p95_ns": 61780400,
+            "p99_ns": 66826600,
+            "percentile_scope": "recent_window",
+            "window_count": 100
+          },
+          "realtime_result_age": {
+            "count": 590,
+            "max_ns": 68902800,
+            "mean_ns": 20587277.508474577,
+            "min_ns": 4029234,
+            "p50_ns": 16105634,
+            "p90_ns": 45918200,
+            "p95_ns": 51008400,
+            "p99_ns": 61780400,
+            "percentile_scope": "recent_window",
+            "window_count": 590
+          },
+          "record": {
+            "count": 590,
+            "max_ns": 21200,
+            "mean_ns": 3449.1525423728813,
+            "min_ns": 1800,
+            "p50_ns": 3100,
+            "p90_ns": 4800,
+            "p95_ns": 5300,
+            "p99_ns": 8300,
+            "percentile_scope": "recent_window",
+            "window_count": 590
+          },
+          "render": {
+            "count": 0,
+            "max_ns": null,
+            "mean_ns": null,
+            "min_ns": null,
+            "p50_ns": null,
+            "p90_ns": null,
+            "p95_ns": null,
+            "p99_ns": null,
+            "percentile_scope": "recent_window",
+            "window_count": 0
+          },
+          "result": {
+            "count": 590,
+            "max_ns": 101334600,
+            "mean_ns": 50721921.355932206,
+            "min_ns": 13566200,
+            "p50_ns": 48413400,
+            "p90_ns": 78659900,
+            "p95_ns": 83727100,
+            "p99_ns": 94398400,
+            "percentile_scope": "recent_window",
+            "window_count": 590
+          },
+          "scheduler": {
+            "count": 590,
+            "max_ns": 40900,
+            "mean_ns": 7308.813559322034,
+            "min_ns": 4100,
+            "p50_ns": 6700,
+            "p90_ns": 10100,
+            "p95_ns": 11700,
+            "p99_ns": 15200,
+            "percentile_scope": "recent_window",
+            "window_count": 590
+          }
+        }
+      },
+      "artifact": "replay-yolox-5hz.json",
+      "sha256": "8ec72254821540a61e00b4b445bc40e079848331f8da9b70cfab081d6dc980bc"
+    }
+  ],
+  "invalid_runs": ["yolox-round1.json", "yolox-round2.json"],
+  "failed_useful_throughput_run": "replay-picodet-5hz.json",
+  "task006_complete": false,
+  "production_safety_validated": false,
+  "verification": {
+    "command": "npm run verify",
+    "exit_code": 0,
+    "tests": {
+      "guardian_core": 189,
+      "perception_lab": 165,
+      "web": 24,
+      "api": 3
+    },
+    "total_tests": 381,
+    "log_sha256": "9a7fb4ac1e72b48f51b47434c09972f061e1d6e4391cbab546b9275b9bafc3ab",
+    "production_smoke": "PASS",
+    "security": "PASS_WITH_DOCUMENTED_DEVELOPMENT_ADVISORY_EXCEPTION"
+  }
+}

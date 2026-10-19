@@ -1,0 +1,14 @@
+{
+  "source": "Local Windows CIM inspection during Task 006",
+  "cpu": "Intel Core i5-13420H",
+  "os": "Windows 11 10.0.26200",
+  "gpu": "NVIDIA GeForce RTX 3050 6GB Laptop GPU",
+  "nvidia_driver": "32.0.15.9227 (592.27)",
+  "integrated_gpu": "Intel UHD Graphics",
+  "integrated_driver": "32.0.101.7088",
+  "gpu_used": false,
+  "torch_build": "2.14.1+cpu",
+  "cuda_available": false,
+  "cpu_threads_per_runtime": 1,
+  "power_and_thermal_state": "Not controlled; latency ranking is provisional"
+}

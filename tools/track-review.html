@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'none'; img-src 'self' file:; script-src 'unsafe-inline'; style-src 'unsafe-inline'; connect-src 'none'"
+    />
+    <title>Sentinel local track review</title>
+    <style>
+      body {
+        font: 16px system-ui;
+        background: #101820;
+        color: #e9eff5;
+        margin: 20px;
+      }
+      button,
+      input,
+      select {
+        font: inherit;
+        margin: 4px;
+        padding: 7px;
+      }
+      button {
+        cursor: pointer;
+      }
+      canvas {
+        width: 100%;
+        max-width: 1200px;
+        background: #000;
+        touch-action: none;
+      }
+      #status {
+        color: #90e0c8;
+      }
+      section {
+        margin: 12px 0;
+        max-width: 1200px;
+      }
+      small {
+        color: #b6c4cf;
+      }
+      #error {
+        color: #ffaaaa;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Sentinel · local track-ID review</h1>
+    <section>
+      Every box and ID is a <b>draft proposal</b>. Correct boxes/classes, add
+      missed objects and keep an ID only for the same object within a clip.
+      Review adjacent frames for crossings and occlusion. IDs do not identify
+      people across clips or sessions.
+    </section>
+    <section>
+      <button id="prev">Previous</button><button id="next">Next</button> Frame
+      <input
+        id="jump"
+        type="number"
+        min="1"
+        value="1"
+        style="width: 90px"
+      /><button id="go">Go</button>
+      <button id="review">Mark this frame reviewed</button
+      ><button id="save">Save review JSON</button>
+      <label
+        >Resume <input id="resume" type="file" accept="application/json"
+      /></label>
+    </section>
+    <p id="status"></p>
+    <p id="error" role="alert"></p>
+    <canvas id="canvas"></canvas>
+    <section>
+      <span id="selected">Select a box</span
+      ><label
+        >Track ID <input id="track" maxlength="64" style="width: 110px"
+      /></label>
+      <label
+        >Class
+        <select id="category"></select></label
+      ><button id="apply">Apply ID/class</button>
+      <button id="new">Draw new box</button
+      ><button id="redraw">Redraw selected box</button
+      ><button id="delete">Delete selected</button>
+      <label
+        >Occlusion
+        <select id="occlusion">
+          <option>UNKNOWN</option>
+          <option>VISIBLE</option>
+          <option>PARTIAL</option>
+          <option>HEAVY</option>
+        </select></label
+      >
+    </section>
+    <section>
+      <label
+        >Camera motion
+        <select id="motion">
+          <option>UNKNOWN</option>
+          <option>LOW</option>
+          <option>MEDIUM</option>
+          <option>HIGH</option>
+        </select></label
+      >
+      <label
+        >Scene
+        <select id="scene">
+          <option>UNKNOWN</option>
+          <option>CROWD</option>
+          <option>TRAFFIC</option>
+          <option>MIXED</option>
+          <option>OTHER</option>
+        </select></label
+      >
+    </section>
+    <small
+      >Draw a rectangle by dragging. Redraw replaces the selected box. Changes
+      invalidate that frame's review. Save regularly; this page has no network
+      or automatic storage. Re-entering after uncertain identity gets a new ID.
+      Review the complete frame, not just proposed boxes.</small
+    >
+    <script>
+      let data = /*SENTINEL_DATA*/ null;
+      let index = 0,
+        chosen = -1,
+        mode = "select",
+        start = null,
+        picture = new Image(),
+        ready = false;
+      const $ = (id) => document.getElementById(id),
+        canvas = $("canvas"),
+        ctx = canvas.getContext("2d");
+      const labels = [
+        "PERSON",
+        "BICYCLE",
+        "MOTORCYCLE",
+        "CAR",
+        "BUS",
+        "TRUCK",
+        "TRAIN",
+        "DOG",
+      ];
+      for (const label of labels) {
+        const option = document.createElement("option");
+        option.textContent = label;
+        $("category").append(option);
+      }
+      function frame() {
+        return data.frames[index];
+      }
+      function error(message) {
+        $("error").textContent = message;
+      }
+      function changed() {
+        frame().review_status = "DRAFT_TRACK_LINK";
+        paint();
+      }
+      function paint() {
+        if (!ready) return;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(picture, 0, 0);
+        ctx.font = "24px sans-serif";
+        frame().annotations.forEach((a, i) => {
+          ctx.strokeStyle = i === chosen ? "#ffcc55" : "#43f4b4";
+          ctx.fillStyle = ctx.strokeStyle;
+          ctx.lineWidth = i === chosen ? 5 : 2;
+          const [x, y, r, b] = a.box;
+          ctx.strokeRect(x, y, r - x, b - y);
+          ctx.fillText(
+            `${a.ground_truth_track_id}: ${a.label}`,
+            x,
+            Math.max(24, y - 5),
+          );
+        });
+        $("status").textContent =
+          `Frame ${index + 1}/${data.frames.length} · ${frame().clip_id} · ${(frame().observation_ns / 1e9).toFixed(3)}s · ${frame().review_status} · ${data.frames.filter((f) => f.review_status === "REVIEWED_TRACK_ID").length} reviewed`;
+      }
+      function load() {
+        if (!data) return;
+        ready = false;
+        chosen = -1;
+        mode = "select";
+        start = null;
+        error("");
+        $("jump").value = index + 1;
+        $("jump").max = data.frames.length;
+        $("motion").value = frame().motion;
+        $("scene").value = frame().scene;
+        $("selected").textContent = "Select a box";
+        if (!/^frames\/[A-Za-z0-9_-]+\.jpg$/.test(frame().path)) {
+          error("Invalid image path");
+          return;
+        }
+        picture = new Image();
+        const loading = picture;
+        picture.onload = () => {
+          if (picture !== loading) return;
+          canvas.width = frame().width;
+          canvas.height = frame().height;
+          ready = true;
+          paint();
+        };
+        picture.onerror = () => {
+          if (picture !== loading) return;
+          error(
+            "Image unavailable. Keep review.html beside its frames directory.",
+          );
+        };
+        picture.src = frame().path;
+      }
+      function select(i) {
+        chosen = i;
+        const a = frame().annotations[i];
+        if (a) {
+          $("track").value = a.ground_truth_track_id;
+          $("category").value = a.label;
+          $("occlusion").value = a.occlusion;
+          $("selected").textContent = `Box ${i + 1}`;
+        }
+        paint();
+      }
+      function point(e) {
+        const r = canvas.getBoundingClientRect();
+        return [
+          Math.max(
+            0,
+            Math.min(
+              canvas.width,
+              ((e.clientX - r.left) * canvas.width) / r.width,
+            ),
+          ),
+          Math.max(
+            0,
+            Math.min(
+              canvas.height,
+              ((e.clientY - r.top) * canvas.height) / r.height,
+            ),
+          ),
+        ];
+      }
+      canvas.onpointerdown = (e) => {
+        if (!ready) return;
+        const [x, y] = point(e);
+        if (mode === "select") {
+          const hits = frame()
+            .annotations.map((a, i) => ({ a, i }))
+            .filter(
+              ({ a }) =>
+                a.box[0] <= x &&
+                x <= a.box[2] &&
+                a.box[1] <= y &&
+                y <= a.box[3],
+            );
+          hits.sort(
+            (a, b) =>
+              (a.a.box[2] - a.a.box[0]) * (a.a.box[3] - a.a.box[1]) -
+              (b.a.box[2] - b.a.box[0]) * (b.a.box[3] - b.a.box[1]),
+          );
+          select(hits.length ? hits[0].i : -1);
+        } else {
+          start = [x, y];
+          canvas.setPointerCapture(e.pointerId);
+        }
+      };
+      canvas.onpointerup = (e) => {
+        if (!start) return;
+        const end = point(e),
+          box = [
+            Math.min(start[0], end[0]),
+            Math.min(start[1], end[1]),
+            Math.max(start[0], end[0]),
+            Math.max(start[1], end[1]),
+          ];
+        start = null;
+        if (box[2] - box[0] < 1 || box[3] - box[1] < 1) {
+          error("Box must have positive size");
+          return;
+        }
+        if (mode === "redraw" && chosen >= 0)
+          frame().annotations[chosen].box = box;
+        else {
+          let id = 1;
+          const used = new Set(
+            data.frames
+              .filter((f) => f.clip_id === frame().clip_id)
+              .flatMap((f) =>
+                f.annotations.map((a) => a.ground_truth_track_id),
+              ),
+          );
+          while (used.has(String(id))) id++;
+          frame().annotations.push({
+            ground_truth_track_id: String(id),
+            label: $("category").value,
+            box,
+            occlusion: "UNKNOWN",
+          });
+          chosen = frame().annotations.length - 1;
+        }
+        mode = "select";
+        changed();
+        select(chosen);
+      };
+      $("prev").onclick = () => {
+        index = Math.max(0, index - 1);
+        load();
+      };
+      $("next").onclick = () => {
+        index = Math.min(data.frames.length - 1, index + 1);
+        load();
+      };
+      $("go").onclick = () => {
+        const n = Number($("jump").value);
+        if (Number.isInteger(n) && n >= 1 && n <= data.frames.length) {
+          index = n - 1;
+          load();
+        }
+      };
+      $("new").onclick = () => {
+        mode = "new";
+        error("Drag a rectangle for a new object.");
+      };
+      $("redraw").onclick = () => {
+        if (chosen >= 0) {
+          mode = "redraw";
+          error("Drag the replacement rectangle.");
+        }
+      };
+      $("delete").onclick = () => {
+        if (chosen >= 0) {
+          frame().annotations.splice(chosen, 1);
+          chosen = -1;
+          changed();
+        }
+      };
+      $("apply").onclick = () => {
+        if (chosen < 0) return;
+        const id = $("track").value.trim();
+        if (!/^[A-Za-z0-9_-]{1,64}$/.test(id)) {
+          error("Use a nonempty letters/digits/hyphen/underscore ID.");
+          return;
+        }
+        Object.assign(frame().annotations[chosen], {
+          ground_truth_track_id: id,
+          label: $("category").value,
+          occlusion: $("occlusion").value,
+        });
+        changed();
+      };
+      for (const key of ["motion", "scene"])
+        $(key).onchange = () => {
+          frame()[key] = $(key).value;
+          changed();
+        };
+      $("review").onclick = () => {
+        const ids = frame().annotations.map((a) => a.ground_truth_track_id);
+        if (new Set(ids).size !== ids.length) {
+          error("Two boxes share an ID in this frame; correct them first.");
+          return;
+        }
+        frame().review_status = "REVIEWED_TRACK_ID";
+        error("");
+        paint();
+      };
+      $("save").onclick = () => {
+        const url = URL.createObjectURL(
+          new Blob([JSON.stringify(data, null, 2)], {
+            type: "application/json",
+          }),
+        );
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "sentinel-track-review.json";
+        a.click();
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
+      };
+      $("resume").onchange = async (e) => {
+        try {
+          const file = e.target.files[0];
+          if (!file || file.size > 64000000) throw Error();
+          const restored = JSON.parse(await file.text());
+          if (
+            restored.source_sha256 !== data.source_sha256 ||
+            restored.frames.length !== data.frames.length ||
+            restored.frames.some(
+              (f, i) =>
+                f.image_id !== data.frames[i].image_id ||
+                f.path !== data.frames[i].path ||
+                f.sha256 !== data.frames[i].sha256,
+            )
+          )
+            throw Error();
+          data = restored;
+          load();
+        } catch {
+          error("Resume rejected: invalid JSON or different packet.");
+        }
+      };
+      if (data) load();
+      else
+        error("Generate a local review packet with tools/prepare_tracking.py.");
+    </script>
+  </body>
+</html>

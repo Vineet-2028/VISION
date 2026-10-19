@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "checkpoints": [
+    {
+      "repository": "depth-anything/Depth-Anything-V2-Metric-Outdoor-Small-hf",
+      "revision": "fd2c22027eaf20374204f14099b8341e1925ad39",
+      "artifacts": {
+        "config.json": {
+          "sha256": "3417ccb9df6fafe7e03c46583db7185d15e8ad4f5bbbdd28295bb06cfb132b48",
+          "bytes": 1063,
+          "url": "https://huggingface.co/depth-anything/Depth-Anything-V2-Metric-Outdoor-Small-hf/resolve/fd2c22027eaf20374204f14099b8341e1925ad39/config.json"
+        },
+        "preprocessor_config.json": {
+          "sha256": "533b16a60445d7cab5086d39b45f92be45624b977972c62d5984d93e98366063",
+          "bytes": 437,
+          "url": "https://huggingface.co/depth-anything/Depth-Anything-V2-Metric-Outdoor-Small-hf/resolve/fd2c22027eaf20374204f14099b8341e1925ad39/preprocessor_config.json"
+        },
+        "README.md": {
+          "sha256": "77acb892732b6b7cb30798f85f985be7af26d420d93d06923cd7229b6176f7ac",
+          "bytes": 4969,
+          "url": "https://huggingface.co/depth-anything/Depth-Anything-V2-Metric-Outdoor-Small-hf/resolve/fd2c22027eaf20374204f14099b8341e1925ad39/README.md"
+        },
+        "model.safetensors": {
+          "sha256": "ad065c77a7421ca55159a1f0db9433397a607690f2d76bb8a6fc54b1be7a3124",
+          "bytes": 99173660,
+          "url": "https://huggingface.co/depth-anything/Depth-Anything-V2-Metric-Outdoor-Small-hf/resolve/fd2c22027eaf20374204f14099b8341e1925ad39/model.safetensors"
+        }
+      }
+    },
+    {
+      "repository": "depth-anything/Depth-Anything-V2-Small-hf",
+      "revision": "5426e4f0f36572d16453bbda7a8389317b1bef99",
+      "artifacts": {
+        "config.json": {
+          "sha256": "c56698d3643dde1f83ea2212759e6b31a22b8f827246a36dd007ee8a22b3ff75",
+          "bytes": 950,
+          "url": "https://huggingface.co/depth-anything/Depth-Anything-V2-Small-hf/resolve/5426e4f0f36572d16453bbda7a8389317b1bef99/config.json"
+        },
+        "preprocessor_config.json": {
+          "sha256": "d41175c0d889477ca8fc67191e540faef14baf6275157b3fdecf78469e6bbf84",
+          "bytes": 775,
+          "url": "https://huggingface.co/depth-anything/Depth-Anything-V2-Small-hf/resolve/5426e4f0f36572d16453bbda7a8389317b1bef99/preprocessor_config.json"
+        },
+        "README.md": {
+          "sha256": "319566441daaac0c5ed83e75a8fd19bae0863f3275e23f147c06fe0906edf6fb",
+          "bytes": 4400,
+          "url": "https://huggingface.co/depth-anything/Depth-Anything-V2-Small-hf/resolve/5426e4f0f36572d16453bbda7a8389317b1bef99/README.md"
+        },
+        "model.safetensors": {
+          "sha256": "3152477ce0d8d6978d76b995120de97cb5b928701fd0f817769f59e249a16b70",
+          "bytes": 99173660,
+          "url": "https://huggingface.co/depth-anything/Depth-Anything-V2-Small-hf/resolve/5426e4f0f36572d16453bbda7a8389317b1bef99/model.safetensors"
+        }
+      }
+    }
+  ]
+}

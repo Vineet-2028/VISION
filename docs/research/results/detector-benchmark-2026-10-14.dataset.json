@@ -1,0 +1,3970 @@
+{
+  "annotation_sha256": "e8c7f7908f1d7278341fae127d0da654f102f11bd7b21d8aeefa635b8c810b6f",
+  "dataset": "COCO-2017-val-Sentinel-P0-diagnostic-v1",
+  "images": [
+    {
+      "annotations": [
+        {
+          "box": [
+            280.79,
+            44.73,
+            499.49,
+            391.41
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 442619,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        }
+      ],
+      "attribution_url": "http://farm8.staticflickr.com/7015/6795644157_f019453ae7_z.jpg",
+      "blur": "UNKNOWN",
+      "height": 425,
+      "image_id": 785,
+      "license": {
+        "id": 4,
+        "name": "Attribution License",
+        "url": "http://creativecommons.org/licenses/by/2.0/"
+      },
+      "lighting": "UNKNOWN",
+      "path": "images/000000000785.jpg",
+      "scenario": "UNKNOWN",
+      "sha256": "83981537a7baeafbeb9c8cb67b3484dc26433f574b3685d021fa537e277e4726",
+      "source_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000000785.jpg",
+      "width": 640
+    },
+    {
+      "annotations": [
+        {
+          "box": [
+            145.26,
+            100.67,
+            437.21,
+            558.02
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 559508,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            163.73,
+            126.42,
+            429.41999999999996,
+            606.8199999999999
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 560228,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        }
+      ],
+      "attribution_url": "http://farm9.staticflickr.com/8447/7805810128_605424213d_z.jpg",
+      "blur": "UNKNOWN",
+      "height": 640,
+      "image_id": 872,
+      "license": {
+        "id": 4,
+        "name": "Attribution License",
+        "url": "http://creativecommons.org/licenses/by/2.0/"
+      },
+      "lighting": "UNKNOWN",
+      "path": "images/000000000872.jpg",
+      "scenario": "UNKNOWN",
+      "sha256": "c2aa138ee3a59b057a7ba6fc5a6a18e62af531aa7dab78a7bfd33c1cd7e55eb6",
+      "source_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000000872.jpg",
+      "width": 621
+    },
+    {
+      "annotations": [
+        {
+          "box": [
+            277.31,
+            189.99,
+            417.4,
+            398.21000000000004
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 439117,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            281.02,
+            89.81,
+            392.84999999999997,
+            259.36
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 514577,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            595.68,
+            25.78,
+            639.05,
+            253.26
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 538081,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            434.7,
+            0.33,
+            467.49,
+            13.0
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 538866,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            287.39,
+            0.19,
+            332.03999999999996,
+            11.65
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 542506,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            541.88,
+            1.73,
+            607.72,
+            11.85
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1688307,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            1.11,
+            0.56,
+            60.05,
+            9.450000000000001
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 2154963,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            499.47,
+            0.76,
+            574.64,
+            14.14
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 2161360,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        }
+      ],
+      "attribution_url": "http://farm4.staticflickr.com/3715/9639200419_ee41490b2a_z.jpg",
+      "blur": "UNKNOWN",
+      "height": 427,
+      "image_id": 885,
+      "license": {
+        "id": 4,
+        "name": "Attribution License",
+        "url": "http://creativecommons.org/licenses/by/2.0/"
+      },
+      "lighting": "UNKNOWN",
+      "path": "images/000000000885.jpg",
+      "scenario": "UNKNOWN",
+      "sha256": "1c67b783f78b18ddb5dd20aaba4d4aacaf98e5277051688a96da096afa9cdf1f",
+      "source_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000000885.jpg",
+      "width": 640
+    },
+    {
+      "annotations": [
+        {
+          "box": [
+            115.16,
+            152.13,
+            198.39,
+            380.53999999999996
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1234574,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            405.93,
+            120.42,
+            443.06,
+            165.94
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1245349,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            265.33,
+            95.86,
+            354.25,
+            411.74
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1259139,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            209.23,
+            174.64,
+            308.86,
+            423.72
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1269164,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            504.67,
+            191.95,
+            640.0,
+            480.0
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1303041,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            410.2,
+            208.53,
+            525.1,
+            480.0
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1304800,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            380.85,
+            159.91,
+            469.29,
+            479.15999999999997
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1306228,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            330.07,
+            154.25,
+            413.12,
+            468.13
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1311471,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            410.75,
+            107.03,
+            498.84000000000003,
+            228.19
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1316935,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            183.4,
+            121.34,
+            279.17,
+            394.09000000000003
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1318642,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            52.14,
+            185.12,
+            111.4,
+            397.65
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1755199,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            349.49,
+            118.71,
+            402.13,
+            159.84
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 2157771,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        }
+      ],
+      "attribution_url": "http://farm5.staticflickr.com/4115/4906536419_6113bd7de4_z.jpg",
+      "blur": "UNKNOWN",
+      "height": 480,
+      "image_id": 1000,
+      "license": {
+        "id": 4,
+        "name": "Attribution License",
+        "url": "http://creativecommons.org/licenses/by/2.0/"
+      },
+      "lighting": "UNKNOWN",
+      "path": "images/000000001000.jpg",
+      "scenario": "UNKNOWN",
+      "sha256": "24bb77a31928404e45a0454b06f6a0bd54a8db103590c9d7917288a1e0269f05",
+      "source_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000001000.jpg",
+      "width": 640
+    },
+    {
+      "annotations": [
+        {
+          "box": [
+            23.27,
+            213.41,
+            76.8,
+            282.88
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 196726,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            501.68,
+            77.66,
+            640.0,
+            421.37
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 197038,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            402.34,
+            205.02,
+            467.59999999999997,
+            293.47
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 215218,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            0.0,
+            209.18,
+            24.95,
+            289.78
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 216145,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        }
+      ],
+      "attribution_url": "http://farm6.staticflickr.com/5454/9413846304_881d5e5c3b_z.jpg",
+      "blur": "UNKNOWN",
+      "height": 427,
+      "image_id": 1268,
+      "license": {
+        "id": 4,
+        "name": "Attribution License",
+        "url": "http://creativecommons.org/licenses/by/2.0/"
+      },
+      "lighting": "UNKNOWN",
+      "path": "images/000000001268.jpg",
+      "scenario": "UNKNOWN",
+      "sha256": "8e85a2e71ee512fe748a3a3be9bb40b8591e8c501c0f3896efcb5be5999ec236",
+      "source_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000001268.jpg",
+      "width": 640
+    },
+    {
+      "annotations": [
+        {
+          "box": [
+            7.16,
+            1.57,
+            427.0,
+            635.84
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 470530,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            262.64,
+            25.32,
+            409.6,
+            238.65
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1740912,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        }
+      ],
+      "attribution_url": "http://farm5.staticflickr.com/4010/4690487654_90536a4a16_z.jpg",
+      "blur": "UNKNOWN",
+      "height": 640,
+      "image_id": 1296,
+      "license": {
+        "id": 5,
+        "name": "Attribution-ShareAlike License",
+        "url": "http://creativecommons.org/licenses/by-sa/2.0/"
+      },
+      "lighting": "UNKNOWN",
+      "path": "images/000000001296.jpg",
+      "scenario": "UNKNOWN",
+      "sha256": "34a98da7c11bc8811e6eec445145bb16f3d5f4338945ba116edcc1fe554d181b",
+      "source_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000001296.jpg",
+      "width": 427
+    },
+    {
+      "annotations": [
+        {
+          "box": [
+            10.79,
+            32.63,
+            69.03,
+            201.98
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1201627,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            225.44,
+            255.64,
+            352.72,
+            480.0
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1220394,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            77.25,
+            244.56,
+            190.55,
+            479.82
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1259834,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            41.08,
+            95.68,
+            148.11,
+            474.05
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1261310,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            119.23,
+            81.44,
+            188.49,
+            269.61
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1263773,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            50.81,
+            58.55,
+            135.49,
+            142.51999999999998
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1269467,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            171.19,
+            31.06,
+            251.57,
+            185.54
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1272180,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            297.02,
+            50.13,
+            355.41999999999996,
+            137.36
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1310395,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            211.45,
+            88.41,
+            335.12,
+            281.41999999999996
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1327525,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            354.88,
+            91.69,
+            517.75,
+            470.29
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1328232,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            434.75,
+            40.93,
+            505.61,
+            160.61
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1329465,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            424.99,
+            22.65,
+            469.21000000000004,
+            93.84
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1329797,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            500.46,
+            159.1,
+            545.87,
+            258.36
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1764832,
+          "ignore": false,
+          "label": "BICYCLE",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            208.12,
+            61.3,
+            297.51,
+            210.0
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 2017429,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            523,
+            26,
+            639,
+            314
+          ],
+          "crowd": true,
+          "difficulty": "UNKNOWN",
+          "id": 900100005001,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        }
+      ],
+      "attribution_url": "http://farm6.staticflickr.com/5298/5457068434_0929d78491_z.jpg",
+      "blur": "UNKNOWN",
+      "height": 480,
+      "image_id": 5001,
+      "license": {
+        "id": 4,
+        "name": "Attribution License",
+        "url": "http://creativecommons.org/licenses/by/2.0/"
+      },
+      "lighting": "UNKNOWN",
+      "path": "images/000000005001.jpg",
+      "scenario": "UNKNOWN",
+      "sha256": "99600c56dc25c72dc1cc1d1f2b09aa33b97142560b54d034fa83a38fcf3c5b0f",
+      "source_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000005001.jpg",
+      "width": 640
+    },
+    {
+      "annotations": [
+        {
+          "box": [
+            171.76,
+            203.56,
+            207.14,
+            222.96
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 146888,
+          "ignore": false,
+          "label": "CAR",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            282.55,
+            202.06,
+            302.39,
+            212.2
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 147032,
+          "ignore": false,
+          "label": "CAR",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            332.46,
+            200.85,
+            345.04999999999995,
+            209.91
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 147137,
+          "ignore": false,
+          "label": "CAR",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            361.51,
+            194.03,
+            389.18,
+            224.01
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 167862,
+          "ignore": false,
+          "label": "BUS",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            362.11,
+            192.66,
+            389.52000000000004,
+            223.23
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1196637,
+          "ignore": false,
+          "label": "TRUCK",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            204.9,
+            201.04,
+            242.33,
+            229.29
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1368287,
+          "ignore": false,
+          "label": "TRUCK",
+          "occluded": null,
+          "truncated": null
+        }
+      ],
+      "attribution_url": "http://farm5.staticflickr.com/4009/4575950642_c74342b147_z.jpg",
+      "blur": "UNKNOWN",
+      "height": 361,
+      "image_id": 6723,
+      "license": {
+        "id": 5,
+        "name": "Attribution-ShareAlike License",
+        "url": "http://creativecommons.org/licenses/by-sa/2.0/"
+      },
+      "lighting": "UNKNOWN",
+      "path": "images/000000006723.jpg",
+      "scenario": "UNKNOWN",
+      "sha256": "1d3ba71e9002721a2bc18791f3c86578d6de38fb61640803657276d53e73663f",
+      "source_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000006723.jpg",
+      "width": 640
+    },
+    {
+      "annotations": [
+        {
+          "box": [
+            109.05,
+            285.07,
+            122.34,
+            292.29
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1771513,
+          "ignore": false,
+          "label": "CAR",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            0.0,
+            279.61,
+            27.83,
+            302.90000000000003
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 2036286,
+          "ignore": false,
+          "label": "CAR",
+          "occluded": null,
+          "truncated": null
+        }
+      ],
+      "attribution_url": "http://farm5.staticflickr.com/4006/4466652187_5ba02f2ba9_z.jpg",
+      "blur": "UNKNOWN",
+      "height": 427,
+      "image_id": 8762,
+      "license": {
+        "id": 4,
+        "name": "Attribution License",
+        "url": "http://creativecommons.org/licenses/by/2.0/"
+      },
+      "lighting": "UNKNOWN",
+      "path": "images/000000008762.jpg",
+      "scenario": "UNKNOWN",
+      "sha256": "8b8aa2412ac3502dbb4b8a7d7987359d4049cf70e7177748e907e3ddfa3211ce",
+      "source_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000008762.jpg",
+      "width": 640
+    },
+    {
+      "annotations": [
+        {
+          "box": [
+            198.32,
+            91.17,
+            422.95,
+            272.36
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 126643,
+          "ignore": false,
+          "label": "BICYCLE",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            0.0,
+            68.83,
+            136.82,
+            350.93
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 151281,
+          "ignore": false,
+          "label": "MOTORCYCLE",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            0.0,
+            3.8,
+            75.17,
+            121.2
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 197935,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            417.13,
+            1.54,
+            500.0,
+            315.87
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 199247,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            88.28,
+            58.95,
+            199.26999999999998,
+            230.48000000000002
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 240899,
+          "ignore": false,
+          "label": "BICYCLE",
+          "occluded": null,
+          "truncated": null
+        }
+      ],
+      "attribution_url": "http://farm4.staticflickr.com/3625/3323418866_ea5017538d_z.jpg",
+      "blur": "UNKNOWN",
+      "height": 375,
+      "image_id": 11149,
+      "license": {
+        "id": 4,
+        "name": "Attribution License",
+        "url": "http://creativecommons.org/licenses/by/2.0/"
+      },
+      "lighting": "UNKNOWN",
+      "path": "images/000000011149.jpg",
+      "scenario": "UNKNOWN",
+      "sha256": "5973b8f1d5a30de98b1dcb715f1c94928a676fff8e45283515d0474e51ac0abc",
+      "source_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000011149.jpg",
+      "width": 500
+    },
+    {
+      "annotations": [
+        {
+          "box": [
+            90.35,
+            38.6,
+            130.06,
+            190.01999999999998
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 463291,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            139.53,
+            32.22,
+            189.91,
+            172.46
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 470792,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            35.39,
+            44.5,
+            85.61,
+            190.34
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 494713,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            483.81,
+            50.53,
+            530.65,
+            100.53
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1360514,
+          "ignore": false,
+          "label": "MOTORCYCLE",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            1.27,
+            51.73,
+            62.82,
+            214.29
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 2165380,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        }
+      ],
+      "attribution_url": "http://farm8.staticflickr.com/7124/7556029168_519acfdf09_z.jpg",
+      "blur": "UNKNOWN",
+      "height": 464,
+      "image_id": 11511,
+      "license": {
+        "id": 5,
+        "name": "Attribution-ShareAlike License",
+        "url": "http://creativecommons.org/licenses/by-sa/2.0/"
+      },
+      "lighting": "UNKNOWN",
+      "path": "images/000000011511.jpg",
+      "scenario": "UNKNOWN",
+      "sha256": "4e24ed1528891621658ff01d23e8a74735cd18720d41f7fd2264044497ad2a0e",
+      "source_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000011511.jpg",
+      "width": 640
+    },
+    {
+      "annotations": [
+        {
+          "box": [
+            349.82,
+            270.26,
+            356.12,
+            291.03
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 191150,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            17.11,
+            280.38,
+            26.229999999999997,
+            293.35
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 257469,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            117.32,
+            270.57,
+            129.10999999999999,
+            289.8
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 261461,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            52.32,
+            269.84,
+            77.48,
+            284.57
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1198098,
+          "ignore": false,
+          "label": "TRUCK",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            81.33,
+            255.4,
+            115.03999999999999,
+            273.22
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1198133,
+          "ignore": false,
+          "label": "TRUCK",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            16.05,
+            289.31,
+            40.480000000000004,
+            308.31
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1372048,
+          "ignore": false,
+          "label": "TRUCK",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            75.78,
+            271.86,
+            103.5,
+            285.27000000000004
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1373235,
+          "ignore": false,
+          "label": "TRUCK",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            173.15,
+            240.08,
+            180.11,
+            251.56
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1681190,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            124.96,
+            250.69,
+            129.07,
+            256.32
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 2015225,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            148.94,
+            244.69,
+            160.07,
+            255.24
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 2017079,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        }
+      ],
+      "attribution_url": "http://farm9.staticflickr.com/8286/7733450942_0da3e941b4_z.jpg",
+      "blur": "UNKNOWN",
+      "height": 427,
+      "image_id": 13348,
+      "license": {
+        "id": 4,
+        "name": "Attribution License",
+        "url": "http://creativecommons.org/licenses/by/2.0/"
+      },
+      "lighting": "UNKNOWN",
+      "path": "images/000000013348.jpg",
+      "scenario": "UNKNOWN",
+      "sha256": "8371f759628048bd294db70d9fbacb6d4f2558a12c25337fa04fea6418c9922a",
+      "source_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000013348.jpg",
+      "width": 640
+    },
+    {
+      "annotations": [
+        {
+          "box": [
+            0.0,
+            154.84,
+            593.21,
+            308.64
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 169920,
+          "ignore": false,
+          "label": "TRAIN",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            320.19,
+            271.2,
+            335.55,
+            313.59999999999997
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 233526,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            277.01,
+            269.4,
+            297.55,
+            307.69
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 235867,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            201.34,
+            258.58,
+            220.56,
+            295.28
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 236039,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            155.85,
+            253.72,
+            172.67,
+            287.36
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 237050,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            119.8,
+            245.57,
+            137.37,
+            280.71999999999997
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 238488,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            77.84,
+            245.76,
+            94.49000000000001,
+            273.09
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 239121,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            25.96,
+            225.26,
+            39.14,
+            261.05
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 239422,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        }
+      ],
+      "attribution_url": "http://farm9.staticflickr.com/8401/8607706408_e00725a54d_z.jpg",
+      "blur": "UNKNOWN",
+      "height": 427,
+      "image_id": 14473,
+      "license": {
+        "id": 4,
+        "name": "Attribution License",
+        "url": "http://creativecommons.org/licenses/by/2.0/"
+      },
+      "lighting": "UNKNOWN",
+      "path": "images/000000014473.jpg",
+      "scenario": "UNKNOWN",
+      "sha256": "1b0fad3e8260366a27f9cb20fdd0f9d7c669bb40a535f6364b8c2e1c03d7b5c2",
+      "source_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000014473.jpg",
+      "width": 640
+    },
+    {
+      "annotations": [
+        {
+          "box": [
+            162.58,
+            322.33,
+            348.22,
+            406.82
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1364776,
+          "ignore": false,
+          "label": "BUS",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            0.0,
+            306.32,
+            127.87,
+            362.95
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1365665,
+          "ignore": false,
+          "label": "BUS",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            230.56,
+            275.71,
+            319.23,
+            302.54999999999995
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1365903,
+          "ignore": false,
+          "label": "BUS",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            374.72,
+            292.37,
+            489.33000000000004,
+            314.05
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1365946,
+          "ignore": false,
+          "label": "BUS",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            361.24,
+            275.55,
+            447.92,
+            288.3
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1366003,
+          "ignore": false,
+          "label": "BUS",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            433.22,
+            283.28,
+            515.88,
+            312.64
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1366086,
+          "ignore": false,
+          "label": "BUS",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            322.2,
+            285.15,
+            418.96999999999997,
+            306.32
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1366254,
+          "ignore": false,
+          "label": "BUS",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            116.14,
+            263.04,
+            172.13,
+            282.64000000000004
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1794468,
+          "ignore": false,
+          "label": "BUS",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            338.57,
+            263.45,
+            403.06,
+            282.53
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1794789,
+          "ignore": false,
+          "label": "BUS",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            273.56,
+            262.83,
+            337.56,
+            276.15999999999997
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1794891,
+          "ignore": false,
+          "label": "BUS",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            489.56,
+            272.94,
+            538.3,
+            305.23
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1794936,
+          "ignore": false,
+          "label": "BUS",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            145.82,
+            274.98,
+            236.8,
+            297.54
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1795152,
+          "ignore": false,
+          "label": "BUS",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            182.43,
+            270.25,
+            254.03,
+            278.13
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 2050429,
+          "ignore": false,
+          "label": "BUS",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            197,
+            248,
+            461,
+            293
+          ],
+          "crowd": true,
+          "difficulty": "UNKNOWN",
+          "id": 900600015517,
+          "ignore": false,
+          "label": "BUS",
+          "occluded": null,
+          "truncated": null
+        }
+      ],
+      "attribution_url": "http://farm9.staticflickr.com/8184/8407007011_9456edeb6d_z.jpg",
+      "blur": "UNKNOWN",
+      "height": 480,
+      "image_id": 15517,
+      "license": {
+        "id": 4,
+        "name": "Attribution License",
+        "url": "http://creativecommons.org/licenses/by/2.0/"
+      },
+      "lighting": "UNKNOWN",
+      "path": "images/000000015517.jpg",
+      "scenario": "UNKNOWN",
+      "sha256": "db13a24631806ad53b865d8edb4926d455cf54ae60e72b45778e5e58fb164369",
+      "source_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000015517.jpg",
+      "width": 640
+    },
+    {
+      "annotations": [
+        {
+          "box": [
+            154.84,
+            105.81,
+            405.15999999999997,
+            541.94
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 12032,
+          "ignore": false,
+          "label": "DOG",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            56.09,
+            25.89,
+            569.5300000000001,
+            178.33999999999997
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 359663,
+          "ignore": false,
+          "label": "CAR",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            0.0,
+            44.59,
+            21.76,
+            88.85
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1770576,
+          "ignore": false,
+          "label": "CAR",
+          "occluded": null,
+          "truncated": null
+        }
+      ],
+      "attribution_url": "http://farm8.staticflickr.com/7304/8746020648_f1e2075b86_z.jpg",
+      "blur": "UNKNOWN",
+      "height": 640,
+      "image_id": 17029,
+      "license": {
+        "id": 4,
+        "name": "Attribution License",
+        "url": "http://creativecommons.org/licenses/by/2.0/"
+      },
+      "lighting": "UNKNOWN",
+      "path": "images/000000017029.jpg",
+      "scenario": "UNKNOWN",
+      "sha256": "d619327903c6b05520f0d6768807c067cce2d6d908d2d83da018a1da3b1792cf",
+      "source_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000017029.jpg",
+      "width": 640
+    },
+    {
+      "annotations": [
+        {
+          "box": [
+            24.81,
+            74.43,
+            606.1999999999999,
+            473.53000000000003
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 396804,
+          "ignore": false,
+          "label": "TRUCK",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            327.57,
+            14.59,
+            467.03,
+            158.38
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 498085,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            294.3,
+            21.62,
+            342.47,
+            123.13000000000001
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 500347,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            371.98,
+            286.74,
+            454.53000000000003,
+            480.0
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 518437,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            17.07,
+            235.11,
+            34.69,
+            262.77000000000004
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 555506,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            304.66,
+            193.68,
+            328.14000000000004,
+            240.97
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1682653,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            115.32,
+            172.01,
+            163.95,
+            232.73
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1728910,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            591.1,
+            254.64,
+            624.5,
+            301.66999999999996
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1770129,
+          "ignore": false,
+          "label": "CAR",
+          "occluded": null,
+          "truncated": null
+        }
+      ],
+      "attribution_url": "http://farm9.staticflickr.com/8219/8372455764_124e052754_z.jpg",
+      "blur": "UNKNOWN",
+      "height": 480,
+      "image_id": 18837,
+      "license": {
+        "id": 5,
+        "name": "Attribution-ShareAlike License",
+        "url": "http://creativecommons.org/licenses/by-sa/2.0/"
+      },
+      "lighting": "UNKNOWN",
+      "path": "images/000000018837.jpg",
+      "scenario": "UNKNOWN",
+      "sha256": "70f986167a5f1ea723ee2a25273f39ee1d1d7a3bf8b2fa3a37eca946111f1d93",
+      "source_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000018837.jpg",
+      "width": 640
+    },
+    {
+      "annotations": [
+        {
+          "box": [
+            356.31,
+            142.43,
+            640.0,
+            301.0
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 173761,
+          "ignore": false,
+          "label": "TRAIN",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            97.7,
+            228.15,
+            110.05,
+            248.92000000000002
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 214846,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            52.3,
+            221.21,
+            66.52,
+            257.01
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1722949,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            104.43,
+            231.09,
+            109.21000000000001,
+            240.08
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1730920,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        }
+      ],
+      "attribution_url": "http://farm9.staticflickr.com/8501/8308004994_44eb2d562d_z.jpg",
+      "blur": "UNKNOWN",
+      "height": 427,
+      "image_id": 25181,
+      "license": {
+        "id": 5,
+        "name": "Attribution-ShareAlike License",
+        "url": "http://creativecommons.org/licenses/by-sa/2.0/"
+      },
+      "lighting": "UNKNOWN",
+      "path": "images/000000025181.jpg",
+      "scenario": "UNKNOWN",
+      "sha256": "91928323bb24e153995d938c8048039885285fa7d7a947a4ec5edd07f3b15e19",
+      "source_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000025181.jpg",
+      "width": 640
+    },
+    {
+      "annotations": [
+        {
+          "box": [
+            170.04,
+            157.52,
+            365.13,
+            341.22
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 14231,
+          "ignore": false,
+          "label": "DOG",
+          "occluded": null,
+          "truncated": null
+        }
+      ],
+      "attribution_url": "http://farm3.staticflickr.com/2556/4228514131_81f3416db3_z.jpg",
+      "blur": "UNKNOWN",
+      "height": 375,
+      "image_id": 29393,
+      "license": {
+        "id": 4,
+        "name": "Attribution License",
+        "url": "http://creativecommons.org/licenses/by/2.0/"
+      },
+      "lighting": "UNKNOWN",
+      "path": "images/000000029393.jpg",
+      "scenario": "UNKNOWN",
+      "sha256": "378763dec71a25c7cb44ff9e345c84ca0fe2d8bf993b88775c360549edf3b733",
+      "source_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000029393.jpg",
+      "width": 500
+    },
+    {
+      "annotations": [
+        {
+          "box": [
+            150.47,
+            136.72,
+            640.0,
+            300.13
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 169700,
+          "ignore": false,
+          "label": "TRAIN",
+          "occluded": null,
+          "truncated": null
+        }
+      ],
+      "attribution_url": "http://farm8.staticflickr.com/7431/8727763435_699b976ae1_z.jpg",
+      "blur": "UNKNOWN",
+      "height": 360,
+      "image_id": 30675,
+      "license": {
+        "id": 4,
+        "name": "Attribution License",
+        "url": "http://creativecommons.org/licenses/by/2.0/"
+      },
+      "lighting": "UNKNOWN",
+      "path": "images/000000030675.jpg",
+      "scenario": "UNKNOWN",
+      "sha256": "66c6259b826b869e0d2dba078a0de6d9c82617843c2d5448e9b34566bab6f979",
+      "source_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000030675.jpg",
+      "width": 640
+    },
+    {
+      "annotations": [
+        {
+          "box": [
+            315.63,
+            194.71,
+            350.25,
+            225.05
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 344720,
+          "ignore": false,
+          "label": "CAR",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            266.2,
+            196.93,
+            301.03999999999996,
+            224.84
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 346432,
+          "ignore": false,
+          "label": "CAR",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            179.46,
+            192.66,
+            212.14000000000001,
+            213.56
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 349717,
+          "ignore": false,
+          "label": "CAR",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            302.93,
+            197.07,
+            314.97,
+            206.44
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1345583,
+          "ignore": false,
+          "label": "CAR",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            261.66,
+            192.86,
+            269.31,
+            210.20000000000002
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1352840,
+          "ignore": false,
+          "label": "CAR",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            316.55,
+            169.27,
+            343.31,
+            203.71
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1366041,
+          "ignore": false,
+          "label": "BUS",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            268.42,
+            169.64,
+            304.51,
+            203.17999999999998
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1371354,
+          "ignore": false,
+          "label": "TRUCK",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            266.16,
+            198.55,
+            305.21000000000004,
+            225.93
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1373021,
+          "ignore": false,
+          "label": "TRUCK",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            100.67,
+            192.33,
+            110.13,
+            220.46
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 2001900,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            386.69,
+            191.06,
+            392.93,
+            210.03
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 2003928,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            369.43,
+            191.25,
+            375.79,
+            202.13
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 2026211,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        }
+      ],
+      "attribution_url": "http://farm9.staticflickr.com/8067/8224728949_fa09beb316_z.jpg",
+      "blur": "UNKNOWN",
+      "height": 640,
+      "image_id": 32941,
+      "license": {
+        "id": 5,
+        "name": "Attribution-ShareAlike License",
+        "url": "http://creativecommons.org/licenses/by-sa/2.0/"
+      },
+      "lighting": "UNKNOWN",
+      "path": "images/000000032941.jpg",
+      "scenario": "UNKNOWN",
+      "sha256": "2b881cc082e3d79f6685320ddf02e04ec534e7f904a090a4e627eb445cb26ebc",
+      "source_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000032941.jpg",
+      "width": 458
+    },
+    {
+      "annotations": [
+        {
+          "box": [
+            291.18,
+            241.63,
+            325.97,
+            314.49
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 155936,
+          "ignore": false,
+          "label": "MOTORCYCLE",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            364.72,
+            370.2,
+            539.64,
+            480.0
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 155967,
+          "ignore": false,
+          "label": "MOTORCYCLE",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            279.17,
+            197.55,
+            336.40000000000003,
+            300.45000000000005
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 190054,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        }
+      ],
+      "attribution_url": "http://farm6.staticflickr.com/5472/9665212431_0c4013f384_z.jpg",
+      "blur": "UNKNOWN",
+      "height": 480,
+      "image_id": 37751,
+      "license": {
+        "id": 4,
+        "name": "Attribution License",
+        "url": "http://creativecommons.org/licenses/by/2.0/"
+      },
+      "lighting": "UNKNOWN",
+      "path": "images/000000037751.jpg",
+      "scenario": "UNKNOWN",
+      "sha256": "5c19f466d3c9d49f855b98ce907e7452dcac3349e1a4f9977a18a0c9fdaf5a0c",
+      "source_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000037751.jpg",
+      "width": 640
+    },
+    {
+      "annotations": [
+        {
+          "box": [
+            99.34,
+            426.56,
+            168.59,
+            461.6
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 353652,
+          "ignore": false,
+          "label": "CAR",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            111.23,
+            416.09,
+            192.35000000000002,
+            454.09
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 354114,
+          "ignore": false,
+          "label": "CAR",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            14.8,
+            422.32,
+            31.21,
+            436.27
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 355152,
+          "ignore": false,
+          "label": "CAR",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            161.43,
+            422.42,
+            198.37,
+            442.51
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1353344,
+          "ignore": false,
+          "label": "CAR",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            0.36,
+            415.36,
+            17.62,
+            441.07
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1354011,
+          "ignore": false,
+          "label": "CAR",
+          "occluded": null,
+          "truncated": null
+        }
+      ],
+      "attribution_url": "http://farm4.staticflickr.com/3593/3595526099_c28a93aaa0_z.jpg",
+      "blur": "UNKNOWN",
+      "height": 640,
+      "image_id": 43737,
+      "license": {
+        "id": 4,
+        "name": "Attribution License",
+        "url": "http://creativecommons.org/licenses/by/2.0/"
+      },
+      "lighting": "UNKNOWN",
+      "path": "images/000000043737.jpg",
+      "scenario": "UNKNOWN",
+      "sha256": "87e63848d72793260c580c8653f3ad0529682e49782dceb54385c0aa5417a10d",
+      "source_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000043737.jpg",
+      "width": 480
+    },
+    {
+      "annotations": [
+        {
+          "box": [
+            116.22,
+            246.98,
+            453.28,
+            328.33
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 173329,
+          "ignore": false,
+          "label": "TRAIN",
+          "occluded": null,
+          "truncated": null
+        }
+      ],
+      "attribution_url": "http://farm5.staticflickr.com/4087/5088356571_542e2c9d9a_z.jpg",
+      "blur": "UNKNOWN",
+      "height": 431,
+      "image_id": 50165,
+      "license": {
+        "id": 4,
+        "name": "Attribution License",
+        "url": "http://creativecommons.org/licenses/by/2.0/"
+      },
+      "lighting": "UNKNOWN",
+      "path": "images/000000050165.jpg",
+      "scenario": "UNKNOWN",
+      "sha256": "05045394108b6625e1032f812213ed369f187755fab7112a183fb21fcdfd05c4",
+      "source_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000050165.jpg",
+      "width": 640
+    },
+    {
+      "annotations": [
+        {
+          "box": [
+            269.97,
+            269.06,
+            468.32000000000005,
+            420.57
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 134179,
+          "ignore": false,
+          "label": "CAR",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            118.02,
+            213.02,
+            516.24,
+            304.18
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 172485,
+          "ignore": false,
+          "label": "TRAIN",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            323.92,
+            234.28,
+            408.27,
+            272.25
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 247861,
+          "ignore": false,
+          "label": "BUS",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            333.28,
+            263.9,
+            408.35999999999996,
+            274.46999999999997
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1771409,
+          "ignore": false,
+          "label": "CAR",
+          "occluded": null,
+          "truncated": null
+        }
+      ],
+      "attribution_url": "http://farm9.staticflickr.com/8505/8541387897_fbf4b3050a_z.jpg",
+      "blur": "UNKNOWN",
+      "height": 427,
+      "image_id": 57149,
+      "license": {
+        "id": 5,
+        "name": "Attribution-ShareAlike License",
+        "url": "http://creativecommons.org/licenses/by-sa/2.0/"
+      },
+      "lighting": "UNKNOWN",
+      "path": "images/000000057149.jpg",
+      "scenario": "UNKNOWN",
+      "sha256": "4e57fdaa7e50f2f384087931a026ad14252f976289b636213d24b2f61f64f544",
+      "source_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000057149.jpg",
+      "width": 640
+    },
+    {
+      "annotations": [
+        {
+          "box": [
+            221.48,
+            41.34,
+            409.52,
+            261.56
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 201781,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            462.71,
+            30.61,
+            632.06,
+            266.34
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 220110,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            54.03,
+            1.13,
+            266.57,
+            85.67999999999999
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 244989,
+          "ignore": false,
+          "label": "CAR",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            0.48,
+            0.21,
+            63.98,
+            66.61999999999999
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 245050,
+          "ignore": false,
+          "label": "CAR",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            286.11,
+            23.42,
+            347.62,
+            85.6
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1335681,
+          "ignore": false,
+          "label": "BICYCLE",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            528.73,
+            71.53,
+            637.1600000000001,
+            258.64
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1679314,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            219.44,
+            3.75,
+            392.53999999999996,
+            88.64
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1766099,
+          "ignore": false,
+          "label": "BICYCLE",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            464.16,
+            0.0,
+            596.08,
+            94.28
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1767412,
+          "ignore": false,
+          "label": "BICYCLE",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            467.66,
+            42.25,
+            506.03000000000003,
+            93.32
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1779782,
+          "ignore": false,
+          "label": "CAR",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            596.7,
+            0.67,
+            640.0,
+            97.0
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 2035842,
+          "ignore": false,
+          "label": "BICYCLE",
+          "occluded": null,
+          "truncated": null
+        }
+      ],
+      "attribution_url": "http://farm5.staticflickr.com/4139/4869131880_ae3de10447_z.jpg",
+      "blur": "UNKNOWN",
+      "height": 427,
+      "image_id": 65350,
+      "license": {
+        "id": 4,
+        "name": "Attribution License",
+        "url": "http://creativecommons.org/licenses/by/2.0/"
+      },
+      "lighting": "UNKNOWN",
+      "path": "images/000000065350.jpg",
+      "scenario": "UNKNOWN",
+      "sha256": "963a129714e3675b99b6a405a2cb46eca5678241358bb6b6bbefc3c3f1943ae0",
+      "source_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000065350.jpg",
+      "width": 640
+    },
+    {
+      "annotations": [
+        {
+          "box": [
+            261.38,
+            173.6,
+            506.79999999999995,
+            223.64999999999998
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 126838,
+          "ignore": false,
+          "label": "BICYCLE",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            263.57,
+            152.85,
+            465.13,
+            181.13
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 130434,
+          "ignore": false,
+          "label": "BICYCLE",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            80.22,
+            154.72,
+            425.0,
+            383.93
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 148611,
+          "ignore": false,
+          "label": "MOTORCYCLE",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            280.46,
+            206.22,
+            503.11,
+            277.37
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1765983,
+          "ignore": false,
+          "label": "BICYCLE",
+          "occluded": null,
+          "truncated": null
+        }
+      ],
+      "attribution_url": "http://farm6.staticflickr.com/5219/5517860224_7973e10013_z.jpg",
+      "blur": "UNKNOWN",
+      "height": 425,
+      "image_id": 70774,
+      "license": {
+        "id": 5,
+        "name": "Attribution-ShareAlike License",
+        "url": "http://creativecommons.org/licenses/by-sa/2.0/"
+      },
+      "lighting": "UNKNOWN",
+      "path": "images/000000070774.jpg",
+      "scenario": "UNKNOWN",
+      "sha256": "2875fc00637b25e6a8308de0fa574072b49df8f0a588e56a18e34f27f25a01ed",
+      "source_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000070774.jpg",
+      "width": 640
+    },
+    {
+      "annotations": [
+        {
+          "box": [
+            116.39,
+            129.91,
+            566.87,
+            378.68
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 365831,
+          "ignore": false,
+          "label": "BUS",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            71.6,
+            269.55,
+            89.16999999999999,
+            304.52
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 427169,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            84.48,
+            283.64,
+            113.36,
+            308.82
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1336046,
+          "ignore": false,
+          "label": "BICYCLE",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            470.14,
+            264.94,
+            510.07,
+            306.58
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1676867,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            0.0,
+            263.93,
+            12.86,
+            282.67
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1677891,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            83.7,
+            268.04,
+            91.15,
+            283.28000000000003
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 2014651,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        }
+      ],
+      "attribution_url": "http://farm9.staticflickr.com/8478/8225218510_04ff392494_z.jpg",
+      "blur": "UNKNOWN",
+      "height": 480,
+      "image_id": 76416,
+      "license": {
+        "id": 4,
+        "name": "Attribution License",
+        "url": "http://creativecommons.org/licenses/by/2.0/"
+      },
+      "lighting": "UNKNOWN",
+      "path": "images/000000076416.jpg",
+      "scenario": "UNKNOWN",
+      "sha256": "f21eb87831efba38ef9ccea8a5699b222b614fddf716e1486653ce79ffaef463",
+      "source_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000076416.jpg",
+      "width": 640
+    },
+    {
+      "annotations": [
+        {
+          "box": [
+            0.0,
+            234.64,
+            196.74,
+            478.76
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 125428,
+          "ignore": false,
+          "label": "BICYCLE",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            0.0,
+            130.87,
+            247.53,
+            350.42
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 174090,
+          "ignore": false,
+          "label": "TRAIN",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            415.11,
+            204.57,
+            587.12,
+            463.11
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 188853,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        }
+      ],
+      "attribution_url": "http://farm9.staticflickr.com/8557/8771723390_13dc9d18fa_z.jpg",
+      "blur": "UNKNOWN",
+      "height": 480,
+      "image_id": 76547,
+      "license": {
+        "id": 4,
+        "name": "Attribution License",
+        "url": "http://creativecommons.org/licenses/by/2.0/"
+      },
+      "lighting": "UNKNOWN",
+      "path": "images/000000076547.jpg",
+      "scenario": "UNKNOWN",
+      "sha256": "f4f730a011b99aaa7b9ee851b6ba4c77fe2e3c4c81d12d58b7221d0f1b199c01",
+      "source_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000076547.jpg",
+      "width": 640
+    },
+    {
+      "annotations": [
+        {
+          "box": [
+            197.97,
+            117.22,
+            368.41999999999996,
+            339.28999999999996
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 7544,
+          "ignore": false,
+          "label": "DOG",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            9.29,
+            160.0,
+            475.87,
+            474.84
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 133097,
+          "ignore": false,
+          "label": "CAR",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            1.29,
+            150.59,
+            187.51999999999998,
+            411.83000000000004
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 134130,
+          "ignore": false,
+          "label": "CAR",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            594.08,
+            175.0,
+            639.2800000000001,
+            303.07
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 145780,
+          "ignore": false,
+          "label": "CAR",
+          "occluded": null,
+          "truncated": null
+        }
+      ],
+      "attribution_url": "http://farm1.staticflickr.com/9/13918737_12ed28cb16_z.jpg",
+      "blur": "UNKNOWN",
+      "height": 480,
+      "image_id": 78823,
+      "license": {
+        "id": 4,
+        "name": "Attribution License",
+        "url": "http://creativecommons.org/licenses/by/2.0/"
+      },
+      "lighting": "UNKNOWN",
+      "path": "images/000000078823.jpg",
+      "scenario": "UNKNOWN",
+      "sha256": "d9fe245622dc52d9c977eb501aa70d23a9e0fb61e2873879db6c0a89b1bc6b88",
+      "source_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000078823.jpg",
+      "width": 640
+    },
+    {
+      "annotations": [
+        {
+          "box": [
+            204.15,
+            358.8,
+            291.04,
+            538.88
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 8177,
+          "ignore": false,
+          "label": "DOG",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            187.62,
+            127.92,
+            305.28,
+            415.42
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 195510,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        }
+      ],
+      "attribution_url": "http://farm6.staticflickr.com/5142/5650798989_4e830b5a03_z.jpg",
+      "blur": "UNKNOWN",
+      "height": 640,
+      "image_id": 80153,
+      "license": {
+        "id": 4,
+        "name": "Attribution License",
+        "url": "http://creativecommons.org/licenses/by/2.0/"
+      },
+      "lighting": "UNKNOWN",
+      "path": "images/000000080153.jpg",
+      "scenario": "UNKNOWN",
+      "sha256": "3805f4e59254e155f166f340ee8eff2beaea49ee475ae837782da3cfc65bf8ea",
+      "source_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000080153.jpg",
+      "width": 428
+    },
+    {
+      "annotations": [
+        {
+          "box": [
+            132.29,
+            261.12,
+            230.25,
+            337.14
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 348329,
+          "ignore": false,
+          "label": "CAR",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            82.56,
+            263.26,
+            141.8,
+            303.81
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 350385,
+          "ignore": false,
+          "label": "CAR",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            202.79,
+            119.73,
+            445.48,
+            364.58
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 366175,
+          "ignore": false,
+          "label": "BUS",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            219.17,
+            261.78,
+            230.08999999999997,
+            279.17999999999995
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1355468,
+          "ignore": false,
+          "label": "CAR",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            336.68,
+            227.7,
+            355.49,
+            265.69
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1682257,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            0.73,
+            244.53,
+            45.839999999999996,
+            288.59000000000003
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1772957,
+          "ignore": false,
+          "label": "CAR",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            254.92,
+            225.78,
+            294.56,
+            260.44
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 2007085,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        }
+      ],
+      "attribution_url": "http://farm9.staticflickr.com/8190/8134254727_0b28cabe93_z.jpg",
+      "blur": "UNKNOWN",
+      "height": 480,
+      "image_id": 84170,
+      "license": {
+        "id": 4,
+        "name": "Attribution License",
+        "url": "http://creativecommons.org/licenses/by/2.0/"
+      },
+      "lighting": "UNKNOWN",
+      "path": "images/000000084170.jpg",
+      "scenario": "UNKNOWN",
+      "sha256": "74de1d85ded730e719dbf35407dc4160976d9da86f2b310f8df6bb388586afa3",
+      "source_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000084170.jpg",
+      "width": 640
+    },
+    {
+      "annotations": [
+        {
+          "box": [
+            492.08,
+            345.05,
+            523.11,
+            364.88
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1346670,
+          "ignore": false,
+          "label": "CAR",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            517.96,
+            346.33,
+            547.94,
+            362.36
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1352940,
+          "ignore": false,
+          "label": "CAR",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            288.93,
+            345.98,
+            304.32,
+            356.14000000000004
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1355874,
+          "ignore": false,
+          "label": "CAR",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            298.31,
+            343.94,
+            315.57,
+            355.65
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1359146,
+          "ignore": false,
+          "label": "CAR",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            549.5,
+            339.6,
+            588.63,
+            363.29
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1371832,
+          "ignore": false,
+          "label": "TRUCK",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            475.09,
+            337.76,
+            504.17999999999995,
+            354.48
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1373968,
+          "ignore": false,
+          "label": "TRUCK",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            528.68,
+            335.31,
+            554.3399999999999,
+            348.82
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1781015,
+          "ignore": false,
+          "label": "CAR",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            378.72,
+            345.62,
+            395.90000000000003,
+            362.2
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1787224,
+          "ignore": false,
+          "label": "CAR",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            377.54,
+            340.27,
+            384.36,
+            349.01
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1788563,
+          "ignore": false,
+          "label": "CAR",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            558.91,
+            333.66,
+            582.41,
+            342.89000000000004
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1788831,
+          "ignore": false,
+          "label": "CAR",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            310.72,
+            340.18,
+            333.32000000000005,
+            356.4
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 2051157,
+          "ignore": false,
+          "label": "TRUCK",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            585.61,
+            343.54,
+            618.23,
+            361.68
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 2208999,
+          "ignore": false,
+          "label": "CAR",
+          "occluded": null,
+          "truncated": null
+        }
+      ],
+      "attribution_url": "http://farm8.staticflickr.com/7268/7044989013_c8821aaa75_z.jpg",
+      "blur": "UNKNOWN",
+      "height": 427,
+      "image_id": 84752,
+      "license": {
+        "id": 5,
+        "name": "Attribution-ShareAlike License",
+        "url": "http://creativecommons.org/licenses/by-sa/2.0/"
+      },
+      "lighting": "UNKNOWN",
+      "path": "images/000000084752.jpg",
+      "scenario": "UNKNOWN",
+      "sha256": "94f8f85c762d5fd6f766dc85bebb0daaabdc1dfffe2c0d8b8b4f1e72b54dcc43",
+      "source_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000084752.jpg",
+      "width": 640
+    },
+    {
+      "annotations": [
+        {
+          "box": [
+            166.17,
+            331.72,
+            266.46,
+            385.78000000000003
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 139161,
+          "ignore": false,
+          "label": "CAR",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            38.16,
+            320.95,
+            193.22,
+            375.58
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 141756,
+          "ignore": false,
+          "label": "CAR",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            2.88,
+            370.82,
+            90.61,
+            461.41999999999996
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 145351,
+          "ignore": false,
+          "label": "CAR",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            134.2,
+            319.12,
+            202.52999999999997,
+            343.04
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 146079,
+          "ignore": false,
+          "label": "CAR",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            206.24,
+            323.91,
+            279.34000000000003,
+            335.06
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 146633,
+          "ignore": false,
+          "label": "CAR",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            13.78,
+            307.2,
+            71.09,
+            327.31
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 146801,
+          "ignore": false,
+          "label": "CAR",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            14.38,
+            413.18,
+            345.85,
+            625.46
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 151487,
+          "ignore": false,
+          "label": "MOTORCYCLE",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            0.0,
+            307.37,
+            18.48,
+            365.43
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1265756,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            244.22,
+            332.03,
+            279.76,
+            346.7
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1772354,
+          "ignore": false,
+          "label": "CAR",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            423.28,
+            319.8,
+            480.0,
+            415.76
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 2052449,
+          "ignore": false,
+          "label": "TRUCK",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            241.04,
+            315.84,
+            442.17999999999995,
+            432.21
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 2053091,
+          "ignore": false,
+          "label": "TRUCK",
+          "occluded": null,
+          "truncated": null
+        }
+      ],
+      "attribution_url": "http://farm8.staticflickr.com/7059/6867232585_0d4ea34bae_z.jpg",
+      "blur": "UNKNOWN",
+      "height": 640,
+      "image_id": 85376,
+      "license": {
+        "id": 5,
+        "name": "Attribution-ShareAlike License",
+        "url": "http://creativecommons.org/licenses/by-sa/2.0/"
+      },
+      "lighting": "UNKNOWN",
+      "path": "images/000000085376.jpg",
+      "scenario": "UNKNOWN",
+      "sha256": "0c61f0ddf5a17a348a194e16232f78d62391008b3e0aa4a204ce77c4ef6182c8",
+      "source_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000085376.jpg",
+      "width": 480
+    },
+    {
+      "annotations": [
+        {
+          "box": [
+            145.5,
+            13.18,
+            295.61,
+            185.24
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 6105,
+          "ignore": false,
+          "label": "DOG",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            256.47,
+            42.96,
+            419.49,
+            193.5
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 6127,
+          "ignore": false,
+          "label": "DOG",
+          "occluded": null,
+          "truncated": null
+        }
+      ],
+      "attribution_url": "http://farm4.staticflickr.com/3353/3424594672_333e3ee522_z.jpg",
+      "blur": "UNKNOWN",
+      "height": 281,
+      "image_id": 89880,
+      "license": {
+        "id": 4,
+        "name": "Attribution License",
+        "url": "http://creativecommons.org/licenses/by/2.0/"
+      },
+      "lighting": "UNKNOWN",
+      "path": "images/000000089880.jpg",
+      "scenario": "UNKNOWN",
+      "sha256": "4cc6935c4f45d41f57a53c5fb2ac917a81b3ff40e6dde5d6265357c32e93f7b5",
+      "source_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000089880.jpg",
+      "width": 500
+    },
+    {
+      "annotations": [
+        {
+          "box": [
+            146.56,
+            290.11,
+            253.57,
+            496.48
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 13823,
+          "ignore": false,
+          "label": "DOG",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            57.81,
+            283.53,
+            156.9,
+            512.0
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 17248,
+          "ignore": false,
+          "label": "DOG",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            1.38,
+            360.6,
+            77.08,
+            589.08
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 18116,
+          "ignore": false,
+          "label": "DOG",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            346.09,
+            76.86,
+            480.0,
+            365.19
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 205348,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            11.12,
+            155.31,
+            53.8,
+            217.21
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 216223,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            137.28,
+            131.14,
+            308.45,
+            342.29999999999995
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 225519,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            232.64,
+            127.44,
+            272.91999999999996,
+            165.72
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1685314,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            326.27,
+            133.53,
+            350.04999999999995,
+            212.71
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1694110,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            35.4,
+            148.56,
+            83.28999999999999,
+            215.45
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1700227,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            103.32,
+            124.96,
+            161.53,
+            240.82999999999998
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1703164,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            267.23,
+            137.74,
+            331.33000000000004,
+            325.99
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1719926,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            386.55,
+            253.65,
+            479.77,
+            490.53999999999996
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 2034549,
+          "ignore": false,
+          "label": "BICYCLE",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            344.23,
+            141.4,
+            370.49,
+            202.3
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 2164153,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            63.62,
+            111.22,
+            122.78,
+            216.89
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 2205302,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        }
+      ],
+      "attribution_url": "http://farm3.staticflickr.com/2139/2185708967_4da3c7fb32_z.jpg",
+      "blur": "UNKNOWN",
+      "height": 640,
+      "image_id": 107226,
+      "license": {
+        "id": 4,
+        "name": "Attribution License",
+        "url": "http://creativecommons.org/licenses/by/2.0/"
+      },
+      "lighting": "UNKNOWN",
+      "path": "images/000000107226.jpg",
+      "scenario": "UNKNOWN",
+      "sha256": "285a3dfd666d35fb60eb63b9dd46b7b49aae4fcafe194f51d7e4b446abdab725",
+      "source_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000107226.jpg",
+      "width": 480
+    },
+    {
+      "annotations": [
+        {
+          "box": [
+            422.22,
+            240.48,
+            448.14000000000004,
+            281.01
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 130349,
+          "ignore": false,
+          "label": "BICYCLE",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            371.7,
+            207.65,
+            410.40999999999997,
+            351.96000000000004
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 187761,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            624.5,
+            223.36,
+            638.87,
+            260.46000000000004
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1734828,
+          "ignore": false,
+          "label": "PERSON",
+          "occluded": null,
+          "truncated": null
+        },
+        {
+          "box": [
+            528.33,
+            240.15,
+            576.6700000000001,
+            276.91
+          ],
+          "crowd": false,
+          "difficulty": "UNKNOWN",
+          "id": 1790156,
+          "ignore": false,
+          "label": "MOTORCYCLE",
+          "occluded": null,
+          "truncated": null
+        }
+      ],
+      "attribution_url": "http://farm1.staticflickr.com/66/190818272_591479a383_z.jpg",
+      "blur": "UNKNOWN",
+      "height": 427,
+      "image_id": 119516,
+      "license": {
+        "id": 4,
+        "name": "Attribution License",
+        "url": "http://creativecommons.org/licenses/by/2.0/"
+      },
+      "lighting": "UNKNOWN",
+      "path": "images/000000119516.jpg",
+      "scenario": "UNKNOWN",
+      "sha256": "ee4d278eecc42f9c6830e030207fbabe888aebb36c58681f034f27081594d8c9",
+      "source_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000119516.jpg",
+      "width": 640
+    }
+  ],
+  "limitations": "Small biased still-image subset; not a walking-video or safety validation set",
+  "schema_version": 1,
+  "scope": "P0 classes only; all P0 annotations retained, including crowd",
+  "selection": {
+    "BICYCLE": [
+      5001,
+      11149,
+      65350,
+      70774,
+      76416,
+      76547
+    ],
+    "BUS": [
+      6723,
+      15517,
+      32941,
+      57149,
+      76416,
+      84170
+    ],
+    "CAR": [
+      6723,
+      8762,
+      17029,
+      18837,
+      32941,
+      43737
+    ],
+    "DOG": [
+      17029,
+      29393,
+      78823,
+      80153,
+      89880,
+      107226
+    ],
+    "MOTORCYCLE": [
+      11149,
+      11511,
+      37751,
+      70774,
+      85376,
+      119516
+    ],
+    "PERSON": [
+      785,
+      872,
+      885,
+      1000,
+      1268,
+      1296
+    ],
+    "TRAIN": [
+      14473,
+      25181,
+      30675,
+      50165,
+      57149,
+      76547
+    ],
+    "TRUCK": [
+      6723,
+      13348,
+      18837,
+      32941,
+      84752,
+      85376
+    ]
+  },
+  "selection_policy": "first sorted licensed IDs per P0 class"
+}

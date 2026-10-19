@@ -1,0 +1,121 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sentinel.local/schemas/detector-ground-truth-v1.schema.json",
+  "title": "Sentinel image/frame detection ground truth v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "source_id",
+    "frame_id",
+    "observation_ns",
+    "width",
+    "height",
+    "scenario",
+    "lighting",
+    "annotations"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "source_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "frame_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "observation_ns": {
+      "type": ["integer", "null"],
+      "minimum": 0,
+      "description": "Null for independent still images; never invent camera time."
+    },
+    "width": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "height": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "scenario": {
+      "type": "string",
+      "minLength": 1
+    },
+    "lighting": {
+      "type": "string",
+      "minLength": 1
+    },
+    "annotations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "class",
+          "box",
+          "ignore",
+          "crowd",
+          "occluded",
+          "truncated",
+          "difficulty"
+        ],
+        "properties": {
+          "class": {
+            "enum": [
+              "PERSON",
+              "BICYCLE",
+              "MOTORCYCLE",
+              "CAR",
+              "BUS",
+              "TRUCK",
+              "TRAIN",
+              "DOG",
+              "UNKNOWN"
+            ]
+          },
+          "box": {
+            "type": "array",
+            "minItems": 4,
+            "maxItems": 4,
+            "items": {
+              "type": "number"
+            },
+            "description": "Original calibrated image x1,y1,x2,y2 continuous edges; application validates ordered finite bounds."
+          },
+          "ignore": {
+            "type": "boolean"
+          },
+          "crowd": {
+            "type": "boolean"
+          },
+          "occluded": {
+            "type": ["boolean", "null"]
+          },
+          "occlusion_state": {
+            "enum": [
+              "UNKNOWN",
+              "VISIBLE",
+              "PARTIALLY_OCCLUDED",
+              "HEAVILY_OCCLUDED"
+            ],
+            "description": "Optional verified visibility label; absence means UNKNOWN."
+          },
+          "truncated": {
+            "type": ["boolean", "null"]
+          },
+          "difficulty": {
+            "type": "string",
+            "minLength": 1
+          },
+          "distance_bucket": {
+            "enum": ["UNKNOWN", "NEAR", "MID", "FAR"],
+            "description": "Optional annotation, not metric depth."
+          }
+        }
+      }
+    }
+  }
+}

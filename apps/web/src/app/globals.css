@@ -1,0 +1,29 @@
+:root {
+  color-scheme: dark;
+  font-family: system-ui, sans-serif;
+  background: #101820;
+  color: #f1f5f9;
+}
+body {
+  margin: 0;
+}
+main {
+  max-width: 48rem;
+  margin: 10vh auto;
+  padding: 2rem;
+}
+h1 {
+  font-size: clamp(2rem, 6vw, 3rem);
+}
+a {
+  color: #80deea;
+}
+dl {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  padding-block: 1rem;
+}
+dd {
+  margin: 0;
+}

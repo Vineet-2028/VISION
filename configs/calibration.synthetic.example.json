@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "camera_id": "synthetic-camera",
+  "calibration_version": "synthetic-1",
+  "camera_frame_id": "synthetic-optical",
+  "image_frame_id": "synthetic-image",
+  "pixel_convention": "continuous_edges",
+  "resolution": { "width": 8, "height": 6 },
+  "intrinsics": { "fx": 8.0, "fy": 8.0, "cx": 4.0, "cy": 3.0, "skew": 0 },
+  "distortion_model": "none",
+  "distortion_coefficients": {},
+  "camera_to_device": null,
+  "calibration_quality": {
+    "state": "UNKNOWN",
+    "rms_pixels": null,
+    "sample_count": null,
+    "timestamp_epoch_millis": null
+  },
+  "metadata": "Synthetic test geometry only; never a physical camera calibration."
+}

@@ -1,0 +1,6679 @@
+{
+  "dataset_group": "PUBLIC_DIAGNOSTIC",
+  "classification": "AUTOMATIC_CONTEXT_NOT_HUMAN_CONFIRMED_CAUSE",
+  "limit_per_model_per_category": 20,
+  "models": {
+    "yolo26n": {
+      "high_confidence_fp": [
+        {
+          "image_id": 11511,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.8446892499923706,
+            "box": {
+              "x1": 314.9705505371094,
+              "y1": 20.625244140625,
+              "x2": 464.5853576660156,
+              "y2": 368.15057373046875
+            }
+          },
+          "nearest_truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 1.27,
+              "y1": 51.73,
+              "x2": 62.82,
+              "y2": 214.29
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.0,
+          "diagnostic": "NO_P0_MATCH_AT_IOU_0_5"
+        },
+        {
+          "image_id": 85376,
+          "prediction": {
+            "class_id": 2,
+            "class_name": "car",
+            "label": "CAR",
+            "confidence": 0.844300389289856,
+            "box": {
+              "x1": 243.0341796875,
+              "y1": 313.85784912109375,
+              "x2": 442.39013671875,
+              "y2": 430.23260498046875
+            }
+          },
+          "nearest_truth": {
+            "label": "TRUCK",
+            "box": {
+              "x1": 241.04,
+              "y1": 315.84,
+              "x2": 442.17999999999995,
+              "y2": 432.21
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.9561382211634574,
+          "diagnostic": "CLASS_CONFUSION"
+        },
+        {
+          "image_id": 11511,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.7335720658302307,
+            "box": {
+              "x1": 223.02487182617188,
+              "y1": 27.754653930664062,
+              "x2": 399.7309265136719,
+              "y2": 353.888671875
+            }
+          },
+          "nearest_truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 1.27,
+              "y1": 51.73,
+              "x2": 62.82,
+              "y2": 214.29
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.0,
+          "diagnostic": "NO_P0_MATCH_AT_IOU_0_5"
+        },
+        {
+          "image_id": 5001,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.6710511445999146,
+            "box": {
+              "x1": 341.73455810546875,
+              "y1": 54.913360595703125,
+              "x2": 404.54730224609375,
+              "y2": 155.79754638671875
+            }
+          },
+          "nearest_truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 297.02,
+              "y1": 50.13,
+              "x2": 355.41999999999996,
+              "y2": 137.36
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.10951652102872324,
+          "diagnostic": "NO_P0_MATCH_AT_IOU_0_5"
+        },
+        {
+          "image_id": 37751,
+          "prediction": {
+            "class_id": 3,
+            "class_name": "motorcycle",
+            "label": "MOTORCYCLE",
+            "confidence": 0.6286705732345581,
+            "box": {
+              "x1": 276.5283203125,
+              "y1": 222.93267822265625,
+              "x2": 337.94635009765625,
+              "y2": 312.00848388671875
+            }
+          },
+          "nearest_truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 279.17,
+              "y1": 197.55,
+              "x2": 336.40000000000003,
+              "y2": 300.45000000000005
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.6407610564545756,
+          "diagnostic": "CLASS_CONFUSION"
+        },
+        {
+          "image_id": 6723,
+          "prediction": {
+            "class_id": 2,
+            "class_name": "car",
+            "label": "CAR",
+            "confidence": 0.5980203747749329,
+            "box": {
+              "x1": 204.12911987304688,
+              "y1": 200.14923095703125,
+              "x2": 240.95468139648438,
+              "y2": 229.53228759765625
+            }
+          },
+          "nearest_truth": {
+            "label": "TRUCK",
+            "box": {
+              "x1": 204.9,
+              "y1": 201.04,
+              "x2": 242.33,
+              "y2": 229.29
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.9086845099468022,
+          "diagnostic": "CLASS_CONFUSION"
+        },
+        {
+          "image_id": 11149,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.5797001719474792,
+            "box": {
+              "x1": 0.15236735343933105,
+              "y1": 0.2991914749145508,
+              "x2": 77.45795845985413,
+              "y2": 257.84642696380615
+            }
+          },
+          "nearest_truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 0.0,
+              "y1": 3.8,
+              "x2": 75.17,
+              "y2": 121.2
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.44195050937763813,
+          "diagnostic": "NO_P0_MATCH_AT_IOU_0_5"
+        },
+        {
+          "image_id": 85376,
+          "prediction": {
+            "class_id": 2,
+            "class_name": "car",
+            "label": "CAR",
+            "confidence": 0.578937828540802,
+            "box": {
+              "x1": 422.0465087890625,
+              "y1": 322.3468017578125,
+              "x2": 480.2744140625,
+              "y2": 422.014892578125
+            }
+          },
+          "nearest_truth": {
+            "label": "TRUCK",
+            "box": {
+              "x1": 423.28,
+              "y1": 319.8,
+              "x2": 480.0,
+              "y2": 415.76
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.8907984170381948,
+          "diagnostic": "CLASS_CONFUSION"
+        },
+        {
+          "image_id": 84752,
+          "prediction": {
+            "class_id": 2,
+            "class_name": "car",
+            "label": "CAR",
+            "confidence": 0.5320573449134827,
+            "box": {
+              "x1": 549.4888916015625,
+              "y1": 338.2615051269531,
+              "x2": 587.1346435546875,
+              "y2": 362.5887145996094
+            }
+          },
+          "nearest_truth": {
+            "label": "TRUCK",
+            "box": {
+              "x1": 549.5,
+              "y1": 339.6,
+              "x2": 588.63,
+              "y2": 363.29
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.8849654707480124,
+          "diagnostic": "CLASS_CONFUSION"
+        },
+        {
+          "image_id": 107226,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.5097872614860535,
+            "box": {
+              "x1": 288.6339111328125,
+              "y1": 138.74111938476562,
+              "x2": 329.337646484375,
+              "y2": 214.0469970703125
+            }
+          },
+          "nearest_truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 267.23,
+              "y1": 137.74,
+              "x2": 331.33000000000004,
+              "y2": 325.99
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.25402129522302963,
+          "diagnostic": "NO_P0_MATCH_AT_IOU_0_5"
+        },
+        {
+          "image_id": 32941,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.5054236650466919,
+            "box": {
+              "x1": 408.264892578125,
+              "y1": 188.9775848388672,
+              "x2": 416.872314453125,
+              "y2": 219.4175567626953
+            }
+          },
+          "nearest_truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 369.43,
+              "y1": 191.25,
+              "x2": 375.79,
+              "y2": 202.13
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.0,
+          "diagnostic": "NO_P0_MATCH_AT_IOU_0_5"
+        },
+        {
+          "image_id": 107226,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.49269920587539673,
+            "box": {
+              "x1": 214.309814453125,
+              "y1": 128.4207763671875,
+              "x2": 306.96514892578125,
+              "y2": 347.33099365234375
+            }
+          },
+          "nearest_truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 137.28,
+              "y1": 131.14,
+              "x2": 308.45,
+              "y2": 342.29999999999995
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.5307609837654806,
+          "diagnostic": "DUPLICATE_OR_LOCALIZATION"
+        },
+        {
+          "image_id": 85376,
+          "prediction": {
+            "class_id": 2,
+            "class_name": "car",
+            "label": "CAR",
+            "confidence": 0.49209922552108765,
+            "box": {
+              "x1": 207.56585693359375,
+              "y1": 324.0508728027344,
+              "x2": 282.52154541015625,
+              "y2": 350.6607360839844
+            }
+          },
+          "nearest_truth": {
+            "label": "CAR",
+            "box": {
+              "x1": 206.24,
+              "y1": 323.91,
+              "x2": 279.34000000000003,
+              "y2": 335.06
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.39127917644423493,
+          "diagnostic": "NO_P0_MATCH_AT_IOU_0_5"
+        },
+        {
+          "image_id": 32941,
+          "prediction": {
+            "class_id": 5,
+            "class_name": "bus",
+            "label": "BUS",
+            "confidence": 0.4901217222213745,
+            "box": {
+              "x1": 268.5860595703125,
+              "y1": 168.97048950195312,
+              "x2": 302.6314697265625,
+              "y2": 202.85333251953125
+            }
+          },
+          "nearest_truth": {
+            "label": "TRUCK",
+            "box": {
+              "x1": 268.42,
+              "y1": 169.64,
+              "x2": 304.51,
+              "y2": 203.17999999999998
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.9168938697451264,
+          "diagnostic": "CLASS_CONFUSION"
+        },
+        {
+          "image_id": 5001,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.46532967686653137,
+            "box": {
+              "x1": 563.763916015625,
+              "y1": 142.4445343017578,
+              "x2": 639.9520263671875,
+              "y2": 481.99639892578125
+            }
+          },
+          "nearest_truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 208.12,
+              "y1": 61.3,
+              "x2": 297.51,
+              "y2": 210.0
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.0,
+          "diagnostic": "NO_P0_MATCH_AT_IOU_0_5"
+        },
+        {
+          "image_id": 5001,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.4445769190788269,
+            "box": {
+              "x1": 122.09451293945312,
+              "y1": 81.78997802734375,
+              "x2": 214.21896362304688,
+              "y2": 348.55029296875
+            }
+          },
+          "nearest_truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 119.23,
+              "y1": 81.44,
+              "x2": 188.49,
+              "y2": 269.61
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.49608956845928986,
+          "diagnostic": "NO_P0_MATCH_AT_IOU_0_5"
+        },
+        {
+          "image_id": 6723,
+          "prediction": {
+            "class_id": 2,
+            "class_name": "car",
+            "label": "CAR",
+            "confidence": 0.4282810389995575,
+            "box": {
+              "x1": 168.60287475585938,
+              "y1": 199.45602416992188,
+              "x2": 240.5535888671875,
+              "y2": 228.66329956054688
+            }
+          },
+          "nearest_truth": {
+            "label": "TRUCK",
+            "box": {
+              "x1": 204.9,
+              "y1": 201.04,
+              "x2": 242.33,
+              "y2": 229.29
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.4530194591181704,
+          "diagnostic": "NO_P0_MATCH_AT_IOU_0_5"
+        },
+        {
+          "image_id": 1000,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.38272494077682495,
+            "box": {
+              "x1": 191.90359497070312,
+              "y1": 118.10472106933594,
+              "x2": 270.4297790527344,
+              "y2": 280.2584228515625
+            }
+          },
+          "nearest_truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 183.4,
+              "y1": 121.34,
+              "x2": 279.17,
+              "y2": 394.09000000000003
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.4731414278820769,
+          "diagnostic": "NO_P0_MATCH_AT_IOU_0_5"
+        },
+        {
+          "image_id": 18837,
+          "prediction": {
+            "class_id": 5,
+            "class_name": "bus",
+            "label": "BUS",
+            "confidence": 0.37257763743400574,
+            "box": {
+              "x1": 0.23133087158203125,
+              "y1": 172.8389892578125,
+              "x2": 43.442665100097656,
+              "y2": 317.68670654296875
+            }
+          },
+          "nearest_truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 17.07,
+              "y1": 235.11,
+              "x2": 34.69,
+              "y2": 262.77000000000004
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.0778661582982237,
+          "diagnostic": "NO_P0_MATCH_AT_IOU_0_5"
+        },
+        {
+          "image_id": 43737,
+          "prediction": {
+            "class_id": 2,
+            "class_name": "car",
+            "label": "CAR",
+            "confidence": 0.37159860134124756,
+            "box": {
+              "x1": 28.42828369140625,
+              "y1": 417.4769592285156,
+              "x2": 69.22640991210938,
+              "y2": 434.5959167480469
+            }
+          },
+          "nearest_truth": {
+            "label": "CAR",
+            "box": {
+              "x1": 14.8,
+              "y1": 422.32,
+              "x2": 31.21,
+              "y2": 436.27
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.038231520560903176,
+          "diagnostic": "NO_P0_MATCH_AT_IOU_0_5"
+        }
+      ],
+      "priority_fn": [
+        {
+          "image_id": 5001,
+          "truth": {
+            "label": "BICYCLE",
+            "box": {
+              "x1": 500.46,
+              "y1": 159.1,
+              "x2": 545.87,
+              "y2": 258.36
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "MEDIUM",
+          "derived_context": "UNKNOWN"
+        },
+        {
+          "image_id": 65350,
+          "truth": {
+            "label": "BICYCLE",
+            "box": {
+              "x1": 286.11,
+              "y1": 23.42,
+              "x2": 347.62,
+              "y2": 85.6
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "MEDIUM",
+          "derived_context": "UNKNOWN"
+        },
+        {
+          "image_id": 65350,
+          "truth": {
+            "label": "BICYCLE",
+            "box": {
+              "x1": 596.7,
+              "y1": 0.67,
+              "x2": 640.0,
+              "y2": 97.0
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "MEDIUM",
+          "derived_context": "UNKNOWN"
+        },
+        {
+          "image_id": 70774,
+          "truth": {
+            "label": "BICYCLE",
+            "box": {
+              "x1": 261.38,
+              "y1": 173.6,
+              "x2": 506.79999999999995,
+              "y2": 223.64999999999998
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "MEDIUM",
+          "derived_context": "UNKNOWN"
+        },
+        {
+          "image_id": 70774,
+          "truth": {
+            "label": "BICYCLE",
+            "box": {
+              "x1": 263.57,
+              "y1": 152.85,
+              "x2": 465.13,
+              "y2": 181.13
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "MEDIUM",
+          "derived_context": "UNKNOWN"
+        },
+        {
+          "image_id": 70774,
+          "truth": {
+            "label": "BICYCLE",
+            "box": {
+              "x1": 280.46,
+              "y1": 206.22,
+              "x2": 503.11,
+              "y2": 277.37
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "MEDIUM",
+          "derived_context": "UNKNOWN"
+        },
+        {
+          "image_id": 76416,
+          "truth": {
+            "label": "BICYCLE",
+            "box": {
+              "x1": 84.48,
+              "y1": 283.64,
+              "x2": 113.36,
+              "y2": 308.82
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "SMALL",
+          "derived_context": "UNKNOWN"
+        },
+        {
+          "image_id": 11511,
+          "truth": {
+            "label": "MOTORCYCLE",
+            "box": {
+              "x1": 483.81,
+              "y1": 50.53,
+              "x2": 530.65,
+              "y2": 100.53
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "SMALL",
+          "derived_context": "UNKNOWN"
+        },
+        {
+          "image_id": 37751,
+          "truth": {
+            "label": "MOTORCYCLE",
+            "box": {
+              "x1": 291.18,
+              "y1": 241.63,
+              "x2": 325.97,
+              "y2": 314.49
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "SMALL",
+          "derived_context": "UNKNOWN"
+        },
+        {
+          "image_id": 119516,
+          "truth": {
+            "label": "MOTORCYCLE",
+            "box": {
+              "x1": 528.33,
+              "y1": 240.15,
+              "x2": 576.6700000000001,
+              "y2": 276.91
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "SMALL",
+          "derived_context": "UNKNOWN"
+        },
+        {
+          "image_id": 13348,
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 349.82,
+              "y1": 270.26,
+              "x2": 356.12,
+              "y2": 291.03
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "TINY",
+          "derived_context": "TINY_OBJECT"
+        },
+        {
+          "image_id": 13348,
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 17.11,
+              "y1": 280.38,
+              "x2": 26.229999999999997,
+              "y2": 293.35
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "TINY",
+          "derived_context": "TINY_OBJECT"
+        },
+        {
+          "image_id": 13348,
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 117.32,
+              "y1": 270.57,
+              "x2": 129.10999999999999,
+              "y2": 289.8
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "TINY",
+          "derived_context": "TINY_OBJECT"
+        },
+        {
+          "image_id": 13348,
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 173.15,
+              "y1": 240.08,
+              "x2": 180.11,
+              "y2": 251.56
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "TINY",
+          "derived_context": "TINY_OBJECT"
+        },
+        {
+          "image_id": 13348,
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 124.96,
+              "y1": 250.69,
+              "x2": 129.07,
+              "y2": 256.32
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "TINY",
+          "derived_context": "TINY_OBJECT"
+        },
+        {
+          "image_id": 13348,
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 148.94,
+              "y1": 244.69,
+              "x2": 160.07,
+              "y2": 255.24
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "TINY",
+          "derived_context": "TINY_OBJECT"
+        },
+        {
+          "image_id": 25181,
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 104.43,
+              "y1": 231.09,
+              "x2": 109.21000000000001,
+              "y2": 240.08
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "TINY",
+          "derived_context": "TINY_OBJECT"
+        },
+        {
+          "image_id": 32941,
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 386.69,
+              "y1": 191.06,
+              "x2": 392.93,
+              "y2": 210.03
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "TINY",
+          "derived_context": "TINY_OBJECT"
+        },
+        {
+          "image_id": 32941,
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 369.43,
+              "y1": 191.25,
+              "x2": 375.79,
+              "y2": 202.13
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "TINY",
+          "derived_context": "TINY_OBJECT"
+        },
+        {
+          "image_id": 76416,
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 0.0,
+              "y1": 263.93,
+              "x2": 12.86,
+              "y2": 282.67
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "TINY",
+          "derived_context": "TINY_OBJECT"
+        }
+      ],
+      "low_iou": [
+        {
+          "image_id": 107226,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.3984159529209137,
+            "box": {
+              "x1": 321.20794677734375,
+              "y1": 137.5991668701172,
+              "x2": 366.41363525390625,
+              "y2": 213.1158905029297
+            }
+          },
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 326.27,
+              "y1": 133.53,
+              "x2": 350.04999999999995,
+              "y2": 212.71
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.5087907802761796
+        },
+        {
+          "image_id": 5001,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.47327300906181335,
+            "box": {
+              "x1": 42.93293762207031,
+              "y1": 85.7178955078125,
+              "x2": 190.97769165039062,
+              "y2": 352.7913818359375
+            }
+          },
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 41.08,
+              "y1": 95.68,
+              "x2": 148.11,
+              "y2": 474.05
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.5102926662636256
+        },
+        {
+          "image_id": 872,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.5951423048973083,
+            "box": {
+              "x1": 284.3023376464844,
+              "y1": 100.23919677734375,
+              "x2": 435.9497375488281,
+              "y2": 563.556640625
+            }
+          },
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 145.26,
+              "y1": 100.67,
+              "x2": 437.21,
+              "y2": 558.02
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.5159326476991988
+        },
+        {
+          "image_id": 15517,
+          "prediction": {
+            "class_id": 5,
+            "class_name": "bus",
+            "label": "BUS",
+            "confidence": 0.4452049136161804,
+            "box": {
+              "x1": 375.56304931640625,
+              "y1": 280.11761474609375,
+              "x2": 517.411376953125,
+              "y2": 312.92266845703125
+            }
+          },
+          "truth": {
+            "label": "BUS",
+            "box": {
+              "x1": 433.22,
+              "y1": 283.28,
+              "x2": 515.88,
+              "y2": 312.64
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.5215386267302392
+        },
+        {
+          "image_id": 18837,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.3099548816680908,
+            "box": {
+              "x1": 369.01190185546875,
+              "y1": 347.75567626953125,
+              "x2": 436.82965087890625,
+              "y2": 479.1982421875
+            }
+          },
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 371.98,
+              "y1": 286.74,
+              "x2": 454.53000000000003,
+              "y2": 480.0
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.5215452908691671
+        },
+        {
+          "image_id": 15517,
+          "prediction": {
+            "class_id": 5,
+            "class_name": "bus",
+            "label": "BUS",
+            "confidence": 0.5089938640594482,
+            "box": {
+              "x1": 329.71075439453125,
+              "y1": 254.7484130859375,
+              "x2": 401.36114501953125,
+              "y2": 284.739990234375
+            }
+          },
+          "truth": {
+            "label": "BUS",
+            "box": {
+              "x1": 338.57,
+              "y1": 263.45,
+              "x2": 403.06,
+              "y2": 282.53
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.5492333745830341
+        },
+        {
+          "image_id": 107226,
+          "prediction": {
+            "class_id": 1,
+            "class_name": "bicycle",
+            "label": "BICYCLE",
+            "confidence": 0.3109607696533203,
+            "box": {
+              "x1": 326.79327392578125,
+              "y1": 287.70458984375,
+              "x2": 480.01239013671875,
+              "y2": 490.661376953125
+            }
+          },
+          "truth": {
+            "label": "BICYCLE",
+            "box": {
+              "x1": 386.55,
+              "y1": 253.65,
+              "x2": 479.77,
+              "y2": 490.53999999999996
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.5517224641389682
+        },
+        {
+          "image_id": 15517,
+          "prediction": {
+            "class_id": 5,
+            "class_name": "bus",
+            "label": "BUS",
+            "confidence": 0.3334716260433197,
+            "box": {
+              "x1": 244.14944458007812,
+              "y1": 270.01910400390625,
+              "x2": 341.5641784667969,
+              "y2": 301.7833251953125
+            }
+          },
+          "truth": {
+            "label": "BUS",
+            "box": {
+              "x1": 230.56,
+              "y1": 275.71,
+              "x2": 319.23,
+              "y2": 302.54999999999995
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.5566730013014967
+        },
+        {
+          "image_id": 5001,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.4666232764720917,
+            "box": {
+              "x1": 233.85421752929688,
+              "y1": 62.305908203125,
+              "x2": 295.5350646972656,
+              "y2": 183.60125732421875
+            }
+          },
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 208.12,
+              "y1": 61.3,
+              "x2": 297.51,
+              "y2": 210.0
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.5628524658103456
+        },
+        {
+          "image_id": 84170,
+          "prediction": {
+            "class_id": 2,
+            "class_name": "car",
+            "label": "CAR",
+            "confidence": 0.32299646735191345,
+            "box": {
+              "x1": 0.364898681640625,
+              "y1": 245.6781005859375,
+              "x2": 44.470611572265625,
+              "y2": 271.7760009765625
+            }
+          },
+          "truth": {
+            "label": "CAR",
+            "box": {
+              "x1": 0.73,
+              "y1": 244.53,
+              "x2": 45.839999999999996,
+              "y2": 288.59000000000003
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.5716050406245783
+        },
+        {
+          "image_id": 11511,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.7479516267776489,
+            "box": {
+              "x1": 157.69741821289062,
+              "y1": 38.476898193359375,
+              "x2": 191.05490112304688,
+              "y2": 169.51522827148438
+            }
+          },
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 139.53,
+              "y1": 32.22,
+              "x2": 189.91,
+              "y2": 172.46
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.585016964340369
+        },
+        {
+          "image_id": 107226,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.39250510931015015,
+            "box": {
+              "x1": 13.603179931640625,
+              "y1": 153.04440307617188,
+              "x2": 76.85940551757812,
+              "y2": 217.67880249023438
+            }
+          },
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 11.12,
+              "y1": 155.31,
+              "x2": 53.8,
+              "y2": 217.21
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.5865262052629986
+        },
+        {
+          "image_id": 32941,
+          "prediction": {
+            "class_id": 2,
+            "class_name": "car",
+            "label": "CAR",
+            "confidence": 0.25393959879875183,
+            "box": {
+              "x1": 302.870849609375,
+              "y1": 193.2603302001953,
+              "x2": 316.70562744140625,
+              "y2": 206.16490173339844
+            }
+          },
+          "truth": {
+            "label": "CAR",
+            "box": {
+              "x1": 302.93,
+              "y1": 197.07,
+              "x2": 314.97,
+              "y2": 206.44
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.6021786737346594
+        },
+        {
+          "image_id": 43737,
+          "prediction": {
+            "class_id": 2,
+            "class_name": "car",
+            "label": "CAR",
+            "confidence": 0.5124145150184631,
+            "box": {
+              "x1": 97.50607299804688,
+              "y1": 426.0028076171875,
+              "x2": 146.61727905273438,
+              "y2": 459.90972900390625
+            }
+          },
+          "truth": {
+            "label": "CAR",
+            "box": {
+              "x1": 99.34,
+              "y1": 426.56,
+              "x2": 168.59,
+              "y2": 461.6
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.6269009976905068
+        },
+        {
+          "image_id": 76416,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.29373249411582947,
+            "box": {
+              "x1": 72.39388275146484,
+              "y1": 269.627685546875,
+              "x2": 84.25481414794922,
+              "y2": 302.2843017578125
+            }
+          },
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 71.6,
+              "y1": 269.55,
+              "x2": 89.16999999999999,
+              "y2": 304.52
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.6304092580521489
+        },
+        {
+          "image_id": 65350,
+          "prediction": {
+            "class_id": 2,
+            "class_name": "car",
+            "label": "CAR",
+            "confidence": 0.44207918643951416,
+            "box": {
+              "x1": -0.232574462890625,
+              "y1": 0.157958984375,
+              "x2": 227.42889404296875,
+              "y2": 86.05636596679688
+            }
+          },
+          "truth": {
+            "label": "CAR",
+            "box": {
+              "x1": 54.03,
+              "y1": 1.13,
+              "x2": 266.57,
+              "y2": 85.67999999999999
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.6411890670070692
+        },
+        {
+          "image_id": 32941,
+          "prediction": {
+            "class_id": 2,
+            "class_name": "car",
+            "label": "CAR",
+            "confidence": 0.3489399254322052,
+            "box": {
+              "x1": 179.470947265625,
+              "y1": 194.07281494140625,
+              "x2": 203.61407470703125,
+              "y2": 215.1942138671875
+            }
+          },
+          "truth": {
+            "label": "CAR",
+            "box": {
+              "x1": 179.46,
+              "y1": 192.66,
+              "x2": 212.14000000000001,
+              "y2": 213.56
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.6512153086890794
+        },
+        {
+          "image_id": 1000,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.7574911117553711,
+            "box": {
+              "x1": 436.5060729980469,
+              "y1": 107.42694091796875,
+              "x2": 497.3889465332031,
+              "y2": 221.9569091796875
+            }
+          },
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 410.75,
+              "y1": 107.03,
+              "x2": 498.84000000000003,
+              "y2": 228.19
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.6533236920747004
+        },
+        {
+          "image_id": 18837,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.5008062124252319,
+            "box": {
+              "x1": 287.0945129394531,
+              "y1": 26.123260498046875,
+              "x2": 357.7248840332031,
+              "y2": 122.0445556640625
+            }
+          },
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 294.3,
+              "y1": 21.62,
+              "x2": 342.47,
+              "y2": 123.13000000000001
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.6559370855474499
+        },
+        {
+          "image_id": 6723,
+          "prediction": {
+            "class_id": 2,
+            "class_name": "car",
+            "label": "CAR",
+            "confidence": 0.39975279569625854,
+            "box": {
+              "x1": 170.347412109375,
+              "y1": 201.9022216796875,
+              "x2": 197.8436279296875,
+              "y2": 223.393798828125
+            }
+          },
+          "truth": {
+            "label": "CAR",
+            "box": {
+              "x1": 171.76,
+              "y1": 203.56,
+              "x2": 207.14,
+              "y2": 222.96
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.6560756291099462
+        }
+      ]
+    },
+    "yolo26s": {
+      "high_confidence_fp": [
+        {
+          "image_id": 6723,
+          "prediction": {
+            "class_id": 2,
+            "class_name": "car",
+            "label": "CAR",
+            "confidence": 0.8959982395172119,
+            "box": {
+              "x1": 203.40084838867188,
+              "y1": 201.1407470703125,
+              "x2": 241.92269897460938,
+              "y2": 229.13134765625
+            }
+          },
+          "nearest_truth": {
+            "label": "TRUCK",
+            "box": {
+              "x1": 204.9,
+              "y1": 201.04,
+              "x2": 242.33,
+              "y2": 229.29
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.9426283526678731,
+          "diagnostic": "CLASS_CONFUSION"
+        },
+        {
+          "image_id": 85376,
+          "prediction": {
+            "class_id": 2,
+            "class_name": "car",
+            "label": "CAR",
+            "confidence": 0.8788633942604065,
+            "box": {
+              "x1": 246.919189453125,
+              "y1": 313.8153076171875,
+              "x2": 442.853759765625,
+              "y2": 430.246826171875
+            }
+          },
+          "nearest_truth": {
+            "label": "TRUCK",
+            "box": {
+              "x1": 241.04,
+              "y1": 315.84,
+              "x2": 442.17999999999995,
+              "y2": 432.21
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.9354584178620291,
+          "diagnostic": "CLASS_CONFUSION"
+        },
+        {
+          "image_id": 85376,
+          "prediction": {
+            "class_id": 2,
+            "class_name": "car",
+            "label": "CAR",
+            "confidence": 0.7991623282432556,
+            "box": {
+              "x1": 418.4128112792969,
+              "y1": 323.33038330078125,
+              "x2": 480.24755859375,
+              "y2": 422.60870361328125
+            }
+          },
+          "nearest_truth": {
+            "label": "TRUCK",
+            "box": {
+              "x1": 423.28,
+              "y1": 319.8,
+              "x2": 480.0,
+              "y2": 415.76
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.8270280466141902,
+          "diagnostic": "CLASS_CONFUSION"
+        },
+        {
+          "image_id": 5001,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.7967237830162048,
+            "box": {
+              "x1": 43.131622314453125,
+              "y1": 95.73193359375,
+              "x2": 217.82260131835938,
+              "y2": 361.03582763671875
+            }
+          },
+          "nearest_truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 41.08,
+              "y1": 95.68,
+              "x2": 148.11,
+              "y2": 474.05
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.4721180598546913,
+          "diagnostic": "NO_P0_MATCH_AT_IOU_0_5"
+        },
+        {
+          "image_id": 18837,
+          "prediction": {
+            "class_id": 5,
+            "class_name": "bus",
+            "label": "BUS",
+            "confidence": 0.7583458423614502,
+            "box": {
+              "x1": 0.09243392944335938,
+              "y1": 172.72080993652344,
+              "x2": 46.264976501464844,
+              "y2": 323.51806640625
+            }
+          },
+          "nearest_truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 17.07,
+              "y1": 235.11,
+              "x2": 34.69,
+              "y2": 262.77000000000004
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.0699972292204779,
+          "diagnostic": "NO_P0_MATCH_AT_IOU_0_5"
+        },
+        {
+          "image_id": 5001,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.7468199729919434,
+            "box": {
+              "x1": 343.55584716796875,
+              "y1": 54.58367919921875,
+              "x2": 404.3365478515625,
+              "y2": 156.11996459960938
+            }
+          },
+          "nearest_truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 297.02,
+              "y1": 50.13,
+              "x2": 355.41999999999996,
+              "y2": 137.36
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.095498676556105,
+          "diagnostic": "NO_P0_MATCH_AT_IOU_0_5"
+        },
+        {
+          "image_id": 11149,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.721109926700592,
+            "box": {
+              "x1": 0.0718533992767334,
+              "y1": 2.115309238433838,
+              "x2": 81.78622722625732,
+              "y2": 274.67808723449707
+            }
+          },
+          "nearest_truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 0.0,
+              "y1": 3.8,
+              "x2": 75.17,
+              "y2": 121.2
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.39570164407887615,
+          "diagnostic": "NO_P0_MATCH_AT_IOU_0_5"
+        },
+        {
+          "image_id": 5001,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.6565093398094177,
+            "box": {
+              "x1": 262.9175720214844,
+              "y1": 87.20059204101562,
+              "x2": 377.6504821777344,
+              "y2": 368.2070617675781
+            }
+          },
+          "nearest_truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 211.45,
+              "y1": 88.41,
+              "x2": 335.12,
+              "y2": 281.41999999999996
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.33043209588034916,
+          "diagnostic": "NO_P0_MATCH_AT_IOU_0_5"
+        },
+        {
+          "image_id": 11511,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.6482119560241699,
+            "box": {
+              "x1": 223.9916534423828,
+              "y1": 27.613906860351562,
+              "x2": 403.77667236328125,
+              "y2": 356.56689453125
+            }
+          },
+          "nearest_truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 1.27,
+              "y1": 51.73,
+              "x2": 62.82,
+              "y2": 214.29
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.0,
+          "diagnostic": "NO_P0_MATCH_AT_IOU_0_5"
+        },
+        {
+          "image_id": 84752,
+          "prediction": {
+            "class_id": 2,
+            "class_name": "car",
+            "label": "CAR",
+            "confidence": 0.6446590423583984,
+            "box": {
+              "x1": 549.67138671875,
+              "y1": 339.08587646484375,
+              "x2": 588.2830810546875,
+              "y2": 362.17279052734375
+            }
+          },
+          "nearest_truth": {
+            "label": "TRUCK",
+            "box": {
+              "x1": 549.5,
+              "y1": 339.6,
+              "x2": 588.63,
+              "y2": 363.29
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.9205070311533279,
+          "diagnostic": "CLASS_CONFUSION"
+        },
+        {
+          "image_id": 107226,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.6306609511375427,
+            "box": {
+              "x1": 279.2998046875,
+              "y1": 136.78082275390625,
+              "x2": 331.13201904296875,
+              "y2": 212.939697265625
+            }
+          },
+          "nearest_truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 267.23,
+              "y1": 137.74,
+              "x2": 331.33000000000004,
+              "y2": 325.99
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.32168972463875933,
+          "diagnostic": "NO_P0_MATCH_AT_IOU_0_5"
+        },
+        {
+          "image_id": 32941,
+          "prediction": {
+            "class_id": 7,
+            "class_name": "truck",
+            "label": "TRUCK",
+            "confidence": 0.5780774354934692,
+            "box": {
+              "x1": 179.7337646484375,
+              "y1": 191.91522216796875,
+              "x2": 208.399169921875,
+              "y2": 214.875732421875
+            }
+          },
+          "nearest_truth": {
+            "label": "CAR",
+            "box": {
+              "x1": 179.46,
+              "y1": 192.66,
+              "x2": 212.14000000000001,
+              "y2": 213.56
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.807337619092992,
+          "diagnostic": "CLASS_CONFUSION"
+        },
+        {
+          "image_id": 43737,
+          "prediction": {
+            "class_id": 2,
+            "class_name": "car",
+            "label": "CAR",
+            "confidence": 0.5658402442932129,
+            "box": {
+              "x1": 29.335105895996094,
+              "y1": 417.02630615234375,
+              "x2": 68.88723754882812,
+              "y2": 434.9542236328125
+            }
+          },
+          "nearest_truth": {
+            "label": "CAR",
+            "box": {
+              "x1": 14.8,
+              "y1": 422.32,
+              "x2": 31.21,
+              "y2": 436.27
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.025907621795512623,
+          "diagnostic": "NO_P0_MATCH_AT_IOU_0_5"
+        },
+        {
+          "image_id": 65350,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.49769020080566406,
+            "box": {
+              "x1": 564.697998046875,
+              "y1": 74.42909240722656,
+              "x2": 638.32421875,
+              "y2": 252.10546875
+            }
+          },
+          "nearest_truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 528.73,
+              "y1": 71.53,
+              "x2": 637.1600000000001,
+              "y2": 258.64
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.6281856868325568,
+          "diagnostic": "DUPLICATE_OR_LOCALIZATION"
+        },
+        {
+          "image_id": 5001,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.4819169044494629,
+            "box": {
+              "x1": 131.891357421875,
+              "y1": 82.12884521484375,
+              "x2": 179.19525146484375,
+              "y2": 146.51522827148438
+            }
+          },
+          "nearest_truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 119.23,
+              "y1": 81.44,
+              "x2": 188.49,
+              "y2": 269.61
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.23369964361682563,
+          "diagnostic": "NO_P0_MATCH_AT_IOU_0_5"
+        },
+        {
+          "image_id": 84752,
+          "prediction": {
+            "class_id": 2,
+            "class_name": "car",
+            "label": "CAR",
+            "confidence": 0.46318528056144714,
+            "box": {
+              "x1": 474.9994201660156,
+              "y1": 337.51104736328125,
+              "x2": 503.1470642089844,
+              "y2": 353.8323974609375
+            }
+          },
+          "nearest_truth": {
+            "label": "TRUCK",
+            "box": {
+              "x1": 475.09,
+              "y1": 337.76,
+              "x2": 504.17999999999995,
+              "y2": 354.48
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.9112782673696276,
+          "diagnostic": "CLASS_CONFUSION"
+        },
+        {
+          "image_id": 32941,
+          "prediction": {
+            "class_id": 2,
+            "class_name": "car",
+            "label": "CAR",
+            "confidence": 0.4571734070777893,
+            "box": {
+              "x1": 302.17498779296875,
+              "y1": 189.33349609375,
+              "x2": 315.54901123046875,
+              "y2": 206.2816162109375
+            }
+          },
+          "nearest_truth": {
+            "label": "CAR",
+            "box": {
+              "x1": 302.93,
+              "y1": 197.07,
+              "x2": 314.97,
+              "y2": 206.44
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.4852217397323453,
+          "diagnostic": "NO_P0_MATCH_AT_IOU_0_5"
+        },
+        {
+          "image_id": 85376,
+          "prediction": {
+            "class_id": 2,
+            "class_name": "car",
+            "label": "CAR",
+            "confidence": 0.4463792145252228,
+            "box": {
+              "x1": 205.1048583984375,
+              "y1": 325.09234619140625,
+              "x2": 281.630126953125,
+              "y2": 349.55487060546875
+            }
+          },
+          "nearest_truth": {
+            "label": "CAR",
+            "box": {
+              "x1": 206.24,
+              "y1": 323.91,
+              "x2": 279.34000000000003,
+              "y2": 335.06
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.37205067926948215,
+          "diagnostic": "NO_P0_MATCH_AT_IOU_0_5"
+        },
+        {
+          "image_id": 107226,
+          "prediction": {
+            "class_id": 16,
+            "class_name": "dog",
+            "label": "DOG",
+            "confidence": 0.43640926480293274,
+            "box": {
+              "x1": 0.275726318359375,
+              "y1": 280.12445068359375,
+              "x2": 157.88827514648438,
+              "y2": 584.995361328125
+            }
+          },
+          "nearest_truth": {
+            "label": "DOG",
+            "box": {
+              "x1": 57.81,
+              "y1": 283.53,
+              "x2": 156.9,
+              "y2": 512.0
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.4711424433152737,
+          "diagnostic": "NO_P0_MATCH_AT_IOU_0_5"
+        },
+        {
+          "image_id": 15517,
+          "prediction": {
+            "class_id": 5,
+            "class_name": "bus",
+            "label": "BUS",
+            "confidence": 0.4283020794391632,
+            "box": {
+              "x1": 314.6558837890625,
+              "y1": 286.9034423828125,
+              "x2": 382.2735595703125,
+              "y2": 304.97515869140625
+            }
+          },
+          "nearest_truth": {
+            "label": "BUS",
+            "box": {
+              "x1": 322.2,
+              "y1": 285.15,
+              "x2": 418.96999999999997,
+              "y2": 306.32
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.4968668990625636,
+          "diagnostic": "NO_P0_MATCH_AT_IOU_0_5"
+        }
+      ],
+      "priority_fn": [
+        {
+          "image_id": 5001,
+          "truth": {
+            "label": "BICYCLE",
+            "box": {
+              "x1": 500.46,
+              "y1": 159.1,
+              "x2": 545.87,
+              "y2": 258.36
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "MEDIUM",
+          "derived_context": "UNKNOWN"
+        },
+        {
+          "image_id": 65350,
+          "truth": {
+            "label": "BICYCLE",
+            "box": {
+              "x1": 286.11,
+              "y1": 23.42,
+              "x2": 347.62,
+              "y2": 85.6
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "MEDIUM",
+          "derived_context": "UNKNOWN"
+        },
+        {
+          "image_id": 65350,
+          "truth": {
+            "label": "BICYCLE",
+            "box": {
+              "x1": 596.7,
+              "y1": 0.67,
+              "x2": 640.0,
+              "y2": 97.0
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "MEDIUM",
+          "derived_context": "UNKNOWN"
+        },
+        {
+          "image_id": 70774,
+          "truth": {
+            "label": "BICYCLE",
+            "box": {
+              "x1": 261.38,
+              "y1": 173.6,
+              "x2": 506.79999999999995,
+              "y2": 223.64999999999998
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "MEDIUM",
+          "derived_context": "UNKNOWN"
+        },
+        {
+          "image_id": 70774,
+          "truth": {
+            "label": "BICYCLE",
+            "box": {
+              "x1": 263.57,
+              "y1": 152.85,
+              "x2": 465.13,
+              "y2": 181.13
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "MEDIUM",
+          "derived_context": "UNKNOWN"
+        },
+        {
+          "image_id": 76416,
+          "truth": {
+            "label": "BICYCLE",
+            "box": {
+              "x1": 84.48,
+              "y1": 283.64,
+              "x2": 113.36,
+              "y2": 308.82
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "SMALL",
+          "derived_context": "UNKNOWN"
+        },
+        {
+          "image_id": 11511,
+          "truth": {
+            "label": "MOTORCYCLE",
+            "box": {
+              "x1": 483.81,
+              "y1": 50.53,
+              "x2": 530.65,
+              "y2": 100.53
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "SMALL",
+          "derived_context": "UNKNOWN"
+        },
+        {
+          "image_id": 119516,
+          "truth": {
+            "label": "MOTORCYCLE",
+            "box": {
+              "x1": 528.33,
+              "y1": 240.15,
+              "x2": 576.6700000000001,
+              "y2": 276.91
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "SMALL",
+          "derived_context": "UNKNOWN"
+        },
+        {
+          "image_id": 13348,
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 117.32,
+              "y1": 270.57,
+              "x2": 129.10999999999999,
+              "y2": 289.8
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "TINY",
+          "derived_context": "TINY_OBJECT"
+        },
+        {
+          "image_id": 13348,
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 173.15,
+              "y1": 240.08,
+              "x2": 180.11,
+              "y2": 251.56
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "TINY",
+          "derived_context": "TINY_OBJECT"
+        },
+        {
+          "image_id": 13348,
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 124.96,
+              "y1": 250.69,
+              "x2": 129.07,
+              "y2": 256.32
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "TINY",
+          "derived_context": "TINY_OBJECT"
+        },
+        {
+          "image_id": 13348,
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 148.94,
+              "y1": 244.69,
+              "x2": 160.07,
+              "y2": 255.24
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "TINY",
+          "derived_context": "TINY_OBJECT"
+        },
+        {
+          "image_id": 25181,
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 104.43,
+              "y1": 231.09,
+              "x2": 109.21000000000001,
+              "y2": 240.08
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "TINY",
+          "derived_context": "TINY_OBJECT"
+        },
+        {
+          "image_id": 32941,
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 369.43,
+              "y1": 191.25,
+              "x2": 375.79,
+              "y2": 202.13
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "TINY",
+          "derived_context": "TINY_OBJECT"
+        },
+        {
+          "image_id": 76416,
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 83.7,
+              "y1": 268.04,
+              "x2": 91.15,
+              "y2": 283.28000000000003
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "TINY",
+          "derived_context": "TINY_OBJECT"
+        },
+        {
+          "image_id": 872,
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 145.26,
+              "y1": 100.67,
+              "x2": 437.21,
+              "y2": 558.02
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "LARGE",
+          "derived_context": "UNKNOWN"
+        },
+        {
+          "image_id": 885,
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 1.11,
+              "y1": 0.56,
+              "x2": 60.05,
+              "y2": 9.450000000000001
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "SMALL",
+          "derived_context": "UNKNOWN"
+        },
+        {
+          "image_id": 1000,
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 349.49,
+              "y1": 118.71,
+              "x2": 402.13,
+              "y2": 159.84
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "SMALL",
+          "derived_context": "UNKNOWN"
+        },
+        {
+          "image_id": 5001,
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 41.08,
+              "y1": 95.68,
+              "x2": 148.11,
+              "y2": 474.05
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "LARGE",
+          "derived_context": "UNKNOWN"
+        },
+        {
+          "image_id": 5001,
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 119.23,
+              "y1": 81.44,
+              "x2": 188.49,
+              "y2": 269.61
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "MEDIUM",
+          "derived_context": "UNKNOWN"
+        }
+      ],
+      "low_iou": [
+        {
+          "image_id": 885,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.34323790669441223,
+            "box": {
+              "x1": 496.400146484375,
+              "y1": -0.30133056640625,
+              "x2": 544.2755126953125,
+              "y2": 15.150772094726562
+            }
+          },
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 499.47,
+              "y1": 0.76,
+              "x2": 574.64,
+              "y2": 14.14
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.5230982581692417
+        },
+        {
+          "image_id": 70774,
+          "prediction": {
+            "class_id": 1,
+            "class_name": "bicycle",
+            "label": "BICYCLE",
+            "confidence": 0.2885115444660187,
+            "box": {
+              "x1": 258.510498046875,
+              "y1": 157.74569702148438,
+              "x2": 504.5296630859375,
+              "y2": 278.3608093261719
+            }
+          },
+          "truth": {
+            "label": "BICYCLE",
+            "box": {
+              "x1": 280.46,
+              "y1": 206.22,
+              "x2": 503.11,
+              "y2": 277.37
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.5338594542108434
+        },
+        {
+          "image_id": 885,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.7126436233520508,
+            "box": {
+              "x1": 417.5037841796875,
+              "y1": -0.5982666015625,
+              "x2": 469.97393798828125,
+              "y2": 14.124008178710938
+            }
+          },
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 434.7,
+              "y1": 0.33,
+              "x2": 467.49,
+              "y2": 13.0
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.5378123551372501
+        },
+        {
+          "image_id": 13348,
+          "prediction": {
+            "class_id": 7,
+            "class_name": "truck",
+            "label": "TRUCK",
+            "confidence": 0.5725757479667664,
+            "box": {
+              "x1": 0.00363922119140625,
+              "y1": 287.86962890625,
+              "x2": 40.23130798339844,
+              "y2": 308.7747802734375
+            }
+          },
+          "truth": {
+            "label": "TRUCK",
+            "box": {
+              "x1": 16.05,
+              "y1": 289.31,
+              "x2": 40.480000000000004,
+              "y2": 308.31
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.543277674984555
+        },
+        {
+          "image_id": 15517,
+          "prediction": {
+            "class_id": 5,
+            "class_name": "bus",
+            "label": "BUS",
+            "confidence": 0.3033985197544098,
+            "box": {
+              "x1": 373.40863037109375,
+              "y1": 284.54058837890625,
+              "x2": 517.11865234375,
+              "y2": 312.29473876953125
+            }
+          },
+          "truth": {
+            "label": "BUS",
+            "box": {
+              "x1": 433.22,
+              "y1": 283.28,
+              "x2": 515.88,
+              "y2": 312.64
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.5566603119880065
+        },
+        {
+          "image_id": 107226,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.2652330994606018,
+            "box": {
+              "x1": 16.205657958984375,
+              "y1": 154.1231231689453,
+              "x2": 77.28631591796875,
+              "y2": 218.22413635253906
+            }
+          },
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 35.4,
+              "y1": 148.56,
+              "x2": 83.28999999999999,
+              "y2": 215.45
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.5645697535614339
+        },
+        {
+          "image_id": 43737,
+          "prediction": {
+            "class_id": 2,
+            "class_name": "car",
+            "label": "CAR",
+            "confidence": 0.7131398320198059,
+            "box": {
+              "x1": -0.0194244384765625,
+              "y1": 416.59014892578125,
+              "x2": 29.212203979492188,
+              "y2": 440.521240234375
+            }
+          },
+          "truth": {
+            "label": "CAR",
+            "box": {
+              "x1": 0.36,
+              "y1": 415.36,
+              "x2": 17.62,
+              "y2": 441.07
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.5656300619820307
+        },
+        {
+          "image_id": 84752,
+          "prediction": {
+            "class_id": 2,
+            "class_name": "car",
+            "label": "CAR",
+            "confidence": 0.5681914687156677,
+            "box": {
+              "x1": 288.7489013671875,
+              "y1": 344.24737548828125,
+              "x2": 311.76171875,
+              "y2": 356.20880126953125
+            }
+          },
+          "truth": {
+            "label": "CAR",
+            "box": {
+              "x1": 288.93,
+              "y1": 345.98,
+              "x2": 304.32,
+              "y2": 356.14000000000004
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.5680408736966465
+        },
+        {
+          "image_id": 5001,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.40027114748954773,
+            "box": {
+              "x1": 210.63168334960938,
+              "y1": 61.896240234375,
+              "x2": 295.2467346191406,
+              "y2": 312.36932373046875
+            }
+          },
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 208.12,
+              "y1": 61.3,
+              "x2": 297.51,
+              "y2": 210.0
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.5708138931764418
+        },
+        {
+          "image_id": 885,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.26975399255752563,
+            "box": {
+              "x1": 260.16278076171875,
+              "y1": -0.3654937744140625,
+              "x2": 332.23065185546875,
+              "y2": 11.89886474609375
+            }
+          },
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 287.39,
+              "y1": 0.19,
+              "x2": 332.03999999999996,
+              "y2": 11.65
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.5789213286417997
+        },
+        {
+          "image_id": 885,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.5416089296340942,
+            "box": {
+              "x1": 538.7242431640625,
+              "y1": -0.444976806640625,
+              "x2": 609.7783203125,
+              "y2": 15.2828369140625
+            }
+          },
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 541.88,
+              "y1": 1.73,
+              "x2": 607.72,
+              "y2": 11.85
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.5962288337168726
+        },
+        {
+          "image_id": 107226,
+          "prediction": {
+            "class_id": 1,
+            "class_name": "bicycle",
+            "label": "BICYCLE",
+            "confidence": 0.6919728517532349,
+            "box": {
+              "x1": 325.95648193359375,
+              "y1": 253.02505493164062,
+              "x2": 479.9571533203125,
+              "y2": 489.1756896972656
+            }
+          },
+          "truth": {
+            "label": "BICYCLE",
+            "box": {
+              "x1": 386.55,
+              "y1": 253.65,
+              "x2": 479.77,
+              "y2": 490.53999999999996
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.6016161982776753
+        },
+        {
+          "image_id": 11511,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.8136205077171326,
+            "box": {
+              "x1": 157.24417114257812,
+              "y1": 36.523193359375,
+              "x2": 190.71505737304688,
+              "y2": 171.87734985351562
+            }
+          },
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 139.53,
+              "y1": 32.22,
+              "x2": 189.91,
+              "y2": 172.46
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.6162944038093304
+        },
+        {
+          "image_id": 107226,
+          "prediction": {
+            "class_id": 16,
+            "class_name": "dog",
+            "label": "DOG",
+            "confidence": 0.5220679640769958,
+            "box": {
+              "x1": 0.1838226318359375,
+              "y1": 361.0150146484375,
+              "x2": 120.39894104003906,
+              "y2": 585.39208984375
+            }
+          },
+          "truth": {
+            "label": "DOG",
+            "box": {
+              "x1": 1.38,
+              "y1": 360.6,
+              "x2": 77.08,
+              "y2": 589.08
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.6225361865762701
+        },
+        {
+          "image_id": 11511,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.7643826007843018,
+            "box": {
+              "x1": 10.377944946289062,
+              "y1": 90.24526977539062,
+              "x2": 61.68683624267578,
+              "y2": 214.95867919921875
+            }
+          },
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 1.27,
+              "y1": 51.73,
+              "x2": 62.82,
+              "y2": 214.29
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.6339318160557438
+        },
+        {
+          "image_id": 25181,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.690642237663269,
+            "box": {
+              "x1": 99.04676818847656,
+              "y1": 229.3670654296875,
+              "x2": 113.83650207519531,
+              "y2": 249.2254638671875
+            }
+          },
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 97.7,
+              "y1": 228.15,
+              "x2": 110.05,
+              "y2": 248.92000000000002
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.6421017431505088
+        },
+        {
+          "image_id": 43737,
+          "prediction": {
+            "class_id": 2,
+            "class_name": "car",
+            "label": "CAR",
+            "confidence": 0.5438114404678345,
+            "box": {
+              "x1": 97.62129211425781,
+              "y1": 425.73272705078125,
+              "x2": 147.3286895751953,
+              "y2": 461.03326416015625
+            }
+          },
+          "truth": {
+            "label": "CAR",
+            "box": {
+              "x1": 99.34,
+              "y1": 426.56,
+              "x2": 168.59,
+              "y2": 461.6
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.6546886017624209
+        },
+        {
+          "image_id": 37751,
+          "prediction": {
+            "class_id": 3,
+            "class_name": "motorcycle",
+            "label": "MOTORCYCLE",
+            "confidence": 0.5560069680213928,
+            "box": {
+              "x1": 298.3892822265625,
+              "y1": 252.69677734375,
+              "x2": 326.1605224609375,
+              "y2": 313.35791015625
+            }
+          },
+          "truth": {
+            "label": "MOTORCYCLE",
+            "box": {
+              "x1": 291.18,
+              "y1": 241.63,
+              "x2": 325.97,
+              "y2": 314.49
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.6570476078471957
+        },
+        {
+          "image_id": 65350,
+          "prediction": {
+            "class_id": 2,
+            "class_name": "car",
+            "label": "CAR",
+            "confidence": 0.4239185154438019,
+            "box": {
+              "x1": 0.60986328125,
+              "y1": 0.0155487060546875,
+              "x2": 234.6403045654297,
+              "y2": 86.89109802246094
+            }
+          },
+          "truth": {
+            "label": "CAR",
+            "box": {
+              "x1": 54.03,
+              "y1": 1.13,
+              "x2": 266.57,
+              "y2": 85.67999999999999
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.6630403646467801
+        },
+        {
+          "image_id": 43737,
+          "prediction": {
+            "class_id": 2,
+            "class_name": "car",
+            "label": "CAR",
+            "confidence": 0.3944421708583832,
+            "box": {
+              "x1": 165.03582763671875,
+              "y1": 417.1337585449219,
+              "x2": 199.440673828125,
+              "y2": 441.2105407714844
+            }
+          },
+          "truth": {
+            "label": "CAR",
+            "box": {
+              "x1": 161.43,
+              "y1": 422.42,
+              "x2": 198.37,
+              "y2": 442.51
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.6634433482830441
+        }
+      ]
+    },
+    "yolo11n": {
+      "high_confidence_fp": [
+        {
+          "image_id": 11511,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.7584283351898193,
+            "box": {
+              "x1": 320.67315673828125,
+              "y1": 19.308074951171875,
+              "x2": 463.69659423828125,
+              "y2": 369.3382263183594
+            }
+          },
+          "nearest_truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 1.27,
+              "y1": 51.73,
+              "x2": 62.82,
+              "y2": 214.29
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.0,
+          "diagnostic": "NO_P0_MATCH_AT_IOU_0_5"
+        },
+        {
+          "image_id": 85376,
+          "prediction": {
+            "class_id": 2,
+            "class_name": "car",
+            "label": "CAR",
+            "confidence": 0.7572811841964722,
+            "box": {
+              "x1": 247.46246337890625,
+              "y1": 315.3592529296875,
+              "x2": 442.13592529296875,
+              "y2": 429.71514892578125
+            }
+          },
+          "nearest_truth": {
+            "label": "TRUCK",
+            "box": {
+              "x1": 241.04,
+              "y1": 315.84,
+              "x2": 442.17999999999995,
+              "y2": 432.21
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.9433290709254007,
+          "diagnostic": "CLASS_CONFUSION"
+        },
+        {
+          "image_id": 5001,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.7331822514533997,
+            "box": {
+              "x1": 43.66278076171875,
+              "y1": 84.65524291992188,
+              "x2": 204.40882873535156,
+              "y2": 352.4650573730469
+            }
+          },
+          "nearest_truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 41.08,
+              "y1": 95.68,
+              "x2": 148.11,
+              "y2": 474.05
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.47280907930833493,
+          "diagnostic": "NO_P0_MATCH_AT_IOU_0_5"
+        },
+        {
+          "image_id": 11149,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.7061623334884644,
+            "box": {
+              "x1": 0.17153620719909668,
+              "y1": 2.553689479827881,
+              "x2": 74.90391135215759,
+              "y2": 279.88247871398926
+            }
+          },
+          "nearest_truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 0.0,
+              "y1": 3.8,
+              "x2": 75.17,
+              "y2": 121.2
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.4222774426319279,
+          "diagnostic": "NO_P0_MATCH_AT_IOU_0_5"
+        },
+        {
+          "image_id": 65350,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.6392692923545837,
+            "box": {
+              "x1": 578.743896484375,
+              "y1": 38.429595947265625,
+              "x2": 639.80810546875,
+              "y2": 252.7261962890625
+            }
+          },
+          "nearest_truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 528.73,
+              "y1": 71.53,
+              "x2": 637.1600000000001,
+              "y2": 258.64
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.4644602003414506,
+          "diagnostic": "NO_P0_MATCH_AT_IOU_0_5"
+        },
+        {
+          "image_id": 107226,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.6038413643836975,
+            "box": {
+              "x1": 281.420166015625,
+              "y1": 137.76968383789062,
+              "x2": 329.6739501953125,
+              "y2": 212.71786499023438
+            }
+          },
+          "nearest_truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 267.23,
+              "y1": 137.74,
+              "x2": 331.33000000000004,
+              "y2": 325.99
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.2997087765825158,
+          "diagnostic": "NO_P0_MATCH_AT_IOU_0_5"
+        },
+        {
+          "image_id": 17029,
+          "prediction": {
+            "class_id": 2,
+            "class_name": "car",
+            "label": "CAR",
+            "confidence": 0.5669935345649719,
+            "box": {
+              "x1": 53.07513427734375,
+              "y1": 73.71539306640625,
+              "x2": 229.99264526367188,
+              "y2": 174.36785888671875
+            }
+          },
+          "nearest_truth": {
+            "label": "CAR",
+            "box": {
+              "x1": 56.09,
+              "y1": 25.89,
+              "x2": 569.5300000000001,
+              "y2": 178.33999999999997
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.22275786857054722,
+          "diagnostic": "NO_P0_MATCH_AT_IOU_0_5"
+        },
+        {
+          "image_id": 43737,
+          "prediction": {
+            "class_id": 2,
+            "class_name": "car",
+            "label": "CAR",
+            "confidence": 0.5519319772720337,
+            "box": {
+              "x1": 0.33685302734375,
+              "y1": 417.5182189941406,
+              "x2": 30.518402099609375,
+              "y2": 437.2936706542969
+            }
+          },
+          "nearest_truth": {
+            "label": "CAR",
+            "box": {
+              "x1": 0.36,
+              "y1": 415.36,
+              "x2": 17.62,
+              "y2": 441.07
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.4881053505431192,
+          "diagnostic": "NO_P0_MATCH_AT_IOU_0_5"
+        },
+        {
+          "image_id": 5001,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.5152528285980225,
+            "box": {
+              "x1": 11.288566589355469,
+              "y1": 47.244384765625,
+              "x2": 100.13017272949219,
+              "y2": 180.13250732421875
+            }
+          },
+          "nearest_truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 10.79,
+              "y1": 32.63,
+              "x2": 69.03,
+              "y2": 201.98
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.5482471525091684,
+          "diagnostic": "DUPLICATE_OR_LOCALIZATION"
+        },
+        {
+          "image_id": 17029,
+          "prediction": {
+            "class_id": 2,
+            "class_name": "car",
+            "label": "CAR",
+            "confidence": 0.5043460130691528,
+            "box": {
+              "x1": -0.011714935302734375,
+              "y1": 43.37379455566406,
+              "x2": 18.571746826171875,
+              "y2": 89.05317687988281
+            }
+          },
+          "nearest_truth": {
+            "label": "CAR",
+            "box": {
+              "x1": 0.0,
+              "y1": 44.59,
+              "x2": 21.76,
+              "y2": 88.85
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.8302941517089526,
+          "diagnostic": "DUPLICATE_OR_LOCALIZATION"
+        },
+        {
+          "image_id": 6723,
+          "prediction": {
+            "class_id": 2,
+            "class_name": "car",
+            "label": "CAR",
+            "confidence": 0.49053850769996643,
+            "box": {
+              "x1": 204.1249237060547,
+              "y1": 201.43280029296875,
+              "x2": 240.8986358642578,
+              "y2": 229.14984130859375
+            }
+          },
+          "nearest_truth": {
+            "label": "TRUCK",
+            "box": {
+              "x1": 204.9,
+              "y1": 201.04,
+              "x2": 242.33,
+              "y2": 229.29
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.9248251608057192,
+          "diagnostic": "CLASS_CONFUSION"
+        },
+        {
+          "image_id": 5001,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.48781198263168335,
+            "box": {
+              "x1": 342.6092529296875,
+              "y1": 54.366943359375,
+              "x2": 407.01318359375,
+              "y2": 159.25308227539062
+            }
+          },
+          "nearest_truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 297.02,
+              "y1": 50.13,
+              "x2": 355.41999999999996,
+              "y2": 137.36
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.09857151457239707,
+          "diagnostic": "NO_P0_MATCH_AT_IOU_0_5"
+        },
+        {
+          "image_id": 84752,
+          "prediction": {
+            "class_id": 2,
+            "class_name": "car",
+            "label": "CAR",
+            "confidence": 0.467682421207428,
+            "box": {
+              "x1": 548.4144287109375,
+              "y1": 338.4095153808594,
+              "x2": 586.49462890625,
+              "y2": 361.4507141113281
+            }
+          },
+          "nearest_truth": {
+            "label": "TRUCK",
+            "box": {
+              "x1": 549.5,
+              "y1": 339.6,
+              "x2": 588.63,
+              "y2": 363.29
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.8115695474430912,
+          "diagnostic": "CLASS_CONFUSION"
+        },
+        {
+          "image_id": 32941,
+          "prediction": {
+            "class_id": 5,
+            "class_name": "bus",
+            "label": "BUS",
+            "confidence": 0.4674229621887207,
+            "box": {
+              "x1": 264.8790283203125,
+              "y1": 168.68780517578125,
+              "x2": 302.978759765625,
+              "y2": 225.63214111328125
+            }
+          },
+          "nearest_truth": {
+            "label": "TRUCK",
+            "box": {
+              "x1": 268.42,
+              "y1": 169.64,
+              "x2": 304.51,
+              "y2": 203.17999999999998
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.5219007948121439,
+          "diagnostic": "CLASS_CONFUSION"
+        },
+        {
+          "image_id": 84752,
+          "prediction": {
+            "class_id": 2,
+            "class_name": "car",
+            "label": "CAR",
+            "confidence": 0.44419506192207336,
+            "box": {
+              "x1": 475.04522705078125,
+              "y1": 340.90020751953125,
+              "x2": 501.93475341796875,
+              "y2": 353.25872802734375
+            }
+          },
+          "nearest_truth": {
+            "label": "TRUCK",
+            "box": {
+              "x1": 475.09,
+              "y1": 337.76,
+              "x2": 504.17999999999995,
+              "y2": 354.48
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.6813215416237782,
+          "diagnostic": "CLASS_CONFUSION"
+        },
+        {
+          "image_id": 43737,
+          "prediction": {
+            "class_id": 2,
+            "class_name": "car",
+            "label": "CAR",
+            "confidence": 0.43741652369499207,
+            "box": {
+              "x1": 28.772415161132812,
+              "y1": 417.8551025390625,
+              "x2": 65.97871398925781,
+              "y2": 434.78759765625
+            }
+          },
+          "nearest_truth": {
+            "label": "CAR",
+            "box": {
+              "x1": 14.8,
+              "y1": 422.32,
+              "x2": 31.21,
+              "y2": 436.27
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.03668067751908273,
+          "diagnostic": "NO_P0_MATCH_AT_IOU_0_5"
+        },
+        {
+          "image_id": 18837,
+          "prediction": {
+            "class_id": 5,
+            "class_name": "bus",
+            "label": "BUS",
+            "confidence": 0.4343326687812805,
+            "box": {
+              "x1": 0.14277267456054688,
+              "y1": 171.50904846191406,
+              "x2": 43.46891403198242,
+              "y2": 324.6019287109375
+            }
+          },
+          "nearest_truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 17.07,
+              "y1": 235.11,
+              "x2": 34.69,
+              "y2": 262.77000000000004
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.07347728043683424,
+          "diagnostic": "NO_P0_MATCH_AT_IOU_0_5"
+        },
+        {
+          "image_id": 85376,
+          "prediction": {
+            "class_id": 2,
+            "class_name": "car",
+            "label": "CAR",
+            "confidence": 0.42896324396133423,
+            "box": {
+              "x1": 134.68988037109375,
+              "y1": 316.0704345703125,
+              "x2": 264.48358154296875,
+              "y2": 395.04522705078125
+            }
+          },
+          "nearest_truth": {
+            "label": "CAR",
+            "box": {
+              "x1": 166.17,
+              "y1": 331.72,
+              "x2": 266.46,
+              "y2": 385.78000000000003
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.5131496275977285,
+          "diagnostic": "DUPLICATE_OR_LOCALIZATION"
+        },
+        {
+          "image_id": 1000,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.4220663011074066,
+            "box": {
+              "x1": 399.2868347167969,
+              "y1": 119.78036499023438,
+              "x2": 443.9455871582031,
+              "y2": 219.24560546875
+            }
+          },
+          "nearest_truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 405.93,
+              "y1": 120.42,
+              "x2": 443.06,
+              "y2": 165.94
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.3804952845099446,
+          "diagnostic": "NO_P0_MATCH_AT_IOU_0_5"
+        },
+        {
+          "image_id": 85376,
+          "prediction": {
+            "class_id": 2,
+            "class_name": "car",
+            "label": "CAR",
+            "confidence": 0.4106655716896057,
+            "box": {
+              "x1": 206.98699951171875,
+              "y1": 325.01531982421875,
+              "x2": 281.86602783203125,
+              "y2": 349.46246337890625
+            }
+          },
+          "nearest_truth": {
+            "label": "CAR",
+            "box": {
+              "x1": 206.24,
+              "y1": 323.91,
+              "x2": 279.34000000000003,
+              "y2": 335.06
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.3787430795849387,
+          "diagnostic": "NO_P0_MATCH_AT_IOU_0_5"
+        }
+      ],
+      "priority_fn": [
+        {
+          "image_id": 5001,
+          "truth": {
+            "label": "BICYCLE",
+            "box": {
+              "x1": 500.46,
+              "y1": 159.1,
+              "x2": 545.87,
+              "y2": 258.36
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "MEDIUM",
+          "derived_context": "UNKNOWN"
+        },
+        {
+          "image_id": 65350,
+          "truth": {
+            "label": "BICYCLE",
+            "box": {
+              "x1": 286.11,
+              "y1": 23.42,
+              "x2": 347.62,
+              "y2": 85.6
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "MEDIUM",
+          "derived_context": "UNKNOWN"
+        },
+        {
+          "image_id": 65350,
+          "truth": {
+            "label": "BICYCLE",
+            "box": {
+              "x1": 596.7,
+              "y1": 0.67,
+              "x2": 640.0,
+              "y2": 97.0
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "MEDIUM",
+          "derived_context": "UNKNOWN"
+        },
+        {
+          "image_id": 70774,
+          "truth": {
+            "label": "BICYCLE",
+            "box": {
+              "x1": 261.38,
+              "y1": 173.6,
+              "x2": 506.79999999999995,
+              "y2": 223.64999999999998
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "MEDIUM",
+          "derived_context": "UNKNOWN"
+        },
+        {
+          "image_id": 70774,
+          "truth": {
+            "label": "BICYCLE",
+            "box": {
+              "x1": 263.57,
+              "y1": 152.85,
+              "x2": 465.13,
+              "y2": 181.13
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "MEDIUM",
+          "derived_context": "UNKNOWN"
+        },
+        {
+          "image_id": 70774,
+          "truth": {
+            "label": "BICYCLE",
+            "box": {
+              "x1": 280.46,
+              "y1": 206.22,
+              "x2": 503.11,
+              "y2": 277.37
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "MEDIUM",
+          "derived_context": "UNKNOWN"
+        },
+        {
+          "image_id": 76416,
+          "truth": {
+            "label": "BICYCLE",
+            "box": {
+              "x1": 84.48,
+              "y1": 283.64,
+              "x2": 113.36,
+              "y2": 308.82
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "SMALL",
+          "derived_context": "UNKNOWN"
+        },
+        {
+          "image_id": 11511,
+          "truth": {
+            "label": "MOTORCYCLE",
+            "box": {
+              "x1": 483.81,
+              "y1": 50.53,
+              "x2": 530.65,
+              "y2": 100.53
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "SMALL",
+          "derived_context": "UNKNOWN"
+        },
+        {
+          "image_id": 119516,
+          "truth": {
+            "label": "MOTORCYCLE",
+            "box": {
+              "x1": 528.33,
+              "y1": 240.15,
+              "x2": 576.6700000000001,
+              "y2": 276.91
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "SMALL",
+          "derived_context": "UNKNOWN"
+        },
+        {
+          "image_id": 13348,
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 349.82,
+              "y1": 270.26,
+              "x2": 356.12,
+              "y2": 291.03
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "TINY",
+          "derived_context": "TINY_OBJECT"
+        },
+        {
+          "image_id": 13348,
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 17.11,
+              "y1": 280.38,
+              "x2": 26.229999999999997,
+              "y2": 293.35
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "TINY",
+          "derived_context": "TINY_OBJECT"
+        },
+        {
+          "image_id": 13348,
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 117.32,
+              "y1": 270.57,
+              "x2": 129.10999999999999,
+              "y2": 289.8
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "TINY",
+          "derived_context": "TINY_OBJECT"
+        },
+        {
+          "image_id": 13348,
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 173.15,
+              "y1": 240.08,
+              "x2": 180.11,
+              "y2": 251.56
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "TINY",
+          "derived_context": "TINY_OBJECT"
+        },
+        {
+          "image_id": 13348,
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 124.96,
+              "y1": 250.69,
+              "x2": 129.07,
+              "y2": 256.32
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "TINY",
+          "derived_context": "TINY_OBJECT"
+        },
+        {
+          "image_id": 13348,
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 148.94,
+              "y1": 244.69,
+              "x2": 160.07,
+              "y2": 255.24
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "TINY",
+          "derived_context": "TINY_OBJECT"
+        },
+        {
+          "image_id": 25181,
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 104.43,
+              "y1": 231.09,
+              "x2": 109.21000000000001,
+              "y2": 240.08
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "TINY",
+          "derived_context": "TINY_OBJECT"
+        },
+        {
+          "image_id": 32941,
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 386.69,
+              "y1": 191.06,
+              "x2": 392.93,
+              "y2": 210.03
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "TINY",
+          "derived_context": "TINY_OBJECT"
+        },
+        {
+          "image_id": 32941,
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 369.43,
+              "y1": 191.25,
+              "x2": 375.79,
+              "y2": 202.13
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "TINY",
+          "derived_context": "TINY_OBJECT"
+        },
+        {
+          "image_id": 76416,
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 83.7,
+              "y1": 268.04,
+              "x2": 91.15,
+              "y2": 283.28000000000003
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "TINY",
+          "derived_context": "TINY_OBJECT"
+        },
+        {
+          "image_id": 885,
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 434.7,
+              "y1": 0.33,
+              "x2": 467.49,
+              "y2": 13.0
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "SMALL",
+          "derived_context": "UNKNOWN"
+        }
+      ],
+      "low_iou": [
+        {
+          "image_id": 107226,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.25351306796073914,
+            "box": {
+              "x1": 216.5128173828125,
+              "y1": 129.26480102539062,
+              "x2": 307.51641845703125,
+              "y2": 358.66162109375
+            }
+          },
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 137.28,
+              "y1": 131.14,
+              "x2": 308.45,
+              "y2": 342.29999999999995
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.5083161756867058
+        },
+        {
+          "image_id": 872,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.5078855156898499,
+            "box": {
+              "x1": 286.67376708984375,
+              "y1": 99.89964294433594,
+              "x2": 435.73138427734375,
+              "y2": 556.764892578125
+            }
+          },
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 145.26,
+              "y1": 100.67,
+              "x2": 437.21,
+              "y2": 558.02
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.5087200980227065
+        },
+        {
+          "image_id": 6723,
+          "prediction": {
+            "class_id": 2,
+            "class_name": "car",
+            "label": "CAR",
+            "confidence": 0.31708046793937683,
+            "box": {
+              "x1": 333.6562805175781,
+              "y1": 201.77532958984375,
+              "x2": 347.7708435058594,
+              "y2": 212.67120361328125
+            }
+          },
+          "truth": {
+            "label": "CAR",
+            "box": {
+              "x1": 332.46,
+              "y1": 200.85,
+              "x2": 345.04999999999995,
+              "y2": 209.91
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.5291044592986044
+        },
+        {
+          "image_id": 37751,
+          "prediction": {
+            "class_id": 3,
+            "class_name": "motorcycle",
+            "label": "MOTORCYCLE",
+            "confidence": 0.7639685273170471,
+            "box": {
+              "x1": 249.7655792236328,
+              "y1": 373.7542724609375,
+              "x2": 528.0737915039062,
+              "y2": 477.2808837890625
+            }
+          },
+          "truth": {
+            "label": "MOTORCYCLE",
+            "box": {
+              "x1": 364.72,
+              "y1": 370.2,
+              "x2": 539.64,
+              "y2": 480.0
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.5436536196263314
+        },
+        {
+          "image_id": 107226,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.34334442019462585,
+            "box": {
+              "x1": 12.82012939453125,
+              "y1": 149.424072265625,
+              "x2": 78.00494384765625,
+              "y2": 220.24542236328125
+            }
+          },
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 35.4,
+              "y1": 148.56,
+              "x2": 83.28999999999999,
+              "y2": 215.45
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.5618412169797043
+        },
+        {
+          "image_id": 15517,
+          "prediction": {
+            "class_id": 5,
+            "class_name": "bus",
+            "label": "BUS",
+            "confidence": 0.5797861218452454,
+            "box": {
+              "x1": 374.39190673828125,
+              "y1": 282.91748046875,
+              "x2": 517.6883544921875,
+              "y2": 312.19952392578125
+            }
+          },
+          "truth": {
+            "label": "BUS",
+            "box": {
+              "x1": 433.22,
+              "y1": 283.28,
+              "x2": 515.88,
+              "y2": 312.64
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.5648036821259643
+        },
+        {
+          "image_id": 5001,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.3859041631221771,
+            "box": {
+              "x1": 126.49404907226562,
+              "y1": 82.04669189453125,
+              "x2": 214.32656860351562,
+              "y2": 299.9061279296875
+            }
+          },
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 119.23,
+              "y1": 81.44,
+              "x2": 188.49,
+              "y2": 269.61
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.5661331128312311
+        },
+        {
+          "image_id": 107226,
+          "prediction": {
+            "class_id": 1,
+            "class_name": "bicycle",
+            "label": "BICYCLE",
+            "confidence": 0.31489697098731995,
+            "box": {
+              "x1": 323.2493896484375,
+              "y1": 254.16323852539062,
+              "x2": 480.00927734375,
+              "y2": 492.7078552246094
+            }
+          },
+          "truth": {
+            "label": "BICYCLE",
+            "box": {
+              "x1": 386.55,
+              "y1": 253.65,
+              "x2": 479.77,
+              "y2": 490.53999999999996
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.588510220436939
+        },
+        {
+          "image_id": 17029,
+          "prediction": {
+            "class_id": 2,
+            "class_name": "car",
+            "label": "CAR",
+            "confidence": 0.598256528377533,
+            "box": {
+              "x1": 0.003345489501953125,
+              "y1": 55.7447395324707,
+              "x2": 17.48519515991211,
+              "y2": 89.08949279785156
+            }
+          },
+          "truth": {
+            "label": "CAR",
+            "box": {
+              "x1": 0.0,
+              "y1": 44.59,
+              "x2": 21.76,
+              "y2": 88.85
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.5983154494179921
+        },
+        {
+          "image_id": 11511,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.7806100845336914,
+            "box": {
+              "x1": 156.75909423828125,
+              "y1": 36.19231414794922,
+              "x2": 191.459228515625,
+              "y2": 170.7744140625
+            }
+          },
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 139.53,
+              "y1": 32.22,
+              "x2": 189.91,
+              "y2": 172.46
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.6133691982228813
+        },
+        {
+          "image_id": 84170,
+          "prediction": {
+            "class_id": 2,
+            "class_name": "car",
+            "label": "CAR",
+            "confidence": 0.2531687915325165,
+            "box": {
+              "x1": 0.3300971984863281,
+              "y1": 246.1671142578125,
+              "x2": 44.254817962646484,
+              "y2": 274.4599609375
+            }
+          },
+          "truth": {
+            "label": "CAR",
+            "box": {
+              "x1": 0.73,
+              "y1": 244.53,
+              "x2": 45.839999999999996,
+              "y2": 288.59000000000003
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.6160713568231468
+        },
+        {
+          "image_id": 11511,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.5507842302322388,
+            "box": {
+              "x1": 8.578865051269531,
+              "y1": 89.76275634765625,
+              "x2": 59.608497619628906,
+              "y2": 215.84716796875
+            }
+          },
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 1.27,
+              "y1": 51.73,
+              "x2": 62.82,
+              "y2": 214.29
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.6301002249378043
+        },
+        {
+          "image_id": 107226,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.552563488483429,
+            "box": {
+              "x1": 322.996337890625,
+              "y1": 138.0833740234375,
+              "x2": 358.7613525390625,
+              "y2": 212.7572021484375
+            }
+          },
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 326.27,
+              "y1": 133.53,
+              "x2": 350.04999999999995,
+              "y2": 212.71
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.6385849892127397
+        },
+        {
+          "image_id": 43737,
+          "prediction": {
+            "class_id": 2,
+            "class_name": "car",
+            "label": "CAR",
+            "confidence": 0.6438319683074951,
+            "box": {
+              "x1": 97.499755859375,
+              "y1": 427.33367919921875,
+              "x2": 146.6943359375,
+              "y2": 461.14239501953125
+            }
+          },
+          "truth": {
+            "label": "CAR",
+            "box": {
+              "x1": 99.34,
+              "y1": 426.56,
+              "x2": 168.59,
+              "y2": 461.6
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.6432940654410515
+        },
+        {
+          "image_id": 6723,
+          "prediction": {
+            "class_id": 2,
+            "class_name": "car",
+            "label": "CAR",
+            "confidence": 0.5559852719306946,
+            "box": {
+              "x1": 171.34564208984375,
+              "y1": 201.61968994140625,
+              "x2": 196.5826416015625,
+              "y2": 223.04058837890625
+            }
+          },
+          "truth": {
+            "label": "CAR",
+            "box": {
+              "x1": 171.76,
+              "y1": 203.56,
+              "x2": 207.14,
+              "y2": 222.96
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.6460310208014809
+        },
+        {
+          "image_id": 1000,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.6478561162948608,
+            "box": {
+              "x1": 436.73974609375,
+              "y1": 108.06307983398438,
+              "x2": 498.01373291015625,
+              "y2": 220.82772827148438
+            }
+          },
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 410.75,
+              "y1": 107.03,
+              "x2": 498.84000000000003,
+              "y2": 228.19
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.647385897211286
+        },
+        {
+          "image_id": 76416,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.37013721466064453,
+            "box": {
+              "x1": 72.5191650390625,
+              "y1": 269.85552978515625,
+              "x2": 84.393798828125,
+              "y2": 303.365234375
+            }
+          },
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 71.6,
+              "y1": 269.55,
+              "x2": 89.16999999999999,
+              "y2": 304.52
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.6476247392212462
+        },
+        {
+          "image_id": 43737,
+          "prediction": {
+            "class_id": 2,
+            "class_name": "car",
+            "label": "CAR",
+            "confidence": 0.25902843475341797,
+            "box": {
+              "x1": 160.23748779296875,
+              "y1": 417.53692626953125,
+              "x2": 203.99627685546875,
+              "y2": 443.57562255859375
+            }
+          },
+          "truth": {
+            "label": "CAR",
+            "box": {
+              "x1": 161.43,
+              "y1": 422.42,
+              "x2": 198.37,
+              "y2": 442.51
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.6513168240520497
+        },
+        {
+          "image_id": 37751,
+          "prediction": {
+            "class_id": 3,
+            "class_name": "motorcycle",
+            "label": "MOTORCYCLE",
+            "confidence": 0.45752134919166565,
+            "box": {
+              "x1": 287.10772705078125,
+              "y1": 239.20370483398438,
+              "x2": 338.1068115234375,
+              "y2": 313.8357849121094
+            }
+          },
+          "truth": {
+            "label": "MOTORCYCLE",
+            "box": {
+              "x1": 291.18,
+              "y1": 241.63,
+              "x2": 325.97,
+              "y2": 314.49
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.6560685714737311
+        },
+        {
+          "image_id": 18837,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.5899210572242737,
+            "box": {
+              "x1": 289.7590637207031,
+              "y1": 26.565040588378906,
+              "x2": 358.9391784667969,
+              "y2": 122.37136840820312
+            }
+          },
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 294.3,
+              "y1": 21.62,
+              "x2": 342.47,
+              "y2": 123.13000000000001
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.668583573785579
+        }
+      ]
+    },
+    "rtdetr-v2-r18": {
+      "high_confidence_fp": [
+        {
+          "image_id": 107226,
+          "prediction": {
+            "class_id": 16,
+            "class_name": "dog",
+            "label": "DOG",
+            "confidence": 0.9350058436393738,
+            "box": {
+              "x1": -0.07904291152954102,
+              "y1": 280.0942687988281,
+              "x2": 157.78939819335938,
+              "y2": 590.1842651367188
+            }
+          },
+          "nearest_truth": {
+            "label": "DOG",
+            "box": {
+              "x1": 57.81,
+              "y1": 283.53,
+              "x2": 156.9,
+              "y2": 512.0
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.4624618729452661,
+          "diagnostic": "NO_P0_MATCH_AT_IOU_0_5"
+        },
+        {
+          "image_id": 85376,
+          "prediction": {
+            "class_id": 2,
+            "class_name": "car",
+            "label": "CAR",
+            "confidence": 0.92813640832901,
+            "box": {
+              "x1": 247.0002899169922,
+              "y1": 314.53802490234375,
+              "x2": 444.01953125,
+              "y2": 429.55743408203125
+            }
+          },
+          "nearest_truth": {
+            "label": "TRUCK",
+            "box": {
+              "x1": 241.04,
+              "y1": 315.84,
+              "x2": 442.17999999999995,
+              "y2": 432.21
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.9297502755039655,
+          "diagnostic": "CLASS_CONFUSION"
+        },
+        {
+          "image_id": 11511,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.9169718623161316,
+            "box": {
+              "x1": 317.9735107421875,
+              "y1": 19.79446029663086,
+              "x2": 464.2084045410156,
+              "y2": 369.1075439453125
+            }
+          },
+          "nearest_truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 1.27,
+              "y1": 51.73,
+              "x2": 62.82,
+              "y2": 214.29
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.0,
+          "diagnostic": "NO_P0_MATCH_AT_IOU_0_5"
+        },
+        {
+          "image_id": 6723,
+          "prediction": {
+            "class_id": 2,
+            "class_name": "car",
+            "label": "CAR",
+            "confidence": 0.9091523885726929,
+            "box": {
+              "x1": 202.980224609375,
+              "y1": 201.02444458007812,
+              "x2": 241.8641357421875,
+              "y2": 228.94711303710938
+            }
+          },
+          "nearest_truth": {
+            "label": "TRUCK",
+            "box": {
+              "x1": 204.9,
+              "y1": 201.04,
+              "x2": 242.33,
+              "y2": 229.29
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.928016344043513,
+          "diagnostic": "CLASS_CONFUSION"
+        },
+        {
+          "image_id": 5001,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.8860577344894409,
+            "box": {
+              "x1": 41.80426788330078,
+              "y1": 89.26829528808594,
+              "x2": 216.6661834716797,
+              "y2": 353.7934875488281
+            }
+          },
+          "nearest_truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 41.08,
+              "y1": 95.68,
+              "x2": 148.11,
+              "y2": 474.05
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.46260967445261286,
+          "diagnostic": "NO_P0_MATCH_AT_IOU_0_5"
+        },
+        {
+          "image_id": 11511,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.8608128428459167,
+            "box": {
+              "x1": 223.3226776123047,
+              "y1": 26.65689468383789,
+              "x2": 399.53533935546875,
+              "y2": 357.4628601074219
+            }
+          },
+          "nearest_truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 1.27,
+              "y1": 51.73,
+              "x2": 62.82,
+              "y2": 214.29
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.0,
+          "diagnostic": "NO_P0_MATCH_AT_IOU_0_5"
+        },
+        {
+          "image_id": 84752,
+          "prediction": {
+            "class_id": 2,
+            "class_name": "car",
+            "label": "CAR",
+            "confidence": 0.8462385535240173,
+            "box": {
+              "x1": 550.1511840820312,
+              "y1": 339.4949951171875,
+              "x2": 587.8519897460938,
+              "y2": 361.7524108886719
+            }
+          },
+          "nearest_truth": {
+            "label": "TRUCK",
+            "box": {
+              "x1": 549.5,
+              "y1": 339.6,
+              "x2": 588.63,
+              "y2": 363.29
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.8971105984930018,
+          "diagnostic": "CLASS_CONFUSION"
+        },
+        {
+          "image_id": 76547,
+          "prediction": {
+            "class_id": 1,
+            "class_name": "bicycle",
+            "label": "BICYCLE",
+            "confidence": 0.8363613486289978,
+            "box": {
+              "x1": 77.99974060058594,
+              "y1": 274.85205078125,
+              "x2": 194.14724731445312,
+              "y2": 478.232177734375
+            }
+          },
+          "nearest_truth": {
+            "label": "BICYCLE",
+            "box": {
+              "x1": 0.0,
+              "y1": 234.64,
+              "x2": 196.74,
+              "y2": 478.76
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.49183833677113337,
+          "diagnostic": "NO_P0_MATCH_AT_IOU_0_5"
+        },
+        {
+          "image_id": 85376,
+          "prediction": {
+            "class_id": 2,
+            "class_name": "car",
+            "label": "CAR",
+            "confidence": 0.8283952474594116,
+            "box": {
+              "x1": 419.4821472167969,
+              "y1": 323.27423095703125,
+              "x2": 479.92132568359375,
+              "y2": 421.44903564453125
+            }
+          },
+          "nearest_truth": {
+            "label": "TRUCK",
+            "box": {
+              "x1": 423.28,
+              "y1": 319.8,
+              "x2": 480.0,
+              "y2": 415.76
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.8534650499555059,
+          "diagnostic": "CLASS_CONFUSION"
+        },
+        {
+          "image_id": 5001,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.8236103653907776,
+            "box": {
+              "x1": 342.8469543457031,
+              "y1": 54.24002456665039,
+              "x2": 405.2505798339844,
+              "y2": 160.23959350585938
+            }
+          },
+          "nearest_truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 297.02,
+              "y1": 50.13,
+              "x2": 355.41999999999996,
+              "y2": 137.36
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.0980006814203004,
+          "diagnostic": "NO_P0_MATCH_AT_IOU_0_5"
+        },
+        {
+          "image_id": 119516,
+          "prediction": {
+            "class_id": 5,
+            "class_name": "bus",
+            "label": "BUS",
+            "confidence": 0.8088127374649048,
+            "box": {
+              "x1": 182.51968383789062,
+              "y1": 205.4120635986328,
+              "x2": 259.4974365234375,
+              "y2": 235.9109649658203
+            }
+          },
+          "nearest_truth": {
+            "label": "MOTORCYCLE",
+            "box": {
+              "x1": 528.33,
+              "y1": 240.15,
+              "x2": 576.6700000000001,
+              "y2": 276.91
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.0,
+          "diagnostic": "NO_P0_MATCH_AT_IOU_0_5"
+        },
+        {
+          "image_id": 107226,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.7999804019927979,
+            "box": {
+              "x1": 281.24957275390625,
+              "y1": 136.03494262695312,
+              "x2": 332.5196838378906,
+              "y2": 215.24957275390625
+            }
+          },
+          "nearest_truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 267.23,
+              "y1": 137.74,
+              "x2": 331.33000000000004,
+              "y2": 325.99
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.3169662080071692,
+          "diagnostic": "NO_P0_MATCH_AT_IOU_0_5"
+        },
+        {
+          "image_id": 85376,
+          "prediction": {
+            "class_id": 2,
+            "class_name": "car",
+            "label": "CAR",
+            "confidence": 0.7898333072662354,
+            "box": {
+              "x1": 205.81663513183594,
+              "y1": 324.6656799316406,
+              "x2": 280.4111328125,
+              "y2": 350.0533447265625
+            }
+          },
+          "nearest_truth": {
+            "label": "CAR",
+            "box": {
+              "x1": 206.24,
+              "y1": 323.91,
+              "x2": 279.34000000000003,
+              "y2": 335.06
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.38984960535736496,
+          "diagnostic": "NO_P0_MATCH_AT_IOU_0_5"
+        },
+        {
+          "image_id": 32941,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.776677668094635,
+            "box": {
+              "x1": 51.9377326965332,
+              "y1": 191.6040802001953,
+              "x2": 62.56659698486328,
+              "y2": 226.18045043945312
+            }
+          },
+          "nearest_truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 369.43,
+              "y1": 191.25,
+              "x2": 375.79,
+              "y2": 202.13
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.0,
+          "diagnostic": "NO_P0_MATCH_AT_IOU_0_5"
+        },
+        {
+          "image_id": 119516,
+          "prediction": {
+            "class_id": 2,
+            "class_name": "car",
+            "label": "CAR",
+            "confidence": 0.7551887631416321,
+            "box": {
+              "x1": 0.025904178619384766,
+              "y1": 217.84901428222656,
+              "x2": 51.88389587402344,
+              "y2": 240.28805541992188
+            }
+          },
+          "nearest_truth": {
+            "label": "MOTORCYCLE",
+            "box": {
+              "x1": 528.33,
+              "y1": 240.15,
+              "x2": 576.6700000000001,
+              "y2": 276.91
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.0,
+          "diagnostic": "NO_P0_MATCH_AT_IOU_0_5"
+        },
+        {
+          "image_id": 6723,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.7394667267799377,
+            "box": {
+              "x1": 103.7887954711914,
+              "y1": 196.87779235839844,
+              "x2": 110.52603149414062,
+              "y2": 218.22955322265625
+            }
+          },
+          "nearest_truth": {
+            "label": "TRUCK",
+            "box": {
+              "x1": 204.9,
+              "y1": 201.04,
+              "x2": 242.33,
+              "y2": 229.29
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.0,
+          "diagnostic": "NO_P0_MATCH_AT_IOU_0_5"
+        },
+        {
+          "image_id": 18837,
+          "prediction": {
+            "class_id": 5,
+            "class_name": "bus",
+            "label": "BUS",
+            "confidence": 0.7337055802345276,
+            "box": {
+              "x1": 0.17909765243530273,
+              "y1": 172.53018188476562,
+              "x2": 44.62256622314453,
+              "y2": 323.5701599121094
+            }
+          },
+          "nearest_truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 17.07,
+              "y1": 235.11,
+              "x2": 34.69,
+              "y2": 262.77000000000004
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.07260361082196394,
+          "diagnostic": "NO_P0_MATCH_AT_IOU_0_5"
+        },
+        {
+          "image_id": 32941,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.7266091108322144,
+            "box": {
+              "x1": 408.94122314453125,
+              "y1": 189.09243774414062,
+              "x2": 416.4212951660156,
+              "y2": 219.4984130859375
+            }
+          },
+          "nearest_truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 369.43,
+              "y1": 191.25,
+              "x2": 375.79,
+              "y2": 202.13
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.0,
+          "diagnostic": "NO_P0_MATCH_AT_IOU_0_5"
+        },
+        {
+          "image_id": 1000,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.7265002727508545,
+            "box": {
+              "x1": 351.3487548828125,
+              "y1": 122.29674530029297,
+              "x2": 403.55389404296875,
+              "y2": 208.84291076660156
+            }
+          },
+          "nearest_truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 349.49,
+              "y1": 118.71,
+              "x2": 402.13,
+              "y2": 159.84
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.3991197734077662,
+          "diagnostic": "NO_P0_MATCH_AT_IOU_0_5"
+        },
+        {
+          "image_id": 119516,
+          "prediction": {
+            "class_id": 1,
+            "class_name": "bicycle",
+            "label": "BICYCLE",
+            "confidence": 0.691779375076294,
+            "box": {
+              "x1": 539.6118774414062,
+              "y1": 242.128173828125,
+              "x2": 556.5755615234375,
+              "y2": 276.6004333496094
+            }
+          },
+          "nearest_truth": {
+            "label": "MOTORCYCLE",
+            "box": {
+              "x1": 528.33,
+              "y1": 240.15,
+              "x2": 576.6700000000001,
+              "y2": 276.91
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.3290847655302136,
+          "diagnostic": "NO_P0_MATCH_AT_IOU_0_5"
+        }
+      ],
+      "priority_fn": [
+        {
+          "image_id": 5001,
+          "truth": {
+            "label": "BICYCLE",
+            "box": {
+              "x1": 500.46,
+              "y1": 159.1,
+              "x2": 545.87,
+              "y2": 258.36
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "MEDIUM",
+          "derived_context": "UNKNOWN"
+        },
+        {
+          "image_id": 65350,
+          "truth": {
+            "label": "BICYCLE",
+            "box": {
+              "x1": 286.11,
+              "y1": 23.42,
+              "x2": 347.62,
+              "y2": 85.6
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "MEDIUM",
+          "derived_context": "UNKNOWN"
+        },
+        {
+          "image_id": 70774,
+          "truth": {
+            "label": "BICYCLE",
+            "box": {
+              "x1": 263.57,
+              "y1": 152.85,
+              "x2": 465.13,
+              "y2": 181.13
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "MEDIUM",
+          "derived_context": "UNKNOWN"
+        },
+        {
+          "image_id": 11149,
+          "truth": {
+            "label": "MOTORCYCLE",
+            "box": {
+              "x1": 0.0,
+              "y1": 68.83,
+              "x2": 136.82,
+              "y2": 350.93
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "LARGE",
+          "derived_context": "UNKNOWN"
+        },
+        {
+          "image_id": 11511,
+          "truth": {
+            "label": "MOTORCYCLE",
+            "box": {
+              "x1": 483.81,
+              "y1": 50.53,
+              "x2": 530.65,
+              "y2": 100.53
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "SMALL",
+          "derived_context": "UNKNOWN"
+        },
+        {
+          "image_id": 37751,
+          "truth": {
+            "label": "MOTORCYCLE",
+            "box": {
+              "x1": 291.18,
+              "y1": 241.63,
+              "x2": 325.97,
+              "y2": 314.49
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "SMALL",
+          "derived_context": "UNKNOWN"
+        },
+        {
+          "image_id": 37751,
+          "truth": {
+            "label": "MOTORCYCLE",
+            "box": {
+              "x1": 364.72,
+              "y1": 370.2,
+              "x2": 539.64,
+              "y2": 480.0
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "MEDIUM",
+          "derived_context": "UNKNOWN"
+        },
+        {
+          "image_id": 70774,
+          "truth": {
+            "label": "MOTORCYCLE",
+            "box": {
+              "x1": 80.22,
+              "y1": 154.72,
+              "x2": 425.0,
+              "y2": 383.93
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "LARGE",
+          "derived_context": "UNKNOWN"
+        },
+        {
+          "image_id": 85376,
+          "truth": {
+            "label": "MOTORCYCLE",
+            "box": {
+              "x1": 14.38,
+              "y1": 413.18,
+              "x2": 345.85,
+              "y2": 625.46
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "LARGE",
+          "derived_context": "UNKNOWN"
+        },
+        {
+          "image_id": 119516,
+          "truth": {
+            "label": "MOTORCYCLE",
+            "box": {
+              "x1": 528.33,
+              "y1": 240.15,
+              "x2": 576.6700000000001,
+              "y2": 276.91
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "SMALL",
+          "derived_context": "UNKNOWN"
+        },
+        {
+          "image_id": 13348,
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 117.32,
+              "y1": 270.57,
+              "x2": 129.10999999999999,
+              "y2": 289.8
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "TINY",
+          "derived_context": "TINY_OBJECT"
+        },
+        {
+          "image_id": 13348,
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 124.96,
+              "y1": 250.69,
+              "x2": 129.07,
+              "y2": 256.32
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "TINY",
+          "derived_context": "TINY_OBJECT"
+        },
+        {
+          "image_id": 13348,
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 148.94,
+              "y1": 244.69,
+              "x2": 160.07,
+              "y2": 255.24
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "TINY",
+          "derived_context": "TINY_OBJECT"
+        },
+        {
+          "image_id": 25181,
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 104.43,
+              "y1": 231.09,
+              "x2": 109.21000000000001,
+              "y2": 240.08
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "TINY",
+          "derived_context": "TINY_OBJECT"
+        },
+        {
+          "image_id": 5001,
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 41.08,
+              "y1": 95.68,
+              "x2": 148.11,
+              "y2": 474.05
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "LARGE",
+          "derived_context": "UNKNOWN"
+        },
+        {
+          "image_id": 76416,
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 470.14,
+              "y1": 264.94,
+              "x2": 510.07,
+              "y2": 306.58
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "SMALL",
+          "derived_context": "UNKNOWN"
+        },
+        {
+          "image_id": 8762,
+          "truth": {
+            "label": "CAR",
+            "box": {
+              "x1": 109.05,
+              "y1": 285.07,
+              "x2": 122.34,
+              "y2": 292.29
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "TINY",
+          "derived_context": "TINY_OBJECT"
+        },
+        {
+          "image_id": 6723,
+          "truth": {
+            "label": "TRUCK",
+            "box": {
+              "x1": 204.9,
+              "y1": 201.04,
+              "x2": 242.33,
+              "y2": 229.29
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "SMALL",
+          "derived_context": "UNKNOWN"
+        },
+        {
+          "image_id": 13348,
+          "truth": {
+            "label": "TRUCK",
+            "box": {
+              "x1": 81.33,
+              "y1": 255.4,
+              "x2": 115.03999999999999,
+              "y2": 273.22
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "SMALL",
+          "derived_context": "UNKNOWN"
+        },
+        {
+          "image_id": 57149,
+          "truth": {
+            "label": "BUS",
+            "box": {
+              "x1": 323.92,
+              "y1": 234.28,
+              "x2": 408.27,
+              "y2": 272.25
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "size_bucket": "MEDIUM",
+          "derived_context": "UNKNOWN"
+        }
+      ],
+      "low_iou": [
+        {
+          "image_id": 32941,
+          "prediction": {
+            "class_id": 2,
+            "class_name": "car",
+            "label": "CAR",
+            "confidence": 0.6768129467964172,
+            "box": {
+              "x1": 302.80560302734375,
+              "y1": 190.03335571289062,
+              "x2": 316.0950012207031,
+              "y2": 206.14218139648438
+            }
+          },
+          "truth": {
+            "label": "CAR",
+            "box": {
+              "x1": 302.93,
+              "y1": 197.07,
+              "x2": 314.97,
+              "y2": 206.44
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.5018280450418897
+        },
+        {
+          "image_id": 15517,
+          "prediction": {
+            "class_id": 5,
+            "class_name": "bus",
+            "label": "BUS",
+            "confidence": 0.32948264479637146,
+            "box": {
+              "x1": 145.07630920410156,
+              "y1": 271.4689025878906,
+              "x2": 249.39694213867188,
+              "y2": 289.3987121582031
+            }
+          },
+          "truth": {
+            "label": "BUS",
+            "box": {
+              "x1": 145.82,
+              "y1": 274.98,
+              "x2": 236.8,
+              "y2": 297.54
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.5023907942870173
+        },
+        {
+          "image_id": 15517,
+          "prediction": {
+            "class_id": 5,
+            "class_name": "bus",
+            "label": "BUS",
+            "confidence": 0.3059786856174469,
+            "box": {
+              "x1": 175.59527587890625,
+              "y1": 264.95379638671875,
+              "x2": 257.90570068359375,
+              "y2": 278.4376220703125
+            }
+          },
+          "truth": {
+            "label": "BUS",
+            "box": {
+              "x1": 182.43,
+              "y1": 270.25,
+              "x2": 254.03,
+              "y2": 278.13
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.5083598785830425
+        },
+        {
+          "image_id": 872,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.9037788510322571,
+            "box": {
+              "x1": 283.7244873046875,
+              "y1": 100.69441223144531,
+              "x2": 435.0994567871094,
+              "y2": 556.5582275390625
+            }
+          },
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 145.26,
+              "y1": 100.67,
+              "x2": 437.21,
+              "y2": 558.02
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.5168113305615029
+        },
+        {
+          "image_id": 5001,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.6190107464790344,
+            "box": {
+              "x1": 236.0631561279297,
+              "y1": 61.9312629699707,
+              "x2": 296.5113830566406,
+              "y2": 177.15919494628906
+            }
+          },
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 208.12,
+              "y1": 61.3,
+              "x2": 297.51,
+              "y2": 210.0
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.524012236310963
+        },
+        {
+          "image_id": 65350,
+          "prediction": {
+            "class_id": 2,
+            "class_name": "car",
+            "label": "CAR",
+            "confidence": 0.4819715619087219,
+            "box": {
+              "x1": -0.12795448303222656,
+              "y1": 2.926815986633301,
+              "x2": 95.65646362304688,
+              "y2": 79.75182342529297
+            }
+          },
+          "truth": {
+            "label": "CAR",
+            "box": {
+              "x1": 0.48,
+              "y1": 0.21,
+              "x2": 63.98,
+              "y2": 66.61999999999999
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.537037998403188
+        },
+        {
+          "image_id": 885,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.39486947655677795,
+            "box": {
+              "x1": 17.23326301574707,
+              "y1": 0.2180832326412201,
+              "x2": 56.26649475097656,
+              "y2": 8.182624816894531
+            }
+          },
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 1.11,
+              "y1": 0.56,
+              "x2": 60.05,
+              "y2": 9.450000000000001
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.5537373943428155
+        },
+        {
+          "image_id": 76416,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.6884512901306152,
+            "box": {
+              "x1": 72.15901947021484,
+              "y1": 270.0483093261719,
+              "x2": 83.07105255126953,
+              "y2": 301.3499755859375
+            }
+          },
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 71.6,
+              "y1": 269.55,
+              "x2": 89.16999999999999,
+              "y2": 304.52
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.5559116004932373
+        },
+        {
+          "image_id": 65350,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.8211113810539246,
+            "box": {
+              "x1": 571.3482666015625,
+              "y1": 65.06038665771484,
+              "x2": 638.9819946289062,
+              "y2": 249.40846252441406
+            }
+          },
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 528.73,
+              "y1": 71.53,
+              "x2": 637.1600000000001,
+              "y2": 258.64
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.5561279215622349
+        },
+        {
+          "image_id": 70774,
+          "prediction": {
+            "class_id": 1,
+            "class_name": "bicycle",
+            "label": "BICYCLE",
+            "confidence": 0.35279884934425354,
+            "box": {
+              "x1": 262.49749755859375,
+              "y1": 165.2045135498047,
+              "x2": 508.22412109375,
+              "y2": 275.75048828125
+            }
+          },
+          "truth": {
+            "label": "BICYCLE",
+            "box": {
+              "x1": 280.46,
+              "y1": 206.22,
+              "x2": 503.11,
+              "y2": 277.37
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.5624394880423481
+        },
+        {
+          "image_id": 15517,
+          "prediction": {
+            "class_id": 5,
+            "class_name": "bus",
+            "label": "BUS",
+            "confidence": 0.4473164677619934,
+            "box": {
+              "x1": 328.643310546875,
+              "y1": 257.0923156738281,
+              "x2": 402.47271728515625,
+              "y2": 279.8688049316406
+            }
+          },
+          "truth": {
+            "label": "BUS",
+            "box": {
+              "x1": 338.57,
+              "y1": 263.45,
+              "x2": 403.06,
+              "y2": 282.53
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.5632301105058136
+        },
+        {
+          "image_id": 84170,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.37035220861434937,
+            "box": {
+              "x1": 326.44818115234375,
+              "y1": 228.03697204589844,
+              "x2": 357.5347595214844,
+              "y2": 268.23480224609375
+            }
+          },
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 336.68,
+              "y1": 227.7,
+              "x2": 355.49,
+              "y2": 265.69
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.5639178646438572
+        },
+        {
+          "image_id": 11511,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.8874614834785461,
+            "box": {
+              "x1": 159.93093872070312,
+              "y1": 35.234928131103516,
+              "x2": 191.01333618164062,
+              "y2": 172.03680419921875
+            }
+          },
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 139.53,
+              "y1": 32.22,
+              "x2": 189.91,
+              "y2": 172.46
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.5683288946219891
+        },
+        {
+          "image_id": 885,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.6394408345222473,
+            "box": {
+              "x1": 260.7384948730469,
+              "y1": -0.08313947170972824,
+              "x2": 332.07232666015625,
+              "y2": 12.360477447509766
+            }
+          },
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 287.39,
+              "y1": 0.19,
+              "x2": 332.03999999999996,
+              "y2": 11.65
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.5764529881678052
+        },
+        {
+          "image_id": 5001,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.2951039671897888,
+            "box": {
+              "x1": 129.5118408203125,
+              "y1": 81.75748443603516,
+              "x2": 215.13522338867188,
+              "y2": 257.3544616699219
+            }
+          },
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 119.23,
+              "y1": 81.44,
+              "x2": 188.49,
+              "y2": 269.61
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.5847275024891408
+        },
+        {
+          "image_id": 13348,
+          "prediction": {
+            "class_id": 7,
+            "class_name": "truck",
+            "label": "TRUCK",
+            "confidence": 0.6592528820037842,
+            "box": {
+              "x1": 2.599046230316162,
+              "y1": 287.91448974609375,
+              "x2": 40.52489471435547,
+              "y2": 308.8086853027344
+            }
+          },
+          "truth": {
+            "label": "TRUCK",
+            "box": {
+              "x1": 16.05,
+              "y1": 289.31,
+              "x2": 40.480000000000004,
+              "y2": 308.31
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.5857551385299479
+        },
+        {
+          "image_id": 43737,
+          "prediction": {
+            "class_id": 2,
+            "class_name": "car",
+            "label": "CAR",
+            "confidence": 0.8121576905250549,
+            "box": {
+              "x1": 0.0259476900100708,
+              "y1": 416.3186950683594,
+              "x2": 27.99997901916504,
+              "y2": 440.3538818359375
+            }
+          },
+          "truth": {
+            "label": "CAR",
+            "box": {
+              "x1": 0.36,
+              "y1": 415.36,
+              "x2": 17.62,
+              "y2": 441.07
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.591567161330039
+        },
+        {
+          "image_id": 107226,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.473803848028183,
+            "box": {
+              "x1": 16.06875228881836,
+              "y1": 153.4325714111328,
+              "x2": 78.65846252441406,
+              "y2": 217.5369110107422
+            }
+          },
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 35.4,
+              "y1": 148.56,
+              "x2": 83.28999999999999,
+              "y2": 215.45
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.5918517792523327
+        },
+        {
+          "image_id": 885,
+          "prediction": {
+            "class_id": 0,
+            "class_name": "person",
+            "label": "PERSON",
+            "confidence": 0.769586443901062,
+            "box": {
+              "x1": 419.36962890625,
+              "y1": -0.18722128868103027,
+              "x2": 469.28814697265625,
+              "y2": 13.86487865447998
+            }
+          },
+          "truth": {
+            "label": "PERSON",
+            "box": {
+              "x1": 434.7,
+              "y1": 0.33,
+              "x2": 467.49,
+              "y2": 13.0
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.5922637030017449
+        },
+        {
+          "image_id": 107226,
+          "prediction": {
+            "class_id": 1,
+            "class_name": "bicycle",
+            "label": "BICYCLE",
+            "confidence": 0.8848087191581726,
+            "box": {
+              "x1": 325.97833251953125,
+              "y1": 251.51504516601562,
+              "x2": 480.0005798339844,
+              "y2": 493.0091857910156
+            }
+          },
+          "truth": {
+            "label": "BICYCLE",
+            "box": {
+              "x1": 386.55,
+              "y1": 253.65,
+              "x2": 479.77,
+              "y2": 490.53999999999996
+            },
+            "ignore": false,
+            "crowd": false,
+            "occluded": null,
+            "truncated": null,
+            "difficulty": "UNKNOWN",
+            "occlusion_state": "UNKNOWN"
+          },
+          "iou": 0.5936982554646869
+        }
+      ]
+    }
+  }
+}
