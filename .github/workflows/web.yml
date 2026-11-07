@@ -18,4 +18,5 @@ jobs:
       - run: npm run security
       - run: npm run check:web
       - run: npm run build:web
+      - run: npm run build:public
       - run: npm run format:check

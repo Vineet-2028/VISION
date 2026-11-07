@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { spawn } from "node:child_process";
 import { once } from "node:events";
+import { randomBytes } from "node:crypto";
 import { copyFile, mkdtemp, unlink, rmdir } from "node:fs/promises";
 import { createServer } from "node:net";
 import { tmpdir } from "node:os";
@@ -103,6 +104,7 @@ try {
     });
   }
   const webPort = await freePort();
+  const labSecret = randomBytes(32).toString("hex");
   const web = launch(
     process.execPath,
     [
@@ -114,11 +116,60 @@ try {
       String(webPort),
     ],
     join(root, "apps/web"),
-    { API_BASE_URL: apiUrl },
+    {
+      API_BASE_URL: apiUrl,
+      VISION_LAB_SECRET: labSecret,
+      VISION_LAB_MEDIA_ENABLED: "0",
+    },
   );
   await waitUntilReady(web, /Ready in/);
   const webUrl = `http://127.0.0.1:${webPort}`;
-  assert.match(await get(webUrl), /Guardian Disabled/);
+  const publicHome = await get(webUrl);
+  assert.match(publicHome, /More context/);
+  assert.doesNotMatch(publicHome, /api\/replay\/video/);
+  for (const kind of ["video", "manifest", "review", "frame?pts=0"]) {
+    const response = await fetch(`${webUrl}/api/replay/${kind}`, {
+      signal: AbortSignal.timeout(5000),
+    });
+    assert.equal(
+      response.status,
+      401,
+      "Unauthenticated replay must fail closed",
+    );
+  }
+  const privatePage = await fetch(`${webUrl}/lab/replay`, {
+    redirect: "manual",
+    signal: AbortSignal.timeout(5000),
+  });
+  assert.equal(privatePage.status, 307);
+  assert.match(privatePage.headers.get("location"), /\/lab\/login$/);
+  const login = await fetch(`${webUrl}/api/lab/login`, {
+    method: "POST",
+    headers: {
+      Origin: webUrl,
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    body: new URLSearchParams({ secret: labSecret }),
+    redirect: "manual",
+    signal: AbortSignal.timeout(5000),
+  });
+  assert.equal(login.status, 303);
+  const cookie = login.headers.get("set-cookie")?.split(";")[0];
+  assert.ok(cookie);
+  const authorized = await fetch(`${webUrl}/lab/replay`, {
+    headers: { cookie },
+    signal: AbortSignal.timeout(5000),
+  });
+  assert.equal(authorized.status, 200);
+  const disabledMedia = await fetch(`${webUrl}/api/replay/video`, {
+    headers: { cookie },
+    signal: AbortSignal.timeout(5000),
+  });
+  assert.equal(
+    disabledMedia.status,
+    403,
+    "Authentication alone must not enable raw media",
+  );
   const pages = await Promise.all(
     Array.from({ length: 8 }, () => get(`${webUrl}/health`)),
   );
@@ -126,7 +177,7 @@ try {
   await stop(api);
   assert.match(await get(`${webUrl}/health`), /<dd>Unavailable<\/dd>/);
   console.log(
-    "PASS: API contracts, production home, 8 concurrent health requests, and API outage handling.",
+    "PASS: API contracts, production home, Lab login/access gates, disabled raw media, 8 concurrent health requests, and API outage handling.",
   );
 } finally {
   await Promise.all(children.map(stop));
