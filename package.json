@@ -16,7 +16,6 @@
   },
   "scripts": {
     "build:public": "node tools/build-public-web.mjs",
-    "evaluate:v0": "node tools/evaluate-v0.mjs",
     "doctor": "node tools/doctor.mjs",
     "security": "node tools/security.mjs",
     "smoke": "node tools/smoke.mjs",

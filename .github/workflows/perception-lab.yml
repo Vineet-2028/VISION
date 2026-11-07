@@ -38,6 +38,7 @@ jobs:
             PY=apps/perception-lab/.venv/bin/python
           fi
           "$PY" -m pip install -r apps/perception-lab/requirements.lock
+          "$PY" -m pip install -r apps/perception-lab/requirements-wireless.txt
           "$PY" -m pip install --no-deps -e apps/perception-lab
           "$PY" -m pip check
       - run: npm run check:lab

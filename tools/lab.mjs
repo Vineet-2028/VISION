@@ -32,6 +32,8 @@ const commands = {
       "../../tools/depth_parity.py",
       "../../tools/motion_benchmark.py",
       "../../tools/motion_replay.py",
+      "../../tools/wireless_alpha.py",
+      "../../tools/product_dataset.py",
     ],
     [
       "-m",
@@ -52,6 +54,8 @@ const commands = {
       "../../tools/depth_parity.py",
       "../../tools/motion_benchmark.py",
       "../../tools/motion_replay.py",
+      "../../tools/wireless_alpha.py",
+      "../../tools/product_dataset.py",
     ],
     ["-m", "mypy"],
     ["-m", "pytest"],
@@ -77,6 +81,8 @@ const commands = {
       "../../tools/depth_parity.py",
       "../../tools/motion_benchmark.py",
       "../../tools/motion_replay.py",
+      "../../tools/wireless_alpha.py",
+      "../../tools/product_dataset.py",
     ],
   ],
 };

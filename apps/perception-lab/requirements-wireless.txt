@@ -1,0 +1,6 @@
+# Optional local wireless gateway tooling; no inference-model changes.
+cryptography==46.0.3
+qrcode==8.2
+psutil==7.2.2
+cffi==2.1.1
+pycparser==3.12
