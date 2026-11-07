@@ -18,6 +18,8 @@ from typing import Literal, Protocol
 
 from pydantic import BaseModel, ConfigDict, Field
 
+from .product_remote import PrivateS3Export
+
 
 class Contract(BaseModel):
     model_config = ConfigDict(extra="forbid", frozen=True)
@@ -291,6 +293,10 @@ class DatasetRegistry:
             CREATE TABLE IF NOT EXISTS withdrawals(participant TEXT PRIMARY KEY);
             CREATE TABLE IF NOT EXISTS deletions(
                 owner TEXT, digest TEXT, status TEXT NOT NULL, PRIMARY KEY(owner,digest));
+            CREATE TABLE IF NOT EXISTS remote_copies(
+                owner TEXT, digest TEXT, destination TEXT, bytes INTEGER NOT NULL,
+                expires INTEGER NOT NULL, status TEXT NOT NULL,
+                PRIMARY KEY(owner,digest,destination));
         """)
 
     def close(self) -> None:
@@ -330,10 +336,101 @@ class DatasetRegistry:
             raise ValueError("Dataset consent has expired or been revoked")
         return result
 
+    def export_reviewed(
+        self, version: str, digest: str, remote: PrivateS3Export, *, upload_consent: bool
+    ) -> None:
+        if not upload_consent:
+            raise PermissionError("Explicit upload consent required")
+        owner = remote.owner
+        key = (owner, digest, remote.destination)
+        data = self.store.get(owner, digest)
+        with self.db:
+            self.db.execute("BEGIN IMMEDIATE")
+            manifest = self.manifest(version)
+            rows = manifest["rows"]
+            if not isinstance(rows, list) or not any(
+                row["artifact"]["participant"] == owner and row["artifact"]["artifact_id"] == digest
+                for row in rows
+            ):
+                raise PermissionError("Object outside reviewed dataset")
+            existing = self.db.execute(
+                "SELECT status,expires FROM remote_copies WHERE owner=? AND digest=? "
+                "AND destination=?",
+                key,
+            ).fetchone()
+            now = int(time.time())
+            if existing and (existing[0] not in ("INTENT", "ACTIVE") or existing[1] <= now):
+                raise PermissionError("Remote retention or deletion gate")
+            if existing and existing[0] == "ACTIVE":
+                return
+            if not existing:
+                usage = self.db.execute(
+                    "SELECT COALESCE(SUM(bytes),0) FROM remote_copies WHERE owner=? "
+                    "AND status!='DELETE_ACKNOWLEDGED'",
+                    (owner,),
+                ).fetchone()[0]
+                if usage + len(data) > 100 * 1024**2:
+                    raise ValueError("Remote owner quota")
+                grants = manifest["research_grants"]
+                assert isinstance(grants, list)
+                expires = min(now + 7 * 86400, *(g["expires_at"] for g in grants))
+                self.db.execute(
+                    "INSERT INTO remote_copies VALUES (?,?,?,?,?,'INTENT')",
+                    (*key, len(data), expires),
+                )
+        # Persist intent before the SDK call. A crash after a successful PUT leaves
+        # a known object key eligible for retry or deletion. Serialize with withdrawal.
+        with self.db:
+            self.db.execute("BEGIN IMMEDIATE")
+            self.manifest(version)
+            status = self.db.execute(
+                "SELECT status,expires FROM remote_copies WHERE owner=? AND digest=? "
+                "AND destination=?",
+                key,
+            ).fetchone()
+            if status[0] == "ACTIVE":
+                return
+            if status[0] != "INTENT" or status[1] <= int(time.time()):
+                raise PermissionError("Remote export expired or withdrawn")
+            if remote.export(owner, data, upload_consent=True) != digest:
+                raise ValueError("Remote content hash mismatch")
+            self.db.execute(
+                "UPDATE remote_copies SET status='ACTIVE' WHERE owner=? AND digest=? "
+                "AND destination=?",
+                key,
+            )
+
+    def reconcile_remote(self, remote: PrivateS3Export) -> None:
+        with self.db:
+            self.db.execute(
+                "UPDATE remote_copies SET status='PENDING_DELETE' WHERE expires<=? "
+                "AND status IN ('INTENT','ACTIVE')",
+                (int(time.time()),),
+            )
+        rows = self.db.execute(
+            "SELECT digest FROM remote_copies WHERE owner=? AND destination=? "
+            "AND status='PENDING_DELETE'",
+            (remote.owner, remote.destination),
+        )
+        for (digest,) in rows.fetchall():
+            # An SDK/network error propagates and leaves a durable pending tombstone.
+            remote.delete(remote.owner, digest)
+            with self.db:
+                self.db.execute(
+                    "UPDATE remote_copies SET status='DELETE_ACKNOWLEDGED' "
+                    "WHERE owner=? AND digest=? AND destination=?",
+                    (remote.owner, digest, remote.destination),
+                )
+
     def withdraw(self, participant: str) -> None:
         # Commit tombstones before deleting bytes so interruption never restores eligibility.
         with self.db:
             self.db.execute("INSERT OR IGNORE INTO withdrawals VALUES (?)", (participant,))
+            self.db.execute(
+                "UPDATE remote_copies SET status='PENDING_DELETE' WHERE owner=? "
+                "AND status IN ('INTENT','ACTIVE')",
+                (participant,),
+            )
             for version, payload in self.db.execute(
                 "SELECT version,manifest FROM versions"
             ).fetchall():

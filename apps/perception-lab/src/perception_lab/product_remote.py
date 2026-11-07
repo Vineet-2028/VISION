@@ -66,6 +66,7 @@ class PrivateS3Export:
         if not re.fullmatch(r"[a-zA-Z0-9_-]{1,80}", owner):
             raise ValueError("Invalid owner")
         self.client, self.bucket, self.owner = client, bucket, owner
+        self.destination = hashlib.sha256(f"{endpoint.rstrip('/')}\n{bucket}".encode()).hexdigest()
 
     def _key(self, owner: str, digest: str) -> str:
         if owner != self.owner or not re.fullmatch(r"[a-f0-9]{64}", digest):
