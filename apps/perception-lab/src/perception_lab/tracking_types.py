@@ -6,6 +6,7 @@ from typing import Protocol
 
 from .contracts import ComponentProvenance, FrameIdentity
 from .detection import Box, DetectionBatch, ObjectClass
+from .perceived_entity import PerceivedEntityObservation
 
 
 class DetectorEvidence(StrEnum):
@@ -42,6 +43,7 @@ class TrackObservation:
     association_quality: float
     detector: ComponentProvenance
     status: str = "OBSERVED"
+    entity_observation: PerceivedEntityObservation | None = None
 
 
 @dataclass(frozen=True)
@@ -71,6 +73,7 @@ class TrackSnapshot:
     latest_failure: str | None
     # Geometry remains explicitly unavailable without validated camera calibration.
     bearing_radians: tuple[float, float] | None = None
+    entity_observation: PerceivedEntityObservation | None = None
 
 
 @dataclass(frozen=True)

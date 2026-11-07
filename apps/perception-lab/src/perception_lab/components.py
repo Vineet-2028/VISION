@@ -1,6 +1,5 @@
 """Separate component extension points. No tensors or invented measurements yet."""
 
-from dataclasses import dataclass
 from typing import Protocol
 
 from .contracts import ComponentProvenance, FrameIdentity
@@ -8,6 +7,7 @@ from .depth import DepthFrame
 from .detection import DetectionBatch
 from .flow import FlowObservation
 from .preprocessing import PreparedImage
+from .semantics import SemanticFrame
 
 DetectionOutput = DetectionBatch
 
@@ -15,10 +15,7 @@ DetectionOutput = DetectionBatch
 DepthOutput = DepthFrame
 
 
-@dataclass(frozen=True)
-class SegmentationOutput:
-    identity: FrameIdentity
-    label_schema: str
+SegmentationOutput = SemanticFrame
 
 
 OpticalFlowOutput = FlowObservation

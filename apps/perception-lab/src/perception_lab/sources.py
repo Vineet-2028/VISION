@@ -1,6 +1,6 @@
 """Decoder boundary. Only local file handles reach FFmpeg; never URLs or playlists."""
 
-from collections.abc import Iterator
+from collections.abc import Callable, Iterator
 from fractions import Fraction
 from pathlib import Path
 from typing import Protocol, cast
@@ -41,6 +41,8 @@ class VideoFileSource:
         self.source_id = source_id
         self.max_pixels = max_pixels
         self.closed = False
+        self.realtime_minimum_ns: Callable[[], int] | None = None
+        self.skipped_conversion = 0
         # Restrict demuxers to local self-contained formats; manifests can reference URLs.
         self._file = path.open("rb")
         try:
@@ -91,6 +93,11 @@ class VideoFileSource:
                         last_ns = ns
                         if native.width * native.height > self.max_pixels:
                             raise LabError("FRAME_SIZE_LIMIT")
+                        if self.realtime_minimum_ns is not None and ns < self.realtime_minimum_ns():
+                            self.skipped_conversion += 1
+                            sequence += 1
+                            started = processing_ns()
+                            continue
                         conversion_start = processing_ns()
                         pixels = cast(NDArray[np.uint8], native.to_ndarray(format="rgb24"))
                         conversion_ns = processing_ns() - conversion_start

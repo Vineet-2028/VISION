@@ -140,6 +140,14 @@ class MotionTest {
   }
 
   @Test
+  void signedCpaRetainsPastWithoutChangingFutureApi() {
+    assertEquals(-5, Motion.signedClosestApproachSeconds(v(0, 10, 0), v(0, 2, 0)).getAsDouble());
+    assertFalse(Motion.closestApproach(v(0, 10, 0), v(0, 2, 0)).isValid());
+    assertEquals(5, Motion.signedClosestApproachSeconds(v(2, 10, 0), v(0, -2, 0)).getAsDouble());
+    assertFalse(Motion.signedClosestApproachSeconds(v(0, 10, 0), v(0, 0, 0)).isPresent());
+  }
+
+  @Test
   void ttcIsNotCpaOrCollision() {
     Vector3 r = v(10, 10, 0), velocity = v(-1, 0, 0);
     assertEquals(20, Motion.radialTtc(r, velocity).seconds().getAsDouble(), 1e-10);

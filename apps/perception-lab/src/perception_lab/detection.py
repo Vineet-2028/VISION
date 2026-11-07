@@ -3,8 +3,12 @@
 from dataclasses import dataclass
 from enum import StrEnum
 from math import isfinite
+from typing import TYPE_CHECKING
 
 from .contracts import ComponentProvenance, FrameIdentity
+
+if TYPE_CHECKING:
+    from .perceived_entity import PerceivedEntityObservation
 
 TAXONOMY_VERSION = "sentinel-coco-p0-v1"
 
@@ -89,12 +93,20 @@ class Detection:
     label: ObjectClass
     confidence: float
     box: Box
+    # Temporary V0 compatibility carrier; provider concepts never become enum members.
+    entity_observation: "PerceivedEntityObservation | None" = None
 
     def __post_init__(self) -> None:
         if self.class_id < 0 or not self.class_name or not 0 <= self.confidence <= 1:
             raise ValueError("Invalid detection")
         if semantic_class(self.class_name) != self.label:
             raise ValueError("Class name and taxonomy disagree")
+        if self.entity_observation is not None and (
+            self.entity_observation.bbox != self.box
+            or self.entity_observation.region_confidence != self.confidence
+            or self.label != ObjectClass.UNKNOWN
+        ):
+            raise ValueError("Generic compatibility carrier must preserve geometry and confidence")
 
 
 @dataclass(frozen=True)

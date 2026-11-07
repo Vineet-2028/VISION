@@ -27,7 +27,23 @@ class SessionRecorder:
         public = config.public_configuration()
         calibration_public = calibration.model_dump(exclude={"metadata"})
         self.manifest: dict[str, Any] = {
-            "schema_version": 4
+            "schema_version": 12
+            if config.alerts is not None
+            else 11
+            if config.attention is not None
+            else 10
+            if config.risk is not None
+            else 9
+            if config.interaction is not None
+            else 8
+            if config.trajectory is not None
+            else 7
+            if config.corridor is not None
+            else 6
+            if config.world_model is not None
+            else 5
+            if config.segmentation is not None
+            else 4
             if config.motion is not None
             else 3
             if config.depth is not None
@@ -82,14 +98,50 @@ class SessionRecorder:
     def write_result(self, result: FrameResult) -> None:
         if self.stream is not None:
             if result.optical_flow is not None:
-                self.manifest["schema_version"] = 4
+                self.manifest["schema_version"] = max(4, self.manifest["schema_version"])
             elif result.depth is not None:
                 # Injected adapters are also supported; final manifest must match
                 # the depth-capable records even without config.depth.
                 self.manifest["schema_version"] = max(3, self.manifest["schema_version"])
+            if result.segmentation is not None:
+                self.manifest["schema_version"] = max(5, self.manifest["schema_version"])
+            if result.world_state is not None:
+                self.manifest["schema_version"] = max(6, self.manifest["schema_version"])
+            if result.corridor_analysis is not None:
+                self.manifest["schema_version"] = max(7, self.manifest["schema_version"])
+            if result.trajectory_set is not None:
+                self.manifest["schema_version"] = max(8, self.manifest["schema_version"])
+            if result.interaction_analysis is not None:
+                self.manifest["schema_version"] = max(9, self.manifest["schema_version"])
+            if result.risk_assessment_set is not None:
+                self.manifest["schema_version"] = max(10, self.manifest["schema_version"])
+            if result.attention_decision_set is not None:
+                self.manifest["schema_version"] = max(11, self.manifest["schema_version"])
+            if result.alert_output_set is not None:
+                self.manifest["schema_version"] = max(12, self.manifest["schema_version"])
+            if result.camera_view_quality is not None:
+                self.manifest["schema_version"] = max(13, self.manifest["schema_version"])
             self._write(
                 {
-                    "schema_version": 4
+                    "schema_version": 13
+                    if result.camera_view_quality is not None
+                    else 12
+                    if result.alert_output_set is not None
+                    else 11
+                    if result.attention_decision_set is not None
+                    else 10
+                    if result.risk_assessment_set is not None
+                    else 9
+                    if result.interaction_analysis is not None
+                    else 8
+                    if result.trajectory_set is not None
+                    else 7
+                    if result.corridor_analysis is not None
+                    else 6
+                    if result.world_state is not None
+                    else 5
+                    if result.segmentation is not None
+                    else 4
                     if result.optical_flow is not None
                     else 3
                     if result.depth is not None
@@ -109,6 +161,8 @@ class SessionRecorder:
                             "optical_flow",
                             "camera_motion",
                             "track_image_motion",
+                            "segmentation",
+                            "surfaces",
                         }
                     },
                     "components": [asdict(c) for c in result.components],
@@ -122,6 +176,10 @@ class SessionRecorder:
                     else None,
                     "camera_motion": motion_summary(result.camera_motion),
                     "track_image_motion": [asdict(m) for m in result.track_image_motion],
+                    "segmentation": result.segmentation.summary()
+                    if result.segmentation is not None
+                    else None,
+                    "surfaces": result.surfaces.summary() if result.surfaces is not None else None,
                 }
             )
 

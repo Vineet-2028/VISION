@@ -10,8 +10,8 @@ from .contracts import Cancellation
 from .detector_runtime import UltralyticsDetector
 from .edge_runtime import PicoDetDetector, YoloXDetector
 from .geometry import CoreGeometry
+from .orientation_preprocessing import build_preprocessor
 from .pipeline import Pipeline
-from .preprocessing import BasicPreprocessor
 from .recording import SessionRecorder
 from .rtdetr_runtime import RtDetrDetector
 from .sources import VideoFileSource
@@ -57,7 +57,7 @@ def main(argv: list[str] | None = None) -> int:
         base = args.config.resolve().parent
         calibration = Calibration.model_validate(read_json(base / config.calibration))
         geometry = CoreGeometry(calibration, source_scaling=config.source_scaling)
-        preprocessor = BasicPreprocessor(geometry, config.preprocess)
+        preprocessor = build_preprocessor(geometry, config)
         detector: UltralyticsDetector | RtDetrDetector | YoloXDetector | PicoDetDetector | None = (
             None
         )
@@ -86,6 +86,12 @@ def main(argv: list[str] | None = None) -> int:
                 threads=d.threads,
             )
         from .depth_runtime import DepthAnythingProvider
+
+        if config.entity_semantics_ontology is not None:
+            if not isinstance(detector, PicoDetDetector):
+                raise ValueError("Generic runtime semantic profile requires PicoDet")
+            detector.enable_entity_semantics(base / config.entity_semantics_ontology)
+
         from .depth_synthetic import SyntheticDepthProvider
 
         depth = None
@@ -102,6 +108,20 @@ def main(argv: list[str] | None = None) -> int:
             source.close()
             raise
         cancel = Cancellation()
+        from .semantic_runtime import OnnxSemanticSegmenter, SyntheticSegmenter
+
+        segmentation = None
+        if config.segmentation is not None:
+            try:
+                segmentation = (
+                    SyntheticSegmenter(recorder.session_id, config.segmentation.pattern)
+                    if config.segmentation.provider == "synthetic"
+                    else OnnxSemanticSegmenter(config.segmentation, base, recorder.session_id)
+                )
+            except BaseException:
+                source.close()
+                recorder.finish({}, "FATAL", "SEGMENTATION_OPEN_FAILED")
+                raise
         try:
             renderer = (
                 TkRenderer(cancel, config.mode, calibration.calibration_quality.state)
@@ -120,6 +140,7 @@ def main(argv: list[str] | None = None) -> int:
                 renderer=renderer,
                 detector=detector,
                 depth=depth,
+                segmentation=segmentation,
                 motion_geometry=geometry,
             )
         except BaseException:

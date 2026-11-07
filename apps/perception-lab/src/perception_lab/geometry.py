@@ -6,7 +6,7 @@ The JVM is process-scoped, started once on the owning/main thread, never per fra
 
 from dataclasses import asdict
 from pathlib import Path
-from typing import Any
+from typing import TYPE_CHECKING, Any
 
 import jpype
 import numpy as np
@@ -15,6 +15,65 @@ from numpy.typing import NDArray
 from .config import Calibration, Resolution, canonical_hash
 from .contracts import FrameIdentity, LabError
 from .detection import Box, Detection
+
+if TYPE_CHECKING:
+    from .corridor_config import CorridorConfig
+    from .depth_spatial import SuppliedDepthPose
+    from .interaction_types import RelativeMotionValues
+    from .world_types import SuppliedGroundPlane
+
+
+class CoreCorridor:
+    """Typed wrapper around one immutable Guardian corridor and transform."""
+
+    def __init__(self, corridor: Any, camera_to_frame: Any, geometry: "CoreGeometry") -> None:
+        self._value, self._transform, self._geometry = corridor, camera_to_frame, geometry
+        self._vector = geometry.j["Vector3"]
+        self._frame = corridor.origin().frame()
+
+    @staticmethod
+    def _tuple(value: Any) -> tuple[float, float, float]:
+        return float(value.x()), float(value.y()), float(value.z())
+
+    @property
+    def origin(self) -> tuple[float, float, float]:
+        return self._tuple(self._value.origin())
+
+    @property
+    def forward(self) -> tuple[float, float, float]:
+        return self._tuple(self._value.forward())
+
+    @property
+    def lateral(self) -> tuple[float, float, float]:
+        return self._tuple(self._value.right())
+
+    @property
+    def polygon(self) -> tuple[tuple[float, float, float], ...]:
+        return tuple(self._tuple(p) for p in self._value.polygon())
+
+    def locate(self, point: tuple[float, float, float]) -> tuple[float, float, float]:
+        result = self._value.locate(self._vector(self._frame, *point))
+        return float(result[0]), float(result[1]), float(result[2])
+
+    def plane_distance(self, point: tuple[float, float, float]) -> float:
+        """Signed distance via Guardian; a point near a plane is not an object footprint."""
+        plane = jpype.JClass("dev.sentinel.guardian.Plane3D")(
+            self._value.origin(), self._value.right().cross(self._value.forward())
+        )
+        return float(plane.signedDistance(self._vector(self._frame, *point)))
+
+    def project(self) -> tuple[tuple[float, float], ...]:
+        # Reject a near-plane crossing conservatively; never project behind-camera vertices.
+        inverse = self._transform.inverse() if self._transform is not None else None
+        points = []
+        for vertex in self._value.polygon():
+            camera = inverse.transformPoint(vertex) if inverse is not None else vertex
+            projection = self._geometry.model.cameraPointToPixel(camera)
+            if not projection.isValid():
+                return ()
+            pixel = projection.pixel().get()
+            points.append((float(pixel.u()), float(pixel.v())))
+        return tuple(points)
 
 
 class ImageMapping:
@@ -128,6 +187,113 @@ class ImageMapping:
 
 
 class CoreGeometry:
+    def cardinal_geometry(
+        self, quarter_turns: int
+    ) -> tuple[ImageMapping, tuple[float, float, float, float], tuple[float, ...]]:
+        """Task003 rotation and optical basis; never silently reuse distorted intrinsics."""
+        if type(quarter_turns) is not int or not 0 <= quarter_turns <= 3:
+            raise ValueError("Quarter turns must be 0..3")
+        if self.source_mapping is not None:
+            raise ValueError("Scaled-source canonical intrinsics require explicit composition")
+        j = self.j
+        image = j["FrameId"](j["FrameKind"].IMAGE, f"v02-canonical-image-{quarter_turns}")
+        camera = j["FrameId"](j["FrameKind"].CAMERA, f"v02-canonical-camera-{quarter_turns}")
+        rotated = jpype.JClass("dev.sentinel.guardian.RotatedIntrinsics")(
+            self.model.calibration().intrinsics(), image, camera, quarter_turns
+        )
+        k = rotated.intrinsics()
+        transform = rotated.originalCameraToRotatedCamera()
+        columns = [
+            self._vector_tuple(transform.transformDirection(j["Vector3"](self.camera, *axis)))
+            for axis in ((1, 0, 0), (0, 1, 0), (0, 0, 1))
+        ]
+        basis = tuple(columns[col][row] for row in range(3) for col in range(3))
+        return (
+            ImageMapping(rotated.imageTransform(), j["PixelPoint"]),
+            (float(k.fxPixels()), float(k.fyPixels()), float(k.cxPixels()), float(k.cyPixels())),
+            basis,
+        )
+
+    @staticmethod
+    def _vector_tuple(value: Any) -> tuple[float, float, float]:
+        return float(value.x()), float(value.y()), float(value.z())
+
+    def relative_motion(
+        self,
+        frame_id: str,
+        position: tuple[float, ...],
+        velocity: tuple[float, ...],
+        reference_position: tuple[float, ...],
+        reference_velocity: tuple[float, ...],
+    ) -> "RelativeMotionValues":
+        """All relative motion/TTC/CPA equations stay in Guardian, including signed CPA."""
+        from .interaction_types import RelativeMotionValues
+
+        motion = jpype.JClass("dev.sentinel.guardian.Motion")
+        policy = jpype.JClass("dev.sentinel.guardian.NumericPolicy")
+        frame = self.j["FrameId"](self.j["FrameKind"].LOCAL_WORLD, frame_id)
+        vector = self.j["Vector3"]
+        r = motion.relativePosition(vector(frame, *reference_position), vector(frame, *position))
+        v = motion.relativeVelocity(vector(frame, *reference_velocity), vector(frame, *velocity))
+        closing = motion.closingSpeed(r, v)
+        ttc = motion.radialTtc(r, v)
+        signed = motion.signedClosestApproachSeconds(r, v)
+        cpa = motion.closestApproach(r, v)
+        return RelativeMotionValues(
+            float(r.magnitude()),
+            float(closing.getAsDouble()) if closing.isPresent() else None,
+            float(ttc.seconds().getAsDouble()) if ttc.isValid() else None,
+            float(signed.getAsDouble()) if signed.isPresent() else None,
+            float(cpa.distanceMeters().getAsDouble()) if cpa.isValid() else None,
+            bool(v.magnitude() <= policy.NEAR_ZERO_SPEED_MPS),
+        )
+
+    def predict_world_points(
+        self,
+        frame_id: str,
+        session_id: str,
+        now: int,
+        position: tuple[float, ...],
+        velocity: tuple[float, ...],
+        horizons: tuple[int, ...],
+    ) -> tuple[tuple[float, ...], ...]:
+        """Guardian nominal CV only; confidence zero, no physical validation/covariance."""
+        vector_estimate = jpype.JClass("dev.sentinel.guardian.VectorEstimate")
+        timed = jpype.JClass("dev.sentinel.guardian.TimedVectorEstimate")
+        prediction = jpype.JClass("dev.sentinel.guardian.MotionPrediction")
+        confidence = jpype.JClass("dev.sentinel.guardian.Confidence")(0.0)
+        frame = self.j["FrameId"](self.j["FrameKind"].LOCAL_WORLD, frame_id)
+        start = self.j["MonotonicTime"](session_id, now)
+
+        def estimate(values: tuple[float, ...], quantity: Any) -> Any:
+            return timed(
+                start,
+                vector_estimate(
+                    frame,
+                    quantity,
+                    self.optional.of(self.j["Vector3"](frame, *values)),
+                    self.optional.empty(),
+                    confidence,
+                ),
+            )
+
+        p = estimate(position, vector_estimate.Quantity.POSITION_METERS)
+        v = estimate(velocity, vector_estimate.Quantity.VELOCITY_MPS)
+        out = []
+        for h in horizons:
+            value = prediction.position(
+                prediction.Model.CONSTANT_VELOCITY,
+                p,
+                self.optional.of(v),
+                self.optional.empty(),
+                self.j["MonotonicTime"](session_id, now + h),
+                max(horizons),
+            )
+            if not value.isPresent():
+                raise ValueError("Guardian prediction unavailable")
+            out.append(CoreCorridor._tuple(value.get().estimate().value().get()))
+        return tuple(out)
+
     def __init__(
         self,
         calibration: Calibration,
@@ -232,6 +398,58 @@ class CoreGeometry:
                 j["ImageTransform"].scale(self.calibration_size, self.size), j["PixelPoint"]
             )
 
+    def corridor(
+        self,
+        plane: "SuppliedGroundPlane",
+        pose: "SuppliedDepthPose | None",
+        config: "CorridorConfig",
+        camera_heading: tuple[float, float, float] | None = None,
+    ) -> CoreCorridor:
+        """Call Guardian once per snapshot; all metric frame/plane arithmetic stays there."""
+        j = self.j
+        transform = None
+        frame = self.camera
+        if plane.coordinate_frame == "LOCAL_WORLD":
+            if pose is None or self.extrinsics is None:
+                raise ValueError("World corridor requires pose and extrinsics")
+            frame = j["FrameId"](j["FrameKind"].LOCAL_WORLD, plane.frame_id)
+            transform = self.extrinsics.cameraToDevice().then(
+                j["RigidTransform"](
+                    self.extrinsics.cameraToDevice().to(),
+                    frame,
+                    j["Quaternion"](*pose.rotation_wxyz),
+                    j["Vector3"](frame, *pose.translation_meters),
+                )
+            )
+        origin = j["Vector3"](self.camera, 0, 0, 0)
+        forward = j["Vector3"](self.camera, *(camera_heading or (0.0, 0.0, 1.0)))
+        if transform is not None:
+            origin, forward = (
+                transform.transformPoint(origin),
+                transform.transformDirection(forward),
+            )
+        invalid_geometry = jpype.JClass("java.lang.IllegalArgumentException")
+        try:
+            core = jpype.JClass("dev.sentinel.guardian.CorridorGeometry").onPlane(
+                origin,
+                forward,
+                j["Vector3"](frame, *plane.point_meters),
+                j["Vector3"](frame, *plane.normal),
+                config.near_m,
+                config.far_m,
+                config.near_half_width_m + config.expansion_m,
+                config.far_half_width_m + config.expansion_m,
+            )
+        except invalid_geometry as error:
+            raise ValueError("Guardian rejected degenerate corridor geometry") from error
+        return CoreCorridor(core, transform, self)
+
+    def roll_mapping(self, radians: float, canvas: str) -> ImageMapping:
+        """Image-plane roll only; calibration remains in the original camera frame."""
+        target = self.j["FrameId"](self.j["FrameKind"].IMAGE, "alpha-roll-canonical")
+        transform = self.j["ImageTransform"].roll(self.size, target, radians, canvas)
+        return ImageMapping(transform, self.j["PixelPoint"])
+
     def require_dimensions(self, width: int, height: int) -> None:
         if (width, height) != (self.source_width, self.source_height):
             raise LabError("CALIBRATION_RESOLUTION_MISMATCH")
@@ -318,6 +536,77 @@ class CoreGeometry:
             "quality": self.c.calibration_quality.state,
         }
 
+    def bearing_angles(
+        self, u: float, v: float, identity: FrameIdentity
+    ) -> tuple[float, float] | None:
+        """Typed Guardian angle boundary for compact world observations."""
+        if self.c.calibration_quality.state not in {"VALID", "DEGRADED"}:
+            return None
+        bearing = self.model.bearing(
+            self.j["PixelPoint"](self.image, u, v), self.metadata(identity)
+        )
+        if not bearing.isPresent():
+            return None
+        return float(bearing.get().azimuthRadians()), float(bearing.get().elevationRadians())
+
+    def ground_candidate(
+        self,
+        pixel: tuple[float, float],
+        identity: FrameIdentity,
+        translation: tuple[float, float, float],
+        rotation: tuple[float, float, float, float],
+        world_id: str,
+        plane_point: tuple[float, float, float],
+        plane_normal: tuple[float, float, float],
+    ) -> tuple[float, float, float] | None:
+        """Exact-time supplied ground assumption; all transforms/intersection run in Java."""
+        if self.extrinsics is None or self.c.calibration_quality.state not in {"VALID", "DEGRADED"}:
+            return None
+        j = self.j
+        world = j["FrameId"](j["FrameKind"].LOCAL_WORLD, world_id)
+        transform = j["RigidTransform"](
+            self.extrinsics.cameraToDevice().to(),
+            world,
+            j["Quaternion"](*rotation),
+            j["Vector3"](world, *translation),
+        )
+        time = j["MonotonicTime"](identity.source_id, identity.observation_ns)
+        pose = jpype.JClass("dev.sentinel.guardian.DevicePoseEstimate")(
+            time,
+            self.optional.of(transform),
+            jpype.JClass("dev.sentinel.guardian.Confidence")(0),
+            self.optional_double.empty(),
+            self.optional_double.empty(),
+        )
+        spatial = jpype.JClass("dev.sentinel.guardian.SpatialGeometry")
+        ray = spatial.pixelToWorldRay(
+            j["PixelPoint"](self.image, *pixel),
+            self.metadata(identity),
+            self.model,
+            self.extrinsics,
+            pose,
+        )
+        if not ray.isPresent():
+            return None
+        plane = jpype.JClass("dev.sentinel.guardian.Plane3D")(
+            j["Vector3"](world, *plane_point), j["Vector3"](world, *plane_normal)
+        )
+        ground = jpype.JClass("dev.sentinel.guardian.GroundPlaneEstimate")(
+            self.optional.of(plane),
+            time,
+            jpype.JClass("dev.sentinel.guardian.Confidence")(0),
+            self.optional_double.empty(),
+            self.optional_double.empty(),
+            "SUPPLIED_ASSUMPTION",
+        )
+        point = spatial.groundIntersection(
+            ray.get(), ground, jpype.JClass("dev.sentinel.guardian.GeometryPolicy").defaults()
+        )
+        if not point.isPresent():
+            return None
+        value = point.get().nominalPoint()
+        return float(value.x()), float(value.y()), float(value.z())
+
     def depth_point(
         self, u: float, v: float, meters: float, camera_z: bool, identity: FrameIdentity
     ) -> tuple[float, float, float] | None:
@@ -394,7 +683,7 @@ class MotionPoseHistory:
         identity: FrameIdentity,
         device_to_world_wxyz: tuple[float, float, float, float],
     ) -> None:
-        if session_id != self.session_id:
+        if session_id != self.session_id or identity.timing.value == "UNKNOWN":
             raise ValueError("Pose session mismatch")
         g = self.g
         assert g.extrinsics is not None
@@ -421,6 +710,9 @@ class MotionPoseHistory:
         if (
             session_id != self.session_id
             or a.source_id != b.source_id
+            or a.timing != b.timing
+            or a.timing.value == "UNKNOWN"
+            or b.sequence <= a.sequence
             or b.observation_ns <= a.observation_ns
         ):
             raise ValueError("Pose pair mismatch")

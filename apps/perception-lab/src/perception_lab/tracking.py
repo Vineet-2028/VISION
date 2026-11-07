@@ -56,16 +56,26 @@ class AssociationTracker:
     """
 
     def __init__(
-        self, config: TrackerConfig, session_id: str, source_id: str, width: int, height: int
+        self,
+        config: TrackerConfig,
+        session_id: str,
+        source_id: str,
+        width: int,
+        height: int,
+        *,
+        objectness_first: bool = False,
     ) -> None:
         self.config = config
+        self.objectness_first = objectness_first
         self.provenance = ComponentProvenance(
             "AssociationTracker/" + config.tracker_type,
             "tracker",
-            "image-space-v1",
+            "image-space-objectness-v02" if objectness_first else "image-space-v1",
             "1",
             "numpy",
-            canonical_hash(config.model_dump()),
+            canonical_hash({**config.model_dump(), "objectness_first": True})
+            if objectness_first
+            else canonical_hash(config.model_dump()),
         )
         self._owner = get_ident()
         self._next_id = 1
@@ -107,7 +117,11 @@ class AssociationTracker:
         # Motion policies can bridge non-overlap only within half the displacement gate.
         if overlap < self.config.min_iou and distance > self.config.center_gate / 2:
             return inf
-        penalty = self.config.class_penalty if track.category() != detection.label else 0.0
+        penalty = (
+            self.config.class_penalty
+            if not self.objectness_first and track.category() != detection.label
+            else 0.0
+        )
         return 1 - overlap + self.config.center_weight * distance + penalty
 
     def update(
@@ -149,6 +163,14 @@ class AssociationTracker:
         if failure_code is not None and failure_code not in {"INFERENCE_FAILURE", "UNAVAILABLE"}:
             raise ValueError("Unsupported public failure code")
         detections = batch.detections if batch is not None else ()
+        if any(
+            d.entity_observation is not None
+            and (not self.objectness_first or d.entity_observation.source_frame != identity)
+            for d in detections
+        ):
+            raise ValueError(
+                "Generic observations require objectness mode and exact frame identity"
+            )
         if len(detections) > 10000:
             raise ValueError("Input exceeds defensive detection limit")
         if any(d.box.area <= 0 or max(abs(v) for v in d.box.coordinates) > 1e7 for d in detections):
@@ -173,15 +195,23 @@ class AssociationTracker:
                 retained.append(track)
         self._tracks = retained
         ordered = sorted(
-            (d for d in detections if d.label != ObjectClass.UNKNOWN and d.confidence > 0),
-            key=lambda d: (-d.confidence, d.label.value, d.box.coordinates),
+            (
+                d
+                for d in detections
+                if (self.objectness_first or d.label != ObjectClass.UNKNOWN) and d.confidence > 0
+            ),
+            key=lambda d: (
+                -d.confidence,
+                "" if self.objectness_first else d.label.value,
+                d.box.coordinates,
+            ),
         )
         if len(ordered) > self.config.max_detections:
             diagnostics.append("DETECTION_CAP_REACHED")
         filtered: list[Detection] = []
         for detection in ordered[: self.config.max_detections]:
             if any(
-                d.label == detection.label
+                (self.objectness_first or d.label == detection.label)
                 and iou(d.box, detection.box) >= self.config.duplicate_iou
                 for d in filtered
             ):
@@ -240,6 +270,7 @@ class AssociationTracker:
                     detection.confidence,
                     track.association,
                     batch.provenance,
+                    entity_observation=detection.entity_observation,
                 )
             )
         for i in available:
@@ -259,7 +290,7 @@ class AssociationTracker:
                 continue
             detection = filtered[j]
             if any(
-                t.category() == detection.label
+                (self.objectness_first or t.category() == detection.label)
                 and iou(t.motion.box(), detection.box) >= self.config.duplicate_iou
                 for t in self._tracks
             ):
@@ -276,6 +307,7 @@ class AssociationTracker:
                 detection.confidence,
                 1.0,
                 batch.provenance,
+                entity_observation=detection.entity_observation,
             )
             self._tracks.append(
                 _Track(
@@ -323,6 +355,7 @@ class AssociationTracker:
                     tuple(track.history),
                     track.provenance,
                     track.latest_failure,
+                    entity_observation=track.history[-1].entity_observation,
                 )
             )
         return TrackSet(

@@ -2,3 +2,19 @@
 *.bat text eol=crlf
 *.cmd text eol=crlf
 *.jar binary
+
+# Preserve qualified Alpha source bytes across operating systems.
+/apps/perception-lab/src/perception_lab/alerts.py -text
+/apps/perception-lab/src/perception_lab/attention.py -text
+/apps/perception-lab/src/perception_lab/attention_types.py -text
+/apps/perception-lab/src/perception_lab/cli.py -text
+/apps/perception-lab/src/perception_lab/config.py -text
+/apps/perception-lab/src/perception_lab/contracts.py -text
+/apps/perception-lab/src/perception_lab/detector_benchmark.py -text
+/apps/perception-lab/src/perception_lab/edge_runtime.py -text
+/apps/perception-lab/src/perception_lab/evaluation_dataset.py -text
+/apps/perception-lab/src/perception_lab/metrics.py -text
+/apps/perception-lab/src/perception_lab/pipeline.py -text
+/apps/perception-lab/src/perception_lab/recording.py -text
+/apps/perception-lab/src/perception_lab/visualization.py -text
+/apps/perception-lab/src/perception_lab/world_model.py -text

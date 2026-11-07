@@ -10,10 +10,21 @@ import numpy as np
 from numpy.typing import NDArray
 
 if TYPE_CHECKING:
+    from .alert_types import AlertOutputSet
+    from .attention_types import AttentionDecisionSet
+    from .camera_orientation import CameraOrientationState
+    from .camera_view_quality import CameraViewQuality
     from .components import DepthOutput, DetectionOutput, OpticalFlowOutput, SegmentationOutput
+    from .corridor_types import CorridorAnalysis
     from .depth_sampling import DepthEstimate, TrackDepthObservation
+    from .interaction_types import InteractionAnalysis
     from .motion import CameraMotionEstimate, TrackImageMotionObservation
+    from .risk_types import RiskAssessmentSet
+    from .surfaces import SurfaceEvidenceFrame
     from .tracking_types import TrackSet
+    from .trajectory_types import TrajectorySet
+    from .user_heading import UserMotionHeadingEstimate
+    from .world_types import WorldState
 
 
 class SourceType(StrEnum):
@@ -86,6 +97,7 @@ class Frame:
     decode_completed_ns: int
     conversion_ns: int = 0
     wall_clock_epoch_ms: int | None = None
+    camera_orientation: CameraOrientationState | None = None
 
     def __post_init__(self) -> None:
         if (
@@ -98,6 +110,11 @@ class Frame:
         ):
             raise ValueError("Invalid frame buffer/timing")
         self.pixels.flags.writeable = False
+        if (
+            self.camera_orientation is not None
+            and self.camera_orientation.identity != self.identity
+        ):
+            raise ValueError("Orientation belongs to another source frame")
 
     @property
     def width(self) -> int:
@@ -168,6 +185,18 @@ class FrameResult:
     track_depths: tuple[TrackDepthObservation, ...] = ()
     camera_motion: CameraMotionEstimate | None = None
     track_image_motion: tuple[TrackImageMotionObservation, ...] = ()
+    surfaces: SurfaceEvidenceFrame | None = None
+    world_state: WorldState | None = None
+    corridor_analysis: CorridorAnalysis | None = None
+    trajectory_set: TrajectorySet | None = None
+    interaction_analysis: InteractionAnalysis | None = None
+    risk_assessment_set: RiskAssessmentSet | None = None
+    attention_decision_set: AttentionDecisionSet | None = None
+    alert_output_set: AlertOutputSet | None = None
+    camera_view_quality: CameraViewQuality | None = None
+    camera_orientation: CameraOrientationState | None = None
+    scene_capability: str = "NOT_EVALUATED"
+    user_motion_heading: UserMotionHeadingEstimate | None = None
 
 
 @dataclass(frozen=True)

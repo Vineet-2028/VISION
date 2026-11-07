@@ -90,6 +90,8 @@ def compensate(
     require_calibration(geometry, flow.pair)
     if flow.pair != motion.pair:
         raise ValueError("Motion/flow pair mismatch")
+    if geometry.c.calibration_quality.state not in {"VALID", "DEGRADED"}:
+        return None
     if motion.rotation is None:
         return None
     points = rays(geometry, flow, "a")

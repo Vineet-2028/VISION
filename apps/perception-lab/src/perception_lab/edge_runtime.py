@@ -97,12 +97,12 @@ class EdgeOnnxDetector:
             raise ValueError("Unreviewed checkpoint or hash mismatch")
         if (
             size != 416
-            or device != "cpu"
+            or device not in {"cpu", "cuda:0"}
             or half
             or not 1 <= threads <= 16
             or not 0.01 <= confidence <= 1
         ):
-            raise ValueError("Released edge models require 416 CPU FP32 and confidence >= .01")
+            raise ValueError("Released edge models require 416 FP32 and confidence >= .01")
         if self.model_id == "picodet-s" and confidence < 0.025:
             raise ValueError(
                 "PicoDet release embeds a .025 score floor; lower thresholds unavailable"
@@ -116,9 +116,18 @@ class EdgeOnnxDetector:
         options.inter_op_num_threads = 1
         options.execution_mode = ort.ExecutionMode.ORT_SEQUENTIAL
         options.log_severity_level = 3
+        providers: list[Any] = ["CPUExecutionProvider"]
+        if device == "cuda:0":
+            if "CUDAExecutionProvider" not in ort.get_available_providers():
+                raise ValueError("CUDA was requested but the execution provider is unavailable")
+            providers.insert(0, ("CUDAExecutionProvider", {"use_tf32": "0"}))
         self.session: Any = ort.InferenceSession(
-            str(weights.resolve()), options, providers=["CPUExecutionProvider"]
+            str(weights.resolve()), options, providers=providers
         )
+        if device == "cuda:0":
+            self.session.disable_fallback()
+            if "CUDAExecutionProvider" not in self.session.get_providers():
+                raise ValueError("CUDA initialization fell back to CPU")
         self.confidence = confidence
         self.last_timings_ns: dict[str, int] = {}
         self.runtime_metadata: dict[str, object] = {
@@ -129,6 +138,8 @@ class EdgeOnnxDetector:
             else "CLASS_WISE_IOU_0.45",
             "native_parity": "NOT_VERIFIED",
             "threads": threads,
+            "requested_device": device,
+            "tf32": False,
             "embedded_score_floor": 0.025 if self.model_id == "picodet-s" else None,
             "inference_stage": "COMBINED_VENDOR_STAGE"
             if self.model_id == "picodet-s"
@@ -139,13 +150,14 @@ class EdgeOnnxDetector:
             "detector",
             self.model_id,
             sha256,
-            "onnxruntime-" + ort.__version__ + "/cpu/fp32",
+            "onnxruntime-" + ort.__version__ + "/" + device + "/fp32",
             canonical_hash(
                 {
                     "size": size,
                     "confidence": confidence,
                     "threads": threads,
                     "policy": "official-artifact-bgr-v2",
+                    **({"device": device, "tf32": False} if device != "cpu" else {}),
                 }
             ),
         )
@@ -240,3 +252,15 @@ class YoloXDetector(EdgeOnnxDetector):
 
 class PicoDetDetector(EdgeOnnxDetector):
     model_id = "picodet-s"
+
+    def enable_entity_semantics(self, ontology: Path) -> None:
+        from .concept_resolver import HierarchyConceptResolver
+        from .picodet_semantics import PicoDetSemanticAdapter
+
+        self.semantic_adapter = PicoDetSemanticAdapter(
+            HierarchyConceptResolver(ontology), PINS[self.model_id]
+        )
+
+    def detect(self, image: PreparedImage, identity: FrameIdentity) -> DetectionBatch:
+        batch = super().detect(image, identity)
+        return self.semantic_adapter.convert(batch) if hasattr(self, "semantic_adapter") else batch

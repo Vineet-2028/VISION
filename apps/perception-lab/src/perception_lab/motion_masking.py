@@ -27,7 +27,11 @@ def dynamic_exclusions(
     if detections is not None:
         if detections.identity != flow.pair.b:
             raise ValueError("Detection mask frame mismatch")
-        boxes.extend(d.box for d in detections.detections if d.label != ObjectClass.UNKNOWN)
+        boxes.extend(
+            d.box
+            for d in detections.detections
+            if d.entity_observation is not None or d.label != ObjectClass.UNKNOWN
+        )
     if tracks is not None:
         if tracks.identity != flow.pair.b or tracks.session_id != flow.pair.session_id:
             raise ValueError("Track mask identity mismatch")
@@ -36,7 +40,7 @@ def dynamic_exclusions(
             for t in tracks.tracks
             if t.observation_status == "OBSERVED"
             and t.latest_observed_ns == flow.pair.b.observation_ns
-            and t.category != ObjectClass.UNKNOWN
+            and (t.entity_observation is not None or t.category != ObjectClass.UNKNOWN)
         )
     mask = np.zeros(len(flow.valid), dtype=np.bool_)
     x, y = flow.points_b.T

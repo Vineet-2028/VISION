@@ -107,6 +107,48 @@ public final class ImageTransform {
     return new PixelPoint(to.frame(), a * p.u() + b * p.v() + tx, c * p.u() + d * p.v() + ty);
   }
 
+  /** Clockwise image-plane rotation about the continuous-edge image center. */
+  public static ImageTransform roll(
+      ImageSize from, FrameId toFrame, double radians, String canvas) {
+    requireDistinctFrames(from.frame(), toFrame);
+    if (!Double.isFinite(radians) || StrictMath.abs(radians) > StrictMath.PI)
+      throw new IllegalArgumentException("Roll must be finite and within [-pi, pi]");
+    double cosine = StrictMath.cos(radians), sine = StrictMath.sin(radians);
+    // Exact cardinal dimensions must not gain a pixel from trigonometric roundoff.
+    if (StrictMath.abs(cosine) < 1e-15) cosine = 0;
+    if (StrictMath.abs(sine) < 1e-15) sine = 0;
+    double width, height;
+    switch (canvas) {
+      case "CROP":
+        width = from.width();
+        height = from.height();
+        break;
+      case "PAD":
+        width = StrictMath.hypot(from.width(), from.height());
+        height = width;
+        break;
+      case "EXPAND":
+        width = StrictMath.abs(cosine) * from.width() + StrictMath.abs(sine) * from.height();
+        height = StrictMath.abs(sine) * from.width() + StrictMath.abs(cosine) * from.height();
+        break;
+      default:
+        throw new IllegalArgumentException("Unknown roll canvas");
+    }
+    if (width > Integer.MAX_VALUE || height > Integer.MAX_VALUE)
+      throw new IllegalArgumentException("Roll canvas too large");
+    ImageSize to =
+        new ImageSize(toFrame, (int) StrictMath.ceil(width), (int) StrictMath.ceil(height));
+    return new ImageTransform(
+        from,
+        to,
+        cosine,
+        -sine,
+        sine,
+        cosine,
+        (to.width() - cosine * from.width() + sine * from.height()) / 2,
+        (to.height() - sine * from.width() - cosine * from.height()) / 2);
+  }
+
   static void requireDistinctFrames(FrameId from, FrameId to) {
     if (from.equals(to))
       throw new IllegalArgumentException(

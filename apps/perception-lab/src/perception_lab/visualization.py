@@ -23,7 +23,7 @@ class TkRenderer:
 
         self.tk = tk
         self.root = tk.Tk()
-        self.root.title("Sentinel Perception Laboratory — experimental observations")
+        self.root.title("Sentinel Perception Laboratory â€” experimental observations")
         self.root.protocol("WM_DELETE_WINDOW", cancel.cancel)
         self.label = tk.Label(self.root)
         self.label.pack()
@@ -42,7 +42,32 @@ class TkRenderer:
     ) -> None:
         if frame.pixel_format != PixelFormat.RGB:
             raise LabError("RENDER_REQUIRES_RGB")
-        ppm = f"P6\n{frame.width} {frame.height}\n255\n".encode() + frame.pixels.tobytes()
+        pixels = frame.pixels
+        if result.world_state is not None and result.corridor_analysis is not None:
+            from .corridor_overlay import draw_corridor
+
+            pixels = draw_corridor(pixels, result.world_state, result.corridor_analysis)
+        if result.trajectory_set is not None:
+            from .trajectory_overlay import draw_trajectories
+
+            pixels = draw_trajectories(pixels, result.trajectory_set)
+        if result.interaction_analysis is not None:
+            from .interaction_overlay import draw_interactions
+
+            pixels = draw_interactions(pixels, result.interaction_analysis)
+        if result.risk_assessment_set is not None:
+            from .risk_overlay import draw_risk
+
+            pixels = draw_risk(pixels, result.risk_assessment_set)
+        if result.attention_decision_set is not None:
+            from .attention_overlay import draw_attention
+
+            pixels = draw_attention(pixels, result.attention_decision_set)
+        if result.alert_output_set is not None:
+            from .alert_overlay import draw_alerts
+
+            pixels = draw_alerts(pixels, result.alert_output_set)
+        ppm = f"P6\n{frame.width} {frame.height}\n255\n".encode() + pixels.tobytes()
         self.photo = self.tk.PhotoImage(data=ppm, format="PPM")
         self.label.configure(image=self.photo)
         self.info.configure(

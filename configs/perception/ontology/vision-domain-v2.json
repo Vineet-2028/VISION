@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "ontology_id": "vision-domain",
+  "version": "2",
+  "source": "VISION domain grouping definitions; not a measured semantic classifier",
+  "groups": [
+    {
+      "id": "PERSON",
+      "description": "A visible human category; never personal identity",
+      "anchors": ["person"],
+      "spoken_label": "Person"
+    },
+    {
+      "id": "VEHICLE",
+      "description": "A transport vehicle; geometry determines relevance",
+      "anchors": ["vehicle"],
+      "spoken_label": "Vehicle"
+    },
+    {
+      "id": "TWO_WHEELER",
+      "description": "A two-wheel transport category; does not imply a rider",
+      "anchors": ["two wheeler"],
+      "spoken_label": "Two-wheeler"
+    },
+    {
+      "id": "ANIMAL",
+      "description": "An animal category without individual identity",
+      "anchors": ["animal"],
+      "spoken_label": "Animal"
+    },
+    {
+      "id": "MOBILITY_AID",
+      "description": "Equipment assisting mobility; no inference about a person's health",
+      "anchors": ["mobility aid"],
+      "spoken_label": "Object"
+    },
+    {
+      "id": "GROUND_OBSTACLE",
+      "description": "A semantic obstacle category; ground contact still requires geometric evidence",
+      "anchors": ["ground obstacle"],
+      "spoken_label": "Obstacle"
+    },
+    {
+      "id": "STRUCTURE",
+      "description": "A built structure or structural element",
+      "anchors": ["structure"],
+      "spoken_label": "Structure"
+    },
+    {
+      "id": "FURNITURE",
+      "description": "Movable equipment for everyday environments",
+      "anchors": ["furniture"],
+      "spoken_label": "Object"
+    },
+    {
+      "id": "ROAD_INFRASTRUCTURE",
+      "description": "Infrastructure associated with a roadway",
+      "anchors": ["road infrastructure"],
+      "spoken_label": "Object"
+    },
+    {
+      "id": "VEGETATION",
+      "description": "Plants and vegetation categories",
+      "anchors": ["vegetation"],
+      "spoken_label": "Object"
+    },
+    {
+      "id": "UNKNOWN",
+      "description": "No supported domain grouping; retain objectness and geometry",
+      "anchors": [],
+      "spoken_label": "Object"
+    }
+  ],
+  "hierarchy": {
+    "car": "vehicle",
+    "truck": "vehicle",
+    "bus": "vehicle",
+    "train": "vehicle",
+    "bicycle": "two wheeler",
+    "motorcycle": "two wheeler",
+    "dog": "animal"
+  },
+  "hierarchy_source": "VISION reviewed domain relations for existing COCO P0 vocabulary; not an empirical semantic classifier"
+}

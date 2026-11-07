@@ -7,9 +7,17 @@ from typing import Annotated, Any, Literal, Self
 
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
+from .alert_config import AlertConfig
+from .attention_config import AttentionConfig
+from .corridor_config import CorridorConfig
 from .depth_config import DepthConfig
+from .interaction_config import InteractionConfig
 from .motion_config import MotionConfig
+from .risk_config import RiskConfig
+from .semantic_config import SemanticConfig
 from .tracking_config import TrackerConfig
+from .trajectory_config import TrajectoryConfig
+from .world_config import WorldModelConfig
 
 Identifier = Annotated[str, Field(pattern=r"^[A-Za-z0-9][A-Za-z0-9_.-]{0,95}$")]
 PositiveInt = Annotated[int, Field(gt=0, le=2**31 - 1)]
@@ -129,6 +137,11 @@ class DetectorConfig(StrictModel):
 
 class LabConfig(StrictModel):
     schema_version: Literal[1] = 1
+    realtime_rescue: bool = False
+    camera_view_health: bool = False
+    orientation_canonicalization: bool = False
+    entity_semantics_ontology: str | None = None
+    semantic_presentation_enabled: bool = True
     mode: Literal["OFFLINE_REPLAY", "REALTIME"] = "OFFLINE_REPLAY"
     source_type: Literal["VIDEO_FILE"] = "VIDEO_FILE"
     source_id: Identifier = "local-video"
@@ -143,6 +156,14 @@ class LabConfig(StrictModel):
     tracker: TrackerConfig | None = None
     depth: DepthConfig | None = None
     motion: MotionConfig | None = None
+    segmentation: SemanticConfig | None = None
+    world_model: WorldModelConfig | None = None
+    corridor: CorridorConfig | None = None
+    trajectory: TrajectoryConfig | None = None
+    interaction: InteractionConfig | None = None
+    risk: RiskConfig | None = None
+    attention: AttentionConfig | None = None
+    alerts: AlertConfig | None = None
     visualization: bool = False
     source_scaling: Resolution | None = None
     record_session: bool = False
@@ -156,6 +177,37 @@ class LabConfig(StrictModel):
 
     @model_validator(mode="after")
     def consistency(self) -> Self:
+        if self.orientation_canonicalization and (
+            self.preprocess.operation != "identity" or self.preprocess.layout != "NHWC"
+        ):
+            raise ValueError("Orientation canonicalization requires identity NHWC preprocessing")
+        if self.realtime_rescue and (
+            self.mode != "REALTIME"
+            or self.queue_capacity != 1
+            or self.drop_policy != "LATEST_FRAME"
+        ):
+            raise ValueError("Realtime rescue requires REALTIME and a single latest-frame slot")
+        if self.realtime_rescue and (self.visualization or self.record_session):
+            raise ValueError("Realtime rescue excludes blocking debug rendering/recording")
+        if self.alerts is not None and self.attention is None:
+            raise ValueError("Alerts require explicit attention configuration")
+        if self.attention is not None and self.risk is None:
+            raise ValueError("Attention requires explicit risk configuration")
+        if self.risk is not None and self.world_model is None:
+            raise ValueError(
+                "Risk requires world state; absent spatial evidence remains undetermined"
+            )
+        if self.interaction is not None and (self.trajectory is None or self.corridor is None):
+            raise ValueError("Interaction requires trajectory and corridor analysis")
+        if self.trajectory is not None and self.world_model is None:
+            raise ValueError("Trajectory prediction requires WorldState")
+        if self.corridor is not None and self.world_model is None:
+            raise ValueError("Corridor analysis requires WorldState")
+        if self.segmentation is not None:
+            if "segmentation" not in self.intervals_ns:
+                raise ValueError("Segmentation requires scheduler interval")
+            if self.preprocess.pixel_format != "RGB" or self.preprocess.layout != "NHWC":
+                raise ValueError("Segmentation requires RGB NHWC")
         if self.motion is not None:
             if "optical_flow" not in self.intervals_ns:
                 raise ValueError("Motion requires optical_flow scheduler interval")
@@ -209,4 +261,6 @@ class LabConfig(StrictModel):
             result["detector"].pop("weights")
         if result["depth"] is not None:
             result["depth"].pop("weights")
+        if result["segmentation"] is not None:
+            result["segmentation"].pop("weights")
         return result

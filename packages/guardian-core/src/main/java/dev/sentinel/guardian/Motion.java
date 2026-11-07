@@ -43,14 +43,22 @@ public final class Motion {
   }
 
   public static CpaResult closestApproach(Vector3 relativePosition, Vector3 relativeVelocity) {
-    relativePosition.frame().requireSame(relativeVelocity.frame());
-    double speed = relativeVelocity.magnitude();
-    if (speed <= NumericPolicy.NEAR_ZERO_SPEED_MPS) return CpaResult.unavailable();
-    // -(r dot v)/|v|^2, factored to avoid overflow in the squared speed.
-    double seconds = -relativePosition.dot(relativeVelocity.divide(speed)) / speed;
-    if (!Double.isFinite(seconds) || seconds < 0) return CpaResult.unavailable();
+    OptionalDouble time = signedClosestApproachSeconds(relativePosition, relativeVelocity);
+    if (!time.isPresent() || time.getAsDouble() < 0) return CpaResult.unavailable();
+    double seconds = time.getAsDouble();
     return CpaResult.known(
         seconds, relativePosition.add(relativeVelocity.multiply(seconds)).magnitude());
+  }
+
+  /** Signed mathematical minimizer; negative means past, never a future contact claim. */
+  public static OptionalDouble signedClosestApproachSeconds(
+      Vector3 relativePosition, Vector3 relativeVelocity) {
+    relativePosition.frame().requireSame(relativeVelocity.frame());
+    double speed = relativeVelocity.magnitude();
+    if (speed <= NumericPolicy.NEAR_ZERO_SPEED_MPS) return OptionalDouble.empty();
+    // -(r dot v)/|v|^2, factored to avoid overflow in the squared speed.
+    double seconds = -relativePosition.dot(relativeVelocity.divide(speed)) / speed;
+    return Double.isFinite(seconds) ? OptionalDouble.of(seconds) : OptionalDouble.empty();
   }
 
   public static Optional<Vector3> direction(Vector3 relativePosition) {

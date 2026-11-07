@@ -46,6 +46,25 @@ class VisualEgoEstimator:
         started = perf_counter_ns()
         require_calibration(self.g, flow.pair)
         c, cv = self.c, self.cv
+        if self.g.c.calibration_quality.state not in {"VALID", "DEGRADED"}:
+            return CameraMotionEstimate(
+                flow.pair,
+                None,
+                None,
+                ScaleStatus.NONE,
+                MotionQuality(
+                    "UNAVAILABLE",
+                    "CALIBRATION_UNAVAILABLE",
+                    int(flow.valid.sum()),
+                    0,
+                    0,
+                    0,
+                    calibration_quality=self.g.c.calibration_quality.state,
+                ),
+                self.provenance,
+                started,
+                perf_counter_ns(),
+            )
         valid = flow.valid.copy()
         if excluded is not None:
             if excluded.shape != valid.shape or excluded.dtype != np.bool_:
@@ -179,6 +198,18 @@ class DepthAssistedEgoEstimator:
         self, flow: SparseFlowObservation, excluded: NDArray[np.bool_] | None = None
     ) -> CameraMotionEstimate:
         start = perf_counter_ns()
+        require_calibration(self.g, flow.pair)
+        if self.g.c.calibration_quality.state not in {"VALID", "DEGRADED"}:
+            return CameraMotionEstimate(
+                flow.pair,
+                None,
+                None,
+                ScaleStatus.NONE,
+                MotionQuality("UNAVAILABLE", "CALIBRATION_UNAVAILABLE", 0, 0, 0, 0),
+                self.provenance,
+                start,
+                perf_counter_ns(),
+            )
         xyz, rb = depth_points(self.g, flow, self.depth), rays(self.g, flow, "b")
         valid = flow.valid & np.isfinite(xyz).all(axis=1) & np.isfinite(rb).all(axis=1)
         if excluded is not None:
@@ -216,14 +247,23 @@ class DepthAssistedEgoEstimator:
                     translation = np.asarray(tv, dtype=np.float64).ravel()
                     inliers = len(indices)
                     predicted = points @ rotation.T + translation
-                    error = float(
-                        np.median(
-                            np.linalg.norm(
-                                predicted[:, :2] / predicted[:, 2:] - normalized, axis=1
-                            )[indices.ravel()]
+                    selected = indices.ravel()
+                    if (
+                        not np.isfinite(predicted[selected]).all()
+                        or (predicted[selected, 2] <= 1e-8).any()
+                        or coverage(
+                            flow.points_a[valid][selected], flow.pair.width, flow.pair.height
                         )
-                    )
-                    reason = "UNVALIDATED_SCALE"
+                        < self.c.minimum_coverage
+                    ):
+                        rotation, translation, inliers = None, None, 0
+                        reason = "INVALID_PNP_SUPPORT"
+                    else:
+                        projected = predicted[selected, :2] / predicted[selected, 2:]
+                        error = float(
+                            np.median(np.linalg.norm(projected - normalized[selected], axis=1))
+                        )
+                        reason = "UNVALIDATED_SCALE"
                 else:
                     reason = "RANSAC_FAILURE"
             else:

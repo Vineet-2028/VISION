@@ -5,6 +5,10 @@ from collections.abc import Callable, Iterator
 from dataclasses import replace
 from typing import Any
 
+from .alerts import AlertEngine
+from .attention import NoveltyEscalationAttentionPolicy
+from .attention_types import AttentionEngine
+from .camera_view_quality import CameraViewQuality, CameraViewQualityEstimator, ViewQualityConfig
 from .clocks import processing_ns
 from .components import (
     DepthAdapter,
@@ -36,22 +40,46 @@ from .contracts import (
     SourceIssue,
     TimingProvenance,
 )
+from .corridor import HybridCorridorAnalyzer
+from .corridor_types import CorridorAnalyzer
 from .depth_sampling import detection_depth, track_depth
 from .ego_runtime import VisualEgoEstimator
+from .enrichment_worker import EnrichmentWorker
+from .entity_attention import attach_entity_semantics
+from .entity_enrichment import (
+    EntitySemanticWorker,
+    SemanticEnricher,
+    SemanticEnrichmentRequest,
+    SemanticTrigger,
+)
+from .event_lineage import attach_event_lineage
 from .flow import DenseFlowField
 from .flow_runtime import FlowAdapter
 from .geometry import CoreGeometry
-from .metrics import Metrics
+from .interaction import TrajectoryCorridorInteractionAnalyzer
+from .interaction_types import InteractionAnalyzer
+from .latest_source import LatestSource
+from .metrics import Distribution, Metrics
 from .motion import TrackImageMotionObservation, sample_tracks
 from .motion_geometry import calibration_hash, compensate
 from .motion_masking import dynamic_exclusions
 from .preprocessing import ImagePreprocessor
 from .recording import SessionRecorder
+from .risk import RuleBasedRiskEngine
+from .risk_types import RiskEngine
 from .scheduling import FixedRateScheduler, FrameQueue, QueuedFrame
+from .semantic_worker import SemanticWorker
+from .semantics import ObservationStatus
 from .sources import FrameSource
+from .surfaces import SurfaceEvidenceExtractor
 from .tracking import AssociationTracker
 from .tracking_types import DetectorEvidence, MultiObjectTracker, TrackId
+from .trajectory import AdaptiveKinematicPredictor
+from .trajectory_types import TrajectoryPredictor
+from .user_heading import UserMotionHeadingEstimator
 from .visualization import Renderer
+from .world_model import PrototypeWorldModel
+from .world_types import EvidenceStatus, WorldEntityId, WorldModel, WorldSceneQuality
 
 
 class Pipeline:
@@ -70,15 +98,34 @@ class Pipeline:
         renderer: Renderer | None = None,
         tracker: MultiObjectTracker | None = None,
         motion_geometry: "CoreGeometry | None" = None,
+        world_model: WorldModel | None = None,
+        corridor_analyzer: CorridorAnalyzer | None = None,
+        trajectory_predictor: TrajectoryPredictor | None = None,
+        interaction_analyzer: InteractionAnalyzer | None = None,
+        risk_engine: RiskEngine | None = None,
+        attention_engine: AttentionEngine | None = None,
+        alert_engine: AlertEngine | None = None,
+        semantic_enricher: SemanticEnricher | None = None,
     ) -> None:
         self.config, self.preprocessor, self.recorder = config, preprocessor, recorder
         self.listener, self.clock, self.sleep = listener, clock, sleep
+        self.view_estimator = (
+            CameraViewQualityEstimator(ViewQualityConfig()) if config.camera_view_health else None
+        )
+        self.view_health_timing = Distribution(2048)
+        self.heading_estimator = UserMotionHeadingEstimator()
         self.queue = FrameQueue(config.queue_capacity, config.drop_policy)
         self.metrics = Metrics(config.metrics_window)
         self.scheduler = FixedRateScheduler({str(k): v for k, v in config.intervals_ns.items()})
         self.detector = detector or NoOpDetector()
         self.depth = depth or NoOpDepthAdapter()
         self.segmentation = segmentation or NoOpSegmentationAdapter()
+        self.semantic_worker = (
+            SemanticWorker(self.segmentation)
+            if segmentation is not None and config.mode == "REALTIME" and not config.realtime_rescue
+            else None
+        )
+        self.surface_extractor = SurfaceEvidenceExtractor()
         self.flow = flow or NoOpOpticalFlowAdapter()
         self.motion_geometry = motion_geometry
         self.ego = None
@@ -91,6 +138,17 @@ class Pipeline:
             if config.motion.estimator == "visual":
                 self.ego = VisualEgoEstimator(motion_geometry, config.motion)
         self._last_observation = -1
+        self.enrichment_workers: dict[str, EnrichmentWorker] = {}
+        self.enrichment_rejections: dict[str, int] = {}
+        self.enrichment_timing: dict[str, Distribution] = {}
+        if config.realtime_rescue:
+            for name, enabled, call in (
+                ("depth", config.depth is not None, self.depth.estimate_depth),
+                ("segmentation", config.segmentation is not None, self.segmentation.segment),
+                ("optical_flow", config.motion is not None, self.flow.flow),
+            ):
+                if enabled:
+                    self.enrichment_workers[name] = EnrichmentWorker(call, name)
         self._last_sequence = -1
         self._source_id: str | None = None
         self._has_run = False
@@ -117,6 +175,61 @@ class Pipeline:
         self._motion_counts: dict[str, int] = {}
         self._flow_pairs_computed = 0
         self._flow_pairs_published = 0
+        self._semantic_published = 0
+        if world_model is not None and config.world_model is None:
+            raise ValueError("Injected world model requires explicit configuration")
+        self.world_model = world_model or (
+            PrototypeWorldModel(
+                config.world_model, recorder.session_id, config.source_id, motion_geometry
+            )
+            if config.world_model is not None
+            else None
+        )
+        self._world_published = 0
+        if corridor_analyzer is not None and config.corridor is None:
+            raise ValueError("Injected corridor analyzer requires explicit configuration")
+        self.corridor_analyzer = corridor_analyzer or (
+            HybridCorridorAnalyzer(config.corridor, motion_geometry) if config.corridor else None
+        )
+        self._corridor_published = 0
+        if trajectory_predictor is not None and config.trajectory is None:
+            raise ValueError("Injected trajectory predictor requires explicit configuration")
+        self.trajectory_predictor = trajectory_predictor or (
+            AdaptiveKinematicPredictor(config.trajectory, motion_geometry)
+            if config.trajectory
+            else None
+        )
+        self._trajectory_published = 0
+        if interaction_analyzer is not None and config.interaction is None:
+            raise ValueError("Injected interaction analyzer requires explicit configuration")
+        self.interaction_analyzer = interaction_analyzer or (
+            TrajectoryCorridorInteractionAnalyzer(config.interaction, motion_geometry)
+            if config.interaction
+            else None
+        )
+        self._interaction_published = 0
+        if risk_engine is not None and config.risk is None:
+            raise ValueError("Injected risk engine requires explicit configuration")
+        self.risk_engine = risk_engine or (
+            RuleBasedRiskEngine(config.risk) if config.risk else None
+        )
+        self._risk_published = 0
+        if attention_engine is not None and config.attention is None:
+            raise ValueError("Injected attention engine requires explicit configuration")
+        self.attention_engine = attention_engine or (
+            NoveltyEscalationAttentionPolicy(config.attention) if config.attention else None
+        )
+        self._attention_published = 0
+        if alert_engine is not None and config.alerts is None:
+            raise ValueError("Injected alerts require explicit configuration")
+        self.alert_engine = alert_engine or (AlertEngine(config.alerts) if config.alerts else None)
+        if semantic_enricher is not None and self.world_model is None:
+            raise ValueError("Entity enrichment requires a world model")
+        self.entity_semantic_worker = (
+            EntitySemanticWorker(semantic_enricher) if semantic_enricher else None
+        )
+        self._entity_semantic_submitted: dict[WorldEntityId, int] = {}
+        self._entity_semantic_applied = 0
 
     def emit(self, event: Event) -> None:
         self.recorder.write_event(event)
@@ -196,6 +309,66 @@ class Pipeline:
                 return True
         return False
 
+    def _publish_unusable_view(
+        self, item: QueuedFrame, view: CameraViewQuality, started: int
+    ) -> None:
+        """Publish unavailability, never a fresh empty scene or confident alert."""
+        frame, completed = item.frame, self.clock()
+        if self.abandon(item):
+            return
+        if self.alert_engine is not None:
+            self.alert_engine.reset()
+        if self.attention_engine is not None:
+            self.attention_engine.reset()
+        result = FrameResult(
+            frame.identity,
+            frame.width,
+            frame.height,
+            frame.pixel_format,
+            FrameTimingTrace(
+                frame.decode_started_ns,
+                frame.decode_completed_ns,
+                item.accepted_ns,
+                started,
+                completed,
+                completed,
+                completed,
+                completed,
+            ),
+            (),
+            warnings=("CAMERA_VIEW_NOT_USABLE", *view.reasons),
+            camera_view_quality=view,
+            camera_orientation=frame.camera_orientation,
+            scene_capability="CAMERA_UNUSABLE"
+            if view.status.value == "UNUSABLE"
+            else "PERCEPTION_UNAVAILABLE",
+        )
+        if self.world_model is not None:
+            state = self.world_model.consume(result)
+            state = replace(
+                state,
+                scene_quality=WorldSceneQuality(
+                    "UNAVAILABLE", ("CAMERA_VIEW_NOT_USABLE", *view.reasons)
+                ),
+                capabilities=tuple(
+                    replace(
+                        c,
+                        status=EvidenceStatus.UNAVAILABLE,
+                        reasons=(*c.reasons, "CAMERA_VIEW_NOT_USABLE"),
+                    )
+                    for c in state.capabilities
+                ),
+                diagnostics=(*state.diagnostics, "CAMERA_VIEW_NOT_USABLE"),
+            )
+            result = replace(result, world_state=state)
+            self._world_published += 1
+        self.recorder.write_result(result)
+        if self.config.mode == "REALTIME":
+            self.metrics.stages["realtime_result_age"].add(self.clock() - item.due_ns)
+        self.metrics.counts["processed"] += 1
+        self._active_accounted = True
+        self.emit(Event("FrameCompleted", frame.identity))
+
     def process(self, item: QueuedFrame) -> None:
         frame = item.frame
         self._active_frame = frame
@@ -204,6 +377,14 @@ class Pipeline:
         self.metrics.stages["queue"].add(started - item.accepted_ns)
         if self.abandon(item):
             return
+        view = None
+        if self.view_estimator is not None:
+            view_started = self.clock()
+            view = self.view_estimator.estimate(frame)
+            self.view_health_timing.add(self.clock() - view_started)
+            if not view.permits_scene_reasoning:
+                self._publish_unusable_view(item, view, started)
+                return
         self._failure_stage = "PREPROCESS"
         prepared = self.preprocessor.prepare(frame)
         prepared_at = self.clock()
@@ -225,9 +406,50 @@ class Pipeline:
             "segmentation": (self.segmentation.provenance, self.segmentation.segment),
             "optical_flow": (self.flow.provenance, self.flow.flow),
         }
+        async_surface = None
+        if self.semantic_worker is not None:
+            try:
+                ready = self.semantic_worker.poll()
+            except LabError as error:
+                if error.severity == FailureSeverity.FATAL:
+                    raise
+                ready = None
+                errors.append("segmentation:COMPONENT_RECOVERABLE")
+            if ready is not None:
+                if (
+                    ready.session_id != self.recorder.session_id
+                    or ready.identity.source_id != frame.identity.source_id
+                    or ready.identity.timing != frame.identity.timing
+                    or ready.identity.observation_ns > frame.identity.observation_ns
+                    or ready.identity.sequence > frame.identity.sequence
+                ):
+                    raise LabError("SEMANTIC_ASYNC_IDENTITY_MISMATCH")
+                maximum_age = (
+                    self.config.segmentation.max_age_ns
+                    if self.config.segmentation
+                    else 1_000_000_000
+                )
+                if (
+                    frame.identity.observation_ns - ready.observed_identity.observation_ns
+                    > maximum_age
+                ):
+                    ready = replace(ready, status=ObservationStatus.STALE)
+                # Preserve the older observation identity. No same-frame fusion below.
+                outputs["segmentation"] = ready
+        # Start independent enrichment before synchronous detector work. Sharing
+        # immutable prepared input does not require waiting for detector output.
         for name in eligible:
+            if name in self.enrichment_workers:
+                self._failure_stage = "COMPONENT_" + name.upper()
+                self.enrichment_workers[name].submit((prepared, frame.identity, item.due_ns))
+        for name in sorted(eligible, key=lambda value: value == "segmentation"):
             self._failure_stage = "COMPONENT_" + name.upper()
             provenance, call = calls[name]
+            if name in self.enrichment_workers:
+                continue
+            if name == "segmentation" and self.semantic_worker is not None:
+                self.semantic_worker.submit(prepared, frame.identity)
+                continue
             self.emit(Event("ComponentStarted", frame.identity, component=name))
             if self.abandon(item):
                 return
@@ -236,16 +458,19 @@ class Pipeline:
             try:
                 output = call(prepared, frame.identity)
                 if output is not None:
-                    expected_type: Any = {
-                        "detector": DetectionOutput,
-                        "depth": DepthOutput,
-                        "segmentation": SegmentationOutput,
-                        "optical_flow": OpticalFlowOutput,
+                    valid_output_type = {
+                        "detector": isinstance(output, DetectionOutput),
+                        "depth": isinstance(output, DepthOutput),
+                        "segmentation": isinstance(output, SegmentationOutput),
+                        "optical_flow": isinstance(output, OpticalFlowOutput),
                     }[name]
-                    if not isinstance(output, expected_type):
+                    if not valid_output_type:
                         raise LabError("COMPONENT_OUTPUT_TYPE_MISMATCH")
                     if output.identity != frame.identity:
                         raise LabError("COMPONENT_IDENTITY_MISMATCH")
+                    if isinstance(output, SegmentationOutput):
+                        if output.session_id != self.recorder.session_id:
+                            raise LabError("SEMANTIC_SESSION_MISMATCH")
                     if isinstance(output, OpticalFlowOutput):
                         if output.pair.session_id != self.recorder.session_id:
                             raise LabError("FLOW_SESSION_MISMATCH")
@@ -265,6 +490,8 @@ class Pipeline:
             self.metrics.stages["component"].add(end - component_start)
             if name == "depth":
                 self.metrics.stages["depth"].add(end - component_start)
+            if name == "segmentation":
+                self.metrics.stages["segmentation"].add(end - component_start)
             if name == "optical_flow":
                 self.metrics.stages["optical_flow"].add(end - component_start)
             executions.append(
@@ -278,6 +505,55 @@ class Pipeline:
                 )
             )
             self.emit(Event("ComponentCompleted", frame.identity, component=name))
+        # Consume the newest completed enrichment after detector work, without waiting.
+        for name, worker in self.enrichment_workers.items():
+            self._failure_stage = "ASYNC_COMPONENT_" + name.upper()
+            completion = worker.poll()
+            if completion is None:
+                continue
+            enrichment_ready = completion.output.observation
+            if enrichment_ready is None:
+                continue
+            identity = enrichment_ready.identity
+            if (
+                identity.source_id != frame.identity.source_id
+                or identity.timing != frame.identity.timing
+                or identity.sequence > frame.identity.sequence
+                or identity.observation_ns > frame.identity.observation_ns
+            ):
+                raise LabError("ASYNC_COMPONENT_SOURCE_MISMATCH")
+            source_due = item.due_ns + identity.observation_ns - frame.identity.observation_ns
+            for stage, timestamp in (
+                ("input_age", completion.started_ns),
+                ("output_age", completion.completed_ns),
+                ("polled_age", self.clock()),
+            ):
+                self.enrichment_timing.setdefault(
+                    name + "_" + stage, Distribution(self.config.metrics_window)
+                ).add(max(0, timestamp - source_due))
+            if isinstance(enrichment_ready, SegmentationOutput):
+                if enrichment_ready.session_id != self.recorder.session_id:
+                    raise LabError("SEMANTIC_SESSION_MISMATCH")
+                age = max(0, self.clock() - item.due_ns) + (
+                    frame.identity.observation_ns
+                    - enrichment_ready.observed_identity.observation_ns
+                )
+                assert self.config.segmentation is not None
+                if age <= self.config.segmentation.max_age_ns:
+                    outputs[name] = enrichment_ready
+                    async_surface = completion.output.surface
+                    continue
+            elif max(0, self.clock() - source_due) <= (
+                self.config.world_model.late_ns if self.config.world_model else 1_000_000_000
+            ):
+                if isinstance(enrichment_ready, OpticalFlowOutput):
+                    if enrichment_ready.pair.session_id != self.recorder.session_id:
+                        raise LabError("FLOW_SESSION_MISMATCH")
+                    self._flow_pairs_computed += 1
+                outputs[name] = enrichment_ready
+                continue
+            # Rejected observations never become fresh by changing their identity.
+            self.enrichment_rejections[name] = self.enrichment_rejections.get(name, 0) + 1
         if self.abandon(item):
             return
         self._failure_stage = "POSTPROCESS"
@@ -310,6 +586,7 @@ class Pipeline:
                         self.recorder.session_id,
                         frame.identity.source_id,
                         *dimensions,
+                        objectness_first=self.config.entity_semantics_ontology is not None,
                     )
             if dimensions != self._tracking_dimensions:
                 raise LabError("TRACKING_IMAGE_IDENTITY_CHANGED")
@@ -386,6 +663,39 @@ class Pipeline:
                 ),
             )
         sampling_started = self.clock()
+        if self.config.realtime_rescue:
+            # Recheck after detector/tracker compute: an observation that was valid
+            # when polled may expire while the fast path is doing useful work.
+            for name, optional in (
+                ("depth", depth_output),
+                ("optical_flow", flow_output),
+                ("segmentation", segmentation_output),
+            ):
+                if optional is None:
+                    continue
+                observed = (
+                    optional.observed_identity
+                    if isinstance(optional, SegmentationOutput)
+                    else optional.identity
+                )
+                age = max(0, self.clock() - item.due_ns) + (
+                    frame.identity.observation_ns - observed.observation_ns
+                )
+                limit = (
+                    self.config.segmentation.max_age_ns
+                    if name == "segmentation" and self.config.segmentation is not None
+                    else self.config.world_model.late_ns
+                    if self.config.world_model is not None
+                    else 1_000_000_000
+                )
+                if age > limit:
+                    self.enrichment_rejections[name] = self.enrichment_rejections.get(name, 0) + 1
+                    if name == "depth":
+                        depth_output = None
+                    elif name == "optical_flow":
+                        flow_output = None
+                    else:
+                        segmentation_output, async_surface = None, None
         motion = None
         track_motion: tuple[TrackImageMotionObservation, ...] = ()
         if flow_output is not None and self.ego is not None:
@@ -404,7 +714,7 @@ class Pipeline:
                     published_detector if isinstance(published_detector, DetectionOutput) else None,
                     tracks,
                 )
-                if self.config.motion.dynamic_masking
+                if self.config.motion.dynamic_masking and sparse.identity == frame.identity
                 else None
             )
             motion_started = self.clock()
@@ -415,12 +725,30 @@ class Pipeline:
             compensation_started = self.clock()
             residual = compensate(self.motion_geometry, sparse, motion)
             self.metrics.stages["motion_compensation"].add(self.clock() - compensation_started)
-            if residual is not None and tracks is not None:
+            if residual is not None and tracks is not None and sparse.identity == frame.identity:
                 track_sample_started = self.clock()
                 track_motion = sample_tracks(tracks, residual)
                 self.metrics.stages["motion_track_sampling"].add(
                     self.clock() - track_sample_started
                 )
+        surface = async_surface
+        if isinstance(segmentation_output, SegmentationOutput):
+            if (
+                segmentation_output.mapping.camera_dimensions != prepared.mapping.camera_dimensions
+                or segmentation_output.mapping.camera_image_id != prepared.mapping.camera_image_id
+            ):
+                raise LabError("SEMANTIC_CAMERA_IMAGE_MISMATCH")
+            surface_start = self.clock()
+            exact = segmentation_output.identity == frame.identity
+            surface = async_surface or self.surface_extractor.extract(
+                segmentation_output,
+                detector_output if exact and isinstance(detector_output, DetectionOutput) else None,
+                tracks if exact else None,
+            )
+            self.metrics.stages["surface_extraction"].add(self.clock() - surface_start)
+            self.metrics.stages["semantic_observation_age"].add(
+                frame.identity.observation_ns - segmentation_output.observed_identity.observation_ns
+            )
         result = FrameResult(
             frame.identity,
             frame.width,
@@ -428,6 +756,9 @@ class Pipeline:
             frame.pixel_format,
             trace,
             tuple(executions),
+            camera_view_quality=view,
+            camera_orientation=frame.camera_orientation,
+            scene_capability="DEGRADED" if view is not None else "NOT_EVALUATED",
             detector=published_detector
             if isinstance(published_detector, DetectionOutput)
             else None,
@@ -435,9 +766,14 @@ class Pipeline:
             detection_depths=detection_depth(published_detector, depth_output)
             if isinstance(published_detector, DetectionOutput)
             and isinstance(depth_output, DepthOutput)
+            and depth_output.identity == published_detector.identity
             else (),
             track_depths=track_depth(
-                tracks, depth_output if isinstance(depth_output, DepthOutput) else None
+                tracks,
+                depth_output
+                if isinstance(depth_output, DepthOutput)
+                and depth_output.identity == tracks.identity
+                else None,
             )
             if tracks is not None
             else (),
@@ -448,11 +784,191 @@ class Pipeline:
             errors=tuple(errors),
             tracks=tracks,
             camera_motion=motion,
+            user_motion_heading=self.heading_estimator.estimate(
+                motion,
+                frame.identity,
+                self.motion_geometry.c.camera_frame_id if self.motion_geometry else "UNAVAILABLE",
+            ),
             track_image_motion=track_motion,
+            surfaces=surface,
             warnings=()
             if frame.identity.timing == TimingProvenance.AUTHORITATIVE_PTS
             else ("DEGRADED_SOURCE_TIMING",),
         )
+        if self.world_model is not None:
+            world_started = self.clock()
+            result = replace(result, world_state=self.world_model.consume(result))
+            self.metrics.stages["world_model"].add(self.clock() - world_started)
+            self._world_published += 1
+        if (
+            self.entity_semantic_worker is not None
+            and self.world_model is not None
+            and result.world_state is not None
+        ):
+            state = result.world_state
+            entity_ready = self.entity_semantic_worker.poll(state)
+            if entity_ready is not None and self.world_model.ingest_entity_semantics(
+                entity_ready.entity_id,
+                entity_ready.track_id,
+                entity_ready.observation,
+                state.state_timestamp,
+            ):
+                self._entity_semantic_applied += 1
+                state = replace(
+                    self.world_model.snapshot(state.state_timestamp),
+                    user_motion_heading=state.user_motion_heading,
+                )
+                result = replace(result, world_state=state)
+            active_ids = {e.entity_id for e in state.entities}
+            self._entity_semantic_submitted = {
+                key: value
+                for key, value in self._entity_semantic_submitted.items()
+                if key in active_ids
+            }
+            candidates = [
+                e
+                for e in state.entities
+                if e.entity_observation is not None
+                and e.entity_observation.source_frame == frame.identity
+                and e.lifecycle.value != "LOST"
+                and frame.identity.observation_ns
+                - self._entity_semantic_submitted.get(e.entity_id, -200_000_000)
+                >= 200_000_000
+            ]
+            if self.entity_semantic_worker.provider_failed:
+                result = replace(
+                    result, warnings=(*result.warnings, "ENTITY_SEMANTIC_PROVIDER_UNAVAILABLE")
+                )
+            if candidates and not self.entity_semantic_worker.provider_failed:
+                entity = min(
+                    candidates,
+                    key=lambda e: (
+                        self._entity_semantic_submitted.get(e.entity_id, -1),
+                        e.entity_id,
+                    ),
+                )
+                entity_observation = entity.entity_observation
+                assert entity_observation is not None
+                trigger: SemanticTrigger = (
+                    "NEW_TRACK"
+                    if entity.entity_id not in self._entity_semantic_submitted
+                    else "UNKNOWN_TRACK"
+                    if entity.track_semantics is None
+                    or entity.track_semantics.selected_concept is None
+                    else "UNSTABLE_SEMANTICS"
+                    if entity.track_semantics.quality != "STABLE"
+                    else "PERIODIC_REFRESH"
+                )
+                self.entity_semantic_worker.submit(
+                    SemanticEnrichmentRequest(
+                        entity.entity_id,
+                        entity.source_track_id,
+                        entity_observation,
+                        prepared,
+                        trigger,
+                    )
+                )
+                self._entity_semantic_submitted[entity.entity_id] = frame.identity.observation_ns
+        if self.corridor_analyzer is not None and result.world_state is not None:
+            corridor_started = self.clock()
+            result = replace(
+                result, corridor_analysis=self.corridor_analyzer.analyze(result.world_state)
+            )
+            self.metrics.stages["corridor"].add(self.clock() - corridor_started)
+            self._corridor_published += 1
+        if self.trajectory_predictor is not None and result.world_state is not None:
+            trajectory_started = self.clock()
+            result = replace(
+                result,
+                trajectory_set=self.trajectory_predictor.predict(
+                    result.world_state, result.corridor_analysis
+                ),
+            )
+            self.metrics.stages["trajectory"].add(self.clock() - trajectory_started)
+            self._trajectory_published += 1
+        if (
+            self.interaction_analyzer is not None
+            and result.world_state is not None
+            and result.corridor_analysis is not None
+            and result.trajectory_set is not None
+        ):
+            interaction_started = self.clock()
+            result = replace(
+                result,
+                interaction_analysis=self.interaction_analyzer.analyze(
+                    result.world_state, result.corridor_analysis, result.trajectory_set
+                ),
+            )
+            self.metrics.stages["interaction"].add(self.clock() - interaction_started)
+            self._interaction_published += 1
+        if self.risk_engine is not None and result.world_state is not None:
+            risk_started = self.clock()
+            result = replace(
+                result,
+                risk_assessment_set=self.risk_engine.assess(
+                    result.world_state,
+                    result.corridor_analysis,
+                    result.trajectory_set,
+                    result.interaction_analysis,
+                ),
+            )
+            self.metrics.stages["risk"].add(self.clock() - risk_started)
+            self._risk_published += 1
+        if self.attention_engine is not None and result.risk_assessment_set is not None:
+            attention_started = self.clock()
+            attention_now = result.risk_assessment_set.state_timestamp
+            if self.config.mode == "REALTIME":
+                # Map processing lateness onto the authoritative media timeline.
+                # Old inference must not create a fresh interruption intent.
+                attention_now += max(0, attention_started - item.due_ns)
+            result = replace(
+                result,
+                attention_decision_set=self.attention_engine.decide(
+                    result.risk_assessment_set,
+                    audio=self.alert_engine.presenter.channel_state()
+                    if self.alert_engine
+                    else None,
+                    now_ns=attention_now,
+                ),
+            )
+            self.metrics.stages["attention"].add(self.clock() - attention_started)
+            self._attention_published += 1
+            if (
+                self.config.semantic_presentation_enabled
+                and result.world_state is not None
+                and result.attention_decision_set is not None
+            ):
+                result = replace(
+                    result,
+                    attention_decision_set=attach_entity_semantics(
+                        result.attention_decision_set, result.world_state
+                    ),
+                )
+        if result.attention_decision_set is not None:
+            result = replace(result, attention_decision_set=attach_event_lineage(result))
+        if self.alert_engine is not None and result.attention_decision_set is not None:
+            alert_started = self.clock()
+            observation = frame.identity.observation_ns
+
+            def alert_clock() -> int:
+                return (
+                    observation + max(0, self.clock() - item.due_ns)
+                    if self.config.mode == "REALTIME"
+                    else observation
+                )
+
+            result = replace(
+                result,
+                alert_output_set=self.alert_engine.process(
+                    result.attention_decision_set,
+                    now_ns=alert_clock(),
+                    mode="REALTIME"
+                    if self.config.mode == "REALTIME"
+                    else "OFFLINE_REPLAY_PRESENTATION",
+                    delivery_clock=alert_clock,
+                ),
+            )
+            self.metrics.stages["alerts"].add(self.clock() - alert_started)
         completed = self.clock()
         if result.depth is not None:
             self.metrics.stages["depth_sampling"].add(completed - sampling_started)
@@ -472,14 +988,28 @@ class Pipeline:
             if result.detector is not None:
                 self.metrics.stages["realtime_detector_result_age"].add(age)
             if result.depth is not None:
-                self.metrics.stages["realtime_depth_result_age"].add(age)
+                self.metrics.stages["realtime_depth_result_age"].add(
+                    age + frame.identity.observation_ns - result.depth.identity.observation_ns
+                )
             if result.optical_flow is not None:
-                self.metrics.stages["realtime_flow_result_age"].add(age)
+                self.metrics.stages["realtime_flow_result_age"].add(
+                    age
+                    + frame.identity.observation_ns
+                    - result.optical_flow.identity.observation_ns
+                )
+            if result.segmentation is not None:
+                self.metrics.stages["realtime_semantic_result_age"].add(
+                    age
+                    + frame.identity.observation_ns
+                    - result.segmentation.observed_identity.observation_ns
+                )
             if result.tracks is not None:
                 self.metrics.stages["realtime_tracking_result_age"].add(age)
         self.metrics.counts["processed"] += 1
         if result.optical_flow is not None:
             self._flow_pairs_published += 1
+        if result.segmentation is not None:
+            self._semantic_published += 1
         self._active_accounted = True
         self.recorder.debug_frame(frame)
         self.metrics.stages["record"].add(self.clock() - record_start)
@@ -511,11 +1041,27 @@ class Pipeline:
         active: QueuedFrame | None = None
         caught: BaseException | None = None
         try:
+            if self.config.realtime_rescue:
+                source = LatestSource(source, self.config.start_ns, self.config.end_ns)
             iterator = iter(source)
             pending = self.read(iterator, cancel)
             anchor = self.clock()
             observation_anchor = pending.identity.observation_ns if pending is not None else 0
+            if isinstance(source, LatestSource) and source.anchor_ns is not None:
+                anchor, observation_anchor = source.anchor_ns, source.observation_anchor
             while (pending is not None or self.queue.items) and not cancel.requested:
+                if self.config.realtime_rescue and pending is not None:
+                    self.accept(
+                        pending, anchor + pending.identity.observation_ns - observation_anchor
+                    )
+                    pending = None
+                    active = self.queue.pop()
+                    self.process(active)
+                    active = None
+                    self._active_frame = None
+                    self._failure_stage = "SOURCE"
+                    pending = self.read(iterator, cancel)
+                    continue
                 if self.config.mode == "OFFLINE_REPLAY":
                     if pending is not None:
                         admitting = pending
@@ -606,6 +1152,7 @@ class Pipeline:
                     except BaseException as error:
                         caught = caught or error
                         reason, failure = "FATAL", "SOURCE_CLOSE_FAILED"
+                        self.metrics.counts["failed"] += 1
                     if self.renderer is not None:
                         try:
                             self.renderer.close()
@@ -613,6 +1160,72 @@ class Pipeline:
                             caught = caught or error
                             reason, failure = "FATAL", "RENDERER_CLOSE_FAILED"
                     summary = self.metrics.summary(self.clock() - started, self.queue.peak)
+                    if isinstance(source, LatestSource):
+                        summary["acquisition"] = {
+                            "decoded_in_window": source.decoded,
+                            "pending_replaced": source.replaced,
+                            "skipped_before_conversion": source.skipped_conversion,
+                            "source_end_observed_ns": source.last_seen_ns,
+                            "pending_capacity": 1,
+                            "timing": source.timing(),
+                        }
+                    summary["enrichment_rejections"] = self.enrichment_rejections.copy()
+                    summary["enrichment_delivered_timing"] = {
+                        key: value.summary() for key, value in self.enrichment_timing.items()
+                    }
+                    for name, worker in self.enrichment_workers.items():
+                        try:
+                            worker.close()
+                        except BaseException as error:
+                            caught = caught or error
+                            reason, failure = "FATAL", "ENRICHMENT_CLOSE_FAILED"
+                            summary["frame_counts"]["failed"] += 1
+                        summary.setdefault("enrichment_workers", {})[name] = worker.summary()
+                        summary.setdefault("enrichment_compute", {})[name] = worker.timing()
+                    summary["semantic_results_published"] = self._semantic_published
+                    summary["view_health_timing"] = self.view_health_timing.summary()
+                    if self.entity_semantic_worker is not None:
+                        try:
+                            self.entity_semantic_worker.close()
+                        except BaseException as error:
+                            caught = caught or error
+                            reason, failure = "FATAL", "ENTITY_SEMANTIC_CLOSE_FAILED"
+                        summary["entity_semantic_worker"] = (
+                            self.entity_semantic_worker.worker.summary()
+                        )
+                        summary["entity_semantic_timing"] = self.entity_semantic_worker.timing()
+                        summary["entity_semantic_applied"] = self._entity_semantic_applied
+                        self._entity_semantic_submitted.clear()
+                    summary["world_states_published"] = self._world_published
+                    summary["corridor_analyses_published"] = self._corridor_published
+                    summary["trajectory_sets_published"] = self._trajectory_published
+                    summary["interaction_analyses_published"] = self._interaction_published
+                    summary["risk_assessment_sets_published"] = self._risk_published
+                    summary["attention_decision_sets_published"] = self._attention_published
+                    if self.alert_engine is not None:
+                        try:
+                            self.alert_engine.reset()
+                        except BaseException as error:
+                            caught = caught or error
+                            reason, failure = "FATAL", "ALERT_RESET_FAILED"
+                    if self.attention_engine is not None:
+                        try:
+                            self.attention_engine.reset()
+                        except BaseException as error:
+                            caught = caught or error
+                            reason, failure = "FATAL", "ATTENTION_RESET_FAILED"
+                    if self.risk_engine is not None:
+                        try:
+                            self.risk_engine.reset()
+                        except BaseException as error:
+                            caught = caught or error
+                            reason, failure = "FATAL", "RISK_RESET_FAILED"
+                    if self.world_model is not None:
+                        try:
+                            self.world_model.close()
+                        except BaseException as error:
+                            caught = caught or error
+                            reason, failure = "FATAL", "WORLD_MODEL_CLOSE_FAILED"
                     if self.config.motion is not None:
                         summary["motion_states"] = self._motion_counts.copy()
                         summary["flow_pairs_computed"] = self._flow_pairs_computed
@@ -626,6 +1239,14 @@ class Pipeline:
                             reason, failure = "FATAL", "TRACKER_CLOSE_FAILED"
                     self._tracking_ids = ()
                     close_flow = getattr(self.flow, "close", None)
+                    if self.semantic_worker is not None:
+                        summary["semantic_jobs"] = self.semantic_worker.submitted
+                        summary["semantic_busy_ticks"] = self.semantic_worker.skipped
+                        try:
+                            self.semantic_worker.close()
+                        except BaseException as error:
+                            caught = caught or error
+                            reason, failure = "FATAL", "SEMANTIC_WORKER_CLOSE_FAILED"
                     if close_flow is not None:
                         try:
                             close_flow()
