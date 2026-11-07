@@ -13,6 +13,11 @@ target/
 .idea/
 .DS_Store
 .tools/
+.gradle/
+.kotlin/
+local.properties
+*.apk
+*.aab
 .venv/
 __pycache__/
 .pytest_cache/
@@ -20,6 +25,7 @@ __pycache__/
 .ruff_cache/
 *.egg-info/
 benchmark-results/
+private-data/
 datasets/raw/*
 datasets/evaluation/*
 datasets/calibration/*
