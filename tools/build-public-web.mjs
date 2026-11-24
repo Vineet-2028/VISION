@@ -11,7 +11,11 @@ import {
 import { resolve, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { spawnSync } from "node:child_process";
+import { createRequire } from "node:module";
 const root = fileURLToPath(new URL("../", import.meta.url));
+const webRequire = createRequire(
+  new URL("../apps/web/package.json", import.meta.url),
+);
 const stage = resolve(root, "dist", "public-web-source");
 try {
   if ((await lstat(resolve(root, "dist"))).isSymbolicLink())
@@ -84,7 +88,7 @@ await writeFile(
 );
 const result = spawnSync(
   process.execPath,
-  [join(root, "node_modules/next/dist/bin/next"), "build", stage],
+  [webRequire.resolve("next/dist/bin/next"), "build", stage],
   {
     cwd: root,
     stdio: "inherit",

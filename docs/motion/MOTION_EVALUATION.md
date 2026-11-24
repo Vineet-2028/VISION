@@ -17,3 +17,7 @@ npm run verify
 ```
 
 Run full verification after replay processes exit: Windows locks the Guardian JAR while the JVM uses it, so Maven clean must not run concurrently with replay.
+
+Calibration gate: UNKNOWN/INVALID calibration cannot produce visual ego-motion, research PnP or projected compensation. The available real recording uses an identity-only UNKNOWN calibration, so real camera-motion/residual metrics are unavailable. Analytical tests use explicit synthetic valid geometry. Supply measured calibration before interpreting real camera-motion evidence.
+
+`tools/motion_replay.py` is a bounded offline diagnostic: it decodes source PTS but samples before RGB conversion, retaining only the recent pair. It records source coverage, deliberate sampling omissions, pair counts, explicit failures, bounded latency windows and RSS. Its processing-age metric is not real-time freshness. The standard CLI real-time run failed to keep up and remains separately reported.

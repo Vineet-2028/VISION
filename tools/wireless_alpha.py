@@ -88,6 +88,19 @@ def portal(authority, endpoint, fingerprint, certificate_der, gateway, port):
             buffer = io.BytesIO()
             image.save(buffer)
             svg = buffer.getvalue().decode()
+            recording_status = "No phone session"
+            with gateway.lock:
+                session = gateway.session
+            if session is not None:
+                with session.lock:
+                    state = (
+                        "FULL — export now and start a new session"
+                        if session.recording_full
+                        else ("Recording" if session.recording else "Stopped")
+                    )
+                    recording_status = (
+                        f"{state}; {session.recorded_event_bytes} event bytes retained"
+                    )
             page = f'''<!doctype html>
 <html lang="en">
 <meta charset="utf-8">
@@ -110,7 +123,11 @@ Scan only this operator screen. Code expires in two minutes and can be used once
 </p>
 </details>
 <form method="post">
+<p>Diagnostic recording: {html.escape(recording_status)}. Refresh to update this status.</p>
 <input type="hidden" name="nonce" value="{nonce}">
+<button name="action" value="record">Start diagnostic event recording</button>
+<button name="action" value="stop-recording">Stop diagnostic event recording</button>
+<button name="action" value="export">Export saved gateway events</button>
 <button>Revoke all paired access and stop session</button>
 </form>
 <p>No public exposure. No camera files are recorded by default.</p>
@@ -139,6 +156,15 @@ Scan only this operator screen. Code expires in two minutes and can be used once
                 or self.headers.get("Origin") != f"http://127.0.0.1:{port}"
                 or self.headers.get("Transfer-Encoding")
             ):
+                # Closing with an unread POST body can reset the connection on
+                # Windows before the 403 reaches the client. Drain only a small,
+                # explicitly framed body under the existing two-second timeout.
+                try:
+                    length = int(self.headers.get("Content-Length", "0"))
+                    if not self.headers.get("Transfer-Encoding") and 0 < length < 256:
+                        self.rfile.read(length)
+                except (ValueError, OSError):
+                    pass
                 self.send_error(403)
                 return
             try:
@@ -150,6 +176,41 @@ Scan only this operator screen. Code expires in two minutes and can be used once
                     raise ValueError()
             except (ValueError, UnicodeError):
                 self.send_error(403)
+                return
+            action = data.get("action", ["revoke"])[0]
+            if action in {"record", "stop-recording", "export"}:
+                from time import perf_counter_ns
+
+                with gateway.lock:
+                    session = gateway.session
+                if session is None:
+                    self.send_error(409, "Start a phone session first")
+                    return
+                if action == "export":
+                    from perception_lab.field_export import export_session
+
+                    saved = export_session(session, perf_counter_ns())
+                    self.send_response(200)
+                    self.send_header("Content-Type", "application/zip")
+                    self.send_header(
+                        "Content-Disposition", 'attachment; filename="vision-gateway.zip"'
+                    )
+                    self.send_header("Cache-Control", "no-store")
+                    self.send_header("Content-Length", str(len(saved)))
+                    self.end_headers()
+                    self.wfile.write(saved)
+                    return
+                with session.lock:
+                    if session.closed or session.recording_full:
+                        self.send_error(409, "Recording unavailable for this session")
+                        return
+                    session.recording = action == "record"
+                self.send_response(303)
+                self.send_header("Location", "/")
+                self.end_headers()
+                return
+            if action != "revoke":
+                self.send_error(400)
                 return
             with gateway.lock:
                 authority.revoke()
@@ -173,6 +234,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--address", required=True, help="PC private Wi-Fi IPv4, e.g. 192.168.1.20")
     parser.add_argument("--port", type=int, default=8767)
+    parser.add_argument("--diagnostic-candidate", action="store_true")
     args = parser.parse_args()
     root = Path(__file__).resolve().parents[1]
     manifest = root / "benchmark-results/v02/VISION_CONTROLLED_ALPHA_V1/manifest.json"
@@ -185,7 +247,14 @@ def main():
         root / "benchmark-results/v0-rescue" / p
         for p in ("gpu-runtime", "gpu-libraries", "cudnn-9.10/nvidia/cudnn/bin")
     ]
-    host = WorkerHost(gateway, release_profile(manifest), runtime)
+    if args.diagnostic_candidate:
+        from alpha_field_worker import diagnostic_camera_main
+
+        host = WorkerHost(
+            gateway, release_profile(manifest), runtime, worker=diagnostic_camera_main
+        )
+    else:
+        host = WorkerHost(gateway, release_profile(manifest), runtime)
     with tempfile.TemporaryDirectory(prefix="vision-tls-") as temporary:
         tls, fingerprint, certificate_der = certificate(Path(temporary), args.address)
         with (

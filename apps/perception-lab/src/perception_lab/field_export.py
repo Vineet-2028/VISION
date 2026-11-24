@@ -22,6 +22,7 @@ def export_session(session: FieldSession, now_ns: int) -> bytes:
             "audio_included": False,
             "human_validation": "NOT_PERFORMED",
             "recording_full": session.recording_full,
+            "recorded_event_bytes": session.recorded_event_bytes,
         }
         events = tuple(session.events)
         counts = dict(session.counts)

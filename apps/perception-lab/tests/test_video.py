@@ -60,6 +60,26 @@ def test_invalid_video_and_cli_failure_sanitized(tmp_path, capsys):
     assert "private-person" not in capsys.readouterr().err
 
 
+def test_realtime_conversion_discard_preserves_source_identity_and_offline_frames(tmp_path):
+    path = tmp_path / "discard.mkv"
+    generate_video(path)
+    realtime = VideoFileSource(path, "synthetic", 100)
+    realtime.realtime_minimum_ns = lambda: 100_000_000
+    try:
+        frames = list(realtime)
+        assert [f.identity.sequence for f in frames] == [2, 3]
+        assert [f.identity.observation_ns for f in frames] == [120_000_000, 160_000_000]
+        assert realtime.skipped_conversion == 2
+    finally:
+        realtime.close()
+    offline = VideoFileSource(path, "synthetic", 100)
+    try:
+        assert len(list(offline)) == 4
+        assert offline.skipped_conversion == 0
+    finally:
+        offline.close()
+
+
 def test_cli_help(capsys):
     with pytest.raises(SystemExit) as exit:
         main(["replay", "--help"])

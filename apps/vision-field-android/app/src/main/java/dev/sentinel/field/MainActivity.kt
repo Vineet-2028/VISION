@@ -27,7 +27,6 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.content.ContextCompat
-import java.io.ByteArrayOutputStream
 import java.util.concurrent.Executors
 import java.util.concurrent.ArrayBlockingQueue
 import java.util.concurrent.CountDownLatch
@@ -48,7 +47,20 @@ class MainActivity : ComponentActivity() {
     private val exportHistory = registerForActivityResult(ActivityResultContracts.CreateDocument("application/json")) { uri ->
         if (uri != null) historyTask { contentResolver.openOutputStream(uri)?.use { it.write(history.export().toByteArray(Charsets.UTF_8)) } }
     }
+    private val exportDiagnostic = registerForActivityResult(ActivityResultContracts.CreateDocument("application/octet-stream")) { uri ->
+        if (uri != null) historyTask {
+            DiagnosticFrames.expire(applicationContext)
+            val clip = diagnosticVault.load()
+            if (clip != null) {
+                val stream = contentResolver.openOutputStream(uri) ?: error("Export destination unavailable")
+                stream.use { it.write(clip) }
+                runOnUiThread { status = "Readable diagnostic clip exported. Keep it private; delete the exported copy when finished." }
+            }
+            else runOnUiThread { status = "No retained diagnostic clip to export." }
+        }
+    }
     private val pending = LatestFrame<CameraFrame>()
+    private val diagnosticCapture = java.util.concurrent.atomic.AtomicReference<DiagnosticCapture?>(null)
     private val running = AtomicBoolean(false)
     private val occupied = AtomicBoolean(false)
     private val sessionLock = Any()
@@ -68,6 +80,14 @@ class MainActivity : ComponentActivity() {
     private var preview: PreviewView? = null
     private var generation = 0
     private var settings by mutableStateOf(false)
+    private val diagnosticFrames = DiagnosticFrames()
+    private val diagnosticVault by lazy { PrivateVault(applicationContext, "diagnostic-clip") }
+    private var clipConsent by mutableStateOf(false)
+    private var savedClip by mutableStateOf(false)
+    private val recentCaptures = java.util.ArrayDeque<DiagnosticCapture>()
+    private var selectableCaptures by mutableStateOf<List<DiagnosticCapture>>(emptyList())
+    private var selectedCapture by mutableStateOf<DiagnosticCapture?>(null)
+    private var showDiagnostics by mutableStateOf(false)
     private var showSummary by mutableStateOf(false)
     private var lastSummary by mutableStateOf("No finished session.")
     private val permission = registerForActivityResult(ActivityResultContracts.RequestPermission()) { granted ->
@@ -77,7 +97,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         HistoryCleanup.schedule(this)
-        historyTask { history.cleanup() }
+        historyTask { history.cleanup(); DiagnosticFrames.expire(applicationContext) }
         try {
             pairingVault.load()?.let { val data = org.json.JSONObject(String(it, Charsets.UTF_8)); paired = PairedGateway(data.getString("endpoint"), data.getString("fingerprint"), data.getString("device_key"),data.getString("certificate")); address = paired!!.endpoint }
         } catch (_: Exception) { status = "Saved pairing unavailable. Pair again." }
@@ -113,9 +133,50 @@ class MainActivity : ComponentActivity() {
                             TextButton(onClick = { showSummary = true }) { Text("Session summary") }
                             TextButton(onClick = { showHistory = true; historyTask {} }) { Text("History") }
                         }
+                        TextButton(onClick = {
+                            selectableCaptures = synchronized(sessionLock) { recentCaptures.toList().reversed() }
+                            selectedCapture = null
+                            historyTask { DiagnosticFrames.expire(applicationContext); val retained = diagnosticVault.load() != null; runOnUiThread { savedClip = retained } }
+                            showDiagnostics = true
+                        }) { Text("Report a problem") }
+                        if (showDiagnostics) AlertDialog(
+                            onDismissRequest = { showDiagnostics = false },
+                            title = { Text("Mark this moment") },
+                            text = { Column(Modifier.verticalScroll(rememberScrollState())) {
+                                Text("Buffer: " + if (clipConsent) "ENABLED" else "DISABLED")
+                                Text("Saved encrypted clip: " + if (savedClip) "YES — export or delete before replacement" else "NONE")
+                                Text("Session: " + ((selectedCapture ?: selectableCaptures.firstOrNull())?.sessionId ?: "No submitted capture"))
+                                Text("Gateway recording is controlled on the PC operator page. Check RECORDING / FULL there and export before stopping.")
+                                Text("Choose a submitted capture, or keep the latest capture reference.")
+                                TextButton(onClick = { selectedCapture = null }) { Text("Use latest submitted capture") }
+                                for (capture in selectableCaptures) {
+                                    TextButton(onClick = { selectedCapture = capture }) {
+                                        Text("Capture " + capture.sequence + if (capture == selectedCapture) " selected" else "")
+                                    }
+                                }
+                                Row {
+                                    Checkbox(checked = clipConsent, onCheckedChange = {
+                                        clipConsent = it
+                                        diagnosticFrames.enable(it)
+                                    })
+                                    Text("Buffer up to 2 seconds of camera images in RAM. Marking saves one encrypted local clip, Export or delete the retained clip before saving another.")
+                                }
+                                Text("One clip, at most 4 MiB of images, expires after 24 hours. Export creates a readable file at your selected location.")
+                                TextButton(onClick = { exportDiagnostic.launch("vision-diagnostic-frames.bin") }) { Text("Export readable diagnostic clip") }
+                                TextButton(onClick = { historyTask { diagnosticVault.clear(); runOnUiThread { savedClip = false; status = "Saved diagnostic clip deleted." } }; diagnosticFrames.enable(false); clipConsent = false }) { Text("Delete saved diagnostic clip") }
+                                Text("Requires Save new events in History. Saves a timestamp and your feedback locally. Images are saved only when buffering is enabled. Audio is never recorded.")
+                                for ((code, label) in listOf("MISSED" to "VISION missed this", "WRONG_NAME" to "Wrong name", "UNNECESSARY" to "Unnecessary warning", "CORRECT_SILENCE" to "Correct silence")) {
+                                    TextButton(onClick = { markDiagnostic(code); showDiagnostics = false }) { Text(label) }
+                                }
+                            } },
+                            confirmButton = { TextButton(onClick = { showDiagnostics = false }) { Text("Cancel") } }
+                        )
                         if (showHistory) HistoryPanel(historyRows,historyEnabled,historyDays,
                             onEnabled={value -> historyTask { history.enabled=value }}, onDays={value -> historyTask { history.days=value }},
-                            onFeedback={id,value -> historyTask { history.feedback(id,value) }}, onDelete={id -> historyTask { if(id==null) history.deleteAll() else history.delete(id) }},
+                            onFeedback={id,value -> historyTask { history.feedback(id,value) }}, onDelete={id ->
+                                if (id == null) { diagnosticFrames.enable(false); clipConsent = false }
+                                historyTask { if(id==null) { history.deleteAll(); diagnosticVault.clear() } else history.delete(id) }
+                            },
                             onCache={historyTask { val root=cacheDir.canonicalFile; root.listFiles()?.forEach { child -> if(child.canonicalPath.startsWith(root.path+java.io.File.separator)) child.deleteRecursively() } }},
                             onExport={exportHistory.launch("vision-history.json")},onClose={showHistory=false})
                         if (showSummary) AlertDialog(onDismissRequest = { showSummary = false },
@@ -125,6 +186,33 @@ class MainActivity : ComponentActivity() {
                         Text("Do not use for navigation or safety. Camera frames stay within the local test connection. Recording is off by default.")
                     }
                 }
+            }
+        }
+    }
+
+    private fun markDiagnostic(kind: String) {
+        val markedAt = SystemClock.elapsedRealtimeNanos()
+        val capture = selectedCapture ?: diagnosticCapture.get()
+        val userSelected = selectedCapture != null
+        val clip = if (capture != null && clipConsent) diagnosticFrames.snapshot(capture.sessionId, capture.sequence) else null
+        historyTask {
+            if (!history.enabled) {
+                runOnUiThread { status = "Enable Save new events in History, then mark the event again." }
+            } else {
+                DiagnosticFrames.expire(applicationContext)
+                val clipSaved = clip != null && diagnosticVault.load() == null
+                if (clipSaved) diagnosticVault.save(checkNotNull(clip))
+                history.record("USER_FEEDBACK", capture?.sessionId, kind, org.json.JSONObject()
+                    .put("diagnostic_clip_saved", clipSaved)
+                    .put("schema", "vision.field.marker.v1")
+                    .put("candidate", "ALPHA_V1_1_DIAGNOSTICS")
+                    .put("phone_monotonic_ns", markedAt.toString())
+                    .put("clock_domain", "ANDROID_ELAPSED_REALTIME")
+                    .put("lineage_status", if (capture == null) "UNLINKED_USER_MARKER" else if (userSelected) "USER_SELECTED_FRAME" else "LATEST_SUBMITTED_FRAME")
+                    .put("source_sequence", capture?.sequence ?: org.json.JSONObject.NULL)
+                    .put("source_camera_ns", capture?.cameraNs?.toString() ?: org.json.JSONObject.NULL)
+                    .put("first_proven_loss_reason", "UNKNOWN"))
+                runOnUiThread { savedClip = clipSaved || savedClip; status = if (clipSaved) "Feedback and encrypted clip saved. Export both the clip and History; match the session on the PC." else if (clip != null && !clipSaved) "Feedback saved. Existing clip protected; export or delete it before another capture." else "Feedback saved locally. Export it from History." }
             }
         }
     }
@@ -227,9 +315,10 @@ class MainActivity : ComponentActivity() {
                     try {
                         if (running.get() && image.width <= 1280 && image.height <= 1280) {
                             val capture = SystemClock.elapsedRealtimeNanos()
-                            val bitmap = image.toBitmap()
-                            val bytes = try { ByteArrayOutputStream().use { output -> bitmap.compress(android.graphics.Bitmap.CompressFormat.JPEG,75,output); output.toByteArray() } } finally { bitmap.recycle() }
-                            if (bytes.size <= 512_000) pending.offer(CameraFrame(sequence++, image.imageInfo.timestamp, capture, image.imageInfo.rotationDegrees, image.width, image.height, bytes, sensors.snapshot(image.imageInfo.timestamp)))
+                            val bytes = FrameEncoder.encode(image)
+                            if (bytes != null) {
+                                pending.offer(CameraFrame(sequence++, image.imageInfo.timestamp, capture, image.imageInfo.rotationDegrees, image.width, image.height, bytes, sensors.snapshot(image.imageInfo.timestamp)))
+                            }
                         }
                     } catch (_: RuntimeException) { runOnUiThread { status = "Frame encoding failed" } }
                     finally { image.close() }
@@ -271,7 +360,16 @@ class MainActivity : ComponentActivity() {
                                 }
                             }
                             if (!running.get()) break
+                            diagnosticFrames.offer(frame)
                             transport.send(frame)
+                            synchronized(sessionLock) {
+                                if (running.get() && requestedGeneration == generation) {
+                                    val submitted = DiagnosticCapture(checkNotNull(transport.sessionId), frame.sequence, frame.cameraNs)
+                                    diagnosticCapture.set(submitted)
+                                    recentCaptures.addLast(submitted)
+                                    while (recentCaptures.size > 24) recentCaptures.removeFirst()
+                                }
+                            }
                             val worker = transport.receive(speech) { events.offer(it) }
                             while (running.get()) transport.speechEvent(events.poll() ?: break)
                             if (worker != previousStatus) {
@@ -289,6 +387,7 @@ class MainActivity : ComponentActivity() {
                         runOnUiThread { sensors.stop(); provider?.unbindAll(); status = "Disconnected: ${error.javaClass.simpleName}" }
                     } finally {
                         synchronized(sessionLock) { activeSpeech = null; speech.close() }
+                        diagnosticCapture.set(null)
                         pending.clear()
                         try { transport?.close() } catch (_: Exception) { /* Local state is still discarded. */ }
                         val accepted = transport?.acceptedFrames ?: 0
@@ -309,7 +408,9 @@ class MainActivity : ComponentActivity() {
     }
 
     private fun stopSession() {
-        synchronized(sessionLock) { generation++; running.set(false); activeSpeech?.reset(null) }
+        diagnosticFrames.enable(false)
+        clipConsent = false
+        synchronized(sessionLock) { generation++; running.set(false); diagnosticCapture.set(null); recentCaptures.clear(); activeSpeech?.reset(null) }
         sensors.stop()
         provider?.unbindAll()
         pending.clear()
@@ -318,3 +419,5 @@ class MainActivity : ComponentActivity() {
     override fun onStop() { stopSession(); super.onStop() }
     override fun onDestroy() { stopSession(); cameraExecutor.shutdown(); transportExecutor.shutdown(); historyExecutor.shutdown(); super.onDestroy() }
 }
+
+private data class DiagnosticCapture(val sessionId: String, val sequence: Long, val cameraNs: Long)

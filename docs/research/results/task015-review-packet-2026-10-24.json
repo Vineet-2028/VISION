@@ -1,0 +1,285 @@
+{
+  "schema_version": 1,
+  "dataset": "SENTINEL_FIRST_PERSON_V1",
+  "source_sha256": "e011aa64a65aa9aeb00fce657312362742d12dfd9170f76878e2a784ab1fc5e2",
+  "selection": "Uniform temporal coverage, not confidence selection; scenario diversity unreviewed",
+  "risk_ground_truth_validated": false,
+  "labels": [
+    "CLEARLY_RELEVANT_INTERACTION",
+    "CLEARLY_IRRELEVANT",
+    "AMBIGUOUS",
+    "INSUFFICIENT_VISUAL_EVIDENCE"
+  ],
+  "windows": [
+    {
+      "id": 1,
+      "start_seconds": 0.0,
+      "end_seconds": 6.0,
+      "review_status": "DRAFT_REVIEW_REQUIRED",
+      "review_label": null,
+      "notes": "",
+      "scenario_tags": []
+    },
+    {
+      "id": 2,
+      "start_seconds": 20.482758620689655,
+      "end_seconds": 26.482758620689655,
+      "review_status": "DRAFT_REVIEW_REQUIRED",
+      "review_label": null,
+      "notes": "",
+      "scenario_tags": []
+    },
+    {
+      "id": 3,
+      "start_seconds": 40.96551724137931,
+      "end_seconds": 46.96551724137931,
+      "review_status": "DRAFT_REVIEW_REQUIRED",
+      "review_label": null,
+      "notes": "",
+      "scenario_tags": []
+    },
+    {
+      "id": 4,
+      "start_seconds": 61.44827586206897,
+      "end_seconds": 67.44827586206897,
+      "review_status": "DRAFT_REVIEW_REQUIRED",
+      "review_label": null,
+      "notes": "",
+      "scenario_tags": []
+    },
+    {
+      "id": 5,
+      "start_seconds": 81.93103448275862,
+      "end_seconds": 87.93103448275862,
+      "review_status": "DRAFT_REVIEW_REQUIRED",
+      "review_label": null,
+      "notes": "",
+      "scenario_tags": []
+    },
+    {
+      "id": 6,
+      "start_seconds": 102.41379310344827,
+      "end_seconds": 108.41379310344827,
+      "review_status": "DRAFT_REVIEW_REQUIRED",
+      "review_label": null,
+      "notes": "",
+      "scenario_tags": []
+    },
+    {
+      "id": 7,
+      "start_seconds": 122.89655172413794,
+      "end_seconds": 128.89655172413794,
+      "review_status": "DRAFT_REVIEW_REQUIRED",
+      "review_label": null,
+      "notes": "",
+      "scenario_tags": []
+    },
+    {
+      "id": 8,
+      "start_seconds": 143.3793103448276,
+      "end_seconds": 149.3793103448276,
+      "review_status": "DRAFT_REVIEW_REQUIRED",
+      "review_label": null,
+      "notes": "",
+      "scenario_tags": []
+    },
+    {
+      "id": 9,
+      "start_seconds": 163.86206896551724,
+      "end_seconds": 169.86206896551724,
+      "review_status": "DRAFT_REVIEW_REQUIRED",
+      "review_label": null,
+      "notes": "",
+      "scenario_tags": []
+    },
+    {
+      "id": 10,
+      "start_seconds": 184.3448275862069,
+      "end_seconds": 190.3448275862069,
+      "review_status": "DRAFT_REVIEW_REQUIRED",
+      "review_label": null,
+      "notes": "",
+      "scenario_tags": []
+    },
+    {
+      "id": 11,
+      "start_seconds": 204.82758620689654,
+      "end_seconds": 210.82758620689654,
+      "review_status": "DRAFT_REVIEW_REQUIRED",
+      "review_label": null,
+      "notes": "",
+      "scenario_tags": []
+    },
+    {
+      "id": 12,
+      "start_seconds": 225.31034482758622,
+      "end_seconds": 231.31034482758622,
+      "review_status": "DRAFT_REVIEW_REQUIRED",
+      "review_label": null,
+      "notes": "",
+      "scenario_tags": []
+    },
+    {
+      "id": 13,
+      "start_seconds": 245.79310344827587,
+      "end_seconds": 251.79310344827587,
+      "review_status": "DRAFT_REVIEW_REQUIRED",
+      "review_label": null,
+      "notes": "",
+      "scenario_tags": []
+    },
+    {
+      "id": 14,
+      "start_seconds": 266.2758620689655,
+      "end_seconds": 272.2758620689655,
+      "review_status": "DRAFT_REVIEW_REQUIRED",
+      "review_label": null,
+      "notes": "",
+      "scenario_tags": []
+    },
+    {
+      "id": 15,
+      "start_seconds": 286.7586206896552,
+      "end_seconds": 292.7586206896552,
+      "review_status": "DRAFT_REVIEW_REQUIRED",
+      "review_label": null,
+      "notes": "",
+      "scenario_tags": []
+    },
+    {
+      "id": 16,
+      "start_seconds": 307.2413793103448,
+      "end_seconds": 313.2413793103448,
+      "review_status": "DRAFT_REVIEW_REQUIRED",
+      "review_label": null,
+      "notes": "",
+      "scenario_tags": []
+    },
+    {
+      "id": 17,
+      "start_seconds": 327.7241379310345,
+      "end_seconds": 333.7241379310345,
+      "review_status": "DRAFT_REVIEW_REQUIRED",
+      "review_label": null,
+      "notes": "",
+      "scenario_tags": []
+    },
+    {
+      "id": 18,
+      "start_seconds": 348.2068965517241,
+      "end_seconds": 354.2068965517241,
+      "review_status": "DRAFT_REVIEW_REQUIRED",
+      "review_label": null,
+      "notes": "",
+      "scenario_tags": []
+    },
+    {
+      "id": 19,
+      "start_seconds": 368.6896551724138,
+      "end_seconds": 374.6896551724138,
+      "review_status": "DRAFT_REVIEW_REQUIRED",
+      "review_label": null,
+      "notes": "",
+      "scenario_tags": []
+    },
+    {
+      "id": 20,
+      "start_seconds": 389.17241379310343,
+      "end_seconds": 395.17241379310343,
+      "review_status": "DRAFT_REVIEW_REQUIRED",
+      "review_label": null,
+      "notes": "",
+      "scenario_tags": []
+    },
+    {
+      "id": 21,
+      "start_seconds": 409.6551724137931,
+      "end_seconds": 415.6551724137931,
+      "review_status": "DRAFT_REVIEW_REQUIRED",
+      "review_label": null,
+      "notes": "",
+      "scenario_tags": []
+    },
+    {
+      "id": 22,
+      "start_seconds": 430.13793103448273,
+      "end_seconds": 436.13793103448273,
+      "review_status": "DRAFT_REVIEW_REQUIRED",
+      "review_label": null,
+      "notes": "",
+      "scenario_tags": []
+    },
+    {
+      "id": 23,
+      "start_seconds": 450.62068965517244,
+      "end_seconds": 456.62068965517244,
+      "review_status": "DRAFT_REVIEW_REQUIRED",
+      "review_label": null,
+      "notes": "",
+      "scenario_tags": []
+    },
+    {
+      "id": 24,
+      "start_seconds": 471.1034482758621,
+      "end_seconds": 477.1034482758621,
+      "review_status": "DRAFT_REVIEW_REQUIRED",
+      "review_label": null,
+      "notes": "",
+      "scenario_tags": []
+    },
+    {
+      "id": 25,
+      "start_seconds": 491.58620689655174,
+      "end_seconds": 497.58620689655174,
+      "review_status": "DRAFT_REVIEW_REQUIRED",
+      "review_label": null,
+      "notes": "",
+      "scenario_tags": []
+    },
+    {
+      "id": 26,
+      "start_seconds": 512.0689655172414,
+      "end_seconds": 518.0689655172414,
+      "review_status": "DRAFT_REVIEW_REQUIRED",
+      "review_label": null,
+      "notes": "",
+      "scenario_tags": []
+    },
+    {
+      "id": 27,
+      "start_seconds": 532.551724137931,
+      "end_seconds": 538.551724137931,
+      "review_status": "DRAFT_REVIEW_REQUIRED",
+      "review_label": null,
+      "notes": "",
+      "scenario_tags": []
+    },
+    {
+      "id": 28,
+      "start_seconds": 553.0344827586207,
+      "end_seconds": 559.0344827586207,
+      "review_status": "DRAFT_REVIEW_REQUIRED",
+      "review_label": null,
+      "notes": "",
+      "scenario_tags": []
+    },
+    {
+      "id": 29,
+      "start_seconds": 573.5172413793103,
+      "end_seconds": 579.5172413793103,
+      "review_status": "DRAFT_REVIEW_REQUIRED",
+      "review_label": null,
+      "notes": "",
+      "scenario_tags": []
+    },
+    {
+      "id": 30,
+      "start_seconds": 594.0,
+      "end_seconds": 600.0,
+      "review_status": "DRAFT_REVIEW_REQUIRED",
+      "review_label": null,
+      "notes": "",
+      "scenario_tags": []
+    }
+  ]
+}

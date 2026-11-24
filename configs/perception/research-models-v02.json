@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "registry_version": "v02-research-2026-10-27",
+  "models": [
+    {
+      "id": "yoloe-26n-prompt-free",
+      "filename": "yoloe-26n-seg-pf.pt",
+      "url": "https://github.com/ultralytics/assets/releases/download/v8.4.0/yoloe-26n-seg-pf.pt",
+      "sha256": "ae805a9ac11c85214588b32da8248d68a516e1d071465e1e86a03cbfadb66ba7",
+      "bytes": 16271345,
+      "input_size": 640,
+      "research_runtime": "ultralytics==8.4.177; torch CPU FP32",
+      "checkpoint_precision": "UNVERIFIED_UNTIL_INSPECTION",
+      "code_license": "AGPL-3.0 / publisher enterprise terms",
+      "weight_terms_source": "https://www.ultralytics.com/license",
+      "license_decision": "RESEARCH_ONLY; no redistribution or product clearance",
+      "mode": "prompt-free"
+    },
+    {
+      "id": "yoloe-11s-prompt-free",
+      "filename": "yoloe-11s-seg-pf.pt",
+      "url": "https://github.com/ultralytics/assets/releases/download/v8.4.0/yoloe-11s-seg-pf.pt",
+      "sha256": "292bdf157a9ec7315f34b567cb93467c5043cd1889a1cc18abbfdeb88d7a948d",
+      "bytes": 27948751,
+      "input_size": 640,
+      "research_runtime": "ultralytics==8.4.177; torch CPU FP32",
+      "checkpoint_precision": "UNVERIFIED_UNTIL_INSPECTION",
+      "code_license": "AGPL-3.0 / publisher enterprise terms",
+      "weight_terms_source": "https://www.ultralytics.com/license",
+      "license_decision": "RESEARCH_ONLY; no redistribution or product clearance",
+      "mode": "prompt-free"
+    },
+    {
+      "id": "yolov8s-worldv2",
+      "filename": "yolov8s-worldv2.pt",
+      "url": "https://github.com/ultralytics/assets/releases/download/v8.4.0/yolov8s-worldv2.pt",
+      "sha256": "9b2c17ab6124a913e9b3a5c170617920d91b0f01111a8479da69f00e2cf27792",
+      "bytes": 25923032,
+      "input_size": 640,
+      "research_runtime": "ultralytics==8.4.177; torch CPU FP32",
+      "checkpoint_precision": "UNVERIFIED_UNTIL_INSPECTION",
+      "code_license": "AGPL-3.0 for Ultralytics; upstream YOLO-World GPL-3.0",
+      "weight_terms_source": "https://www.ultralytics.com/license",
+      "upstream_terms_source": "https://github.com/AILab-CVC/YOLO-World",
+      "license_decision": "RESEARCH_ONLY; overlapping upstream obligations require review before redistribution",
+      "mode": "embedded vocabulary; custom text encoder acquisition pending"
+    }
+  ],
+  "checksum_source": "https://api.github.com/repos/ultralytics/assets/releases/tags/v8.4.0",
+  "grounding_dino": {
+    "status": "ACQUISITION_PENDING",
+    "source": "https://huggingface.co/IDEA-Research/grounding-dino-tiny",
+    "published_model_card_license": "apache-2.0",
+    "format_required": "safetensors; trust_remote_code=False",
+    "scope": "offline teacher, not runtime adoption"
+  }
+}

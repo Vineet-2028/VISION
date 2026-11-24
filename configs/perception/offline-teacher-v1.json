@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "repository": "IDEA-Research/grounding-dino-base",
+  "revision": "12bdfa3120f3e7ec7b434d90674b3396eccf88eb",
+  "source": "https://huggingface.co/IDEA-Research/grounding-dino-base",
+  "license_source": "https://huggingface.co/IDEA-Research/grounding-dino-base/blob/12bdfa3120f3e7ec7b434d90674b3396eccf88eb/README.md",
+  "published_weight_card_license": "apache-2.0",
+  "decision": "RESEARCH_ONLY; offline teacher candidate, not measured superior or adopted",
+  "output_status": "MODEL_PSEUDO_LABEL",
+  "files": [
+    {
+      "name": "README.md",
+      "bytes": 2580,
+      "git_blob_sha1": "14c920e1b2effe7cc8f522a2be907758f828c9f1"
+    },
+    {
+      "name": "config.json",
+      "bytes": 1737,
+      "git_blob_sha1": "5a7f6206a1e488c54316e1f594311dd47a03a41b"
+    },
+    {
+      "name": "model.safetensors",
+      "bytes": 933400872,
+      "sha256": "5548f844c928c4b6f411fa8cbcc2bfa8dbbba437cb1d513975519f93c2a9ed21"
+    },
+    {
+      "name": "preprocessor_config.json",
+      "bytes": 457,
+      "git_blob_sha1": "5cb45d963917ed130ce46a93204b349cbec21131"
+    },
+    {
+      "name": "special_tokens_map.json",
+      "bytes": 125,
+      "git_blob_sha1": "a8b3208c2884c4efb86e49300fdd3dc877220cdf"
+    },
+    {
+      "name": "tokenizer.json",
+      "bytes": 711396,
+      "git_blob_sha1": "688882a79f44442ddc1f60d70334a7ff5df0fb47"
+    },
+    {
+      "name": "tokenizer_config.json",
+      "bytes": 1237,
+      "git_blob_sha1": "ed97a84add5f9b2091e756765ad3ba087a345e17"
+    },
+    {
+      "name": "vocab.txt",
+      "bytes": 231508,
+      "git_blob_sha1": "fb140275c155a9c7c5a3b3e0e77a9e839594a938"
+    }
+  ]
+}

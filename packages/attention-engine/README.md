@@ -1,5 +1,6 @@
-# Attention engine
+# Attention engine boundary
 
-Reserved for attention and notification policy over risk assessments. No alerts
-or background activity exist. Consent, suppression, and lifecycle rules must be
-designed before enabling Guardian.
+The current desktop research implementation is in apps/perception-lab/src/perception_lab/attention.py.
+Its frozen attention_types.py contract is the Task017 boundary. This package remains
+a future portable extraction point; no duplicate runtime or framework is introduced.
+See docs/attention. No speech or validated safety behavior is implemented.

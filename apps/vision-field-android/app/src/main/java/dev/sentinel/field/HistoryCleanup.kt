@@ -13,7 +13,7 @@ class HistoryCleanup : JobService() {
     override fun onStartJob(params: JobParameters): Boolean {
         executor.execute {
             var retry = false
-            try { HistoryStore(applicationContext).use { it.cleanup() } } catch (_: Exception) { retry = true }
+            try { HistoryStore(applicationContext).use { it.cleanup() }; DiagnosticFrames.expire(applicationContext) } catch (_: Exception) { retry = true }
             jobFinished(params, retry)
         }
         return true

@@ -96,7 +96,7 @@ METRICS: coverage, inliers, failure rate.
 
 DECISION CRITERION: No claim without static/dynamic labels.
 
-STATUS: MEASURED DIAGNOSTIC.
+STATUS: Mask generation is tested. Final real-pair runs return CALIBRATION_UNAVAILABLE with and without masks; masking benefit is UNVALIDATED. Earlier placeholder-calibration ego outputs are disqualified.
 
 ## RND-EGO-004
 

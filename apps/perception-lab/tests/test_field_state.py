@@ -21,6 +21,32 @@ def session():
     )
 
 
+def test_recording_byte_budget_preserves_existing_evidence_and_stops_cleanly(monkeypatch):
+    import io
+    import json
+    import zipfile
+
+    from perception_lab import field_state
+    from perception_lab.field_export import export_session
+
+    monkeypatch.setattr(field_state, "MAX_RECORDED_EVENT_BYTES", 256)
+    state = session()
+    state.recording = True
+    state.record("TEST", 1, {"reason": "x" * 100})
+    assert len(state.events) == 1
+    state.record("TEST", 2, {"reason": "x" * 100})
+    assert len(state.events) == 1
+    assert state.recording_full and not state.recording
+    assert state.recorded_event_bytes <= 256
+    with zipfile.ZipFile(io.BytesIO(export_session(state, 3))) as archive:
+        assert len(archive.read("events.jsonl")) == state.recorded_event_bytes
+        assert json.loads(archive.read("manifest.json"))["recording_full"]
+    # Inference/event counters continue even after optional recording has stopped.
+    state.record("TEST", 3, {"reason": "later"})
+    assert state.counts["TEST"] == 3
+    assert len(state.events) == 1
+
+
 def frame(s, sequence=1, camera=1_000_000_000):
     return FrameHeader(
         protocol_version=PROTOCOL,

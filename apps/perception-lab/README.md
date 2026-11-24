@@ -94,4 +94,46 @@ These settings remain provisional until reviewed tracking evidence supports sele
 
 Optional `motion` configuration enables LK or DIS, frame-pair observations and conservative visual rotation/Essential estimation. Add an `optical_flow` scheduler interval; use RGB NHWC. See [motion architecture](../../docs/motion/OPTICAL_FLOW_ARCHITECTURE.md) and [evaluation](../../docs/motion/MOTION_EVALUATION.md). No model weights are needed. OpenCV is pinned in the standard lab lock file.
 
-Use `configs/perception-lab.motion.example.json` as a template, replacing its video and synthetic calibration with explicitly identified local inputs. Run replay with the existing CLI. Run `npm run verify` only after replay exits, because Windows locks the JVM's JAR during execution. Research depth/IMU estimators are explicit APIs, not automatic runtime fusion. Task010 has not started.
+Use `configs/perception-lab.motion.example.json` as a template, replacing its video and synthetic calibration with explicitly identified local inputs. Run replay with the existing CLI. Run `npm run verify` only after replay exits, because Windows locks the JVM's JAR during execution. Research depth/IMU estimators are explicit APIs, not automatic runtime fusion. Task010 engineering is accepted for local prototype work; human validation is deferred and reviewed-mask qualification remains pending.
+
+## Task010 semantic surfaces
+
+See [architecture](../../docs/segmentation/SEGMENTATION_ARCHITECTURE.md), [human review](../../docs/segmentation/SEGMENTATION_EVALUATION.md), and [measured results](../../docs/research/results/task010-semantics-2026-10-21.md). The segmentation example is a template: replace its input and calibration with matching image dimensions and identities. No safe-path or production-safety claim is made. Task011 preserves unverified semantic provenance.
+
+## Task011 world state
+
+Enable `world_model: {}` for optional compact scene state. See [runtime and checks](../../docs/world-model/WORLD_MODEL_RUNTIME.md), [fusion policy](../../docs/world-model/EVIDENCE_FUSION.md), and [measured results](../../docs/research/results/task011-world-model-2026-10-21.md). Recording remains opt-in; schema6 contains nested WorldState schema1. Human semantic validation and production safety remain unvalidated.
+
+## Task012 corridor analysis
+
+Add `corridor: {}` with `world_model: {}` for deterministic interaction geometry. Image fallback needs no valid metric calibration, depth or semantics. Optional supplied planes/poses support metric geometry through Guardian. Recording schema7 adds CorridorAnalysis; visualization shows neutral relation labels. See [runtime](../../docs/corridor/CORRIDOR_RUNTIME.md), [evidence semantics](../../docs/corridor/FREE_SPACE_EVIDENCE.md), and [results](../../docs/research/results/task012-corridor-2026-10-22.md).
+
+## Task013 predictions
+
+Add `trajectory: {}` with `world_model: {}`; corridor is optional. Recording schema8 adds immutable TrajectorySet, and opt-in visualization adds neutral prediction paths/envelopes. The example config is a wiring template with no detected entities: configure an approved detector/tracker and actual matching calibration/input to obtain object trajectories. See [runtime](../../docs/trajectory/TRAJECTORY_RUNTIME.md) and [domains](../../docs/trajectory/TRAJECTORY_DOMAINS.md). No metric trajectory is emitted from relative depth or missing pose; physical validity remains unvalidated.
+
+## Task014 interactions
+
+Add `interaction: {}` with world, corridor and trajectory configured. Recording schema9 adds immutable geometric InteractionAnalysis; debug overlays show neutral predictions. Research metric TTC/CPA uses Guardian and requires explicit reference and configuration gates; neither is physically validated. See [runtime](../../docs/interaction/INTERACTION_RUNTIME.md) and [evaluation](../../docs/interaction/INTERACTION_EVALUATION.md). Task015 risk evidence is available; Task016 attention is implemented for prototype research.
+
+## Task015 risk evidence
+
+Enable `risk: {}` with world state, optionally with corridor/trajectory/interaction.
+Recording schema 10 adds immutable RiskAssessmentSet; the debug overlay is not advice.
+See [runtime and review](../../docs/risk/RISK_RUNTIME.md). No physical risk or safety qualification.
+
+## Task016 attention prototype
+
+Optional attention consumes risk contracts and produces explicit SILENT/ANNOUNCE/
+REPEAT/ESCALATE intents. No speech is generated. See docs/attention for episode,
+quality, cooldown, global-rate and Task017 integration rules; tools/attention_benchmark.py
+and tools/attention_review.py provide local measurements and draft human review.
+Task014 proxy recall remains 5.8%; human usefulness and production safety are unvalidated.
+
+Task016 evidence: [architecture](../../docs/attention/ATTENTION_ARCHITECTURE.md), [runtime and review instructions](../../docs/attention/ATTENTION_RUNTIME.md), and [completion report](../../docs/research/results/task016-attention-2026-10-24.md).
+
+## Task017 alert presentation
+
+Optional deterministic text alerts follow attention. See docs/alerts/ALERT_ARCHITECTURE.md and docs/alerts/ALERT_EVALUATION.md for contracts, limitations and offline review commands. No audio hardware, new ML or cloud service is required. Task018 evaluates this frozen loop; no Task019 or rescue features are included.
+
+Task017 verification and remaining limits: [full research report](../../docs/research/results/task017-alerts-2026-10-25.md).

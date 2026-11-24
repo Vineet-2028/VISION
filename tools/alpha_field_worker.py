@@ -81,7 +81,7 @@ class CameraSource:
         pass  # The process entry point owns the connection.
 
 
-def project(result, source):
+def project(result, source, diagnostics=False):
     observation = result.identity.observation_ns
     _, captured = source.active
     world = result.world_state
@@ -128,19 +128,34 @@ def project(result, source):
     ):
         scene[key] = compact_alpha(getattr(result, field))
     speech = []
+    rejected = []
+
+    def reject(item, reason):
+        if diagnostics and len(rejected) < 32:
+            rejected.append(
+                {
+                    "alert_id": item.alert_id if hasattr(item, "alert_id") else None,
+                    "intent": compact_alpha(item.intent),
+                    "reason": reason,
+                }
+            )
+
     for item in result.alert_output_set.outputs if result.alert_output_set else ():
         intent, presentation = item.intent, item.presentation
         if not item.delivered or intent is None or presentation is None or intent.lineage is None:
+            reject(item, "UPSTREAM_NOT_DELIVERED_OR_MISSING_LINEAGE")
             continue
         if (
             intent.session_id != source.session_id
             or presentation.alert_id != intent.alert_id
             or presentation.lineage != intent.lineage
         ):
+            reject(item, "SESSION_OR_PRESENTATION_LINEAGE_MISMATCH")
             continue
         original = intent.source_observation_ns
         host_source = next((host for pts, host in source.captures if pts == original), None)
         if host_source is None or original is None:
+            reject(item, "SOURCE_CAPTURE_NOT_RETAINED")
             continue
         deadline = min(
             host_source + 500_000_000,
@@ -161,11 +176,123 @@ def project(result, source):
                     "deadline_host_ns": str(deadline),
                 }
             )
+        else:
+            reject(item, "INVALID_STATE_OR_EXPIRED_DEADLINE")
     scene["field_alerts"] = speech
+    if diagnostics:
+        scene["gateway_rejections"] = rejected
     return scene
 
 
-def camera_main(pipe, session_id, width, height, profile, runtime):
+def object_diagnostics(result):
+    """Link actual consumed records by exact entity IDs within one update."""
+    state = result.world_state
+    if state is None:
+        return {"objects": [], "status": "WORLD_UNAVAILABLE"}
+    decisions = result.attention_decision_set
+    selected = decisions.selected if decisions else ()
+    suppressed = decisions.suppressed if decisions else ()
+    interactions = result.interaction_analysis
+    risks = result.risk_assessment_set
+    outputs = result.alert_output_set.outputs if result.alert_output_set else ()
+    objects = []
+    for entity in state.entities[:8]:
+        attention = [d for d in selected if d.entity_id == entity.entity_id]
+        rejected = [d for d in suppressed if d.decision.entity_id == entity.entity_id]
+        alerts = [
+            output
+            for output in outputs
+            if output.intent
+            and output.intent.lineage
+            and output.intent.lineage.entity_instance_id == entity.entity_id
+            and output.intent.lineage.track_id == entity.source_track_id
+        ]
+        objects.append(
+            {
+                "entity_id": compact_alpha(entity.entity_id),
+                "track_id": compact_alpha(entity.source_track_id),
+                "track_generation": entity.source_track_id.serial,
+                "box": compact_alpha(entity.image_geometry),
+                "observation": compact_alpha(entity.entity_observation),
+                "source_frame": compact_alpha(entity.entity_observation.source_frame)
+                if entity.entity_observation
+                else None,
+                "semantics": compact_alpha(entity.track_semantics),
+                "world_reasons": list(entity.reasons),
+                "corridor": compact_alpha(
+                    next(
+                        (
+                            relation
+                            for relation in result.corridor_analysis.entity_relations
+                            if relation.entity_id == entity.entity_id
+                        ),
+                        None,
+                    )
+                )
+                if result.corridor_analysis
+                else None,
+                "interaction": compact_alpha(
+                    next(
+                        (
+                            i
+                            for i in interactions.entity_interactions
+                            if i.entity_id == entity.entity_id
+                        ),
+                        None,
+                    )
+                )
+                if interactions
+                else None,
+                "risk": compact_alpha(
+                    next((r for r in risks.assessments if r.entity_id == entity.entity_id), None)
+                )
+                if risks
+                else None,
+                "attention": compact_alpha(attention),
+                "suppressed": compact_alpha(rejected),
+                "alerts": compact_alpha(alerts),
+                "first_proven_loss_reason": "UNKNOWN",
+                "first_confirmed_failure_stage": "UNKNOWN",
+                "contributing_causes": list(entity.reasons),
+                "unknown_evidence": [
+                    "Independent physical target annotation",
+                    "Acoustically heard output",
+                ],
+            }
+        )
+    payload = {"objects": objects, "truncated": len(state.entities) > 8}
+    if len(json.dumps(payload).encode()) > 32_768:
+        return {"objects": [], "status": "DIAGNOSTIC_BYTE_BUDGET_EXCEEDED"}
+    return payload
+
+
+def diagnostic_camera_main(pipe, session_id, width, height, profile, runtime):
+    camera_main(pipe, session_id, width, height, profile, runtime, diagnostics=True)
+
+
+def bounded_object_evidence(result, tracking, gateway_rejections):
+    payload = object_diagnostics(result)
+    payload["tracking"] = tracking
+    payload["gateway_rejections"] = gateway_rejections
+    dropped = {"objects": 0, "cost_observations": 0, "gateway_rejections": 0}
+    # Keep useful partial evidence instead of discarding an oversized entire publication.
+    payload["tracking"] = {
+        **tracking,
+        "cost_observations": list(tracking.get("cost_observations", [])),
+    }
+    for name, values in (
+        ("cost_observations", payload["tracking"]["cost_observations"]),
+        ("gateway_rejections", payload["gateway_rejections"]),
+        ("objects", payload["objects"]),
+    ):
+        while values and len(json.dumps(payload).encode()) > 24_000:
+            values.pop()
+            dropped[name] += 1
+    payload["budget_omissions"] = dropped
+    return payload
+
+
+def camera_main(pipe, session_id, width, height, profile, runtime, diagnostics=False):
     from rescue_runtime import activate_onnx
 
     handles = []
@@ -201,7 +328,15 @@ def camera_main(pipe, session_id, width, height, profile, runtime):
             current = None
 
             def write_result(self, result):
-                self.current = project(result, source)
+                self.current = project(result, source, diagnostics)
+                if diagnostics:
+                    snapshot = detector.diagnostic
+                    self.current["detector_diagnostics"] = snapshot
+                    self.current["object_diagnostics"] = bounded_object_evidence(
+                        result,
+                        tracker.diagnostic if tracker else {"status": "NOT_OBSERVED"},
+                        self.current.pop("gateway_rejections"),
+                    )
 
         class CameraPipeline(Pipeline):
             def accept(self, frame, due_ns):
@@ -226,7 +361,12 @@ def camera_main(pipe, session_id, width, height, profile, runtime):
         recorder.session_id = session_id
         recorder.manifest.update(session_id=session_id, source_type="LIVE_CAMERA")
         d = config.detector
-        detector = PicoDetDetector(
+        detector_type = PicoDetDetector
+        if diagnostics:
+            from perception_lab.field_detector_diagnostics import DiagnosticPicoDet
+
+            detector_type = DiagnosticPicoDet
+        detector = detector_type(
             Path(d.weights),
             d.sha256,
             size=d.input_size,
@@ -237,6 +377,19 @@ def camera_main(pipe, session_id, width, height, profile, runtime):
         )
         detector.enable_entity_semantics(Path(config.entity_semantics_ontology))
         segmentation = OnnxSemanticSegmenter(config.segmentation, Path("."), session_id)
+        tracker = None
+        if diagnostics and config.tracker is not None:
+            from perception_lab.field_tracking_diagnostics import DiagnosticTracker
+
+            tracker = DiagnosticTracker(
+                config.tracker,
+                session_id,
+                session_id,
+                width,
+                height,
+                objectness_first=config.entity_semantics_ontology is not None,
+            )
+            tracker.diagnostic = {"status": "NOT_OBSERVED"}
         engine = CameraPipeline(
             config,
             build_preprocessor(geometry, config),
@@ -244,6 +397,7 @@ def camera_main(pipe, session_id, width, height, profile, runtime):
             detector=detector,
             segmentation=segmentation,
             motion_geometry=geometry,
+            tracker=tracker,
         )
         pipe.send(("READY",))
         try:

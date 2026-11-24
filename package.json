@@ -16,6 +16,7 @@
   },
   "scripts": {
     "build:public": "node tools/build-public-web.mjs",
+    "evaluate:v0": "node tools/evaluate-v0.mjs",
     "doctor": "node tools/doctor.mjs",
     "security": "node tools/security.mjs",
     "smoke": "node tools/smoke.mjs",
@@ -41,6 +42,7 @@
     "infra:status": "docker compose ps"
   },
   "devDependencies": {
+    "next": "16.4.6",
     "prettier": "^3.6.2"
   }
 }

@@ -1,13 +1,16 @@
 """Bounded, authenticated-session state independent of HTTP and model runtimes."""
 
+import json
 import secrets
 from collections import Counter, deque
 from copy import deepcopy
 from threading import RLock
 
+from .field_diagnostics import stage_ledger
 from .field_protocol import ClockEstimate, FrameHeader, SessionStart, estimate_clock
 
 CLIENT_TIMEOUT_NS = 3_000_000_000
+MAX_RECORDED_EVENT_BYTES = 8 * 1024 * 1024
 
 
 class FieldSession:
@@ -31,6 +34,7 @@ class FieldSession:
         self.events: deque[dict[str, object]] = deque(maxlen=10_000)
         self.recording = False
         self.recording_full = False
+        self.recorded_event_bytes = 0
         self._latest: tuple[int, int, dict[str, object]] | None = None
         self._admitted_captures: deque[tuple[int, int]] = deque(maxlen=8)
         self._worker_capture: tuple[int, int] | None = None
@@ -159,6 +163,13 @@ class FieldSession:
                 self.counts["RESULT_PUBLISHED"] += 1
                 return
             world = scene.get("world")
+            diagnostic = scene.get("object_diagnostics")
+            diagnostic_size = len(json.dumps(diagnostic).encode())
+            used = getattr(self, "_diagnostic_bytes", 0)
+            if diagnostic_size > 32_768 or used + diagnostic_size > 4 * 1024 * 1024:
+                diagnostic = {"objects": [], "status": "SESSION_DIAGNOSTIC_BUDGET_EXCEEDED"}
+            else:
+                self._diagnostic_bytes = used + diagnostic_size
             entities = world.get("entities", []) if isinstance(world, dict) else []
             self.record(
                 "RESULT_PUBLISHED",
@@ -170,6 +181,9 @@ class FieldSession:
                     "heading": scene.get("heading"),
                     "view": scene.get("camera_view_quality"),
                     "provider_state": scene.get("provider_state"),
+                    "diagnostics": stage_ledger(scene, self.session_id, sequence),
+                    "detector_diagnostics": scene.get("detector_diagnostics"),
+                    "object_diagnostics": diagnostic,
                     "entities": [e.get("entity_id") for e in entities if isinstance(e, dict)][:128],
                     "alerts": alerts if isinstance(alerts, list) else [],
                 },
@@ -223,13 +237,17 @@ class FieldSession:
                 raise ValueError("SESSION_CLOSED")
             self.counts[kind] += 1
             if self.recording:
-                if len(self.events) == self.events.maxlen:
+                event = {**deepcopy(details), "kind": kind, "host_ns": str(timestamp_ns)}
+                event_bytes = len(json.dumps(event).encode("utf-8")) + 1
+                if (
+                    len(self.events) == self.events.maxlen
+                    or self.recorded_event_bytes + event_bytes > MAX_RECORDED_EVENT_BYTES
+                ):
                     self.recording_full = True
                     self.recording = False
                 else:
-                    self.events.append(
-                        {**deepcopy(details), "kind": kind, "host_ns": str(timestamp_ns)}
-                    )
+                    self.events.append(event)
+                    self.recorded_event_bytes += event_bytes
 
     def snapshot(self, now_ns: int, *, alerts_only: bool = False) -> dict[str, object]:
         with self.lock:

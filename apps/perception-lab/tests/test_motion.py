@@ -29,6 +29,12 @@ PROVENANCE = ComponentProvenance("synthetic", "optical_flow")
 def camera(calibration):
     raw = calibration.model_dump()
     raw.update(
+        calibration_quality={
+            "state": "VALID",
+            "rms_pixels": 0.0,
+            "sample_count": 160,
+            "timestamp_epoch_millis": None,
+        },
         resolution={"width": 640, "height": 480},
         intrinsics={"fx": 500.0, "fy": 500.0, "cx": 320.0, "cy": 240.0, "skew": 0},
     )
@@ -516,3 +522,16 @@ def test_flow_provider_swap_same_motion_consumer(camera):
         result = estimator.estimate(sparse)
         assert np.allclose(result.rotation, np.eye(3), atol=1e-5)
         assert result.pair == flow.pair
+
+
+def test_unknown_calibration_cannot_produce_camera_motion(camera):
+    raw = camera.c.model_dump()
+    raw["calibration_quality"]["state"] = "UNKNOWN"
+    unknown = CoreGeometry(Calibration.model_validate(raw))
+    flow, xyz = scene(unknown)
+    assert (
+        VisualEgoEstimator(unknown, MotionConfig()).estimate(flow).quality.reason
+        == "CALIBRATION_UNAVAILABLE"
+    )
+    depth = depth_for(unknown, flow, xyz)
+    assert DepthAssistedEgoEstimator(unknown, MotionConfig(), depth).estimate(flow).rotation is None

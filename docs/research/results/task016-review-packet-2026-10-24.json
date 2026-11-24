@@ -1,0 +1,664 @@
+{
+  "source_sha256": "e011aa64a65aa9aeb00fce657312362742d12dfd9170f76878e2a784ab1fc5e2",
+  "human_review": "PENDING",
+  "labels": [
+    "SHOULD_INTERRUPT_NOW",
+    "SHOULD_REMAIN_SILENT",
+    "AMBIGUOUS",
+    "INSUFFICIENT_CONTEXT",
+    "TOO_EARLY",
+    "TOO_LATE",
+    "REPEAT_UNNECESSARY"
+  ],
+  "windows": [
+    {
+      "id": 1,
+      "start_seconds": 0.0,
+      "end_seconds": 6.0,
+      "evaluated_updates": 30,
+      "review_status": "DRAFT_REVIEW_REQUIRED",
+      "review_label": null,
+      "policy_actions": {
+        "NAIVE": {
+          "ANNOUNCE": 30
+        },
+        "COOLDOWN": {
+          "ANNOUNCE": 3,
+          "SILENT": 27
+        },
+        "NOVELTY_ESCALATION": {
+          "ANNOUNCE": 3,
+          "SILENT": 27
+        }
+      }
+    },
+    {
+      "id": 2,
+      "start_seconds": 20.482758620689655,
+      "end_seconds": 26.482758620689655,
+      "evaluated_updates": 30,
+      "review_status": "DRAFT_REVIEW_REQUIRED",
+      "review_label": null,
+      "policy_actions": {
+        "NAIVE": {
+          "ANNOUNCE": 8,
+          "SILENT": 20,
+          "REPEAT": 2
+        },
+        "COOLDOWN": {
+          "ANNOUNCE": 2,
+          "SILENT": 28
+        },
+        "NOVELTY_ESCALATION": {
+          "ANNOUNCE": 2,
+          "SILENT": 28
+        }
+      }
+    },
+    {
+      "id": 3,
+      "start_seconds": 40.96551724137931,
+      "end_seconds": 46.96551724137931,
+      "evaluated_updates": 30,
+      "review_status": "DRAFT_REVIEW_REQUIRED",
+      "review_label": null,
+      "policy_actions": {
+        "NAIVE": {
+          "ANNOUNCE": 26,
+          "REPEAT": 4
+        },
+        "COOLDOWN": {
+          "ANNOUNCE": 1,
+          "SILENT": 29
+        },
+        "NOVELTY_ESCALATION": {
+          "ANNOUNCE": 1,
+          "SILENT": 29
+        }
+      }
+    },
+    {
+      "id": 4,
+      "start_seconds": 61.44827586206897,
+      "end_seconds": 67.44827586206897,
+      "evaluated_updates": 30,
+      "review_status": "DRAFT_REVIEW_REQUIRED",
+      "review_label": null,
+      "policy_actions": {
+        "NAIVE": {
+          "ANNOUNCE": 29,
+          "REPEAT": 1
+        },
+        "COOLDOWN": {
+          "ANNOUNCE": 3,
+          "SILENT": 27
+        },
+        "NOVELTY_ESCALATION": {
+          "ANNOUNCE": 3,
+          "SILENT": 27
+        }
+      }
+    },
+    {
+      "id": 5,
+      "start_seconds": 81.93103448275862,
+      "end_seconds": 87.93103448275862,
+      "evaluated_updates": 30,
+      "review_status": "DRAFT_REVIEW_REQUIRED",
+      "review_label": null,
+      "policy_actions": {
+        "NAIVE": {
+          "ANNOUNCE": 18,
+          "SILENT": 4,
+          "REPEAT": 8
+        },
+        "COOLDOWN": {
+          "ANNOUNCE": 2,
+          "SILENT": 28
+        },
+        "NOVELTY_ESCALATION": {
+          "ANNOUNCE": 2,
+          "SILENT": 28
+        }
+      }
+    },
+    {
+      "id": 6,
+      "start_seconds": 102.41379310344827,
+      "end_seconds": 108.41379310344827,
+      "evaluated_updates": 30,
+      "review_status": "DRAFT_REVIEW_REQUIRED",
+      "review_label": null,
+      "policy_actions": {
+        "NAIVE": {
+          "ANNOUNCE": 30
+        },
+        "COOLDOWN": {
+          "ANNOUNCE": 1,
+          "SILENT": 29
+        },
+        "NOVELTY_ESCALATION": {
+          "ANNOUNCE": 1,
+          "SILENT": 29
+        }
+      }
+    },
+    {
+      "id": 7,
+      "start_seconds": 122.89655172413794,
+      "end_seconds": 128.89655172413794,
+      "evaluated_updates": 30,
+      "review_status": "DRAFT_REVIEW_REQUIRED",
+      "review_label": null,
+      "policy_actions": {
+        "NAIVE": {
+          "ANNOUNCE": 25,
+          "REPEAT": 5
+        },
+        "COOLDOWN": {
+          "ANNOUNCE": 3,
+          "SILENT": 27
+        },
+        "NOVELTY_ESCALATION": {
+          "ANNOUNCE": 3,
+          "SILENT": 27
+        }
+      }
+    },
+    {
+      "id": 8,
+      "start_seconds": 143.3793103448276,
+      "end_seconds": 149.3793103448276,
+      "evaluated_updates": 30,
+      "review_status": "DRAFT_REVIEW_REQUIRED",
+      "review_label": null,
+      "policy_actions": {
+        "NAIVE": {
+          "ANNOUNCE": 27,
+          "REPEAT": 3
+        },
+        "COOLDOWN": {
+          "ANNOUNCE": 2,
+          "SILENT": 28
+        },
+        "NOVELTY_ESCALATION": {
+          "ANNOUNCE": 2,
+          "SILENT": 28
+        }
+      }
+    },
+    {
+      "id": 9,
+      "start_seconds": 163.86206896551724,
+      "end_seconds": 169.86206896551724,
+      "evaluated_updates": 30,
+      "review_status": "DRAFT_REVIEW_REQUIRED",
+      "review_label": null,
+      "policy_actions": {
+        "NAIVE": {
+          "ANNOUNCE": 30
+        },
+        "COOLDOWN": {
+          "ANNOUNCE": 1,
+          "SILENT": 29
+        },
+        "NOVELTY_ESCALATION": {
+          "ANNOUNCE": 1,
+          "SILENT": 29
+        }
+      }
+    },
+    {
+      "id": 10,
+      "start_seconds": 184.3448275862069,
+      "end_seconds": 190.3448275862069,
+      "evaluated_updates": 30,
+      "review_status": "DRAFT_REVIEW_REQUIRED",
+      "review_label": null,
+      "policy_actions": {
+        "NAIVE": {
+          "ANNOUNCE": 20,
+          "REPEAT": 10
+        },
+        "COOLDOWN": {
+          "ANNOUNCE": 3,
+          "SILENT": 27
+        },
+        "NOVELTY_ESCALATION": {
+          "ANNOUNCE": 3,
+          "SILENT": 27
+        }
+      }
+    },
+    {
+      "id": 11,
+      "start_seconds": 204.82758620689654,
+      "end_seconds": 210.82758620689654,
+      "evaluated_updates": 30,
+      "review_status": "DRAFT_REVIEW_REQUIRED",
+      "review_label": null,
+      "policy_actions": {
+        "NAIVE": {
+          "ANNOUNCE": 10,
+          "REPEAT": 20
+        },
+        "COOLDOWN": {
+          "ANNOUNCE": 2,
+          "SILENT": 28
+        },
+        "NOVELTY_ESCALATION": {
+          "ANNOUNCE": 2,
+          "SILENT": 28
+        }
+      }
+    },
+    {
+      "id": 12,
+      "start_seconds": 225.31034482758622,
+      "end_seconds": 231.31034482758622,
+      "evaluated_updates": 30,
+      "review_status": "DRAFT_REVIEW_REQUIRED",
+      "review_label": null,
+      "policy_actions": {
+        "NAIVE": {
+          "ANNOUNCE": 20,
+          "REPEAT": 10
+        },
+        "COOLDOWN": {
+          "ANNOUNCE": 1,
+          "SILENT": 29
+        },
+        "NOVELTY_ESCALATION": {
+          "ANNOUNCE": 1,
+          "SILENT": 29
+        }
+      }
+    },
+    {
+      "id": 13,
+      "start_seconds": 245.79310344827587,
+      "end_seconds": 251.79310344827587,
+      "evaluated_updates": 30,
+      "review_status": "DRAFT_REVIEW_REQUIRED",
+      "review_label": null,
+      "policy_actions": {
+        "NAIVE": {
+          "ANNOUNCE": 29,
+          "REPEAT": 1
+        },
+        "COOLDOWN": {
+          "ANNOUNCE": 3,
+          "SILENT": 27
+        },
+        "NOVELTY_ESCALATION": {
+          "ANNOUNCE": 3,
+          "SILENT": 27
+        }
+      }
+    },
+    {
+      "id": 14,
+      "start_seconds": 266.2758620689655,
+      "end_seconds": 272.2758620689655,
+      "evaluated_updates": 30,
+      "review_status": "DRAFT_REVIEW_REQUIRED",
+      "review_label": null,
+      "policy_actions": {
+        "NAIVE": {
+          "ANNOUNCE": 28,
+          "REPEAT": 2
+        },
+        "COOLDOWN": {
+          "ANNOUNCE": 2,
+          "SILENT": 28
+        },
+        "NOVELTY_ESCALATION": {
+          "ANNOUNCE": 2,
+          "SILENT": 28
+        }
+      }
+    },
+    {
+      "id": 15,
+      "start_seconds": 286.7586206896552,
+      "end_seconds": 292.7586206896552,
+      "evaluated_updates": 30,
+      "review_status": "DRAFT_REVIEW_REQUIRED",
+      "review_label": null,
+      "policy_actions": {
+        "NAIVE": {
+          "ANNOUNCE": 30
+        },
+        "COOLDOWN": {
+          "ANNOUNCE": 1,
+          "SILENT": 29
+        },
+        "NOVELTY_ESCALATION": {
+          "ANNOUNCE": 1,
+          "SILENT": 29
+        }
+      }
+    },
+    {
+      "id": 16,
+      "start_seconds": 307.2413793103448,
+      "end_seconds": 313.2413793103448,
+      "evaluated_updates": 30,
+      "review_status": "DRAFT_REVIEW_REQUIRED",
+      "review_label": null,
+      "policy_actions": {
+        "NAIVE": {
+          "ANNOUNCE": 30
+        },
+        "COOLDOWN": {
+          "ANNOUNCE": 3,
+          "SILENT": 27
+        },
+        "NOVELTY_ESCALATION": {
+          "ANNOUNCE": 3,
+          "SILENT": 27
+        }
+      }
+    },
+    {
+      "id": 17,
+      "start_seconds": 327.7241379310345,
+      "end_seconds": 333.7241379310345,
+      "evaluated_updates": 30,
+      "review_status": "DRAFT_REVIEW_REQUIRED",
+      "review_label": null,
+      "policy_actions": {
+        "NAIVE": {
+          "ANNOUNCE": 30
+        },
+        "COOLDOWN": {
+          "ANNOUNCE": 2,
+          "SILENT": 28
+        },
+        "NOVELTY_ESCALATION": {
+          "ANNOUNCE": 2,
+          "SILENT": 28
+        }
+      }
+    },
+    {
+      "id": 18,
+      "start_seconds": 348.2068965517241,
+      "end_seconds": 354.2068965517241,
+      "evaluated_updates": 30,
+      "review_status": "DRAFT_REVIEW_REQUIRED",
+      "review_label": null,
+      "policy_actions": {
+        "NAIVE": {
+          "ANNOUNCE": 30
+        },
+        "COOLDOWN": {
+          "ANNOUNCE": 1,
+          "SILENT": 29
+        },
+        "NOVELTY_ESCALATION": {
+          "ANNOUNCE": 1,
+          "SILENT": 29
+        }
+      }
+    },
+    {
+      "id": 19,
+      "start_seconds": 368.6896551724138,
+      "end_seconds": 374.6896551724138,
+      "evaluated_updates": 30,
+      "review_status": "DRAFT_REVIEW_REQUIRED",
+      "review_label": null,
+      "policy_actions": {
+        "NAIVE": {
+          "ANNOUNCE": 27,
+          "REPEAT": 3
+        },
+        "COOLDOWN": {
+          "ANNOUNCE": 3,
+          "SILENT": 27
+        },
+        "NOVELTY_ESCALATION": {
+          "ANNOUNCE": 3,
+          "SILENT": 27
+        }
+      }
+    },
+    {
+      "id": 20,
+      "start_seconds": 389.17241379310343,
+      "end_seconds": 395.17241379310343,
+      "evaluated_updates": 30,
+      "review_status": "DRAFT_REVIEW_REQUIRED",
+      "review_label": null,
+      "policy_actions": {
+        "NAIVE": {
+          "ANNOUNCE": 22,
+          "REPEAT": 8
+        },
+        "COOLDOWN": {
+          "ANNOUNCE": 2,
+          "SILENT": 28
+        },
+        "NOVELTY_ESCALATION": {
+          "ANNOUNCE": 2,
+          "SILENT": 28
+        }
+      }
+    },
+    {
+      "id": 21,
+      "start_seconds": 409.6551724137931,
+      "end_seconds": 415.6551724137931,
+      "evaluated_updates": 30,
+      "review_status": "DRAFT_REVIEW_REQUIRED",
+      "review_label": null,
+      "policy_actions": {
+        "NAIVE": {
+          "ANNOUNCE": 23,
+          "REPEAT": 7
+        },
+        "COOLDOWN": {
+          "ANNOUNCE": 1,
+          "SILENT": 29
+        },
+        "NOVELTY_ESCALATION": {
+          "ANNOUNCE": 1,
+          "SILENT": 29
+        }
+      }
+    },
+    {
+      "id": 22,
+      "start_seconds": 430.13793103448273,
+      "end_seconds": 436.13793103448273,
+      "evaluated_updates": 30,
+      "review_status": "DRAFT_REVIEW_REQUIRED",
+      "review_label": null,
+      "policy_actions": {
+        "NAIVE": {
+          "ANNOUNCE": 30
+        },
+        "COOLDOWN": {
+          "ANNOUNCE": 3,
+          "SILENT": 27
+        },
+        "NOVELTY_ESCALATION": {
+          "ANNOUNCE": 3,
+          "SILENT": 27
+        }
+      }
+    },
+    {
+      "id": 23,
+      "start_seconds": 450.62068965517244,
+      "end_seconds": 456.62068965517244,
+      "evaluated_updates": 30,
+      "review_status": "DRAFT_REVIEW_REQUIRED",
+      "review_label": null,
+      "policy_actions": {
+        "NAIVE": {
+          "ANNOUNCE": 30
+        },
+        "COOLDOWN": {
+          "ANNOUNCE": 2,
+          "SILENT": 28
+        },
+        "NOVELTY_ESCALATION": {
+          "ANNOUNCE": 2,
+          "SILENT": 28
+        }
+      }
+    },
+    {
+      "id": 24,
+      "start_seconds": 471.1034482758621,
+      "end_seconds": 477.1034482758621,
+      "evaluated_updates": 30,
+      "review_status": "DRAFT_REVIEW_REQUIRED",
+      "review_label": null,
+      "policy_actions": {
+        "NAIVE": {
+          "ANNOUNCE": 28,
+          "REPEAT": 2
+        },
+        "COOLDOWN": {
+          "ANNOUNCE": 1,
+          "SILENT": 29
+        },
+        "NOVELTY_ESCALATION": {
+          "ANNOUNCE": 1,
+          "SILENT": 29
+        }
+      }
+    },
+    {
+      "id": 25,
+      "start_seconds": 491.58620689655174,
+      "end_seconds": 497.58620689655174,
+      "evaluated_updates": 30,
+      "review_status": "DRAFT_REVIEW_REQUIRED",
+      "review_label": null,
+      "policy_actions": {
+        "NAIVE": {
+          "ANNOUNCE": 30
+        },
+        "COOLDOWN": {
+          "ANNOUNCE": 3,
+          "SILENT": 27
+        },
+        "NOVELTY_ESCALATION": {
+          "ANNOUNCE": 3,
+          "SILENT": 27
+        }
+      }
+    },
+    {
+      "id": 26,
+      "start_seconds": 512.0689655172414,
+      "end_seconds": 518.0689655172414,
+      "evaluated_updates": 30,
+      "review_status": "DRAFT_REVIEW_REQUIRED",
+      "review_label": null,
+      "policy_actions": {
+        "NAIVE": {
+          "ANNOUNCE": 30
+        },
+        "COOLDOWN": {
+          "ANNOUNCE": 2,
+          "SILENT": 28
+        },
+        "NOVELTY_ESCALATION": {
+          "ANNOUNCE": 2,
+          "SILENT": 28
+        }
+      }
+    },
+    {
+      "id": 27,
+      "start_seconds": 532.551724137931,
+      "end_seconds": 538.551724137931,
+      "evaluated_updates": 30,
+      "review_status": "DRAFT_REVIEW_REQUIRED",
+      "review_label": null,
+      "policy_actions": {
+        "NAIVE": {
+          "ANNOUNCE": 26,
+          "REPEAT": 4
+        },
+        "COOLDOWN": {
+          "ANNOUNCE": 1,
+          "SILENT": 29
+        },
+        "NOVELTY_ESCALATION": {
+          "ANNOUNCE": 1,
+          "SILENT": 29
+        }
+      }
+    },
+    {
+      "id": 28,
+      "start_seconds": 553.0344827586207,
+      "end_seconds": 559.0344827586207,
+      "evaluated_updates": 30,
+      "review_status": "DRAFT_REVIEW_REQUIRED",
+      "review_label": null,
+      "policy_actions": {
+        "NAIVE": {
+          "ANNOUNCE": 30
+        },
+        "COOLDOWN": {
+          "ANNOUNCE": 3,
+          "SILENT": 27
+        },
+        "NOVELTY_ESCALATION": {
+          "ANNOUNCE": 3,
+          "SILENT": 27
+        }
+      }
+    },
+    {
+      "id": 29,
+      "start_seconds": 573.5172413793103,
+      "end_seconds": 579.5172413793103,
+      "evaluated_updates": 30,
+      "review_status": "DRAFT_REVIEW_REQUIRED",
+      "review_label": null,
+      "policy_actions": {
+        "NAIVE": {
+          "ANNOUNCE": 27,
+          "REPEAT": 3
+        },
+        "COOLDOWN": {
+          "ANNOUNCE": 2,
+          "SILENT": 28
+        },
+        "NOVELTY_ESCALATION": {
+          "ANNOUNCE": 2,
+          "SILENT": 28
+        }
+      }
+    },
+    {
+      "id": 30,
+      "start_seconds": 594.0,
+      "end_seconds": 600.0,
+      "evaluated_updates": 30,
+      "review_status": "DRAFT_REVIEW_REQUIRED",
+      "review_label": null,
+      "policy_actions": {
+        "NAIVE": {
+          "ANNOUNCE": 30
+        },
+        "COOLDOWN": {
+          "ANNOUNCE": 1,
+          "SILENT": 29
+        },
+        "NOVELTY_ESCALATION": {
+          "ANNOUNCE": 1,
+          "SILENT": 29
+        }
+      }
+    }
+  ]
+}

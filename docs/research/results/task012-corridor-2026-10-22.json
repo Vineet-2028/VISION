@@ -1,0 +1,431 @@
+{
+  "date": "2026-10-22",
+  "scope": "LOCAL_PROTOTYPE_ENGINEERING",
+  "runs": {
+    "full_realtime": {
+      "source_sha256": "e011aa64a65aa9aeb00fce657312362742d12dfd9170f76878e2a784ab1fc5e2",
+      "source_end_ns": 600000000000,
+      "wall_seconds": 600.6002894,
+      "frame_counts": {
+        "source": 18001,
+        "decoded": 18001,
+        "accepted": 18000,
+        "processed": 482,
+        "dropped": 17519,
+        "failed": 0
+      },
+      "corridor": {
+        "analyses": 482,
+        "compute": {
+          "count": 482,
+          "min_ns": 30000,
+          "max_ns": 765400,
+          "mean_ns": 217805.8091286307,
+          "percentile_scope": "recent_window",
+          "window_count": 482,
+          "p50_ns": 202200,
+          "p90_ns": 338200,
+          "p95_ns": 390100,
+          "p99_ns": 591400
+        },
+        "world_update_interval": {
+          "count": 481,
+          "min_ns": 933333333,
+          "max_ns": 2333333333,
+          "mean_ns": 1247331947.3305614,
+          "percentile_scope": "recent_window",
+          "window_count": 481,
+          "p50_ns": 1200000000,
+          "p90_ns": 1466666666,
+          "p95_ns": 1600000000,
+          "p99_ns": 1933333334
+        },
+        "mode_counts": {
+          "IMAGE_SPACE_CORRIDOR": 482
+        },
+        "mode_switches": 0,
+        "relation_counts": {
+          "OUTSIDE": 3732,
+          "INSIDE": 4533,
+          "NEAR_BOUNDARY": 1012,
+          "INTERSECTS": 463,
+          "UNKNOWN": 104
+        },
+        "quality_counts": {
+          "DEGRADED": 482
+        },
+        "memory": {
+          "start_rss": 126078976,
+          "peak_sampled_rss": 757264384,
+          "end_rss": 721530880,
+          "samples": [
+            733450240, 740655104, 740548608, 741896192, 741949440, 741998592,
+            742281216, 742662144, 742588416, 742993920, 743186432, 743219200,
+            743301120, 755879936, 756043776, 755965952, 755982336, 755613696,
+            756015104, 756027392, 755208192, 756219904, 755789824, 756068352,
+            754933760, 741982208, 742309888, 742019072, 742436864, 742453248,
+            742432768, 742154240, 742088704, 742035456, 742105088, 742060032,
+            742121472, 743325696, 743170048, 743227392, 743464960, 743473152,
+            743440384, 756924416, 756277248, 756563968, 756703232, 757100544,
+            742457344, 742428672, 742727680, 742887424, 743051264, 742760448,
+            743010304, 755798016, 755789824, 755769344, 755990528, 755810304,
+            756850688, 743321600, 743690240, 743829504, 743014400, 743849984,
+            756383744, 756334592, 756449280, 756060160, 756072448, 756719616,
+            743088128, 742830080, 742584320, 742748160, 742871040, 742883328,
+            743063552, 742920192, 743251968, 743256064, 743223296, 743219200,
+            742793216, 742936576, 742993920, 743088128, 743157760, 742764544,
+            756183040, 755953664, 755965952, 756240384, 756240384, 742293504,
+            756383744, 743321600, 756211712, 756248576, 756469760, 756645888,
+            744484864, 744427520, 744243200, 744566784, 744697856, 744677376,
+            744349696, 744464384, 744652800, 744927232, 744878080, 745054208,
+            744796160, 744620032, 744738816, 736571392, 738193408, 738701312
+          ]
+        },
+        "scope": "Compute excludes benchmark instrumentation; RSS is whole process including models"
+      },
+      "bounded_example_surface_evidence": [
+        {
+          "state_timestamp": 0,
+          "sample_count": 0,
+          "candidate_ground_fraction": null,
+          "unknown_fraction": 1.0
+        },
+        {
+          "state_timestamp": 2333333333,
+          "sample_count": 0,
+          "candidate_ground_fraction": null,
+          "unknown_fraction": 1.0
+        },
+        {
+          "state_timestamp": 3866666666,
+          "sample_count": 0,
+          "candidate_ground_fraction": null,
+          "unknown_fraction": 1.0
+        },
+        {
+          "state_timestamp": 5300000000,
+          "sample_count": 0,
+          "candidate_ground_fraction": null,
+          "unknown_fraction": 1.0
+        },
+        {
+          "state_timestamp": 6800000000,
+          "sample_count": 0,
+          "candidate_ground_fraction": null,
+          "unknown_fraction": 1.0
+        },
+        {
+          "state_timestamp": 8566666666,
+          "sample_count": 0,
+          "candidate_ground_fraction": null,
+          "unknown_fraction": 1.0
+        },
+        {
+          "state_timestamp": 10000000000,
+          "sample_count": 0,
+          "candidate_ground_fraction": null,
+          "unknown_fraction": 1.0
+        },
+        {
+          "state_timestamp": 11500000000,
+          "sample_count": 0,
+          "candidate_ground_fraction": null,
+          "unknown_fraction": 1.0
+        }
+      ]
+    },
+    "full_offline": {
+      "source_sha256": "e011aa64a65aa9aeb00fce657312362742d12dfd9170f76878e2a784ab1fc5e2",
+      "source_end_ns": 3000000000,
+      "wall_seconds": 7.9443693,
+      "frame_counts": {
+        "source": 91,
+        "decoded": 91,
+        "accepted": 90,
+        "processed": 90,
+        "dropped": 1,
+        "failed": 0
+      },
+      "corridor": {
+        "analyses": 90,
+        "compute": {
+          "count": 90,
+          "min_ns": 203800,
+          "max_ns": 1612800,
+          "mean_ns": 457140.0,
+          "percentile_scope": "recent_window",
+          "window_count": 90,
+          "p50_ns": 380500,
+          "p90_ns": 849100,
+          "p95_ns": 907500,
+          "p99_ns": 1612800
+        },
+        "world_update_interval": {
+          "count": 89,
+          "min_ns": 33333333,
+          "max_ns": 33333334,
+          "mean_ns": 33333333.325842697,
+          "percentile_scope": "recent_window",
+          "window_count": 89,
+          "p50_ns": 33333333,
+          "p90_ns": 33333334,
+          "p95_ns": 33333334,
+          "p99_ns": 33333334
+        },
+        "mode_counts": {
+          "IMAGE_SPACE_CORRIDOR": 90
+        },
+        "mode_switches": 0,
+        "relation_counts": {
+          "OUTSIDE": 1544,
+          "INSIDE": 1091,
+          "NEAR_BOUNDARY": 316,
+          "INTERSECTS": 139,
+          "UNKNOWN": 273
+        },
+        "quality_counts": {
+          "DEGRADED": 90
+        },
+        "memory": {
+          "start_rss": 122826752,
+          "peak_sampled_rss": 761339904,
+          "end_rss": 741474304,
+          "samples": [732930048]
+        },
+        "scope": "Compute excludes benchmark instrumentation; RSS is whole process including models"
+      },
+      "bounded_example_surface_evidence": [
+        {
+          "state_timestamp": 0,
+          "sample_count": 176,
+          "candidate_ground_fraction": 0.5056818181818182,
+          "unknown_fraction": 0.0
+        },
+        {
+          "state_timestamp": 1000000000,
+          "sample_count": 176,
+          "candidate_ground_fraction": 0.6022727272727273,
+          "unknown_fraction": 0.0
+        },
+        {
+          "state_timestamp": 2000000000,
+          "sample_count": 176,
+          "candidate_ground_fraction": 0.6136363636363636,
+          "unknown_fraction": 0.0
+        }
+      ]
+    },
+    "partial_yolox": {
+      "source_sha256": "e011aa64a65aa9aeb00fce657312362742d12dfd9170f76878e2a784ab1fc5e2",
+      "source_end_ns": 3000000000,
+      "wall_seconds": 1.228256,
+      "frame_counts": {
+        "source": 91,
+        "decoded": 91,
+        "accepted": 90,
+        "processed": 90,
+        "dropped": 1,
+        "failed": 0
+      },
+      "corridor": {
+        "analyses": 90,
+        "compute": {
+          "count": 90,
+          "min_ns": 43800,
+          "max_ns": 465500,
+          "mean_ns": 109946.66666666667,
+          "percentile_scope": "recent_window",
+          "window_count": 90,
+          "p50_ns": 109200,
+          "p90_ns": 166400,
+          "p95_ns": 193500,
+          "p99_ns": 465500
+        },
+        "world_update_interval": {
+          "count": 89,
+          "min_ns": 33333333,
+          "max_ns": 33333334,
+          "mean_ns": 33333333.325842697,
+          "percentile_scope": "recent_window",
+          "window_count": 89,
+          "p50_ns": 33333333,
+          "p90_ns": 33333334,
+          "p95_ns": 33333334,
+          "p99_ns": 33333334
+        },
+        "mode_counts": {
+          "IMAGE_SPACE_CORRIDOR": 90
+        },
+        "mode_switches": 0,
+        "relation_counts": {
+          "OUTSIDE": 182,
+          "NEAR_BOUNDARY": 49,
+          "INSIDE": 148,
+          "UNKNOWN": 327
+        },
+        "quality_counts": {
+          "DEGRADED": 90
+        },
+        "memory": {
+          "start_rss": 122245120,
+          "peak_sampled_rss": 183414784,
+          "end_rss": 172658688,
+          "samples": [174796800]
+        },
+        "scope": "Compute excludes benchmark instrumentation; RSS is whole process including models"
+      },
+      "bounded_example_surface_evidence": [
+        {
+          "state_timestamp": 0,
+          "sample_count": 0,
+          "candidate_ground_fraction": null,
+          "unknown_fraction": 1.0
+        },
+        {
+          "state_timestamp": 1000000000,
+          "sample_count": 0,
+          "candidate_ground_fraction": null,
+          "unknown_fraction": 1.0
+        },
+        {
+          "state_timestamp": 2000000000,
+          "sample_count": 0,
+          "candidate_ground_fraction": null,
+          "unknown_fraction": 1.0
+        }
+      ]
+    }
+  },
+  "stress": {
+    "scope": "synthetic immutable WorldState, compute only",
+    "results": [
+      {
+        "entities": 1,
+        "timing": {
+          "count": 2000,
+          "min_ns": 12700,
+          "max_ns": 793000,
+          "mean_ns": 15005.4,
+          "percentile_scope": "recent_window",
+          "window_count": 2000,
+          "p50_ns": 13600,
+          "p90_ns": 16000,
+          "p95_ns": 20800,
+          "p99_ns": 29100
+        },
+        "rss_start": 62963712,
+        "rss_end": 63279104
+      },
+      {
+        "entities": 10,
+        "timing": {
+          "count": 2000,
+          "min_ns": 64000,
+          "max_ns": 483700,
+          "mean_ns": 73025.5,
+          "percentile_scope": "recent_window",
+          "window_count": 2000,
+          "p50_ns": 68300,
+          "p90_ns": 84800,
+          "p95_ns": 98700,
+          "p99_ns": 134900
+        },
+        "rss_start": 63315968,
+        "rss_end": 63332352
+      },
+      {
+        "entities": 50,
+        "timing": {
+          "count": 2000,
+          "min_ns": 288200,
+          "max_ns": 1456700,
+          "mean_ns": 345567.6,
+          "percentile_scope": "recent_window",
+          "window_count": 2000,
+          "p50_ns": 307200,
+          "p90_ns": 456200,
+          "p95_ns": 544400,
+          "p99_ns": 705300
+        },
+        "rss_start": 63434752,
+        "rss_end": 63471616
+      },
+      {
+        "entities": 100,
+        "timing": {
+          "count": 2000,
+          "min_ns": 566800,
+          "max_ns": 2251000,
+          "mean_ns": 660015.35,
+          "percentile_scope": "recent_window",
+          "window_count": 2000,
+          "p50_ns": 604500,
+          "p90_ns": 773300,
+          "p95_ns": 972500,
+          "p99_ns": 1455900
+        },
+        "rss_start": 63610880,
+        "rss_end": 63733760
+      },
+      {
+        "entities": 128,
+        "timing": {
+          "count": 2000,
+          "min_ns": 724100,
+          "max_ns": 2976600,
+          "mean_ns": 857432.95,
+          "percentile_scope": "recent_window",
+          "window_count": 2000,
+          "p50_ns": 782000,
+          "p90_ns": 1041900,
+          "p95_ns": 1247800,
+          "p99_ns": 1830400
+        },
+        "rss_start": 63860736,
+        "rss_end": 63868928
+      },
+      {
+        "entities": 512,
+        "timing": {
+          "count": 2000,
+          "min_ns": 2890100,
+          "max_ns": 11516600,
+          "mean_ns": 3480342.25,
+          "percentile_scope": "recent_window",
+          "window_count": 2000,
+          "p50_ns": 3188400,
+          "p90_ns": 4393200,
+          "p95_ns": 5017100,
+          "p99_ns": 6400900
+        },
+        "rss_start": 64962560,
+        "rss_end": 65159168
+      }
+    ]
+  },
+  "verification": {
+    "command": "npm run verify",
+    "exit_code": 0,
+    "date": "2026-10-22",
+    "log": "benchmark-results/task012-final-verify-v3.log",
+    "pytest_temporary_directory": "fresh system temporary directory outside OneDrive",
+    "tests": {
+      "guardian": 192,
+      "perception_lab": 397,
+      "corridor_included_in_perception_lab": 55,
+      "web": 24,
+      "api": 3,
+      "total": 616
+    },
+    "reviewed_development_advisory_entries": 5
+  },
+  "task012_complete": true,
+  "engineering_qualified_for_task013_prototype": true,
+  "qualification": {
+    "safe_path": false,
+    "free_space_safety": false,
+    "production_safety": false,
+    "semantic_ground_truth": false
+  },
+  "measurement_revision_note": "Long replay preceded final metric-only guards and JNI invalid-ground translation; its UNKNOWN-calibration image path does not execute those branches. Final analytical cases are regression-tested."
+}

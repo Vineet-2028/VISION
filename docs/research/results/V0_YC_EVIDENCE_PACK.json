@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "status": "READY_OFFLINE",
+  "claims_allowed": [
+    "Offline chain executed18000 frames without processing failure",
+    "60 conservative text outputs",
+    "1242 local regression tests passed"
+  ],
+  "claims_not_supported": [
+    "Realtime assistance",
+    "Human hazard recall",
+    "Blind-user usefulness",
+    "Metric physical accuracy",
+    "Production safety"
+  ],
+  "source_scope": "One permitted local source; no video uploaded",
+  "verdicts": {
+    "TASK018_COMPLETE": true,
+    "V0_REASONING_LOOP_COMPLETE": true,
+    "OFFLINE_V0_DEMO_READY": true,
+    "REALTIME_V0_PROTOTYPE_READY": false,
+    "YC_TECHNICAL_DEMO_READY": true,
+    "YC_DEMO_MODE": "READY_OFFLINE",
+    "HUMAN_EVENT_REVIEW_COMPLETE": false,
+    "END_TO_END_HAZARD_RECALL_VALIDATED": false,
+    "ALERT_USEFULNESS_VALIDATED": false,
+    "PHYSICAL_ACCURACY_VALIDATED": false,
+    "PRODUCTION_SAFETY_VALIDATED": false,
+    "NEXT_PHASE": "V0_RESCUE_PASS"
+  },
+  "demo_command": "apps/perception-lab/.venv/Scripts/python.exe tools/v0_review.py --packet benchmark-results/task018/canonical-01/examples-final --serve",
+  "demo_url": "http://127.0.0.1:8918",
+  "rescue_plan": [
+    {
+      "rank": 1,
+      "subsystem": "VideoFileSource / realtime admission",
+      "evidence": "18,001 frames decoded; 17,939 dropped; decode 249.641s + RGB conversion 110.999s",
+      "hypothesis": "Catch-up decodes/converts many frames that will be discarded, extending the next observation gap.",
+      "experiment": "Measure a bounded acquisition/discard prototype with identical source, model hashes and expiry; retain baseline.",
+      "metric": "Decode+conversion wall time per source minute, source-to-world P95, update P95, drops; no timestamp regressions.",
+      "success": "At least 50% reduction in catch-up time with correct PTS and no unbounded buffering; no safety claim.",
+      "scope": "MEDIUM"
+    },
+    {
+      "rank": 2,
+      "subsystem": "Depth provider / pipeline scheduling",
+      "evidence": "Depth P95 3078.021ms; 60/62 updates first exceeded 500ms at synchronous provider 2.",
+      "hypothesis": "Serial depth blocks fresh world/reasoning publication; stale evidence propagates before attention.",
+      "experiment": "Bounded provider scheduling experiment with explicit old-depth validity and no expiry extension.",
+      "metric": "Source-to-world/attention P95, expired candidates, stale dependency usage, memory/queue bounds.",
+      "success": "World/attention P95 under the unchanged 500ms budget on the frozen source, without fabricating fresh depth.",
+      "scope": "MEDIUM"
+    },
+    {
+      "rank": 3,
+      "subsystem": "Tracking and flow temporal continuity",
+      "evidence": "61 tracker gap resets in 62 realtime updates; zero computed flow pairs; offline max track serial 5202.",
+      "hypothesis": "Approximately 9.8-second publication gaps repeatedly erase continuity; prototype IDs also fragment.",
+      "experiment": "After cadence fixes, compare continuity on reviewed identity clips with reset policy unchanged; separately test any proposed tracker change.",
+      "metric": "Gap resets, flow pairs, identity switches/fragments, end-to-end source coverage.",
+      "success": "Zero cadence-driven resets on this uninterrupted source and lower independently reviewed ID errors; never merely hide resets.",
+      "scope": "MEDIUM"
+    },
+    {
+      "rank": 4,
+      "subsystem": "Interaction evaluation / reference evidence",
+      "evidence": "Historical forecast-entry recall 3/52=5.8%; new occupancy interaction availability is a different quantity.",
+      "hypothesis": "Point prediction, frozen corridor and weak identity references limit predictive coverage and interpretability.",
+      "experiment": "Adjudicate blind windows and actor/event timing, then compare frozen baseline against one bounded hypothesis.",
+      "metric": "Independent event recall/precision, first-failure distribution, timing and ambiguous/censored counts.",
+      "success": "A predefined independently labeled held-out set and a measured improvement with uncertainty reported; no training on the test set.",
+      "scope": "LARGE"
+    },
+    {
+      "rank": 5,
+      "subsystem": "Attention episode policy",
+      "evidence": "60 offline alerts (6/min); strict occupancy proxy reaches attention for only 1/166 upstream-qualified events.",
+      "hypothesis": "Global budget, novelty and fragmented episodes suppress many operational proxy events; many may be harmless.",
+      "experiment": "Review relevant vs irrelevant events, then bounded budget/episode ablation; do not simply announce every object.",
+      "metric": "Reviewed relevant-event coverage versus alert burden, repeats/escalations and user preference.",
+      "success": "Improved reviewed coverage at a predeclared tolerable interruption budget; unreviewed proxy gain alone is insufficient.",
+      "scope": "MEDIUM"
+    }
+  ]
+}

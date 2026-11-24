@@ -1,0 +1,6298 @@
+{
+  "schema_version": 1,
+  "scope": "Local prototype; not safety qualification",
+  "source_measurements": {
+    "delivered_source_age": {
+      "count": 60,
+      "scope": "whole_run_exact",
+      "max_ns": 497472934,
+      "mean_ns": 341924466.45,
+      "p50_ns": 343672367,
+      "p90_ns": 467509934,
+      "p95_ns": 479097267,
+      "p99_ns": 497472934
+    },
+    "phrases": {
+      "Object.": 60
+    },
+    "delivered_after_expiry": [],
+    "in_loop_reasoning_sum": {
+      "count": 2641,
+      "scope": "whole_run_exact",
+      "max_ns": 119178600,
+      "mean_ns": 21600081.29496403,
+      "p50_ns": 21061300,
+      "p90_ns": 38243500,
+      "p95_ns": 43983700,
+      "p99_ns": 59828900
+    },
+    "reasoning_scope": "Sum of six sibling reasoning spans; includes call overhead; excludes world/tracking",
+    "canonical_preservation_mismatches": []
+  },
+  "offline_regression_exact_match": {
+    "updates": true,
+    "funnel": true,
+    "alerts": true,
+    "phrases": true,
+    "attention_dispositions": true
+  },
+  "experiments": [
+    {
+      "experiment": "baseline",
+      "status": "COMPLETE",
+      "mode": "REALTIME",
+      "source_sha256": "e011aa64a65aa9aeb00fce657312362742d12dfd9170f76878e2a784ab1fc5e2",
+      "configuration_sha256": "b13d24142d4d2b1dbb512129da71dc2c3e9b36fdead97f16b018852cddf03f5d",
+      "requested_seconds": 600.0,
+      "detector": "picodet",
+      "detector_input_size": 416,
+      "execution": "CPU",
+      "io_binding": false,
+      "fp16": false,
+      "requested_intervals_ns": {
+        "detector": 200000000,
+        "depth": 1000000000,
+        "optical_flow": 100000000,
+        "segmentation": 1000000000
+      },
+      "optional_available": {
+        "depth": true,
+        "motion": true,
+        "segmentation": true
+      },
+      "frame_counts": {
+        "source": 18001,
+        "decoded": 18001,
+        "accepted": 18000,
+        "processed": 136,
+        "dropped": 17865,
+        "failed": 0
+      },
+      "acquisition": null,
+      "publication_intervals": {
+        "count": 135,
+        "min_ns": 1306851800,
+        "max_ns": 67004497200,
+        "mean_ns": 3047649905.9259257,
+        "percentile_scope": "recent_window",
+        "window_count": 135,
+        "p50_ns": 2161147200,
+        "p90_ns": 3669959800,
+        "p95_ns": 4405511300,
+        "p99_ns": 8397699900
+      },
+      "publication_age": {
+        "count": 136,
+        "min_ns": 975632367,
+        "max_ns": 7842320134,
+        "mean_ns": 1563578868.9558823,
+        "percentile_scope": "recent_window",
+        "window_count": 136,
+        "p50_ns": 1367553600,
+        "p90_ns": 1992842100,
+        "p95_ns": 2295759967,
+        "p99_ns": 4837838634
+      },
+      "tracking": {
+        "active": 40,
+        "lost": 0,
+        "history_entries": 40,
+        "max_serial": 2518,
+        "gap_resets": 4
+      },
+      "memory": {
+        "start": 481357824,
+        "peak_sampled": 763584512,
+        "end": 732889088
+      },
+      "elapsed_seconds": 642.486987,
+      "coverage": null,
+      "alerts": null,
+      "async_compute_and_age": null,
+      "note": null,
+      "pipeline_seconds": 614.742847,
+      "high_level_updates_per_second": 0.2212307156784209
+    },
+    {
+      "experiment": "pilot-01",
+      "status": "COMPLETE",
+      "mode": "REALTIME",
+      "source_sha256": "e011aa64a65aa9aeb00fce657312362742d12dfd9170f76878e2a784ab1fc5e2",
+      "configuration_sha256": "0882060438cef5034fbd327d64c0816296416d59fb0f22a02323d93986bce5f2",
+      "requested_seconds": 15.0,
+      "detector": "picodet",
+      "detector_input_size": 416,
+      "execution": "CPU",
+      "io_binding": false,
+      "fp16": false,
+      "requested_intervals_ns": {
+        "detector": 200000000,
+        "depth": 1000000000,
+        "optical_flow": 100000000,
+        "segmentation": 1000000000
+      },
+      "optional_available": {
+        "depth": true,
+        "motion": true,
+        "segmentation": true
+      },
+      "frame_counts": {
+        "source": 98,
+        "decoded": 98,
+        "accepted": 98,
+        "processed": 98,
+        "dropped": 0,
+        "failed": 0
+      },
+      "acquisition": {
+        "decoded_in_window": 450,
+        "pending_replaced": 352,
+        "pending_capacity": 1
+      },
+      "publication_intervals": {
+        "count": 97,
+        "min_ns": 8773100,
+        "max_ns": 576608400,
+        "mean_ns": 151709492.78350514,
+        "percentile_scope": "recent_window",
+        "window_count": 97,
+        "p50_ns": 141873000,
+        "p90_ns": 312761500,
+        "p95_ns": 391562400,
+        "p99_ns": 576608400
+      },
+      "publication_age": {
+        "count": 98,
+        "min_ns": 6599067,
+        "max_ns": 1001117734,
+        "mean_ns": 281212225.52040815,
+        "percentile_scope": "recent_window",
+        "window_count": 98,
+        "p50_ns": 175650034,
+        "p90_ns": 659397400,
+        "p95_ns": 866403467,
+        "p99_ns": 1001117734
+      },
+      "tracking": {
+        "active": 64,
+        "lost": 7,
+        "history_entries": 503,
+        "max_serial": 210,
+        "gap_resets": 0
+      },
+      "memory": {
+        "start": 483221504,
+        "peak_sampled": 840216576,
+        "end": 759709696
+      },
+      "elapsed_seconds": 65.571984,
+      "coverage": null,
+      "alerts": null,
+      "async_compute_and_age": null,
+      "note": null,
+      "pipeline_seconds": 15.0508895,
+      "high_level_updates_per_second": 6.511243073042294
+    },
+    {
+      "experiment": "pilot-02",
+      "status": "COMPLETE",
+      "mode": "REALTIME",
+      "source_sha256": "e011aa64a65aa9aeb00fce657312362742d12dfd9170f76878e2a784ab1fc5e2",
+      "configuration_sha256": "88b3fd8951436106ad1aa759143e7bc8a95db626c9d9fadafc9f0f028f31491a",
+      "requested_seconds": 30.0,
+      "detector": "picodet",
+      "detector_input_size": 416,
+      "execution": "CPU",
+      "io_binding": false,
+      "fp16": false,
+      "requested_intervals_ns": {
+        "detector": 200000000,
+        "depth": 1000000000,
+        "optical_flow": 100000000,
+        "segmentation": 1000000000
+      },
+      "optional_available": {
+        "depth": true,
+        "motion": true,
+        "segmentation": true
+      },
+      "frame_counts": {
+        "source": 54,
+        "decoded": 54,
+        "accepted": 54,
+        "processed": 54,
+        "dropped": 0,
+        "failed": 0
+      },
+      "acquisition": {
+        "decoded_in_window": 167,
+        "pending_replaced": 113,
+        "skipped_before_conversion": 733,
+        "pending_capacity": 1
+      },
+      "publication_intervals": {
+        "count": 53,
+        "min_ns": 27477600,
+        "max_ns": 3113314200,
+        "mean_ns": 569234547.1698114,
+        "percentile_scope": "recent_window",
+        "window_count": 53,
+        "p50_ns": 445812300,
+        "p90_ns": 839266700,
+        "p95_ns": 1464308700,
+        "p99_ns": 3113314200
+      },
+      "publication_age": {
+        "count": 54,
+        "min_ns": 225120667,
+        "max_ns": 1586747100,
+        "mean_ns": 612355705.2962962,
+        "percentile_scope": "recent_window",
+        "window_count": 54,
+        "p50_ns": 533705734,
+        "p90_ns": 868461634,
+        "p95_ns": 1429810500,
+        "p99_ns": 1586747100
+      },
+      "tracking": {
+        "active": 54,
+        "lost": 8,
+        "history_entries": 265,
+        "max_serial": 243,
+        "gap_resets": 0
+      },
+      "memory": {
+        "start": 484241408,
+        "peak_sampled": 820191232,
+        "end": 754868224
+      },
+      "elapsed_seconds": 75.7896136,
+      "coverage": null,
+      "alerts": null,
+      "async_compute_and_age": {
+        "depth": {
+          "queue_wait": {
+            "count": 6,
+            "min_ns": 704000,
+            "max_ns": 1991050900,
+            "mean_ns": 691793233.3333334,
+            "percentile_scope": "recent_window",
+            "window_count": 6,
+            "p50_ns": 321647100,
+            "p90_ns": 1991050900,
+            "p95_ns": 1991050900,
+            "p99_ns": 1991050900
+          },
+          "compute": {
+            "count": 6,
+            "min_ns": 3566248500,
+            "max_ns": 8692764000,
+            "mean_ns": 5365400250.0,
+            "percentile_scope": "recent_window",
+            "window_count": 6,
+            "p50_ns": 4972500000,
+            "p90_ns": 8692764000,
+            "p95_ns": 8692764000,
+            "p99_ns": 8692764000
+          }
+        },
+        "segmentation": {
+          "queue_wait": {
+            "count": 22,
+            "min_ns": 8782800,
+            "max_ns": 1115003200,
+            "mean_ns": 372965272.72727275,
+            "percentile_scope": "recent_window",
+            "window_count": 22,
+            "p50_ns": 285421000,
+            "p90_ns": 948307600,
+            "p95_ns": 997332500,
+            "p99_ns": 1115003200
+          },
+          "compute": {
+            "count": 22,
+            "min_ns": 745557200,
+            "max_ns": 2169041800,
+            "mean_ns": 1315138572.7272727,
+            "percentile_scope": "recent_window",
+            "window_count": 22,
+            "p50_ns": 1210251300,
+            "p90_ns": 1990341000,
+            "p95_ns": 2035474500,
+            "p99_ns": 2169041800
+          }
+        },
+        "optical_flow": {
+          "queue_wait": {
+            "count": 53,
+            "min_ns": 406900,
+            "max_ns": 407562100,
+            "mean_ns": 27492913.20754717,
+            "percentile_scope": "recent_window",
+            "window_count": 53,
+            "p50_ns": 13115700,
+            "p90_ns": 40059300,
+            "p95_ns": 52406500,
+            "p99_ns": 407562100
+          },
+          "compute": {
+            "count": 53,
+            "min_ns": 13660100,
+            "max_ns": 816070100,
+            "mean_ns": 138474405.66037735,
+            "percentile_scope": "recent_window",
+            "window_count": 53,
+            "p50_ns": 108895500,
+            "p90_ns": 334778000,
+            "p95_ns": 456451600,
+            "p99_ns": 816070100
+          }
+        }
+      },
+      "note": null,
+      "pipeline_seconds": 30.5331739,
+      "high_level_updates_per_second": 1.7685681867485121
+    },
+    {
+      "experiment": "realtime-01",
+      "status": "INTERRUPTED",
+      "mode": "REALTIME",
+      "source_sha256": "e011aa64a65aa9aeb00fce657312362742d12dfd9170f76878e2a784ab1fc5e2",
+      "configuration_sha256": "bb48ac572b7d320503bb6f4278209ab2ecac579d36ad27caa2ddd49a4c2d51d6",
+      "requested_seconds": 600.0,
+      "detector": "picodet",
+      "detector_input_size": 416,
+      "execution": "CPU",
+      "io_binding": false,
+      "fp16": false,
+      "requested_intervals_ns": {
+        "detector": 200000000,
+        "depth": 1000000000,
+        "optical_flow": 100000000,
+        "segmentation": 1000000000
+      },
+      "optional_available": {
+        "depth": true,
+        "motion": true,
+        "segmentation": true
+      },
+      "frame_counts": null,
+      "acquisition": null,
+      "publication_intervals": null,
+      "publication_age": null,
+      "tracking": null,
+      "memory": {},
+      "elapsed_seconds": null,
+      "coverage": null,
+      "alerts": null,
+      "async_compute_and_age": null,
+      "note": "Stopped after acquisition fell behind media clock; raw rows preserved. Not a completed qualification run.",
+      "pipeline_seconds": null,
+      "high_level_updates_per_second": null
+    },
+    {
+      "experiment": "realtime-02",
+      "status": "INTERRUPTED",
+      "mode": "REALTIME",
+      "source_sha256": "e011aa64a65aa9aeb00fce657312362742d12dfd9170f76878e2a784ab1fc5e2",
+      "configuration_sha256": "b7aa7d35696fbf152b7488052ac8f387b0c0f29183ea21a1499a148c053525b3",
+      "requested_seconds": 600.0,
+      "detector": "picodet",
+      "detector_input_size": 416,
+      "execution": "CPU",
+      "io_binding": false,
+      "fp16": false,
+      "requested_intervals_ns": {
+        "detector": 200000000,
+        "depth": 1000000000,
+        "segmentation": 2000000000,
+        "optical_flow": 200000000
+      },
+      "optional_available": {
+        "depth": true,
+        "motion": true,
+        "segmentation": true
+      },
+      "frame_counts": null,
+      "acquisition": null,
+      "publication_intervals": null,
+      "publication_age": null,
+      "tracking": null,
+      "memory": {},
+      "elapsed_seconds": null,
+      "coverage": null,
+      "alerts": null,
+      "async_compute_and_age": null,
+      "note": "Interrupted before qualification completed; the log reported 100 updates at source 57.4 seconds. Not qualification evidence. This corrects the earlier initialization-only annotation; no numeric measurements were changed.",
+      "pipeline_seconds": null,
+      "high_level_updates_per_second": null
+    },
+    {
+      "experiment": "realtime-03",
+      "status": "FAILED",
+      "mode": "REALTIME",
+      "source_sha256": "e011aa64a65aa9aeb00fce657312362742d12dfd9170f76878e2a784ab1fc5e2",
+      "configuration_sha256": "147050a2480fe3f60b89f5d692bbe7876433dc11e42ae31c416fdff274e17ba9",
+      "requested_seconds": 600,
+      "detector": "picodet",
+      "detector_input_size": 416,
+      "execution": "CPU",
+      "io_binding": false,
+      "fp16": false,
+      "requested_intervals_ns": {
+        "detector": 200000000,
+        "depth": 1000000000,
+        "segmentation": 2000000000,
+        "optical_flow": 200000000
+      },
+      "optional_available": {
+        "depth": true,
+        "motion": true,
+        "segmentation": true
+      },
+      "frame_counts": {
+        "source": 1050,
+        "decoded": 1050,
+        "accepted": 1050,
+        "processed": 1050,
+        "dropped": 0,
+        "failed": 0
+      },
+      "acquisition": {
+        "decoded_in_window": 6193,
+        "pending_replaced": 5143,
+        "skipped_before_conversion": 11807,
+        "pending_capacity": 1
+      },
+      "publication_intervals": {
+        "count": 1049,
+        "min_ns": 16242100,
+        "max_ns": 18012814500,
+        "mean_ns": 569410281.029552,
+        "percentile_scope": "recent_window",
+        "window_count": 1049,
+        "p50_ns": 455231500,
+        "p90_ns": 813540800,
+        "p95_ns": 987554400,
+        "p99_ns": 1832178000
+      },
+      "publication_age": {
+        "count": 1050,
+        "min_ns": 54091034,
+        "max_ns": 2512304367,
+        "mean_ns": 658113389.3152381,
+        "percentile_scope": "recent_window",
+        "window_count": 1050,
+        "p50_ns": 590516867,
+        "p90_ns": 1012662600,
+        "p95_ns": 1189287167,
+        "p99_ns": 1548789300
+      },
+      "tracking": {
+        "active": 63,
+        "lost": 38,
+        "history_entries": 954,
+        "max_serial": 6325,
+        "gap_resets": 3
+      },
+      "memory": {
+        "start": 483123200,
+        "peak_sampled": 846352384,
+        "end": 761208832
+      },
+      "elapsed_seconds": 652.4361416,
+      "coverage": null,
+      "alerts": null,
+      "async_compute_and_age": {
+        "depth": {
+          "queue_wait": {
+            "count": 114,
+            "min_ns": 10064400,
+            "max_ns": 10194938300,
+            "mean_ns": 1003999380.7017543,
+            "percentile_scope": "recent_window",
+            "window_count": 114,
+            "p50_ns": 802082500,
+            "p90_ns": 1313540700,
+            "p95_ns": 1624771800,
+            "p99_ns": 6228560700
+          },
+          "compute": {
+            "count": 114,
+            "min_ns": 1657634900,
+            "max_ns": 10371969400,
+            "mean_ns": 5253676029.824561,
+            "percentile_scope": "recent_window",
+            "window_count": 114,
+            "p50_ns": 4977597300,
+            "p90_ns": 6906611300,
+            "p95_ns": 7739460300,
+            "p99_ns": 9737660400
+          }
+        },
+        "segmentation": {
+          "queue_wait": {
+            "count": 276,
+            "min_ns": 3819700,
+            "max_ns": 1625110900,
+            "mean_ns": 82321657.24637681,
+            "percentile_scope": "recent_window",
+            "window_count": 276,
+            "p50_ns": 17461800,
+            "p90_ns": 279107400,
+            "p95_ns": 578801800,
+            "p99_ns": 1202856500
+          },
+          "compute": {
+            "count": 276,
+            "min_ns": 600410600,
+            "max_ns": 3688692700,
+            "mean_ns": 1486436703.9855072,
+            "percentile_scope": "recent_window",
+            "window_count": 276,
+            "p50_ns": 1422957600,
+            "p90_ns": 1970738300,
+            "p95_ns": 2173579300,
+            "p99_ns": 2978060600
+          }
+        },
+        "optical_flow": {
+          "queue_wait": {
+            "count": 1041,
+            "min_ns": 3165500,
+            "max_ns": 430085900,
+            "mean_ns": 22357808.165225744,
+            "percentile_scope": "recent_window",
+            "window_count": 1041,
+            "p50_ns": 14933200,
+            "p90_ns": 35361200,
+            "p95_ns": 47271100,
+            "p99_ns": 292548700
+          },
+          "compute": {
+            "count": 1041,
+            "min_ns": 7189600,
+            "max_ns": 936078900,
+            "mean_ns": 156194895.67723343,
+            "percentile_scope": "recent_window",
+            "window_count": 1041,
+            "p50_ns": 119062100,
+            "p90_ns": 379923500,
+            "p95_ns": 437615000,
+            "p99_ns": 546900000
+          }
+        }
+      },
+      "note": "RuntimeError",
+      "pipeline_seconds": 600.39703,
+      "high_level_updates_per_second": 1.7488427615972717
+    },
+    {
+      "experiment": "realtime-04",
+      "status": "COMPLETE",
+      "mode": "REALTIME",
+      "source_sha256": "e011aa64a65aa9aeb00fce657312362742d12dfd9170f76878e2a784ab1fc5e2",
+      "configuration_sha256": "39226987c384758c337b3029542012622ee0d1e162022cd79db29c4c879c2e4d",
+      "requested_seconds": 600.0,
+      "detector": "picodet",
+      "detector_input_size": 416,
+      "execution": "CPU",
+      "io_binding": false,
+      "fp16": false,
+      "requested_intervals_ns": {
+        "detector": 200000000
+      },
+      "optional_available": {
+        "depth": false,
+        "motion": false,
+        "segmentation": false
+      },
+      "frame_counts": {
+        "source": 1804,
+        "decoded": 1804,
+        "accepted": 1804,
+        "processed": 1804,
+        "dropped": 0,
+        "failed": 0
+      },
+      "acquisition": {
+        "decoded_in_window": 13809,
+        "pending_replaced": 12005,
+        "skipped_before_conversion": 4191,
+        "source_end_observed_ns": 600000000000,
+        "pending_capacity": 1
+      },
+      "publication_intervals": {
+        "count": 1803,
+        "min_ns": 12780500,
+        "max_ns": 4234580600,
+        "mean_ns": 332757817.3599556,
+        "percentile_scope": "recent_window",
+        "window_count": 1803,
+        "p50_ns": 332401100,
+        "p90_ns": 499911800,
+        "p95_ns": 555679700,
+        "p99_ns": 795409500
+      },
+      "publication_age": {
+        "count": 1804,
+        "min_ns": 19666434,
+        "max_ns": 2294887200,
+        "mean_ns": 398569261.4977827,
+        "percentile_scope": "recent_window",
+        "window_count": 1804,
+        "p50_ns": 391829834,
+        "p90_ns": 600411200,
+        "p95_ns": 687945200,
+        "p99_ns": 1003452234
+      },
+      "tracking": {
+        "active": 64,
+        "lost": 44,
+        "history_entries": 1426,
+        "max_serial": 5648,
+        "gap_resets": 1
+      },
+      "memory": {
+        "start": 155918336,
+        "peak_sampled": 223150080,
+        "end": 201383936
+      },
+      "elapsed_seconds": 602.385722,
+      "coverage": {
+        "HUMAN_REVIEWED": {
+          "events": 0,
+          "relevant_events": 0,
+          "conditional_stage_coverage": [
+            {
+              "stage": "DETECTION",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "TRACK",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "WORLD",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "CORRIDOR",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "TRAJECTORY",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "INTERACTION",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "RISK",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "ATTENTION",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "ALERT_INTENT",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "VALID_ALERT",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "DELIVERABLE_ALERT",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            }
+          ],
+          "end_to_end": {
+            "numerator": 0,
+            "denominator": 0,
+            "coverage": null
+          },
+          "first_failure_counts": {},
+          "first_failure_percent": {}
+        },
+        "PROXY": {
+          "events": 727,
+          "relevant_events": 188,
+          "conditional_stage_coverage": [
+            {
+              "stage": "DETECTION",
+              "numerator": 134,
+              "denominator": 188,
+              "coverage": 0.7127659574468085
+            },
+            {
+              "stage": "TRACK",
+              "numerator": 120,
+              "denominator": 134,
+              "coverage": 0.8955223880597015
+            },
+            {
+              "stage": "WORLD",
+              "numerator": 120,
+              "denominator": 120,
+              "coverage": 1.0
+            },
+            {
+              "stage": "CORRIDOR",
+              "numerator": 117,
+              "denominator": 120,
+              "coverage": 0.975
+            },
+            {
+              "stage": "TRAJECTORY",
+              "numerator": 117,
+              "denominator": 117,
+              "coverage": 1.0
+            },
+            {
+              "stage": "INTERACTION",
+              "numerator": 117,
+              "denominator": 117,
+              "coverage": 1.0
+            },
+            {
+              "stage": "RISK",
+              "numerator": 112,
+              "denominator": 117,
+              "coverage": 0.9572649572649573
+            },
+            {
+              "stage": "ATTENTION",
+              "numerator": 1,
+              "denominator": 112,
+              "coverage": 0.008928571428571428
+            },
+            {
+              "stage": "ALERT_INTENT",
+              "numerator": 1,
+              "denominator": 1,
+              "coverage": 1.0
+            },
+            {
+              "stage": "VALID_ALERT",
+              "numerator": 1,
+              "denominator": 1,
+              "coverage": 1.0
+            },
+            {
+              "stage": "DELIVERABLE_ALERT",
+              "numerator": 1,
+              "denominator": 1,
+              "coverage": 1.0
+            }
+          ],
+          "end_to_end": {
+            "numerator": 1,
+            "denominator": 188,
+            "coverage": 0.005319148936170213
+          },
+          "first_failure_counts": {
+            "CORRIDOR": 3,
+            "ATTENTION": 111,
+            "DETECTION": 54,
+            "RISK": 5,
+            "TRACK": 14
+          },
+          "first_failure_percent": {
+            "CORRIDOR": 1.5957446808510638,
+            "ATTENTION": 59.04255319148936,
+            "DETECTION": 28.72340425531915,
+            "RISK": 2.6595744680851063,
+            "TRACK": 7.446808510638298
+          }
+        },
+        "DRAFT": {
+          "events": 60,
+          "relevant_events": null,
+          "conditional_stage_coverage": [
+            {
+              "stage": "DETECTION",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "TRACK",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "WORLD",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "CORRIDOR",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "TRAJECTORY",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "INTERACTION",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "RISK",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "ATTENTION",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "ALERT_INTENT",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "VALID_ALERT",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "DELIVERABLE_ALERT",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            }
+          ],
+          "end_to_end": {
+            "numerator": null,
+            "denominator": null,
+            "coverage": null
+          },
+          "first_failure_counts": {},
+          "first_failure_percent": {}
+        },
+        "AMBIGUOUS": {
+          "events": 0,
+          "relevant_events": null,
+          "conditional_stage_coverage": [
+            {
+              "stage": "DETECTION",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "TRACK",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "WORLD",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "CORRIDOR",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "TRAJECTORY",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "INTERACTION",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "RISK",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "ATTENTION",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "ALERT_INTENT",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "VALID_ALERT",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "DELIVERABLE_ALERT",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            }
+          ],
+          "end_to_end": {
+            "numerator": null,
+            "denominator": null,
+            "coverage": null
+          },
+          "first_failure_counts": {},
+          "first_failure_percent": {}
+        },
+        "INSUFFICIENT_EVIDENCE": {
+          "events": 0,
+          "relevant_events": null,
+          "conditional_stage_coverage": [
+            {
+              "stage": "DETECTION",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "TRACK",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "WORLD",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "CORRIDOR",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "TRAJECTORY",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "INTERACTION",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "RISK",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "ATTENTION",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "ALERT_INTENT",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "VALID_ALERT",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "DELIVERABLE_ALERT",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            }
+          ],
+          "end_to_end": {
+            "numerator": null,
+            "denominator": null,
+            "coverage": null
+          },
+          "first_failure_counts": {},
+          "first_failure_percent": {}
+        }
+      },
+      "alerts": {
+        "READY": 56,
+        "text_sink_accepted": 56,
+        "NO_PRESENTATION": 1746,
+        "DROPPED_EXPIRED": 2
+      },
+      "async_compute_and_age": null,
+      "note": null,
+      "pipeline_seconds": 600.6360336,
+      "high_level_updates_per_second": 3.003482806696531
+    },
+    {
+      "experiment": "realtime-05-gpu",
+      "status": "COMPLETE",
+      "mode": "REALTIME",
+      "source_sha256": "e011aa64a65aa9aeb00fce657312362742d12dfd9170f76878e2a784ab1fc5e2",
+      "configuration_sha256": "c8b989aa30b122412f27c519007b556fdba4ac5954d761f6e858e6e2a7fd94b8",
+      "requested_seconds": 600.0,
+      "detector": "picodet",
+      "detector_input_size": 416,
+      "execution": "CUDA FP32 (TF32 disabled)",
+      "io_binding": false,
+      "fp16": false,
+      "requested_intervals_ns": {
+        "detector": 200000000,
+        "depth": 1000000000,
+        "segmentation": 2000000000,
+        "optical_flow": 200000000
+      },
+      "optional_available": {
+        "depth": true,
+        "motion": true,
+        "segmentation": true
+      },
+      "frame_counts": {
+        "source": 2447,
+        "decoded": 2447,
+        "accepted": 2447,
+        "processed": 2447,
+        "dropped": 0,
+        "failed": 0
+      },
+      "acquisition": {
+        "decoded_in_window": 5848,
+        "pending_replaced": 3401,
+        "skipped_before_conversion": 12152,
+        "source_end_observed_ns": 600000000000,
+        "pending_capacity": 1,
+        "timing": {
+          "acquisition_wait": {
+            "count": 2448,
+            "min_ns": 2100,
+            "max_ns": 2607519600,
+            "mean_ns": 27274704.166666668,
+            "percentile_scope": "recent_window",
+            "window_count": 2048,
+            "p50_ns": 10000,
+            "p90_ns": 71790600,
+            "p95_ns": 123157400,
+            "p99_ns": 501212200
+          },
+          "delivered_mailbox_retention": {
+            "count": 2447,
+            "min_ns": 43600,
+            "max_ns": 1036596000,
+            "mean_ns": 65867013.608500205,
+            "percentile_scope": "recent_window",
+            "window_count": 2048,
+            "p50_ns": 66261900,
+            "p90_ns": 127600100,
+            "p95_ns": 150257400,
+            "p99_ns": 325573900
+          }
+        }
+      },
+      "publication_intervals": {
+        "count": 2446,
+        "min_ns": 3638300,
+        "max_ns": 3139506500,
+        "mean_ns": 244319800.69501227,
+        "percentile_scope": "recent_window",
+        "window_count": 2048,
+        "p50_ns": 236111000,
+        "p90_ns": 375983900,
+        "p95_ns": 455441400,
+        "p99_ns": 830839600
+      },
+      "publication_age": {
+        "count": 2447,
+        "min_ns": 6810834,
+        "max_ns": 2828761200,
+        "mean_ns": 323217760.2125051,
+        "percentile_scope": "recent_window",
+        "window_count": 2048,
+        "p50_ns": 333272800,
+        "p90_ns": 475302634,
+        "p95_ns": 553963534,
+        "p99_ns": 713851334
+      },
+      "tracking": {
+        "active": 64,
+        "lost": 33,
+        "history_entries": 1251,
+        "max_serial": 5952,
+        "gap_resets": 0
+      },
+      "memory": {
+        "start": 769687552,
+        "peak_sampled": 1672065024,
+        "end": 1577000960
+      },
+      "elapsed_seconds": 689.1606551,
+      "coverage": {
+        "HUMAN_REVIEWED": {
+          "events": 0,
+          "relevant_events": 0,
+          "conditional_stage_coverage": [
+            {
+              "stage": "DETECTION",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "TRACK",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "WORLD",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "CORRIDOR",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "TRAJECTORY",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "INTERACTION",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "RISK",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "ATTENTION",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "ALERT_INTENT",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "VALID_ALERT",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "DELIVERABLE_ALERT",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            }
+          ],
+          "end_to_end": {
+            "numerator": 0,
+            "denominator": 0,
+            "coverage": null
+          },
+          "first_failure_counts": {},
+          "first_failure_percent": {}
+        },
+        "PROXY": {
+          "events": 727,
+          "relevant_events": 188,
+          "conditional_stage_coverage": [
+            {
+              "stage": "DETECTION",
+              "numerator": 143,
+              "denominator": 188,
+              "coverage": 0.7606382978723404
+            },
+            {
+              "stage": "TRACK",
+              "numerator": 139,
+              "denominator": 143,
+              "coverage": 0.972027972027972
+            },
+            {
+              "stage": "WORLD",
+              "numerator": 139,
+              "denominator": 139,
+              "coverage": 1.0
+            },
+            {
+              "stage": "CORRIDOR",
+              "numerator": 135,
+              "denominator": 139,
+              "coverage": 0.9712230215827338
+            },
+            {
+              "stage": "TRAJECTORY",
+              "numerator": 135,
+              "denominator": 135,
+              "coverage": 1.0
+            },
+            {
+              "stage": "INTERACTION",
+              "numerator": 135,
+              "denominator": 135,
+              "coverage": 1.0
+            },
+            {
+              "stage": "RISK",
+              "numerator": 126,
+              "denominator": 135,
+              "coverage": 0.9333333333333333
+            },
+            {
+              "stage": "ATTENTION",
+              "numerator": 0,
+              "denominator": 126,
+              "coverage": 0.0
+            },
+            {
+              "stage": "ALERT_INTENT",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "VALID_ALERT",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "DELIVERABLE_ALERT",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            }
+          ],
+          "end_to_end": {
+            "numerator": 0,
+            "denominator": 188,
+            "coverage": 0.0
+          },
+          "first_failure_counts": {
+            "RISK": 9,
+            "ATTENTION": 126,
+            "DETECTION": 45,
+            "CORRIDOR": 4,
+            "TRACK": 4
+          },
+          "first_failure_percent": {
+            "RISK": 4.787234042553192,
+            "ATTENTION": 67.02127659574468,
+            "DETECTION": 23.93617021276596,
+            "CORRIDOR": 2.127659574468085,
+            "TRACK": 2.127659574468085
+          }
+        },
+        "DRAFT": {
+          "events": 60,
+          "relevant_events": null,
+          "conditional_stage_coverage": [
+            {
+              "stage": "DETECTION",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "TRACK",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "WORLD",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "CORRIDOR",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "TRAJECTORY",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "INTERACTION",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "RISK",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "ATTENTION",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "ALERT_INTENT",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "VALID_ALERT",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "DELIVERABLE_ALERT",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            }
+          ],
+          "end_to_end": {
+            "numerator": null,
+            "denominator": null,
+            "coverage": null
+          },
+          "first_failure_counts": {},
+          "first_failure_percent": {}
+        },
+        "AMBIGUOUS": {
+          "events": 0,
+          "relevant_events": null,
+          "conditional_stage_coverage": [
+            {
+              "stage": "DETECTION",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "TRACK",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "WORLD",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "CORRIDOR",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "TRAJECTORY",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "INTERACTION",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "RISK",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "ATTENTION",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "ALERT_INTENT",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "VALID_ALERT",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "DELIVERABLE_ALERT",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            }
+          ],
+          "end_to_end": {
+            "numerator": null,
+            "denominator": null,
+            "coverage": null
+          },
+          "first_failure_counts": {},
+          "first_failure_percent": {}
+        },
+        "INSUFFICIENT_EVIDENCE": {
+          "events": 0,
+          "relevant_events": null,
+          "conditional_stage_coverage": [
+            {
+              "stage": "DETECTION",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "TRACK",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "WORLD",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "CORRIDOR",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "TRAJECTORY",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "INTERACTION",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "RISK",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "ATTENTION",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "ALERT_INTENT",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "VALID_ALERT",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "DELIVERABLE_ALERT",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            }
+          ],
+          "end_to_end": {
+            "numerator": null,
+            "denominator": null,
+            "coverage": null
+          },
+          "first_failure_counts": {},
+          "first_failure_percent": {}
+        }
+      },
+      "alerts": {
+        "NO_PRESENTATION": 2387,
+        "text_sink_accepted": 59,
+        "READY": 59,
+        "DROPPED_EXPIRED": 1
+      },
+      "async_compute_and_age": {
+        "depth": {
+          "queue_wait": {
+            "count": 122,
+            "min_ns": 935200,
+            "max_ns": 1682560900,
+            "mean_ns": 516289212.295082,
+            "percentile_scope": "recent_window",
+            "window_count": 122,
+            "p50_ns": 474241200,
+            "p90_ns": 964581600,
+            "p95_ns": 1062143000,
+            "p99_ns": 1461113900
+          },
+          "compute": {
+            "count": 122,
+            "min_ns": 1177156800,
+            "max_ns": 7761977500,
+            "mean_ns": 4930227002.459017,
+            "percentile_scope": "recent_window",
+            "window_count": 122,
+            "p50_ns": 5142333100,
+            "p90_ns": 5868816200,
+            "p95_ns": 6796928700,
+            "p99_ns": 7545585500
+          },
+          "input_age": {
+            "count": 122,
+            "min_ns": 1232300,
+            "max_ns": 1809987834,
+            "mean_ns": 630089503.5327868,
+            "percentile_scope": "recent_window",
+            "window_count": 122,
+            "p50_ns": 579949734,
+            "p90_ns": 1072171900,
+            "p95_ns": 1127251400,
+            "p99_ns": 1620376767
+          },
+          "output_age": {
+            "count": 122,
+            "min_ns": 1700316600,
+            "max_ns": 9137688734,
+            "mean_ns": 5560290301.893442,
+            "percentile_scope": "recent_window",
+            "window_count": 122,
+            "p50_ns": 5663370600,
+            "p90_ns": 6730491934,
+            "p95_ns": 7763193000,
+            "p99_ns": 8657677134
+          }
+        },
+        "segmentation": {
+          "queue_wait": {
+            "count": 298,
+            "min_ns": 54200,
+            "max_ns": 509627900,
+            "mean_ns": 7098248.322147651,
+            "percentile_scope": "recent_window",
+            "window_count": 298,
+            "p50_ns": 2479600,
+            "p90_ns": 11397400,
+            "p95_ns": 12727300,
+            "p99_ns": 15683900
+          },
+          "compute": {
+            "count": 298,
+            "min_ns": 484745800,
+            "max_ns": 3300676600,
+            "mean_ns": 1043352590.9395974,
+            "percentile_scope": "recent_window",
+            "window_count": 298,
+            "p50_ns": 1020573400,
+            "p90_ns": 1316669800,
+            "p95_ns": 1399345400,
+            "p99_ns": 1769245000
+          },
+          "input_age": {
+            "count": 298,
+            "min_ns": 2970200,
+            "max_ns": 704350267,
+            "mean_ns": 123998524.80536912,
+            "percentile_scope": "recent_window",
+            "window_count": 298,
+            "p50_ns": 115255200,
+            "p90_ns": 192405234,
+            "p95_ns": 227533567,
+            "p99_ns": 429867700
+          },
+          "output_age": {
+            "count": 298,
+            "min_ns": 496063300,
+            "max_ns": 3303613600,
+            "mean_ns": 1167316275.1409397,
+            "percentile_scope": "recent_window",
+            "window_count": 298,
+            "p50_ns": 1150282367,
+            "p90_ns": 1471045334,
+            "p95_ns": 1577248367,
+            "p99_ns": 1953546867
+          }
+        },
+        "optical_flow": {
+          "queue_wait": {
+            "count": 2093,
+            "min_ns": 50700,
+            "max_ns": 16759500,
+            "mean_ns": 4890630.721452461,
+            "percentile_scope": "recent_window",
+            "window_count": 2048,
+            "p50_ns": 5373800,
+            "p90_ns": 10816200,
+            "p95_ns": 11967700,
+            "p99_ns": 14020100
+          },
+          "compute": {
+            "count": 2093,
+            "min_ns": 5088700,
+            "max_ns": 476013800,
+            "mean_ns": 74849551.83946489,
+            "percentile_scope": "recent_window",
+            "window_count": 2048,
+            "p50_ns": 71642800,
+            "p90_ns": 99673600,
+            "p95_ns": 113067000,
+            "p99_ns": 293883200
+          },
+          "input_age": {
+            "count": 2093,
+            "min_ns": 1512700,
+            "max_ns": 1181137434,
+            "mean_ns": 134047495.1184902,
+            "percentile_scope": "recent_window",
+            "window_count": 2048,
+            "p50_ns": 127759167,
+            "p90_ns": 206402634,
+            "p95_ns": 239690400,
+            "p99_ns": 394560334
+          },
+          "output_age": {
+            "count": 2093,
+            "min_ns": 22463400,
+            "max_ns": 1203499834,
+            "mean_ns": 208865242.37123746,
+            "percentile_scope": "recent_window",
+            "window_count": 2048,
+            "p50_ns": 203116300,
+            "p90_ns": 299449200,
+            "p95_ns": 374442067,
+            "p99_ns": 510118334
+          }
+        }
+      },
+      "note": null,
+      "pipeline_seconds": 600.5090419,
+      "high_level_updates_per_second": 4.074876195465325
+    },
+    {
+      "experiment": "realtime-06-gpu-no-depth",
+      "status": "COMPLETE",
+      "mode": "REALTIME",
+      "source_sha256": "e011aa64a65aa9aeb00fce657312362742d12dfd9170f76878e2a784ab1fc5e2",
+      "configuration_sha256": "230bd132619fcbe75708e41556181e7cc335e98b1bd0e2978cad973f756dd604",
+      "requested_seconds": 600.0,
+      "detector": "picodet",
+      "detector_input_size": 416,
+      "execution": "CUDA FP32 (TF32 disabled)",
+      "io_binding": false,
+      "fp16": false,
+      "requested_intervals_ns": {
+        "detector": 200000000,
+        "depth": 1000000000,
+        "segmentation": 2000000000,
+        "optical_flow": 200000000
+      },
+      "optional_available": {
+        "depth": false,
+        "motion": true,
+        "segmentation": true
+      },
+      "frame_counts": {
+        "source": 2641,
+        "decoded": 2641,
+        "accepted": 2641,
+        "processed": 2641,
+        "dropped": 0,
+        "failed": 0
+      },
+      "acquisition": {
+        "decoded_in_window": 7243,
+        "pending_replaced": 4602,
+        "skipped_before_conversion": 10757,
+        "source_end_observed_ns": 600000000000,
+        "pending_capacity": 1,
+        "timing": {
+          "acquisition_wait": {
+            "count": 2642,
+            "min_ns": 1700,
+            "max_ns": 6501281100,
+            "mean_ns": 39401839.02346707,
+            "percentile_scope": "recent_window",
+            "window_count": 2048,
+            "p50_ns": 12600,
+            "p90_ns": 195224700,
+            "p95_ns": 329499200,
+            "p99_ns": 543041000
+          },
+          "delivered_mailbox_retention": {
+            "count": 2641,
+            "min_ns": 84400,
+            "max_ns": 2093084200,
+            "mean_ns": 46271279.32601287,
+            "percentile_scope": "recent_window",
+            "window_count": 2048,
+            "p50_ns": 28427400,
+            "p90_ns": 126312500,
+            "p95_ns": 172526900,
+            "p99_ns": 274683000
+          }
+        }
+      },
+      "publication_intervals": {
+        "count": 2640,
+        "min_ns": 3283400,
+        "max_ns": 7083107200,
+        "mean_ns": 226602870.71969697,
+        "percentile_scope": "recent_window",
+        "window_count": 2048,
+        "p50_ns": 209090300,
+        "p90_ns": 542483000,
+        "p95_ns": 696805500,
+        "p99_ns": 969583000
+      },
+      "publication_age": {
+        "count": 2641,
+        "min_ns": 3734800,
+        "max_ns": 2340853000,
+        "mean_ns": 259667613.40780008,
+        "percentile_scope": "recent_window",
+        "window_count": 2048,
+        "p50_ns": 278002600,
+        "p90_ns": 506390500,
+        "p95_ns": 587265500,
+        "p99_ns": 737057634
+      },
+      "tracking": {
+        "active": 64,
+        "lost": 51,
+        "history_entries": 1461,
+        "max_serial": 6983,
+        "gap_resets": 1
+      },
+      "memory": {
+        "start": 476495872,
+        "peak_sampled": 1161609216,
+        "end": 1103110144
+      },
+      "elapsed_seconds": 604.6993366,
+      "coverage": {
+        "HUMAN_REVIEWED": {
+          "events": 0,
+          "relevant_events": 0,
+          "conditional_stage_coverage": [
+            {
+              "stage": "DETECTION",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "TRACK",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "WORLD",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "CORRIDOR",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "TRAJECTORY",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "INTERACTION",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "RISK",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "ATTENTION",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "ALERT_INTENT",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "VALID_ALERT",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "DELIVERABLE_ALERT",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            }
+          ],
+          "end_to_end": {
+            "numerator": 0,
+            "denominator": 0,
+            "coverage": null
+          },
+          "first_failure_counts": {},
+          "first_failure_percent": {}
+        },
+        "PROXY": {
+          "events": 727,
+          "relevant_events": 188,
+          "conditional_stage_coverage": [
+            {
+              "stage": "DETECTION",
+              "numerator": 150,
+              "denominator": 188,
+              "coverage": 0.7978723404255319
+            },
+            {
+              "stage": "TRACK",
+              "numerator": 139,
+              "denominator": 150,
+              "coverage": 0.9266666666666666
+            },
+            {
+              "stage": "WORLD",
+              "numerator": 139,
+              "denominator": 139,
+              "coverage": 1.0
+            },
+            {
+              "stage": "CORRIDOR",
+              "numerator": 136,
+              "denominator": 139,
+              "coverage": 0.9784172661870504
+            },
+            {
+              "stage": "TRAJECTORY",
+              "numerator": 136,
+              "denominator": 136,
+              "coverage": 1.0
+            },
+            {
+              "stage": "INTERACTION",
+              "numerator": 136,
+              "denominator": 136,
+              "coverage": 1.0
+            },
+            {
+              "stage": "RISK",
+              "numerator": 129,
+              "denominator": 136,
+              "coverage": 0.9485294117647058
+            },
+            {
+              "stage": "ATTENTION",
+              "numerator": 2,
+              "denominator": 129,
+              "coverage": 0.015503875968992248
+            },
+            {
+              "stage": "ALERT_INTENT",
+              "numerator": 2,
+              "denominator": 2,
+              "coverage": 1.0
+            },
+            {
+              "stage": "VALID_ALERT",
+              "numerator": 2,
+              "denominator": 2,
+              "coverage": 1.0
+            },
+            {
+              "stage": "DELIVERABLE_ALERT",
+              "numerator": 2,
+              "denominator": 2,
+              "coverage": 1.0
+            }
+          ],
+          "end_to_end": {
+            "numerator": 2,
+            "denominator": 188,
+            "coverage": 0.010638297872340425
+          },
+          "first_failure_counts": {
+            "RISK": 7,
+            "ATTENTION": 127,
+            "DETECTION": 38,
+            "TRACK": 11,
+            "CORRIDOR": 3
+          },
+          "first_failure_percent": {
+            "RISK": 3.723404255319149,
+            "ATTENTION": 67.55319148936171,
+            "DETECTION": 20.21276595744681,
+            "TRACK": 5.851063829787234,
+            "CORRIDOR": 1.5957446808510638
+          }
+        },
+        "DRAFT": {
+          "events": 60,
+          "relevant_events": null,
+          "conditional_stage_coverage": [
+            {
+              "stage": "DETECTION",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "TRACK",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "WORLD",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "CORRIDOR",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "TRAJECTORY",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "INTERACTION",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "RISK",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "ATTENTION",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "ALERT_INTENT",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "VALID_ALERT",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "DELIVERABLE_ALERT",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            }
+          ],
+          "end_to_end": {
+            "numerator": null,
+            "denominator": null,
+            "coverage": null
+          },
+          "first_failure_counts": {},
+          "first_failure_percent": {}
+        },
+        "AMBIGUOUS": {
+          "events": 0,
+          "relevant_events": null,
+          "conditional_stage_coverage": [
+            {
+              "stage": "DETECTION",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "TRACK",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "WORLD",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "CORRIDOR",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "TRAJECTORY",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "INTERACTION",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "RISK",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "ATTENTION",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "ALERT_INTENT",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "VALID_ALERT",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "DELIVERABLE_ALERT",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            }
+          ],
+          "end_to_end": {
+            "numerator": null,
+            "denominator": null,
+            "coverage": null
+          },
+          "first_failure_counts": {},
+          "first_failure_percent": {}
+        },
+        "INSUFFICIENT_EVIDENCE": {
+          "events": 0,
+          "relevant_events": null,
+          "conditional_stage_coverage": [
+            {
+              "stage": "DETECTION",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "TRACK",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "WORLD",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "CORRIDOR",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "TRAJECTORY",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "INTERACTION",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "RISK",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "ATTENTION",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "ALERT_INTENT",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "VALID_ALERT",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "DELIVERABLE_ALERT",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            }
+          ],
+          "end_to_end": {
+            "numerator": null,
+            "denominator": null,
+            "coverage": null
+          },
+          "first_failure_counts": {},
+          "first_failure_percent": {}
+        }
+      },
+      "alerts": {
+        "NO_PRESENTATION": 2581,
+        "text_sink_accepted": 60,
+        "READY": 60
+      },
+      "async_compute_and_age": {
+        "segmentation": {
+          "queue_wait": {
+            "count": 297,
+            "min_ns": 56700,
+            "max_ns": 564246000,
+            "mean_ns": 13180190.572390573,
+            "percentile_scope": "recent_window",
+            "window_count": 297,
+            "p50_ns": 835100,
+            "p90_ns": 11509700,
+            "p95_ns": 15602700,
+            "p99_ns": 420463800
+          },
+          "compute": {
+            "count": 297,
+            "min_ns": 379220100,
+            "max_ns": 2281958900,
+            "mean_ns": 1100457736.7003367,
+            "percentile_scope": "recent_window",
+            "window_count": 297,
+            "p50_ns": 1092507700,
+            "p90_ns": 1466759700,
+            "p95_ns": 1520894900,
+            "p99_ns": 1684721500
+          },
+          "input_age": {
+            "count": 297,
+            "min_ns": 2927700,
+            "max_ns": 627499800,
+            "mean_ns": 102789384.13131313,
+            "percentile_scope": "recent_window",
+            "window_count": 297,
+            "p50_ns": 70680100,
+            "p90_ns": 192949600,
+            "p95_ns": 240188834,
+            "p99_ns": 475508767
+          },
+          "output_age": {
+            "count": 297,
+            "min_ns": 396829700,
+            "max_ns": 2296722400,
+            "mean_ns": 1203200525.2087543,
+            "percentile_scope": "recent_window",
+            "window_count": 297,
+            "p50_ns": 1222646467,
+            "p90_ns": 1579520167,
+            "p95_ns": 1663981600,
+            "p99_ns": 1885915867
+          }
+        },
+        "optical_flow": {
+          "queue_wait": {
+            "count": 1911,
+            "min_ns": 42100,
+            "max_ns": 25735400,
+            "mean_ns": 4650176.975405547,
+            "percentile_scope": "recent_window",
+            "window_count": 1911,
+            "p50_ns": 1887000,
+            "p90_ns": 11398700,
+            "p95_ns": 13288700,
+            "p99_ns": 17194400
+          },
+          "compute": {
+            "count": 1911,
+            "min_ns": 9645500,
+            "max_ns": 586720300,
+            "mean_ns": 70474072.00418629,
+            "percentile_scope": "recent_window",
+            "window_count": 1911,
+            "p50_ns": 63268300,
+            "p90_ns": 122787600,
+            "p95_ns": 147796000,
+            "p99_ns": 185664900
+          },
+          "input_age": {
+            "count": 1911,
+            "min_ns": 1258600,
+            "max_ns": 542670634,
+            "mean_ns": 104697063.20722134,
+            "percentile_scope": "recent_window",
+            "window_count": 1911,
+            "p50_ns": 88341067,
+            "p90_ns": 193309267,
+            "p95_ns": 240868400,
+            "p99_ns": 332814434
+          },
+          "output_age": {
+            "count": 1911,
+            "min_ns": 21940900,
+            "max_ns": 687942167,
+            "mean_ns": 175138033.27524856,
+            "percentile_scope": "recent_window",
+            "window_count": 1911,
+            "p50_ns": 158201967,
+            "p90_ns": 318153800,
+            "p95_ns": 374254900,
+            "p99_ns": 492609400
+          }
+        }
+      },
+      "note": null,
+      "pipeline_seconds": 600.4035309,
+      "high_level_updates_per_second": 4.398708308795524
+    },
+    {
+      "experiment": "offline-01",
+      "status": "COMPLETE",
+      "mode": "OFFLINE_REPLAY",
+      "source_sha256": "e011aa64a65aa9aeb00fce657312362742d12dfd9170f76878e2a784ab1fc5e2",
+      "configuration_sha256": "5a70281522fff75540073085bebfdc16ce5be0a55b677e305f11cf69ed902e6d",
+      "requested_seconds": 600.0,
+      "detector": "picodet",
+      "detector_input_size": 416,
+      "execution": "CPU",
+      "io_binding": false,
+      "fp16": false,
+      "requested_intervals_ns": {
+        "detector": 200000000,
+        "depth": 1000000000,
+        "optical_flow": 100000000,
+        "segmentation": 1000000000
+      },
+      "optional_available": {
+        "depth": true,
+        "motion": true,
+        "segmentation": true
+      },
+      "frame_counts": {
+        "source": 18001,
+        "decoded": 18001,
+        "accepted": 18000,
+        "processed": 18000,
+        "dropped": 1,
+        "failed": 0
+      },
+      "acquisition": null,
+      "publication_intervals": {
+        "count": 17999,
+        "min_ns": 7537800,
+        "max_ns": 7398250700,
+        "mean_ns": 104596765.24251348,
+        "percentile_scope": "recent_window",
+        "window_count": 2048,
+        "p50_ns": 36004300,
+        "p90_ns": 130779400,
+        "p95_ns": 165194600,
+        "p99_ns": 1117419400
+      },
+      "publication_age": {
+        "count": 0,
+        "min_ns": null,
+        "max_ns": null,
+        "mean_ns": null,
+        "percentile_scope": "recent_window",
+        "window_count": 0,
+        "p50_ns": null,
+        "p90_ns": null,
+        "p95_ns": null,
+        "p99_ns": null
+      },
+      "tracking": {
+        "active": 64,
+        "lost": 58,
+        "history_entries": 1749,
+        "max_serial": 5202,
+        "gap_resets": 0
+      },
+      "memory": {
+        "start": 486510592,
+        "peak_sampled": 773001216,
+        "end": 759980032
+      },
+      "elapsed_seconds": 1996.8946741,
+      "coverage": {
+        "HUMAN_REVIEWED": {
+          "events": 0,
+          "relevant_events": 0,
+          "conditional_stage_coverage": [
+            {
+              "stage": "DETECTION",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "TRACK",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "WORLD",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "CORRIDOR",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "TRAJECTORY",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "INTERACTION",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "RISK",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "ATTENTION",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "ALERT_INTENT",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "VALID_ALERT",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "DELIVERABLE_ALERT",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            }
+          ],
+          "end_to_end": {
+            "numerator": 0,
+            "denominator": 0,
+            "coverage": null
+          },
+          "first_failure_counts": {},
+          "first_failure_percent": {}
+        },
+        "PROXY": {
+          "events": 727,
+          "relevant_events": 188,
+          "conditional_stage_coverage": [
+            {
+              "stage": "DETECTION",
+              "numerator": 182,
+              "denominator": 188,
+              "coverage": 0.9680851063829787
+            },
+            {
+              "stage": "TRACK",
+              "numerator": 177,
+              "denominator": 182,
+              "coverage": 0.9725274725274725
+            },
+            {
+              "stage": "WORLD",
+              "numerator": 177,
+              "denominator": 177,
+              "coverage": 1.0
+            },
+            {
+              "stage": "CORRIDOR",
+              "numerator": 176,
+              "denominator": 177,
+              "coverage": 0.9943502824858758
+            },
+            {
+              "stage": "TRAJECTORY",
+              "numerator": 176,
+              "denominator": 176,
+              "coverage": 1.0
+            },
+            {
+              "stage": "INTERACTION",
+              "numerator": 176,
+              "denominator": 176,
+              "coverage": 1.0
+            },
+            {
+              "stage": "RISK",
+              "numerator": 166,
+              "denominator": 176,
+              "coverage": 0.9431818181818182
+            },
+            {
+              "stage": "ATTENTION",
+              "numerator": 1,
+              "denominator": 166,
+              "coverage": 0.006024096385542169
+            },
+            {
+              "stage": "ALERT_INTENT",
+              "numerator": 1,
+              "denominator": 1,
+              "coverage": 1.0
+            },
+            {
+              "stage": "VALID_ALERT",
+              "numerator": 1,
+              "denominator": 1,
+              "coverage": 1.0
+            },
+            {
+              "stage": "DELIVERABLE_ALERT",
+              "numerator": 1,
+              "denominator": 1,
+              "coverage": 1.0
+            }
+          ],
+          "end_to_end": {
+            "numerator": 1,
+            "denominator": 188,
+            "coverage": 0.005319148936170213
+          },
+          "first_failure_counts": {
+            "RISK": 10,
+            "ATTENTION": 165,
+            "TRACK": 5,
+            "DETECTION": 6,
+            "CORRIDOR": 1
+          },
+          "first_failure_percent": {
+            "RISK": 5.319148936170213,
+            "ATTENTION": 87.76595744680851,
+            "TRACK": 2.6595744680851063,
+            "DETECTION": 3.1914893617021276,
+            "CORRIDOR": 0.5319148936170213
+          }
+        },
+        "DRAFT": {
+          "events": 60,
+          "relevant_events": null,
+          "conditional_stage_coverage": [
+            {
+              "stage": "DETECTION",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "TRACK",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "WORLD",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "CORRIDOR",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "TRAJECTORY",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "INTERACTION",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "RISK",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "ATTENTION",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "ALERT_INTENT",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "VALID_ALERT",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "DELIVERABLE_ALERT",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            }
+          ],
+          "end_to_end": {
+            "numerator": null,
+            "denominator": null,
+            "coverage": null
+          },
+          "first_failure_counts": {},
+          "first_failure_percent": {}
+        },
+        "AMBIGUOUS": {
+          "events": 0,
+          "relevant_events": null,
+          "conditional_stage_coverage": [
+            {
+              "stage": "DETECTION",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "TRACK",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "WORLD",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "CORRIDOR",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "TRAJECTORY",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "INTERACTION",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "RISK",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "ATTENTION",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "ALERT_INTENT",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "VALID_ALERT",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "DELIVERABLE_ALERT",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            }
+          ],
+          "end_to_end": {
+            "numerator": null,
+            "denominator": null,
+            "coverage": null
+          },
+          "first_failure_counts": {},
+          "first_failure_percent": {}
+        },
+        "INSUFFICIENT_EVIDENCE": {
+          "events": 0,
+          "relevant_events": null,
+          "conditional_stage_coverage": [
+            {
+              "stage": "DETECTION",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "TRACK",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "WORLD",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "CORRIDOR",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "TRAJECTORY",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "INTERACTION",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "RISK",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "ATTENTION",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "ALERT_INTENT",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "VALID_ALERT",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "DELIVERABLE_ALERT",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            }
+          ],
+          "end_to_end": {
+            "numerator": null,
+            "denominator": null,
+            "coverage": null
+          },
+          "first_failure_counts": {},
+          "first_failure_percent": {}
+        }
+      },
+      "alerts": {
+        "READY": 60,
+        "text_sink_accepted": 60,
+        "NO_PRESENTATION": 17940
+      },
+      "async_compute_and_age": null,
+      "note": null,
+      "pipeline_seconds": 1889.0971843,
+      "high_level_updates_per_second": 9.528361033828894
+    },
+    {
+      "experiment": "offline-02",
+      "status": "COMPLETE",
+      "mode": "OFFLINE_REPLAY",
+      "source_sha256": "e011aa64a65aa9aeb00fce657312362742d12dfd9170f76878e2a784ab1fc5e2",
+      "configuration_sha256": "89cab7374504bfd0a12ce5a05d6f35abd501b335a6e781c00c98d9e0ae463e70",
+      "requested_seconds": 600.0,
+      "detector": "picodet",
+      "detector_input_size": 416,
+      "execution": "CPU",
+      "io_binding": false,
+      "fp16": false,
+      "requested_intervals_ns": {
+        "detector": 200000000,
+        "depth": 1000000000,
+        "optical_flow": 100000000,
+        "segmentation": 1000000000
+      },
+      "optional_available": {
+        "depth": true,
+        "motion": true,
+        "segmentation": true
+      },
+      "frame_counts": {
+        "source": 18001,
+        "decoded": 18001,
+        "accepted": 18000,
+        "processed": 18000,
+        "dropped": 1,
+        "failed": 0
+      },
+      "acquisition": null,
+      "publication_intervals": {
+        "count": 17999,
+        "min_ns": 6594700,
+        "max_ns": 806461660000,
+        "mean_ns": 376864884.0713373,
+        "percentile_scope": "recent_window",
+        "window_count": 2048,
+        "p50_ns": 187691800,
+        "p90_ns": 760657300,
+        "p95_ns": 872348900,
+        "p99_ns": 7526845900
+      },
+      "publication_age": {
+        "count": 0,
+        "min_ns": null,
+        "max_ns": null,
+        "mean_ns": null,
+        "percentile_scope": "recent_window",
+        "window_count": 0,
+        "p50_ns": null,
+        "p90_ns": null,
+        "p95_ns": null,
+        "p99_ns": null
+      },
+      "tracking": {
+        "active": 64,
+        "lost": 58,
+        "history_entries": 1749,
+        "max_serial": 5202,
+        "gap_resets": 0
+      },
+      "memory": {
+        "start": 480354304,
+        "peak_sampled": 770371584,
+        "end": 565739520
+      },
+      "elapsed_seconds": 6823.7281469,
+      "coverage": {
+        "HUMAN_REVIEWED": {
+          "events": 0,
+          "relevant_events": 0,
+          "conditional_stage_coverage": [
+            {
+              "stage": "DETECTION",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "TRACK",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "WORLD",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "CORRIDOR",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "TRAJECTORY",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "INTERACTION",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "RISK",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "ATTENTION",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "ALERT_INTENT",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "VALID_ALERT",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "DELIVERABLE_ALERT",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            }
+          ],
+          "end_to_end": {
+            "numerator": 0,
+            "denominator": 0,
+            "coverage": null
+          },
+          "first_failure_counts": {},
+          "first_failure_percent": {}
+        },
+        "PROXY": {
+          "events": 727,
+          "relevant_events": 188,
+          "conditional_stage_coverage": [
+            {
+              "stage": "DETECTION",
+              "numerator": 182,
+              "denominator": 188,
+              "coverage": 0.9680851063829787
+            },
+            {
+              "stage": "TRACK",
+              "numerator": 177,
+              "denominator": 182,
+              "coverage": 0.9725274725274725
+            },
+            {
+              "stage": "WORLD",
+              "numerator": 177,
+              "denominator": 177,
+              "coverage": 1.0
+            },
+            {
+              "stage": "CORRIDOR",
+              "numerator": 176,
+              "denominator": 177,
+              "coverage": 0.9943502824858758
+            },
+            {
+              "stage": "TRAJECTORY",
+              "numerator": 176,
+              "denominator": 176,
+              "coverage": 1.0
+            },
+            {
+              "stage": "INTERACTION",
+              "numerator": 176,
+              "denominator": 176,
+              "coverage": 1.0
+            },
+            {
+              "stage": "RISK",
+              "numerator": 166,
+              "denominator": 176,
+              "coverage": 0.9431818181818182
+            },
+            {
+              "stage": "ATTENTION",
+              "numerator": 1,
+              "denominator": 166,
+              "coverage": 0.006024096385542169
+            },
+            {
+              "stage": "ALERT_INTENT",
+              "numerator": 1,
+              "denominator": 1,
+              "coverage": 1.0
+            },
+            {
+              "stage": "VALID_ALERT",
+              "numerator": 1,
+              "denominator": 1,
+              "coverage": 1.0
+            },
+            {
+              "stage": "DELIVERABLE_ALERT",
+              "numerator": 1,
+              "denominator": 1,
+              "coverage": 1.0
+            }
+          ],
+          "end_to_end": {
+            "numerator": 1,
+            "denominator": 188,
+            "coverage": 0.005319148936170213
+          },
+          "first_failure_counts": {
+            "RISK": 10,
+            "ATTENTION": 165,
+            "TRACK": 5,
+            "DETECTION": 6,
+            "CORRIDOR": 1
+          },
+          "first_failure_percent": {
+            "RISK": 5.319148936170213,
+            "ATTENTION": 87.76595744680851,
+            "TRACK": 2.6595744680851063,
+            "DETECTION": 3.1914893617021276,
+            "CORRIDOR": 0.5319148936170213
+          }
+        },
+        "DRAFT": {
+          "events": 60,
+          "relevant_events": null,
+          "conditional_stage_coverage": [
+            {
+              "stage": "DETECTION",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "TRACK",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "WORLD",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "CORRIDOR",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "TRAJECTORY",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "INTERACTION",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "RISK",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "ATTENTION",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "ALERT_INTENT",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "VALID_ALERT",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "DELIVERABLE_ALERT",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            }
+          ],
+          "end_to_end": {
+            "numerator": null,
+            "denominator": null,
+            "coverage": null
+          },
+          "first_failure_counts": {},
+          "first_failure_percent": {}
+        },
+        "AMBIGUOUS": {
+          "events": 0,
+          "relevant_events": null,
+          "conditional_stage_coverage": [
+            {
+              "stage": "DETECTION",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "TRACK",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "WORLD",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "CORRIDOR",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "TRAJECTORY",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "INTERACTION",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "RISK",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "ATTENTION",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "ALERT_INTENT",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "VALID_ALERT",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "DELIVERABLE_ALERT",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            }
+          ],
+          "end_to_end": {
+            "numerator": null,
+            "denominator": null,
+            "coverage": null
+          },
+          "first_failure_counts": {},
+          "first_failure_percent": {}
+        },
+        "INSUFFICIENT_EVIDENCE": {
+          "events": 0,
+          "relevant_events": null,
+          "conditional_stage_coverage": [
+            {
+              "stage": "DETECTION",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "TRACK",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "WORLD",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "CORRIDOR",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "TRAJECTORY",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "INTERACTION",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "RISK",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "ATTENTION",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "ALERT_INTENT",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "VALID_ALERT",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            },
+            {
+              "stage": "DELIVERABLE_ALERT",
+              "numerator": 0,
+              "denominator": 0,
+              "coverage": null
+            }
+          ],
+          "end_to_end": {
+            "numerator": null,
+            "denominator": null,
+            "coverage": null
+          },
+          "first_failure_counts": {},
+          "first_failure_percent": {}
+        }
+      },
+      "alerts": {
+        "READY": 60,
+        "text_sink_accepted": 60,
+        "NO_PRESENTATION": 17940
+      },
+      "async_compute_and_age": null,
+      "note": null,
+      "pipeline_seconds": 6788.2122896,
+      "high_level_updates_per_second": 2.651655433283549
+    },
+    {
+      "experiment": "instrumentation-smoke",
+      "status": "COMPLETE",
+      "mode": "REALTIME",
+      "source_sha256": "e011aa64a65aa9aeb00fce657312362742d12dfd9170f76878e2a784ab1fc5e2",
+      "configuration_sha256": "64228d64e575a7c2f336c63be9c005f0ab985a70aadb9e452cb9a18bee6913f6",
+      "requested_seconds": 15.0,
+      "detector": "picodet",
+      "detector_input_size": 416,
+      "execution": "CPU",
+      "io_binding": false,
+      "fp16": false,
+      "requested_intervals_ns": {
+        "detector": 200000000,
+        "depth": 1000000000,
+        "segmentation": 2000000000,
+        "optical_flow": 200000000
+      },
+      "optional_available": {
+        "depth": true,
+        "motion": true,
+        "segmentation": true
+      },
+      "frame_counts": {
+        "source": 34,
+        "decoded": 34,
+        "accepted": 34,
+        "processed": 34,
+        "dropped": 0,
+        "failed": 0
+      },
+      "acquisition": {
+        "decoded_in_window": 175,
+        "pending_replaced": 141,
+        "skipped_before_conversion": 275,
+        "source_end_observed_ns": 15000000000,
+        "pending_capacity": 1,
+        "timing": {
+          "acquisition_wait": {
+            "count": 35,
+            "min_ns": 6900,
+            "max_ns": 54648300,
+            "mean_ns": 1571440.0,
+            "percentile_scope": "recent_window",
+            "window_count": 35,
+            "p50_ns": 9700,
+            "p90_ns": 15600,
+            "p95_ns": 18100,
+            "p99_ns": 54648300
+          },
+          "delivered_mailbox_retention": {
+            "count": 34,
+            "min_ns": 108900,
+            "max_ns": 363518500,
+            "mean_ns": 109446170.58823529,
+            "percentile_scope": "recent_window",
+            "window_count": 34,
+            "p50_ns": 59529900,
+            "p90_ns": 320637500,
+            "p95_ns": 358160300,
+            "p99_ns": 363518500
+          }
+        }
+      },
+      "publication_intervals": {
+        "count": 33,
+        "min_ns": 329920600,
+        "max_ns": 920615200,
+        "mean_ns": 457525203.030303,
+        "percentile_scope": "recent_window",
+        "window_count": 33,
+        "p50_ns": 422393400,
+        "p90_ns": 622151500,
+        "p95_ns": 695725400,
+        "p99_ns": 920615200
+      },
+      "publication_age": {
+        "count": 34,
+        "min_ns": 397743034,
+        "max_ns": 1131888934,
+        "mean_ns": 600914932.7352941,
+        "percentile_scope": "recent_window",
+        "window_count": 34,
+        "p50_ns": 568267734,
+        "p90_ns": 808750767,
+        "p95_ns": 823183067,
+        "p99_ns": 1131888934
+      },
+      "tracking": {
+        "active": 63,
+        "lost": 4,
+        "history_entries": 345,
+        "max_serial": 172,
+        "gap_resets": 0
+      },
+      "memory": {
+        "start": 486252544,
+        "peak_sampled": 812519424,
+        "end": 758059008
+      },
+      "elapsed_seconds": 54.9762358,
+      "coverage": null,
+      "alerts": null,
+      "async_compute_and_age": {
+        "depth": {
+          "queue_wait": {
+            "count": 4,
+            "min_ns": 1382100,
+            "max_ns": 1717001100,
+            "mean_ns": 595582250.0,
+            "percentile_scope": "recent_window",
+            "window_count": 4,
+            "p50_ns": 312276300,
+            "p90_ns": 1717001100,
+            "p95_ns": 1717001100,
+            "p99_ns": 1717001100
+          },
+          "compute": {
+            "count": 4,
+            "min_ns": 3702957800,
+            "max_ns": 5730019700,
+            "mean_ns": 4515282325.0,
+            "percentile_scope": "recent_window",
+            "window_count": 4,
+            "p50_ns": 3947393500,
+            "p90_ns": 5730019700,
+            "p95_ns": 5730019700,
+            "p99_ns": 5730019700
+          },
+          "input_age": {
+            "count": 4,
+            "min_ns": 518554500,
+            "max_ns": 2248585300,
+            "mean_ns": 1044828725.0,
+            "percentile_scope": "recent_window",
+            "window_count": 4,
+            "p50_ns": 680883100,
+            "p90_ns": 2248585300,
+            "p95_ns": 2248585300,
+            "p99_ns": 2248585300
+          },
+          "output_age": {
+            "count": 4,
+            "min_ns": 4383814200,
+            "max_ns": 6929316000,
+            "mean_ns": 5560081050.0,
+            "percentile_scope": "recent_window",
+            "window_count": 4,
+            "p50_ns": 4678656700,
+            "p90_ns": 6929316000,
+            "p95_ns": 6929316000,
+            "p99_ns": 6929316000
+          }
+        },
+        "segmentation": {
+          "queue_wait": {
+            "count": 8,
+            "min_ns": 6284000,
+            "max_ns": 33472300,
+            "mean_ns": 19133775.0,
+            "percentile_scope": "recent_window",
+            "window_count": 8,
+            "p50_ns": 17756100,
+            "p90_ns": 33472300,
+            "p95_ns": 33472300,
+            "p99_ns": 33472300
+          },
+          "compute": {
+            "count": 8,
+            "min_ns": 1084413200,
+            "max_ns": 1739587500,
+            "mean_ns": 1362059475.0,
+            "percentile_scope": "recent_window",
+            "window_count": 8,
+            "p50_ns": 1229476600,
+            "p90_ns": 1739587500,
+            "p95_ns": 1739587500,
+            "p99_ns": 1739587500
+          },
+          "input_age": {
+            "count": 8,
+            "min_ns": 383531200,
+            "max_ns": 552965000,
+            "mean_ns": 448015575.125,
+            "percentile_scope": "recent_window",
+            "window_count": 8,
+            "p50_ns": 397509500,
+            "p90_ns": 552965000,
+            "p95_ns": 552965000,
+            "p99_ns": 552965000
+          },
+          "output_age": {
+            "count": 8,
+            "min_ns": 1467916800,
+            "max_ns": 2292516100,
+            "mean_ns": 1810040612.625,
+            "percentile_scope": "recent_window",
+            "window_count": 8,
+            "p50_ns": 1682114600,
+            "p90_ns": 2292516100,
+            "p95_ns": 2292516100,
+            "p99_ns": 2292516100
+          }
+        },
+        "optical_flow": {
+          "queue_wait": {
+            "count": 34,
+            "min_ns": 1185700,
+            "max_ns": 258851300,
+            "mean_ns": 30582750.0,
+            "percentile_scope": "recent_window",
+            "window_count": 34,
+            "p50_ns": 20199300,
+            "p90_ns": 52422900,
+            "p95_ns": 81542900,
+            "p99_ns": 258851300
+          },
+          "compute": {
+            "count": 34,
+            "min_ns": 18055300,
+            "max_ns": 447676300,
+            "mean_ns": 157889417.6470588,
+            "percentile_scope": "recent_window",
+            "window_count": 34,
+            "p50_ns": 112905800,
+            "p90_ns": 385709000,
+            "p95_ns": 414106700,
+            "p99_ns": 447676300
+          },
+          "input_age": {
+            "count": 34,
+            "min_ns": 372549734,
+            "max_ns": 855844634,
+            "mean_ns": 556742979.7941177,
+            "percentile_scope": "recent_window",
+            "window_count": 34,
+            "p50_ns": 519503800,
+            "p90_ns": 765603567,
+            "p95_ns": 848130567,
+            "p99_ns": 855844634
+          },
+          "output_age": {
+            "count": 34,
+            "min_ns": 493607134,
+            "max_ns": 1269917734,
+            "mean_ns": 714583370.9705882,
+            "percentile_scope": "recent_window",
+            "window_count": 34,
+            "p50_ns": 672205067,
+            "p90_ns": 944872500,
+            "p95_ns": 1125905700,
+            "p99_ns": 1269917734
+          }
+        }
+      },
+      "note": null,
+      "pipeline_seconds": 15.7212315,
+      "high_level_updates_per_second": 2.162680449047519
+    },
+    {
+      "experiment": "cadence-01/depth-2",
+      "status": "COMPLETE",
+      "mode": "REALTIME",
+      "source_sha256": "e011aa64a65aa9aeb00fce657312362742d12dfd9170f76878e2a784ab1fc5e2",
+      "configuration_sha256": "750714b66d430fbc9ece2c66637a63d3394cca98b760bb534443007af27081b1",
+      "requested_seconds": 15.0,
+      "detector": "picodet",
+      "detector_input_size": 416,
+      "execution": "CPU",
+      "io_binding": false,
+      "fp16": false,
+      "requested_intervals_ns": {
+        "detector": 200000000,
+        "depth": 500000000,
+        "segmentation": 1000000000,
+        "optical_flow": 200000000
+      },
+      "optional_available": {
+        "depth": true,
+        "motion": true,
+        "segmentation": true
+      },
+      "frame_counts": {
+        "source": 200,
+        "decoded": 200,
+        "accepted": 200,
+        "processed": 200,
+        "dropped": 0,
+        "failed": 0
+      },
+      "acquisition": {
+        "decoded_in_window": 387,
+        "pending_replaced": 187,
+        "skipped_before_conversion": 63,
+        "pending_capacity": 1
+      },
+      "publication_intervals": {
+        "count": 199,
+        "min_ns": 7750100,
+        "max_ns": 445832000,
+        "mean_ns": 74874991.45728643,
+        "percentile_scope": "recent_window",
+        "window_count": 199,
+        "p50_ns": 31091100,
+        "p90_ns": 171775100,
+        "p95_ns": 247974800,
+        "p99_ns": 435762000
+      },
+      "publication_age": {
+        "count": 200,
+        "min_ns": 8643434,
+        "max_ns": 509910267,
+        "mean_ns": 93037804.475,
+        "percentile_scope": "recent_window",
+        "window_count": 200,
+        "p50_ns": 51017034,
+        "p90_ns": 199316300,
+        "p95_ns": 265141500,
+        "p99_ns": 330222634
+      },
+      "tracking": {
+        "active": 64,
+        "lost": 12,
+        "history_entries": 721,
+        "max_serial": 175,
+        "gap_resets": 0
+      },
+      "memory": {
+        "start": 575021056,
+        "peak_sampled": 858759168,
+        "end": 783572992
+      },
+      "elapsed_seconds": 15.713883,
+      "coverage": null,
+      "alerts": null,
+      "async_compute_and_age": {
+        "depth": {
+          "queue_wait": {
+            "count": 10,
+            "min_ns": 376300,
+            "max_ns": 794221700,
+            "mean_ns": 438224480.0,
+            "percentile_scope": "recent_window",
+            "window_count": 10,
+            "p50_ns": 409487300,
+            "p90_ns": 717599900,
+            "p95_ns": 794221700,
+            "p99_ns": 794221700
+          },
+          "compute": {
+            "count": 10,
+            "min_ns": 1097366100,
+            "max_ns": 2066922500,
+            "mean_ns": 1507213860.0,
+            "percentile_scope": "recent_window",
+            "window_count": 10,
+            "p50_ns": 1418054400,
+            "p90_ns": 1739098400,
+            "p95_ns": 2066922500,
+            "p99_ns": 2066922500
+          }
+        },
+        "segmentation": {
+          "queue_wait": {
+            "count": 15,
+            "min_ns": 6902700,
+            "max_ns": 48841500,
+            "mean_ns": 21576520.0,
+            "percentile_scope": "recent_window",
+            "window_count": 15,
+            "p50_ns": 16592500,
+            "p90_ns": 48576600,
+            "p95_ns": 48841500,
+            "p99_ns": 48841500
+          },
+          "compute": {
+            "count": 15,
+            "min_ns": 368905500,
+            "max_ns": 851306200,
+            "mean_ns": 550719633.3333334,
+            "percentile_scope": "recent_window",
+            "window_count": 15,
+            "p50_ns": 558706500,
+            "p90_ns": 736185300,
+            "p95_ns": 851306200,
+            "p99_ns": 851306200
+          }
+        },
+        "optical_flow": {
+          "queue_wait": {
+            "count": 73,
+            "min_ns": 259900,
+            "max_ns": 145898700,
+            "mean_ns": 19954282.19178082,
+            "percentile_scope": "recent_window",
+            "window_count": 73,
+            "p50_ns": 14551200,
+            "p90_ns": 28589000,
+            "p95_ns": 41753200,
+            "p99_ns": 145898700
+          },
+          "compute": {
+            "count": 73,
+            "min_ns": 21462100,
+            "max_ns": 339953900,
+            "mean_ns": 81813305.47945206,
+            "percentile_scope": "recent_window",
+            "window_count": 73,
+            "p50_ns": 61471100,
+            "p90_ns": 170681000,
+            "p95_ns": 197832100,
+            "p99_ns": 339953900
+          }
+        }
+      },
+      "note": null,
+      "pipeline_seconds": 15.0328137,
+      "high_level_updates_per_second": 13.304229267472396
+    },
+    {
+      "experiment": "cadence-01/depth-5",
+      "status": "COMPLETE",
+      "mode": "REALTIME",
+      "source_sha256": "e011aa64a65aa9aeb00fce657312362742d12dfd9170f76878e2a784ab1fc5e2",
+      "configuration_sha256": "d33aa19db1f54658d008e39002bfe6f6dc9bd10c94096057c713d3f515e31f65",
+      "requested_seconds": 15.0,
+      "detector": "picodet",
+      "detector_input_size": 416,
+      "execution": "CPU",
+      "io_binding": false,
+      "fp16": false,
+      "requested_intervals_ns": {
+        "detector": 200000000,
+        "depth": 200000000,
+        "segmentation": 1000000000,
+        "optical_flow": 200000000
+      },
+      "optional_available": {
+        "depth": true,
+        "motion": true,
+        "segmentation": true
+      },
+      "frame_counts": {
+        "source": 200,
+        "decoded": 200,
+        "accepted": 200,
+        "processed": 200,
+        "dropped": 0,
+        "failed": 0
+      },
+      "acquisition": {
+        "decoded_in_window": 366,
+        "pending_replaced": 166,
+        "skipped_before_conversion": 84,
+        "pending_capacity": 1
+      },
+      "publication_intervals": {
+        "count": 199,
+        "min_ns": 7093500,
+        "max_ns": 512641400,
+        "mean_ns": 75226602.01005025,
+        "percentile_scope": "recent_window",
+        "window_count": 199,
+        "p50_ns": 29768900,
+        "p90_ns": 178709300,
+        "p95_ns": 248630800,
+        "p99_ns": 417924900
+      },
+      "publication_age": {
+        "count": 200,
+        "min_ns": 7437000,
+        "max_ns": 561799100,
+        "mean_ns": 92445991.305,
+        "percentile_scope": "recent_window",
+        "window_count": 200,
+        "p50_ns": 56328134,
+        "p90_ns": 197552000,
+        "p95_ns": 244421800,
+        "p99_ns": 414009067
+      },
+      "tracking": {
+        "active": 64,
+        "lost": 10,
+        "history_entries": 748,
+        "max_serial": 179,
+        "gap_resets": 0
+      },
+      "memory": {
+        "start": 620597248,
+        "peak_sampled": 857636864,
+        "end": 785424384
+      },
+      "elapsed_seconds": 15.5676469,
+      "coverage": null,
+      "alerts": null,
+      "async_compute_and_age": {
+        "depth": {
+          "queue_wait": {
+            "count": 10,
+            "min_ns": 530000,
+            "max_ns": 293895600,
+            "mean_ns": 200720350.0,
+            "percentile_scope": "recent_window",
+            "window_count": 10,
+            "p50_ns": 213758000,
+            "p90_ns": 250043300,
+            "p95_ns": 293895600,
+            "p99_ns": 293895600
+          },
+          "compute": {
+            "count": 10,
+            "min_ns": 1164650300,
+            "max_ns": 2063843800,
+            "mean_ns": 1503487090.0,
+            "percentile_scope": "recent_window",
+            "window_count": 10,
+            "p50_ns": 1379585000,
+            "p90_ns": 1738584900,
+            "p95_ns": 2063843800,
+            "p99_ns": 2063843800
+          }
+        },
+        "segmentation": {
+          "queue_wait": {
+            "count": 15,
+            "min_ns": 5586400,
+            "max_ns": 29931000,
+            "mean_ns": 16225953.333333334,
+            "percentile_scope": "recent_window",
+            "window_count": 15,
+            "p50_ns": 14874800,
+            "p90_ns": 29379300,
+            "p95_ns": 29931000,
+            "p99_ns": 29931000
+          },
+          "compute": {
+            "count": 15,
+            "min_ns": 362046100,
+            "max_ns": 912031000,
+            "mean_ns": 544396126.6666666,
+            "percentile_scope": "recent_window",
+            "window_count": 15,
+            "p50_ns": 501147300,
+            "p90_ns": 720562800,
+            "p95_ns": 912031000,
+            "p99_ns": 912031000
+          }
+        },
+        "optical_flow": {
+          "queue_wait": {
+            "count": 72,
+            "min_ns": 292500,
+            "max_ns": 191048600,
+            "mean_ns": 25530037.5,
+            "percentile_scope": "recent_window",
+            "window_count": 72,
+            "p50_ns": 13855400,
+            "p90_ns": 27928500,
+            "p95_ns": 158359200,
+            "p99_ns": 191048600
+          },
+          "compute": {
+            "count": 72,
+            "min_ns": 19497600,
+            "max_ns": 282268400,
+            "mean_ns": 76387733.33333333,
+            "percentile_scope": "recent_window",
+            "window_count": 72,
+            "p50_ns": 56750900,
+            "p90_ns": 181682400,
+            "p95_ns": 218035900,
+            "p99_ns": 282268400
+          }
+        }
+      },
+      "note": null,
+      "pipeline_seconds": 15.1004349,
+      "high_level_updates_per_second": 13.244651649072704
+    },
+    {
+      "experiment": "cadence-01/detector-10",
+      "status": "COMPLETE",
+      "mode": "REALTIME",
+      "source_sha256": "e011aa64a65aa9aeb00fce657312362742d12dfd9170f76878e2a784ab1fc5e2",
+      "configuration_sha256": "7413811321a428b6ead08968e355bcd2d333e8e0c23f79ceaf159584cd95c971",
+      "requested_seconds": 15.0,
+      "detector": "picodet",
+      "detector_input_size": 416,
+      "execution": "CPU",
+      "io_binding": false,
+      "fp16": false,
+      "requested_intervals_ns": {
+        "detector": 100000000,
+        "depth": 1000000000,
+        "segmentation": 1000000000,
+        "optical_flow": 200000000
+      },
+      "optional_available": {
+        "depth": true,
+        "motion": true,
+        "segmentation": true
+      },
+      "frame_counts": {
+        "source": 59,
+        "decoded": 59,
+        "accepted": 59,
+        "processed": 59,
+        "dropped": 0,
+        "failed": 0
+      },
+      "acquisition": {
+        "decoded_in_window": 298,
+        "pending_replaced": 239,
+        "skipped_before_conversion": 152,
+        "pending_capacity": 1
+      },
+      "publication_intervals": {
+        "count": 58,
+        "min_ns": 7823400,
+        "max_ns": 664935800,
+        "mean_ns": 262935563.79310346,
+        "percentile_scope": "recent_window",
+        "window_count": 58,
+        "p50_ns": 246609200,
+        "p90_ns": 416617900,
+        "p95_ns": 471229600,
+        "p99_ns": 664935800
+      },
+      "publication_age": {
+        "count": 59,
+        "min_ns": 37929534,
+        "max_ns": 964485600,
+        "mean_ns": 340066696.40677965,
+        "percentile_scope": "recent_window",
+        "window_count": 59,
+        "p50_ns": 329189067,
+        "p90_ns": 470824600,
+        "p95_ns": 630311867,
+        "p99_ns": 964485600
+      },
+      "tracking": {
+        "active": 64,
+        "lost": 9,
+        "history_entries": 566,
+        "max_serial": 182,
+        "gap_resets": 0
+      },
+      "memory": {
+        "start": 607866880,
+        "peak_sampled": 851509248,
+        "end": 738033664
+      },
+      "elapsed_seconds": 15.9329991,
+      "coverage": null,
+      "alerts": null,
+      "async_compute_and_age": {
+        "depth": {
+          "queue_wait": {
+            "count": 7,
+            "min_ns": 482000,
+            "max_ns": 1002597300,
+            "mean_ns": 599596385.7142857,
+            "percentile_scope": "recent_window",
+            "window_count": 7,
+            "p50_ns": 667673300,
+            "p90_ns": 1002597300,
+            "p95_ns": 1002597300,
+            "p99_ns": 1002597300
+          },
+          "compute": {
+            "count": 7,
+            "min_ns": 1829320600,
+            "max_ns": 3186302100,
+            "mean_ns": 2181029857.142857,
+            "percentile_scope": "recent_window",
+            "window_count": 7,
+            "p50_ns": 2053205900,
+            "p90_ns": 3186302100,
+            "p95_ns": 3186302100,
+            "p99_ns": 3186302100
+          }
+        },
+        "segmentation": {
+          "queue_wait": {
+            "count": 15,
+            "min_ns": 6194300,
+            "max_ns": 135533200,
+            "mean_ns": 23987640.0,
+            "percentile_scope": "recent_window",
+            "window_count": 15,
+            "p50_ns": 16529300,
+            "p90_ns": 28297000,
+            "p95_ns": 135533200,
+            "p99_ns": 135533200
+          },
+          "compute": {
+            "count": 15,
+            "min_ns": 404791500,
+            "max_ns": 1265588000,
+            "mean_ns": 764759620.0,
+            "percentile_scope": "recent_window",
+            "window_count": 15,
+            "p50_ns": 699558500,
+            "p90_ns": 978690700,
+            "p95_ns": 1265588000,
+            "p99_ns": 1265588000
+          }
+        },
+        "optical_flow": {
+          "queue_wait": {
+            "count": 52,
+            "min_ns": 555800,
+            "max_ns": 317139800,
+            "mean_ns": 31855228.846153848,
+            "percentile_scope": "recent_window",
+            "window_count": 52,
+            "p50_ns": 15310400,
+            "p90_ns": 28771800,
+            "p95_ns": 202006700,
+            "p99_ns": 317139800
+          },
+          "compute": {
+            "count": 52,
+            "min_ns": 17964600,
+            "max_ns": 351264400,
+            "mean_ns": 96422130.76923077,
+            "percentile_scope": "recent_window",
+            "window_count": 52,
+            "p50_ns": 66009600,
+            "p90_ns": 217701200,
+            "p95_ns": 255821800,
+            "p99_ns": 351264400
+          }
+        }
+      },
+      "note": null,
+      "pipeline_seconds": 15.3735624,
+      "high_level_updates_per_second": 3.8377572136435987
+    },
+    {
+      "experiment": "cadence-01/detector-2",
+      "status": "COMPLETE",
+      "mode": "REALTIME",
+      "source_sha256": "e011aa64a65aa9aeb00fce657312362742d12dfd9170f76878e2a784ab1fc5e2",
+      "configuration_sha256": "e30aab500013c5201da031c8d71eb77bbb6ef4980716cba57dbe83a27562bfee",
+      "requested_seconds": 15.0,
+      "detector": "picodet",
+      "detector_input_size": 416,
+      "execution": "CPU",
+      "io_binding": false,
+      "fp16": false,
+      "requested_intervals_ns": {
+        "detector": 500000000,
+        "depth": 1000000000,
+        "segmentation": 1000000000,
+        "optical_flow": 200000000
+      },
+      "optional_available": {
+        "depth": true,
+        "motion": true,
+        "segmentation": true
+      },
+      "frame_counts": {
+        "source": 72,
+        "decoded": 72,
+        "accepted": 72,
+        "processed": 72,
+        "dropped": 0,
+        "failed": 0
+      },
+      "acquisition": {
+        "decoded_in_window": 290,
+        "pending_replaced": 218,
+        "skipped_before_conversion": 160,
+        "pending_capacity": 1
+      },
+      "publication_intervals": {
+        "count": 71,
+        "min_ns": 7794000,
+        "max_ns": 835423400,
+        "mean_ns": 207086781.69014084,
+        "percentile_scope": "recent_window",
+        "window_count": 71,
+        "p50_ns": 52964800,
+        "p90_ns": 460196400,
+        "p95_ns": 642837200,
+        "p99_ns": 835423400
+      },
+      "publication_age": {
+        "count": 72,
+        "min_ns": 9694434,
+        "max_ns": 842692967,
+        "mean_ns": 235659976.2638889,
+        "percentile_scope": "recent_window",
+        "window_count": 72,
+        "p50_ns": 119617500,
+        "p90_ns": 505289434,
+        "p95_ns": 696707367,
+        "p99_ns": 842692967
+      },
+      "tracking": {
+        "active": 63,
+        "lost": 3,
+        "history_entries": 179,
+        "max_serial": 256,
+        "gap_resets": 0
+      },
+      "memory": {
+        "start": 487079936,
+        "peak_sampled": 827400192,
+        "end": 759562240
+      },
+      "elapsed_seconds": 47.578066,
+      "coverage": null,
+      "alerts": null,
+      "async_compute_and_age": {
+        "depth": {
+          "queue_wait": {
+            "count": 4,
+            "min_ns": 809800,
+            "max_ns": 905344000,
+            "mean_ns": 544614450.0,
+            "percentile_scope": "recent_window",
+            "window_count": 4,
+            "p50_ns": 542616200,
+            "p90_ns": 905344000,
+            "p95_ns": 905344000,
+            "p99_ns": 905344000
+          },
+          "compute": {
+            "count": 4,
+            "min_ns": 2592960000,
+            "max_ns": 5103828300,
+            "mean_ns": 3998791100.0,
+            "percentile_scope": "recent_window",
+            "window_count": 4,
+            "p50_ns": 4004681600,
+            "p90_ns": 5103828300,
+            "p95_ns": 5103828300,
+            "p99_ns": 5103828300
+          }
+        },
+        "segmentation": {
+          "queue_wait": {
+            "count": 14,
+            "min_ns": 9041300,
+            "max_ns": 1120712500,
+            "mean_ns": 275991785.71428573,
+            "percentile_scope": "recent_window",
+            "window_count": 14,
+            "p50_ns": 212352000,
+            "p90_ns": 716791100,
+            "p95_ns": 1120712500,
+            "p99_ns": 1120712500
+          },
+          "compute": {
+            "count": 14,
+            "min_ns": 712072100,
+            "max_ns": 1472479600,
+            "mean_ns": 1020380571.4285715,
+            "percentile_scope": "recent_window",
+            "window_count": 14,
+            "p50_ns": 953144200,
+            "p90_ns": 1310269000,
+            "p95_ns": 1472479600,
+            "p99_ns": 1472479600
+          }
+        },
+        "optical_flow": {
+          "queue_wait": {
+            "count": 42,
+            "min_ns": 572400,
+            "max_ns": 206792500,
+            "mean_ns": 34177595.23809524,
+            "percentile_scope": "recent_window",
+            "window_count": 42,
+            "p50_ns": 14178200,
+            "p90_ns": 120874000,
+            "p95_ns": 135243000,
+            "p99_ns": 206792500
+          },
+          "compute": {
+            "count": 42,
+            "min_ns": 26286100,
+            "max_ns": 418642500,
+            "mean_ns": 125355785.71428572,
+            "percentile_scope": "recent_window",
+            "window_count": 42,
+            "p50_ns": 115023700,
+            "p90_ns": 180118700,
+            "p95_ns": 354076400,
+            "p99_ns": 418642500
+          }
+        }
+      },
+      "note": null,
+      "pipeline_seconds": 15.1250972,
+      "high_level_updates_per_second": 4.76029998670025
+    },
+    {
+      "experiment": "cadence-01/detector-5",
+      "status": "COMPLETE",
+      "mode": "REALTIME",
+      "source_sha256": "e011aa64a65aa9aeb00fce657312362742d12dfd9170f76878e2a784ab1fc5e2",
+      "configuration_sha256": "55124caecaf8bdc33b415c0c3abd8ddb5dd4ab1741326dab1690a37491c410ce",
+      "requested_seconds": 15.0,
+      "detector": "picodet",
+      "detector_input_size": 416,
+      "execution": "CPU",
+      "io_binding": false,
+      "fp16": false,
+      "requested_intervals_ns": {
+        "detector": 200000000,
+        "depth": 1000000000,
+        "segmentation": 1000000000,
+        "optical_flow": 200000000
+      },
+      "optional_available": {
+        "depth": true,
+        "motion": true,
+        "segmentation": true
+      },
+      "frame_counts": {
+        "source": 35,
+        "decoded": 35,
+        "accepted": 35,
+        "processed": 35,
+        "dropped": 0,
+        "failed": 0
+      },
+      "acquisition": {
+        "decoded_in_window": 280,
+        "pending_replaced": 245,
+        "skipped_before_conversion": 170,
+        "pending_capacity": 1
+      },
+      "publication_intervals": {
+        "count": 34,
+        "min_ns": 350512600,
+        "max_ns": 686390600,
+        "mean_ns": 444083838.2352941,
+        "percentile_scope": "recent_window",
+        "window_count": 34,
+        "p50_ns": 395428400,
+        "p90_ns": 635626700,
+        "p95_ns": 662464200,
+        "p99_ns": 686390600
+      },
+      "publication_age": {
+        "count": 35,
+        "min_ns": 334198200,
+        "max_ns": 779198267,
+        "mean_ns": 542600181.2,
+        "percentile_scope": "recent_window",
+        "window_count": 35,
+        "p50_ns": 482962600,
+        "p90_ns": 746231567,
+        "p95_ns": 762683100,
+        "p99_ns": 779198267
+      },
+      "tracking": {
+        "active": 49,
+        "lost": 3,
+        "history_entries": 234,
+        "max_serial": 238,
+        "gap_resets": 0
+      },
+      "memory": {
+        "start": 603803648,
+        "peak_sampled": 836964352,
+        "end": 770830336
+      },
+      "elapsed_seconds": 19.333969,
+      "coverage": null,
+      "alerts": null,
+      "async_compute_and_age": {
+        "depth": {
+          "queue_wait": {
+            "count": 4,
+            "min_ns": 2317900,
+            "max_ns": 1359597400,
+            "mean_ns": 813749175.0,
+            "percentile_scope": "recent_window",
+            "window_count": 4,
+            "p50_ns": 893569800,
+            "p90_ns": 1359597400,
+            "p95_ns": 1359597400,
+            "p99_ns": 1359597400
+          },
+          "compute": {
+            "count": 4,
+            "min_ns": 3219609700,
+            "max_ns": 5353918300,
+            "mean_ns": 4457229225.0,
+            "percentile_scope": "recent_window",
+            "window_count": 4,
+            "p50_ns": 4431111900,
+            "p90_ns": 5353918300,
+            "p95_ns": 5353918300,
+            "p99_ns": 5353918300
+          }
+        },
+        "segmentation": {
+          "queue_wait": {
+            "count": 15,
+            "min_ns": 13155600,
+            "max_ns": 729397600,
+            "mean_ns": 415195706.6666667,
+            "percentile_scope": "recent_window",
+            "window_count": 15,
+            "p50_ns": 469720800,
+            "p90_ns": 683216500,
+            "p95_ns": 729397600,
+            "p99_ns": 729397600
+          },
+          "compute": {
+            "count": 15,
+            "min_ns": 777600600,
+            "max_ns": 1270093800,
+            "mean_ns": 1027274826.6666666,
+            "percentile_scope": "recent_window",
+            "window_count": 15,
+            "p50_ns": 1091198100,
+            "p90_ns": 1251297100,
+            "p95_ns": 1270093800,
+            "p99_ns": 1270093800
+          }
+        },
+        "optical_flow": {
+          "queue_wait": {
+            "count": 35,
+            "min_ns": 2274300,
+            "max_ns": 48986900,
+            "mean_ns": 16192800.0,
+            "percentile_scope": "recent_window",
+            "window_count": 35,
+            "p50_ns": 14722800,
+            "p90_ns": 32449400,
+            "p95_ns": 45545300,
+            "p99_ns": 48986900
+          },
+          "compute": {
+            "count": 35,
+            "min_ns": 32922400,
+            "max_ns": 374942000,
+            "mean_ns": 163676620.0,
+            "percentile_scope": "recent_window",
+            "window_count": 35,
+            "p50_ns": 136374300,
+            "p90_ns": 330704300,
+            "p95_ns": 355709300,
+            "p99_ns": 374942000
+          }
+        }
+      },
+      "note": null,
+      "pipeline_seconds": 15.4949352,
+      "high_level_updates_per_second": 2.258802605382951
+    },
+    {
+      "experiment": "cadence-01/detector-only-degraded",
+      "status": "COMPLETE",
+      "mode": "REALTIME",
+      "source_sha256": "e011aa64a65aa9aeb00fce657312362742d12dfd9170f76878e2a784ab1fc5e2",
+      "configuration_sha256": "68dfa924729703505ff74904184229a66ddf39d69b3463c5f2d8db2ca0da7a41",
+      "requested_seconds": 15.0,
+      "detector": "picodet",
+      "detector_input_size": 416,
+      "execution": "CPU",
+      "io_binding": false,
+      "fp16": false,
+      "requested_intervals_ns": {
+        "detector": 200000000
+      },
+      "optional_available": {
+        "depth": false,
+        "motion": false,
+        "segmentation": false
+      },
+      "frame_counts": {
+        "source": 44,
+        "decoded": 44,
+        "accepted": 44,
+        "processed": 44,
+        "dropped": 0,
+        "failed": 0
+      },
+      "acquisition": {
+        "decoded_in_window": 409,
+        "pending_replaced": 365,
+        "skipped_before_conversion": 41,
+        "pending_capacity": 1
+      },
+      "publication_intervals": {
+        "count": 43,
+        "min_ns": 46886500,
+        "max_ns": 548459400,
+        "mean_ns": 346828060.46511626,
+        "percentile_scope": "recent_window",
+        "window_count": 43,
+        "p50_ns": 349135100,
+        "p90_ns": 397973700,
+        "p95_ns": 400871800,
+        "p99_ns": 548459400
+      },
+      "publication_age": {
+        "count": 44,
+        "min_ns": 264057034,
+        "max_ns": 594657134,
+        "mean_ns": 402735040.40909094,
+        "percentile_scope": "recent_window",
+        "window_count": 44,
+        "p50_ns": 399966667,
+        "p90_ns": 467968700,
+        "p95_ns": 476974500,
+        "p99_ns": 594657134
+      },
+      "tracking": {
+        "active": 64,
+        "lost": 8,
+        "history_entries": 495,
+        "max_serial": 174,
+        "gap_resets": 0
+      },
+      "memory": {
+        "start": 588767232,
+        "peak_sampled": 649269248,
+        "end": 628461568
+      },
+      "elapsed_seconds": 15.8996887,
+      "coverage": null,
+      "alerts": null,
+      "async_compute_and_age": null,
+      "note": null,
+      "pipeline_seconds": 15.2979631,
+      "high_level_updates_per_second": 2.8761999040251314
+    },
+    {
+      "experiment": "cadence-01/image-space-degraded",
+      "status": "COMPLETE",
+      "mode": "REALTIME",
+      "source_sha256": "e011aa64a65aa9aeb00fce657312362742d12dfd9170f76878e2a784ab1fc5e2",
+      "configuration_sha256": "de3b3528105edf651621d5d0d4a1a3cc99f0f161085ef1ff40e43c3a6e813cd5",
+      "requested_seconds": 15.0,
+      "detector": "picodet",
+      "detector_input_size": 416,
+      "execution": "CPU",
+      "io_binding": false,
+      "fp16": false,
+      "requested_intervals_ns": {
+        "detector": 200000000,
+        "segmentation": 2000000000,
+        "optical_flow": 200000000
+      },
+      "optional_available": {
+        "depth": false,
+        "motion": true,
+        "segmentation": true
+      },
+      "frame_counts": {
+        "source": 40,
+        "decoded": 40,
+        "accepted": 40,
+        "processed": 40,
+        "dropped": 0,
+        "failed": 0
+      },
+      "acquisition": {
+        "decoded_in_window": 377,
+        "pending_replaced": 337,
+        "skipped_before_conversion": 73,
+        "pending_capacity": 1
+      },
+      "publication_intervals": {
+        "count": 39,
+        "min_ns": 314941200,
+        "max_ns": 566076200,
+        "mean_ns": 384434869.2307692,
+        "percentile_scope": "recent_window",
+        "window_count": 39,
+        "p50_ns": 370095200,
+        "p90_ns": 472561000,
+        "p95_ns": 533934100,
+        "p99_ns": 566076200
+      },
+      "publication_age": {
+        "count": 40,
+        "min_ns": 363283467,
+        "max_ns": 630791500,
+        "mean_ns": 450394002.8,
+        "percentile_scope": "recent_window",
+        "window_count": 40,
+        "p50_ns": 432320067,
+        "p90_ns": 536462767,
+        "p95_ns": 604180500,
+        "p99_ns": 630791500
+      },
+      "tracking": {
+        "active": 61,
+        "lost": 10,
+        "history_entries": 421,
+        "max_serial": 173,
+        "gap_resets": 0
+      },
+      "memory": {
+        "start": 631717888,
+        "peak_sampled": 757567488,
+        "end": 697212928
+      },
+      "elapsed_seconds": 16.4618097,
+      "coverage": null,
+      "alerts": null,
+      "async_compute_and_age": {
+        "segmentation": {
+          "queue_wait": {
+            "count": 8,
+            "min_ns": 5060100,
+            "max_ns": 43518700,
+            "mean_ns": 16948025.0,
+            "percentile_scope": "recent_window",
+            "window_count": 8,
+            "p50_ns": 13377900,
+            "p90_ns": 43518700,
+            "p95_ns": 43518700,
+            "p99_ns": 43518700
+          },
+          "compute": {
+            "count": 8,
+            "min_ns": 829151500,
+            "max_ns": 1166772900,
+            "mean_ns": 994688150.0,
+            "percentile_scope": "recent_window",
+            "window_count": 8,
+            "p50_ns": 936463800,
+            "p90_ns": 1166772900,
+            "p95_ns": 1166772900,
+            "p99_ns": 1166772900
+          }
+        },
+        "optical_flow": {
+          "queue_wait": {
+            "count": 40,
+            "min_ns": 896600,
+            "max_ns": 228827600,
+            "mean_ns": 21882297.5,
+            "percentile_scope": "recent_window",
+            "window_count": 40,
+            "p50_ns": 16054400,
+            "p90_ns": 28832600,
+            "p95_ns": 39162000,
+            "p99_ns": 228827600
+          },
+          "compute": {
+            "count": 40,
+            "min_ns": 43098400,
+            "max_ns": 326036900,
+            "mean_ns": 138207512.5,
+            "percentile_scope": "recent_window",
+            "window_count": 40,
+            "p50_ns": 128016100,
+            "p90_ns": 187021700,
+            "p95_ns": 215244800,
+            "p99_ns": 326036900
+          }
+        }
+      },
+      "note": null,
+      "pipeline_seconds": 15.4390789,
+      "high_level_updates_per_second": 2.590828135478989
+    },
+    {
+      "experiment": "cadence-01/semantic-2",
+      "status": "COMPLETE",
+      "mode": "REALTIME",
+      "source_sha256": "e011aa64a65aa9aeb00fce657312362742d12dfd9170f76878e2a784ab1fc5e2",
+      "configuration_sha256": "b0bf68a7c7589ce1274bb02b67681c6804d1473bbcc1287f522c842616defea9",
+      "requested_seconds": 15.0,
+      "detector": "picodet",
+      "detector_input_size": 416,
+      "execution": "CPU",
+      "io_binding": false,
+      "fp16": false,
+      "requested_intervals_ns": {
+        "detector": 200000000,
+        "depth": 1000000000,
+        "segmentation": 500000000,
+        "optical_flow": 200000000
+      },
+      "optional_available": {
+        "depth": true,
+        "motion": true,
+        "segmentation": true
+      },
+      "frame_counts": {
+        "source": 57,
+        "decoded": 57,
+        "accepted": 57,
+        "processed": 57,
+        "dropped": 0,
+        "failed": 0
+      },
+      "acquisition": {
+        "decoded_in_window": 264,
+        "pending_replaced": 207,
+        "skipped_before_conversion": 186,
+        "pending_capacity": 1
+      },
+      "publication_intervals": {
+        "count": 56,
+        "min_ns": 10485300,
+        "max_ns": 758107000,
+        "mean_ns": 272717794.64285713,
+        "percentile_scope": "recent_window",
+        "window_count": 56,
+        "p50_ns": 211646400,
+        "p90_ns": 481415100,
+        "p95_ns": 643080600,
+        "p99_ns": 758107000
+      },
+      "publication_age": {
+        "count": 57,
+        "min_ns": 14661100,
+        "max_ns": 901985467,
+        "mean_ns": 347245676.31578946,
+        "percentile_scope": "recent_window",
+        "window_count": 57,
+        "p50_ns": 278826400,
+        "p90_ns": 706117834,
+        "p95_ns": 776429900,
+        "p99_ns": 901985467
+      },
+      "tracking": {
+        "active": 64,
+        "lost": 10,
+        "history_entries": 760,
+        "max_serial": 180,
+        "gap_resets": 0
+      },
+      "memory": {
+        "start": 626782208,
+        "peak_sampled": 873684992,
+        "end": 793739264
+      },
+      "elapsed_seconds": 18.4781547,
+      "coverage": null,
+      "alerts": null,
+      "async_compute_and_age": {
+        "depth": {
+          "queue_wait": {
+            "count": 6,
+            "min_ns": 625300,
+            "max_ns": 1103991200,
+            "mean_ns": 630326816.6666666,
+            "percentile_scope": "recent_window",
+            "window_count": 6,
+            "p50_ns": 611663500,
+            "p90_ns": 1103991200,
+            "p95_ns": 1103991200,
+            "p99_ns": 1103991200
+          },
+          "compute": {
+            "count": 6,
+            "min_ns": 1861099100,
+            "max_ns": 4821873000,
+            "mean_ns": 2970747983.3333335,
+            "percentile_scope": "recent_window",
+            "window_count": 6,
+            "p50_ns": 2027808000,
+            "p90_ns": 4821873000,
+            "p95_ns": 4821873000,
+            "p99_ns": 4821873000
+          }
+        },
+        "segmentation": {
+          "queue_wait": {
+            "count": 19,
+            "min_ns": 7773500,
+            "max_ns": 550457700,
+            "mean_ns": 267530105.2631579,
+            "percentile_scope": "recent_window",
+            "window_count": 19,
+            "p50_ns": 290963600,
+            "p90_ns": 514141600,
+            "p95_ns": 550457700,
+            "p99_ns": 550457700
+          },
+          "compute": {
+            "count": 19,
+            "min_ns": 516370100,
+            "max_ns": 1485477000,
+            "mean_ns": 848790794.7368422,
+            "percentile_scope": "recent_window",
+            "window_count": 19,
+            "p50_ns": 793039100,
+            "p90_ns": 1300459400,
+            "p95_ns": 1485477000,
+            "p99_ns": 1485477000
+          }
+        },
+        "optical_flow": {
+          "queue_wait": {
+            "count": 48,
+            "min_ns": 362500,
+            "max_ns": 155556400,
+            "mean_ns": 19862162.5,
+            "percentile_scope": "recent_window",
+            "window_count": 48,
+            "p50_ns": 14433600,
+            "p90_ns": 30422800,
+            "p95_ns": 31852900,
+            "p99_ns": 155556400
+          },
+          "compute": {
+            "count": 48,
+            "min_ns": 29048500,
+            "max_ns": 405654200,
+            "mean_ns": 110520487.5,
+            "percentile_scope": "recent_window",
+            "window_count": 48,
+            "p50_ns": 74069400,
+            "p90_ns": 213854100,
+            "p95_ns": 227193900,
+            "p99_ns": 405654200
+          }
+        }
+      },
+      "note": null,
+      "pipeline_seconds": 15.409139,
+      "high_level_updates_per_second": 3.69910349955309
+    },
+    {
+      "experiment": "cadence-01/semantic-half",
+      "status": "COMPLETE",
+      "mode": "REALTIME",
+      "source_sha256": "e011aa64a65aa9aeb00fce657312362742d12dfd9170f76878e2a784ab1fc5e2",
+      "configuration_sha256": "0e09a53e8b749eb6ec233923fea63ae34d90034cc0097a02701f68a11c71c485",
+      "requested_seconds": 15.0,
+      "detector": "picodet",
+      "detector_input_size": 416,
+      "execution": "CPU",
+      "io_binding": false,
+      "fp16": false,
+      "requested_intervals_ns": {
+        "detector": 200000000,
+        "depth": 1000000000,
+        "segmentation": 2000000000,
+        "optical_flow": 200000000
+      },
+      "optional_available": {
+        "depth": true,
+        "motion": true,
+        "segmentation": true
+      },
+      "frame_counts": {
+        "source": 241,
+        "decoded": 241,
+        "accepted": 241,
+        "processed": 241,
+        "dropped": 0,
+        "failed": 0
+      },
+      "acquisition": {
+        "decoded_in_window": 385,
+        "pending_replaced": 144,
+        "skipped_before_conversion": 65,
+        "pending_capacity": 1
+      },
+      "publication_intervals": {
+        "count": 240,
+        "min_ns": 7042300,
+        "max_ns": 279142400,
+        "mean_ns": 61672076.666666664,
+        "percentile_scope": "recent_window",
+        "window_count": 240,
+        "p50_ns": 28329100,
+        "p90_ns": 141087300,
+        "p95_ns": 169585600,
+        "p99_ns": 266904500
+      },
+      "publication_age": {
+        "count": 241,
+        "min_ns": 6303367,
+        "max_ns": 290112100,
+        "mean_ns": 80275526.59336099,
+        "percentile_scope": "recent_window",
+        "window_count": 241,
+        "p50_ns": 50273434,
+        "p90_ns": 164944567,
+        "p95_ns": 210295034,
+        "p99_ns": 287349234
+      },
+      "tracking": {
+        "active": 64,
+        "lost": 11,
+        "history_entries": 853,
+        "max_serial": 176,
+        "gap_resets": 0
+      },
+      "memory": {
+        "start": 623599616,
+        "peak_sampled": 874938368,
+        "end": 791085056
+      },
+      "elapsed_seconds": 16.029947,
+      "coverage": null,
+      "alerts": null,
+      "async_compute_and_age": {
+        "depth": {
+          "queue_wait": {
+            "count": 11,
+            "min_ns": 666400,
+            "max_ns": 1130738100,
+            "mean_ns": 592588945.4545455,
+            "percentile_scope": "recent_window",
+            "window_count": 11,
+            "p50_ns": 664610300,
+            "p90_ns": 967676400,
+            "p95_ns": 1130738100,
+            "p99_ns": 1130738100
+          },
+          "compute": {
+            "count": 11,
+            "min_ns": 804935700,
+            "max_ns": 1871163600,
+            "mean_ns": 1398079172.7272727,
+            "percentile_scope": "recent_window",
+            "window_count": 11,
+            "p50_ns": 1433153300,
+            "p90_ns": 1689331300,
+            "p95_ns": 1871163600,
+            "p99_ns": 1871163600
+          }
+        },
+        "segmentation": {
+          "queue_wait": {
+            "count": 8,
+            "min_ns": 6980100,
+            "max_ns": 35092800,
+            "mean_ns": 17510137.5,
+            "percentile_scope": "recent_window",
+            "window_count": 8,
+            "p50_ns": 13545700,
+            "p90_ns": 35092800,
+            "p95_ns": 35092800,
+            "p99_ns": 35092800
+          },
+          "compute": {
+            "count": 8,
+            "min_ns": 400555900,
+            "max_ns": 674804600,
+            "mean_ns": 525521625.0,
+            "percentile_scope": "recent_window",
+            "window_count": 8,
+            "p50_ns": 472469700,
+            "p90_ns": 674804600,
+            "p95_ns": 674804600,
+            "p99_ns": 674804600
+          }
+        },
+        "optical_flow": {
+          "queue_wait": {
+            "count": 75,
+            "min_ns": 918200,
+            "max_ns": 164385800,
+            "mean_ns": 26573260.0,
+            "percentile_scope": "recent_window",
+            "window_count": 75,
+            "p50_ns": 15045000,
+            "p90_ns": 36175500,
+            "p95_ns": 133587200,
+            "p99_ns": 164385800
+          },
+          "compute": {
+            "count": 75,
+            "min_ns": 22760900,
+            "max_ns": 217631700,
+            "mean_ns": 76467121.33333333,
+            "percentile_scope": "recent_window",
+            "window_count": 75,
+            "p50_ns": 62750300,
+            "p90_ns": 164444800,
+            "p95_ns": 186076100,
+            "p99_ns": 217631700
+          }
+        }
+      },
+      "note": null,
+      "pipeline_seconds": 15.0426088,
+      "high_level_updates_per_second": 16.0211571811932
+    }
+  ],
+  "isolated_reasoning": {
+    "corridor": {
+      "count": 320,
+      "scope": "whole_run_exact",
+      "max_ns": 1371100,
+      "mean_ns": 237611.25,
+      "p50_ns": 172800,
+      "p90_ns": 462600,
+      "p95_ns": 555400,
+      "p99_ns": 788800
+    },
+    "trajectory": {
+      "count": 320,
+      "scope": "whole_run_exact",
+      "max_ns": 4649600,
+      "mean_ns": 1259167.5,
+      "p50_ns": 1015100,
+      "p90_ns": 2002300,
+      "p95_ns": 2543100,
+      "p99_ns": 3247200
+    },
+    "interaction": {
+      "count": 320,
+      "scope": "whole_run_exact",
+      "max_ns": 5541400,
+      "mean_ns": 1760233.125,
+      "p50_ns": 1507800,
+      "p90_ns": 2768800,
+      "p95_ns": 3466300,
+      "p99_ns": 4653400
+    },
+    "risk": {
+      "count": 320,
+      "scope": "whole_run_exact",
+      "max_ns": 842500,
+      "mean_ns": 216275.3125,
+      "p50_ns": 176200,
+      "p90_ns": 366500,
+      "p95_ns": 462700,
+      "p99_ns": 532600
+    },
+    "attention": {
+      "count": 320,
+      "scope": "whole_run_exact",
+      "max_ns": 961700,
+      "mean_ns": 187950.625,
+      "p50_ns": 142600,
+      "p90_ns": 320500,
+      "p95_ns": 390900,
+      "p99_ns": 568400
+    },
+    "alerts": {
+      "count": 320,
+      "scope": "whole_run_exact",
+      "max_ns": 225100,
+      "mean_ns": 17920.625,
+      "p50_ns": 12400,
+      "p90_ns": 33400,
+      "p95_ns": 42800,
+      "p99_ns": 61300
+    },
+    "total": {
+      "count": 320,
+      "scope": "whole_run_exact",
+      "max_ns": 10978900,
+      "mean_ns": 3679158.4375,
+      "p50_ns": 3250300,
+      "p90_ns": 5765400,
+      "p95_ns": 6730400,
+      "p99_ns": 9138300
+    }
+  },
+  "limitations": [
+    "Null coverage is unmeasured, not zero",
+    "Failed/interrupted runs are not qualification evidence",
+    "cuDNN 9.27 failed; isolated 9.10 with TF32 disabled executes on CUDA; see GPU audit",
+    "Cadence and provider availability differ explicitly; host load uncontrolled"
+  ],
+  "closure_date": "2026-10-27",
+  "selected_profile": "realtime-06-gpu-no-depth",
+  "verification": {
+    "command": "npm.cmd run verify",
+    "exit_code": 0,
+    "log": "benchmark-results/v0-rescue/verify-final-04.log",
+    "tests": {
+      "guardian": 193,
+      "perception_lab": 1057,
+      "web": 24,
+      "api": 3,
+      "total": 1277
+    },
+    "checks": [
+      "format",
+      "lint",
+      "strict_types",
+      "build",
+      "security",
+      "runtime_smoke"
+    ]
+  },
+  "verdict": {
+    "V0_RESCUE_PASS_COMPLETE": true,
+    "OFFLINE_V0_DEMO_READY": true,
+    "REALTIME_V0_ENGINEERING_DEMO_READY": true,
+    "LIVE_NON_EXPIRED_ALERTS_OBSERVED": true,
+    "HUMAN_USEFULNESS_VALIDATED": false,
+    "PHYSICAL_ACCURACY_VALIDATED": false,
+    "PRODUCTION_SAFETY_VALIDATED": false,
+    "PRODUCTION_READY": false,
+    "YC_TECHNICAL_DEMO_READY": true,
+    "NEXT_PHASE": "V0_DEMO_AND_YC_PACKAGING",
+    "next_phase_started": false
+  },
+  "gpu_experiments": [
+    {
+      "experiment": "gpu-probe-01",
+      "runtime": "1.24.4",
+      "available_providers": [
+        "TensorrtExecutionProvider",
+        "CUDAExecutionProvider",
+        "CPUExecutionProvider"
+      ],
+      "strict_fp32": null,
+      "models": {}
+    },
+    {
+      "experiment": "gpu-probe-02",
+      "runtime": "1.24.4",
+      "available_providers": [
+        "TensorrtExecutionProvider",
+        "CUDAExecutionProvider",
+        "CPUExecutionProvider"
+      ],
+      "strict_fp32": null,
+      "models": {
+        "detector": {
+          "selected_providers": ["CPUExecutionProvider"],
+          "node_execution_counts": {
+            "CPUExecutionProvider": 5643
+          },
+          "cuda_nodes_observed": false,
+          "inputs": [
+            {
+              "name": "image",
+              "shape": [null, 3, 416, 416],
+              "dtype": "tensor(float)"
+            },
+            {
+              "name": "scale_factor",
+              "shape": [1, 2],
+              "dtype": "tensor(float)"
+            }
+          ],
+          "timings": {
+            "cpu": {
+              "samples_ns": [
+                265406900, 251520600, 239379500, 249337900, 297158700,
+                334524600, 245053600, 231178500, 231453000, 256937700
+              ],
+              "includes_host_device_copies": true
+            },
+            "cuda_requested": {
+              "samples_ns": [
+                315341700, 268376200, 253546800, 271658900, 291236800,
+                270605000, 269459000, 266301300, 342549200, 284201000
+              ],
+              "includes_host_device_copies": true
+            }
+          },
+          "parity": [
+            {
+              "shape_equal": true,
+              "exact": true,
+              "allclose_rtol_1e-3_atol_1e-4": true
+            },
+            {
+              "shape_equal": true,
+              "exact": true,
+              "allclose_rtol_1e-3_atol_1e-4": true
+            }
+          ],
+          "load_count_per_provider": 1,
+          "scope": "One real frame, FP32, 10 timed repetitions; not dataset accuracy parity"
+        },
+        "segmentation": {
+          "selected_providers": ["CPUExecutionProvider"],
+          "node_execution_counts": {
+            "CPUExecutionProvider": 1958
+          },
+          "cuda_nodes_observed": false,
+          "inputs": [
+            {
+              "name": "image",
+              "shape": [1, 3, 256, 512],
+              "dtype": "tensor(float)"
+            }
+          ],
+          "timings": {
+            "cpu": {
+              "samples_ns": [
+                281636900, 275540900, 264168300, 266202300, 266914400,
+                258378700, 265626700, 259682000, 260716800, 263751300
+              ],
+              "includes_host_device_copies": true
+            },
+            "cuda_requested": {
+              "samples_ns": [
+                285147700, 264379100, 283395700, 266329100, 285691400,
+                288836300, 276891600, 277990200, 286968300, 278338700
+              ],
+              "includes_host_device_copies": true
+            }
+          },
+          "parity": [
+            {
+              "shape_equal": true,
+              "exact": true,
+              "allclose_rtol_1e-3_atol_1e-4": true
+            }
+          ],
+          "load_count_per_provider": 1,
+          "scope": "One real frame, FP32, 10 timed repetitions; not dataset accuracy parity"
+        }
+      }
+    },
+    {
+      "experiment": "gpu-probe-03-host",
+      "runtime": "1.24.4",
+      "available_providers": [
+        "TensorrtExecutionProvider",
+        "CUDAExecutionProvider",
+        "CPUExecutionProvider"
+      ],
+      "strict_fp32": null,
+      "models": {
+        "detector": {
+          "selected_providers": ["CPUExecutionProvider"],
+          "node_execution_counts": {
+            "CPUExecutionProvider": 5643
+          },
+          "cuda_nodes_observed": false,
+          "inputs": [
+            {
+              "name": "image",
+              "shape": [null, 3, 416, 416],
+              "dtype": "tensor(float)"
+            },
+            {
+              "name": "scale_factor",
+              "shape": [1, 2],
+              "dtype": "tensor(float)"
+            }
+          ],
+          "timings": {
+            "cpu": {
+              "samples_ns": [
+                231621900, 265518500, 229522100, 195482300, 86982500, 171565400,
+                228129100, 93519800, 155828000, 193541000
+              ],
+              "includes_host_device_copies": true
+            },
+            "cuda_requested": {
+              "samples_ns": [
+                249925200, 248514600, 233835500, 233244300, 233634500,
+                258311300, 279346500, 250052300, 247354800, 261336400
+              ],
+              "includes_host_device_copies": true
+            }
+          },
+          "parity": [
+            {
+              "shape_equal": true,
+              "exact": true,
+              "allclose_rtol_1e-3_atol_1e-4": true
+            },
+            {
+              "shape_equal": true,
+              "exact": true,
+              "allclose_rtol_1e-3_atol_1e-4": true
+            }
+          ],
+          "explicit_session_constructions_per_provider": 1,
+          "implicit_fallback_rebuild_possible": true,
+          "scope": "One real frame, FP32, 10 timed repetitions; not dataset accuracy parity"
+        },
+        "segmentation": {
+          "selected_providers": ["CPUExecutionProvider"],
+          "node_execution_counts": {
+            "CPUExecutionProvider": 1958
+          },
+          "cuda_nodes_observed": false,
+          "inputs": [
+            {
+              "name": "image",
+              "shape": [1, 3, 256, 512],
+              "dtype": "tensor(float)"
+            }
+          ],
+          "timings": {
+            "cpu": {
+              "samples_ns": [
+                252303000, 273987100, 263375900, 273634000, 251364400,
+                244602700, 246114400, 222900700, 254056100, 261637200
+              ],
+              "includes_host_device_copies": true
+            },
+            "cuda_requested": {
+              "samples_ns": [
+                262781700, 253708300, 275364800, 269675900, 263382000,
+                249580400, 265371200, 255149300, 267945200, 268590500
+              ],
+              "includes_host_device_copies": true
+            }
+          },
+          "parity": [
+            {
+              "shape_equal": true,
+              "exact": true,
+              "allclose_rtol_1e-3_atol_1e-4": true
+            }
+          ],
+          "explicit_session_constructions_per_provider": 1,
+          "implicit_fallback_rebuild_possible": true,
+          "scope": "One real frame, FP32, 10 timed repetitions; not dataset accuracy parity"
+        }
+      }
+    },
+    {
+      "experiment": "gpu-probe-04-cudnn910",
+      "runtime": "1.24.4",
+      "available_providers": [
+        "TensorrtExecutionProvider",
+        "CUDAExecutionProvider",
+        "CPUExecutionProvider"
+      ],
+      "strict_fp32": null,
+      "models": {
+        "detector": {
+          "selected_providers": [
+            "CUDAExecutionProvider",
+            "CPUExecutionProvider"
+          ],
+          "node_execution_counts": {
+            "CUDAExecutionProvider": 5742,
+            "CPUExecutionProvider": 88
+          },
+          "cuda_nodes_observed": true,
+          "inputs": [
+            {
+              "name": "image",
+              "shape": [null, 3, 416, 416],
+              "dtype": "tensor(float)"
+            },
+            {
+              "name": "scale_factor",
+              "shape": [1, 2],
+              "dtype": "tensor(float)"
+            }
+          ],
+          "timings": {
+            "cpu": {
+              "samples_ns": [
+                240865800, 236567500, 247520400, 241335800, 246218900,
+                243242900, 227276700, 226022800, 237606000, 232217300
+              ],
+              "includes_host_device_copies": true
+            },
+            "cuda_requested": {
+              "samples_ns": [
+                73011900, 70715800, 65248500, 75596200, 84389000, 69873700,
+                63305200, 59347900, 55455800, 70396500
+              ],
+              "includes_host_device_copies": true
+            }
+          },
+          "parity": [
+            {
+              "shape_equal": true,
+              "exact": false,
+              "allclose_rtol_1e-3_atol_1e-4": false
+            },
+            {
+              "shape_equal": true,
+              "exact": true,
+              "allclose_rtol_1e-3_atol_1e-4": true
+            }
+          ],
+          "explicit_session_constructions_per_provider": 1,
+          "implicit_fallback_rebuild_possible": false,
+          "scope": "One real frame, FP32, 10 timed repetitions; not dataset accuracy parity"
+        },
+        "segmentation": {
+          "selected_providers": [
+            "CUDAExecutionProvider",
+            "CPUExecutionProvider"
+          ],
+          "node_execution_counts": {
+            "CUDAExecutionProvider": 2255
+          },
+          "cuda_nodes_observed": true,
+          "inputs": [
+            {
+              "name": "image",
+              "shape": [1, 3, 256, 512],
+              "dtype": "tensor(float)"
+            }
+          ],
+          "timings": {
+            "cpu": {
+              "samples_ns": [
+                255827600, 197104000, 226226400, 247746000, 253811200,
+                239651400, 232406500, 236863800, 228832300, 241473900
+              ],
+              "includes_host_device_copies": true
+            },
+            "cuda_requested": {
+              "samples_ns": [
+                30480700, 32161300, 23600400, 31639100, 28030800, 26401700,
+                25244200, 26853100, 23201600, 22086200
+              ],
+              "includes_host_device_copies": true
+            }
+          },
+          "parity": [
+            {
+              "shape_equal": true,
+              "exact": false,
+              "allclose_rtol_1e-3_atol_1e-4": false
+            }
+          ],
+          "explicit_session_constructions_per_provider": 1,
+          "implicit_fallback_rebuild_possible": false,
+          "scope": "One real frame, FP32, 10 timed repetitions; not dataset accuracy parity"
+        }
+      }
+    },
+    {
+      "experiment": "gpu-probe-05-strict",
+      "runtime": "1.24.4",
+      "available_providers": [
+        "TensorrtExecutionProvider",
+        "CUDAExecutionProvider",
+        "CPUExecutionProvider"
+      ],
+      "strict_fp32": true,
+      "models": {
+        "detector": {
+          "selected_providers": [
+            "CUDAExecutionProvider",
+            "CPUExecutionProvider"
+          ],
+          "node_execution_counts": {
+            "CUDAExecutionProvider": 5742,
+            "CPUExecutionProvider": 88
+          },
+          "cuda_nodes_observed": true,
+          "inputs": [
+            {
+              "name": "image",
+              "shape": [null, 3, 416, 416],
+              "dtype": "tensor(float)"
+            },
+            {
+              "name": "scale_factor",
+              "shape": [1, 2],
+              "dtype": "tensor(float)"
+            }
+          ],
+          "timings": {
+            "cpu": {
+              "samples_ns": [
+                238898500, 242450500, 245030600, 255916200, 241435600,
+                265735300, 237189100, 238797700, 242802200, 249698800
+              ],
+              "includes_host_device_copies": true
+            },
+            "cuda_requested": {
+              "samples_ns": [
+                84777200, 80784400, 61709800, 65671100, 79576200, 68085600,
+                78879800, 79227900, 84733400, 94258600
+              ],
+              "includes_host_device_copies": true
+            }
+          },
+          "parity": [
+            {
+              "shape": [100, 6],
+              "shape_equal": true,
+              "exact": false,
+              "equal_fraction": 0.685,
+              "max_absolute_difference": 9.1552734375e-5,
+              "allclose_rtol_1e-3_atol_1e-4": true
+            },
+            {
+              "shape": [1],
+              "shape_equal": true,
+              "exact": true,
+              "equal_fraction": 1.0,
+              "max_absolute_difference": 0.0,
+              "allclose_rtol_1e-3_atol_1e-4": true
+            }
+          ],
+          "explicit_session_constructions_per_provider": 1,
+          "implicit_fallback_rebuild_possible": false,
+          "scope": "One real frame, FP32, 10 timed repetitions; not dataset accuracy parity"
+        },
+        "segmentation": {
+          "selected_providers": [
+            "CUDAExecutionProvider",
+            "CPUExecutionProvider"
+          ],
+          "node_execution_counts": {
+            "CUDAExecutionProvider": 2255
+          },
+          "cuda_nodes_observed": true,
+          "inputs": [
+            {
+              "name": "image",
+              "shape": [1, 3, 256, 512],
+              "dtype": "tensor(float)"
+            }
+          ],
+          "timings": {
+            "cpu": {
+              "samples_ns": [
+                253516800, 262213000, 250814400, 238027100, 262137700,
+                234500100, 210224800, 264331200, 263362700, 205143100
+              ],
+              "includes_host_device_copies": true
+            },
+            "cuda_requested": {
+              "samples_ns": [
+                34315300, 36907800, 33943000, 33021700, 33940400, 34022600,
+                33032100, 33432300, 19972200, 20567300
+              ],
+              "includes_host_device_copies": true
+            }
+          },
+          "parity": [
+            {
+              "shape": [1, 19, 256, 512],
+              "shape_equal": true,
+              "exact": false,
+              "equal_fraction": 0.04724241557874178,
+              "max_absolute_difference": 7.867813110351562e-6,
+              "allclose_rtol_1e-3_atol_1e-4": true
+            }
+          ],
+          "explicit_session_constructions_per_provider": 1,
+          "implicit_fallback_rebuild_possible": false,
+          "scope": "One real frame, FP32, 10 timed repetitions; not dataset accuracy parity"
+        }
+      }
+    }
+  ],
+  "gpu_sampled_validation": {
+    "sample_timestamps_ns": [
+      0, 30000000000, 60000000000, 90000000000, 120000000000, 150000000000,
+      180000000000, 210000000000, 240000000000, 270000000000, 300000000000,
+      330000000000, 360000000000, 390000000000, 420000000000, 450000000000,
+      480000000000, 510000000000, 540000000000, 570000000000
+    ],
+    "models": {
+      "detector": {
+        "providers": ["CUDAExecutionProvider", "CPUExecutionProvider"],
+        "samples": [
+          {
+            "source_ns": 0,
+            "outputs": [
+              {
+                "same_shape": true,
+                "allclose": true,
+                "max_absolute_difference": 9.1552734375e-5
+              },
+              {
+                "same_shape": true,
+                "allclose": true,
+                "max_absolute_difference": 0.0
+              }
+            ],
+            "selected_count_cpu": 100,
+            "selected_count_gpu": 100,
+            "selected_classes_equal": true
+          },
+          {
+            "source_ns": 30000000000,
+            "outputs": [
+              {
+                "same_shape": true,
+                "allclose": true,
+                "max_absolute_difference": 0.0003204345703125
+              },
+              {
+                "same_shape": true,
+                "allclose": true,
+                "max_absolute_difference": 0.0
+              }
+            ],
+            "selected_count_cpu": 39,
+            "selected_count_gpu": 39,
+            "selected_classes_equal": true
+          },
+          {
+            "source_ns": 60000000000,
+            "outputs": [
+              {
+                "same_shape": true,
+                "allclose": true,
+                "max_absolute_difference": 0.000148773193359375
+              },
+              {
+                "same_shape": true,
+                "allclose": true,
+                "max_absolute_difference": 0.0
+              }
+            ],
+            "selected_count_cpu": 100,
+            "selected_count_gpu": 100,
+            "selected_classes_equal": true
+          },
+          {
+            "source_ns": 90000000000,
+            "outputs": [
+              {
+                "same_shape": true,
+                "allclose": true,
+                "max_absolute_difference": 9.1552734375e-5
+              },
+              {
+                "same_shape": true,
+                "allclose": true,
+                "max_absolute_difference": 0.0
+              }
+            ],
+            "selected_count_cpu": 100,
+            "selected_count_gpu": 100,
+            "selected_classes_equal": true
+          },
+          {
+            "source_ns": 120000000000,
+            "outputs": [
+              {
+                "same_shape": true,
+                "allclose": true,
+                "max_absolute_difference": 0.00028228759765625
+              },
+              {
+                "same_shape": true,
+                "allclose": true,
+                "max_absolute_difference": 0.0
+              }
+            ],
+            "selected_count_cpu": 100,
+            "selected_count_gpu": 100,
+            "selected_classes_equal": true
+          },
+          {
+            "source_ns": 150000000000,
+            "outputs": [
+              {
+                "same_shape": true,
+                "allclose": true,
+                "max_absolute_difference": 7.62939453125e-5
+              },
+              {
+                "same_shape": true,
+                "allclose": true,
+                "max_absolute_difference": 0.0
+              }
+            ],
+            "selected_count_cpu": 58,
+            "selected_count_gpu": 58,
+            "selected_classes_equal": true
+          },
+          {
+            "source_ns": 180000000000,
+            "outputs": [
+              {
+                "same_shape": true,
+                "allclose": true,
+                "max_absolute_difference": 0.0001220703125
+              },
+              {
+                "same_shape": true,
+                "allclose": true,
+                "max_absolute_difference": 0.0
+              }
+            ],
+            "selected_count_cpu": 89,
+            "selected_count_gpu": 89,
+            "selected_classes_equal": true
+          },
+          {
+            "source_ns": 210000000000,
+            "outputs": [
+              {
+                "same_shape": true,
+                "allclose": true,
+                "max_absolute_difference": 0.00030517578125
+              },
+              {
+                "same_shape": true,
+                "allclose": true,
+                "max_absolute_difference": 0.0
+              }
+            ],
+            "selected_count_cpu": 100,
+            "selected_count_gpu": 100,
+            "selected_classes_equal": true
+          },
+          {
+            "source_ns": 240000000000,
+            "outputs": [
+              {
+                "same_shape": true,
+                "allclose": true,
+                "max_absolute_difference": 0.000152587890625
+              },
+              {
+                "same_shape": true,
+                "allclose": true,
+                "max_absolute_difference": 0.0
+              }
+            ],
+            "selected_count_cpu": 100,
+            "selected_count_gpu": 100,
+            "selected_classes_equal": true
+          },
+          {
+            "source_ns": 270000000000,
+            "outputs": [
+              {
+                "same_shape": true,
+                "allclose": true,
+                "max_absolute_difference": 9.1552734375e-5
+              },
+              {
+                "same_shape": true,
+                "allclose": true,
+                "max_absolute_difference": 0.0
+              }
+            ],
+            "selected_count_cpu": 100,
+            "selected_count_gpu": 100,
+            "selected_classes_equal": true
+          },
+          {
+            "source_ns": 300000000000,
+            "outputs": [
+              {
+                "same_shape": true,
+                "allclose": true,
+                "max_absolute_difference": 6.103515625e-5
+              },
+              {
+                "same_shape": true,
+                "allclose": true,
+                "max_absolute_difference": 0.0
+              }
+            ],
+            "selected_count_cpu": 100,
+            "selected_count_gpu": 100,
+            "selected_classes_equal": true
+          },
+          {
+            "source_ns": 330000000000,
+            "outputs": [
+              {
+                "same_shape": true,
+                "allclose": true,
+                "max_absolute_difference": 0.0001220703125
+              },
+              {
+                "same_shape": true,
+                "allclose": true,
+                "max_absolute_difference": 0.0
+              }
+            ],
+            "selected_count_cpu": 100,
+            "selected_count_gpu": 100,
+            "selected_classes_equal": true
+          },
+          {
+            "source_ns": 360000000000,
+            "outputs": [
+              {
+                "same_shape": true,
+                "allclose": true,
+                "max_absolute_difference": 0.00018310546875
+              },
+              {
+                "same_shape": true,
+                "allclose": true,
+                "max_absolute_difference": 0.0
+              }
+            ],
+            "selected_count_cpu": 100,
+            "selected_count_gpu": 100,
+            "selected_classes_equal": true
+          },
+          {
+            "source_ns": 390000000000,
+            "outputs": [
+              {
+                "same_shape": true,
+                "allclose": true,
+                "max_absolute_difference": 0.0002593994140625
+              },
+              {
+                "same_shape": true,
+                "allclose": true,
+                "max_absolute_difference": 0.0
+              }
+            ],
+            "selected_count_cpu": 92,
+            "selected_count_gpu": 92,
+            "selected_classes_equal": true
+          },
+          {
+            "source_ns": 420000000000,
+            "outputs": [
+              {
+                "same_shape": true,
+                "allclose": true,
+                "max_absolute_difference": 0.0001220703125
+              },
+              {
+                "same_shape": true,
+                "allclose": true,
+                "max_absolute_difference": 0.0
+              }
+            ],
+            "selected_count_cpu": 92,
+            "selected_count_gpu": 92,
+            "selected_classes_equal": true
+          },
+          {
+            "source_ns": 450000000000,
+            "outputs": [
+              {
+                "same_shape": true,
+                "allclose": true,
+                "max_absolute_difference": 0.000244140625
+              },
+              {
+                "same_shape": true,
+                "allclose": true,
+                "max_absolute_difference": 0.0
+              }
+            ],
+            "selected_count_cpu": 86,
+            "selected_count_gpu": 86,
+            "selected_classes_equal": true
+          },
+          {
+            "source_ns": 480000000000,
+            "outputs": [
+              {
+                "same_shape": true,
+                "allclose": true,
+                "max_absolute_difference": 0.000244140625
+              },
+              {
+                "same_shape": true,
+                "allclose": true,
+                "max_absolute_difference": 0.0
+              }
+            ],
+            "selected_count_cpu": 100,
+            "selected_count_gpu": 100,
+            "selected_classes_equal": true
+          },
+          {
+            "source_ns": 510000000000,
+            "outputs": [
+              {
+                "same_shape": true,
+                "allclose": true,
+                "max_absolute_difference": 0.0001220703125
+              },
+              {
+                "same_shape": true,
+                "allclose": true,
+                "max_absolute_difference": 0.0
+              }
+            ],
+            "selected_count_cpu": 100,
+            "selected_count_gpu": 100,
+            "selected_classes_equal": true
+          },
+          {
+            "source_ns": 540000000000,
+            "outputs": [
+              {
+                "same_shape": true,
+                "allclose": true,
+                "max_absolute_difference": 0.00018310546875
+              },
+              {
+                "same_shape": true,
+                "allclose": true,
+                "max_absolute_difference": 0.0
+              }
+            ],
+            "selected_count_cpu": 100,
+            "selected_count_gpu": 100,
+            "selected_classes_equal": true
+          },
+          {
+            "source_ns": 570000000000,
+            "outputs": [
+              {
+                "same_shape": true,
+                "allclose": true,
+                "max_absolute_difference": 6.866455078125e-5
+              },
+              {
+                "same_shape": true,
+                "allclose": true,
+                "max_absolute_difference": 0.0
+              }
+            ],
+            "selected_count_cpu": 100,
+            "selected_count_gpu": 100,
+            "selected_classes_equal": true
+          }
+        ]
+      },
+      "segmentation": {
+        "providers": ["CUDAExecutionProvider", "CPUExecutionProvider"],
+        "samples": [
+          {
+            "source_ns": 0,
+            "outputs": [
+              {
+                "same_shape": true,
+                "allclose": true,
+                "max_absolute_difference": 7.867813110351562e-6
+              }
+            ],
+            "argmax_agreement": 1.0
+          },
+          {
+            "source_ns": 30000000000,
+            "outputs": [
+              {
+                "same_shape": true,
+                "allclose": true,
+                "max_absolute_difference": 7.62939453125e-6
+              }
+            ],
+            "argmax_agreement": 1.0
+          },
+          {
+            "source_ns": 60000000000,
+            "outputs": [
+              {
+                "same_shape": true,
+                "allclose": true,
+                "max_absolute_difference": 8.821487426757812e-6
+              }
+            ],
+            "argmax_agreement": 1.0
+          },
+          {
+            "source_ns": 90000000000,
+            "outputs": [
+              {
+                "same_shape": true,
+                "allclose": true,
+                "max_absolute_difference": 8.58306884765625e-6
+              }
+            ],
+            "argmax_agreement": 1.0
+          },
+          {
+            "source_ns": 120000000000,
+            "outputs": [
+              {
+                "same_shape": true,
+                "allclose": true,
+                "max_absolute_difference": 8.702278137207031e-6
+              }
+            ],
+            "argmax_agreement": 1.0
+          },
+          {
+            "source_ns": 150000000000,
+            "outputs": [
+              {
+                "same_shape": true,
+                "allclose": true,
+                "max_absolute_difference": 7.62939453125e-6
+              }
+            ],
+            "argmax_agreement": 1.0
+          },
+          {
+            "source_ns": 180000000000,
+            "outputs": [
+              {
+                "same_shape": true,
+                "allclose": true,
+                "max_absolute_difference": 7.987022399902344e-6
+              }
+            ],
+            "argmax_agreement": 1.0
+          },
+          {
+            "source_ns": 210000000000,
+            "outputs": [
+              {
+                "same_shape": true,
+                "allclose": true,
+                "max_absolute_difference": 9.149312973022461e-6
+              }
+            ],
+            "argmax_agreement": 1.0
+          },
+          {
+            "source_ns": 240000000000,
+            "outputs": [
+              {
+                "same_shape": true,
+                "allclose": true,
+                "max_absolute_difference": 7.838010787963867e-6
+              }
+            ],
+            "argmax_agreement": 1.0
+          },
+          {
+            "source_ns": 270000000000,
+            "outputs": [
+              {
+                "same_shape": true,
+                "allclose": true,
+                "max_absolute_difference": 7.62939453125e-6
+              }
+            ],
+            "argmax_agreement": 1.0
+          },
+          {
+            "source_ns": 300000000000,
+            "outputs": [
+              {
+                "same_shape": true,
+                "allclose": true,
+                "max_absolute_difference": 9.059906005859375e-6
+              }
+            ],
+            "argmax_agreement": 1.0
+          },
+          {
+            "source_ns": 330000000000,
+            "outputs": [
+              {
+                "same_shape": true,
+                "allclose": true,
+                "max_absolute_difference": 9.775161743164062e-6
+              }
+            ],
+            "argmax_agreement": 1.0
+          },
+          {
+            "source_ns": 360000000000,
+            "outputs": [
+              {
+                "same_shape": true,
+                "allclose": true,
+                "max_absolute_difference": 8.344650268554688e-6
+              }
+            ],
+            "argmax_agreement": 1.0
+          },
+          {
+            "source_ns": 390000000000,
+            "outputs": [
+              {
+                "same_shape": true,
+                "allclose": true,
+                "max_absolute_difference": 9.059906005859375e-6
+              }
+            ],
+            "argmax_agreement": 1.0
+          },
+          {
+            "source_ns": 420000000000,
+            "outputs": [
+              {
+                "same_shape": true,
+                "allclose": true,
+                "max_absolute_difference": 1.2874603271484375e-5
+              }
+            ],
+            "argmax_agreement": 1.0
+          },
+          {
+            "source_ns": 450000000000,
+            "outputs": [
+              {
+                "same_shape": true,
+                "allclose": true,
+                "max_absolute_difference": 9.5367431640625e-6
+              }
+            ],
+            "argmax_agreement": 1.0
+          },
+          {
+            "source_ns": 480000000000,
+            "outputs": [
+              {
+                "same_shape": true,
+                "allclose": true,
+                "max_absolute_difference": 7.510185241699219e-6
+              }
+            ],
+            "argmax_agreement": 1.0
+          },
+          {
+            "source_ns": 510000000000,
+            "outputs": [
+              {
+                "same_shape": true,
+                "allclose": true,
+                "max_absolute_difference": 7.152557373046875e-6
+              }
+            ],
+            "argmax_agreement": 1.0
+          },
+          {
+            "source_ns": 540000000000,
+            "outputs": [
+              {
+                "same_shape": true,
+                "allclose": true,
+                "max_absolute_difference": 1.430511474609375e-5
+              }
+            ],
+            "argmax_agreement": 1.0
+          },
+          {
+            "source_ns": 570000000000,
+            "outputs": [
+              {
+                "same_shape": true,
+                "allclose": true,
+                "max_absolute_difference": 7.791444659233093e-6
+              }
+            ],
+            "argmax_agreement": 1.0
+          }
+        ]
+      }
+    },
+    "io_binding": {
+      "detector": {
+        "samples_ns": {
+          "session_run": [
+            108973800, 76669200, 74825700, 55867600, 54857700, 50740900,
+            49107400, 47129400, 54483700, 46670100, 44325700, 52607100,
+            49771500, 48950400, 47232100, 46267900, 48978300, 50018900,
+            55776100, 57798000
+          ],
+          "binding_reused_input": [
+            56732900, 45548700, 34219500, 59371700, 50597600, 53062600,
+            49631400, 50319500, 51917400, 55012200, 53285400, 47321600,
+            49055800, 37676300, 39955000, 51788700, 51663100, 55496200,
+            47978200, 48773600
+          ]
+        },
+        "includes_input_upload_and_output_download": true,
+        "parity": true
+      },
+      "segmentation": {
+        "samples_ns": {
+          "session_run": [
+            18656000, 17404600, 12409600, 14826800, 16107200, 14672600,
+            11749700, 11542000, 13135500, 14617100, 17065500, 17233700,
+            15023400, 13250700, 15780300, 14486900, 15604200, 15676400,
+            17564500, 15050300
+          ],
+          "binding_reused_input": [
+            18416600, 17358000, 19593900, 19756300, 20145700, 21666300,
+            17136900, 19734800, 15816700, 12548200, 23458400, 23098300,
+            20459700, 20363300, 20171600, 18032400, 19307400, 18158100,
+            21127300, 21370100
+          ]
+        },
+        "includes_input_upload_and_output_download": true,
+        "parity": true
+      }
+    },
+    "first_binding_trial": "Failed dynamic NMS retained output allocation; preserved as gpu-validation-01",
+    "fp16": {
+      "detector": "CUDNN_BACKEND_API_FAILED; rejected",
+      "segmentation": {
+        "scope": "Last sampled frame, strict FP32 tolerance screening only",
+        "samples_ns": [
+          42223600, 42239100, 41986400, 42140100, 27446700, 20312500, 18384700,
+          17597900, 15480600, 19438400
+        ],
+        "allclose_rtol_1e-3_atol_1e-4": false,
+        "adopted": false
+      }
+    },
+    "adopted_precision": "FP32, TF32 disabled"
+  },
+  "tracking_final": {
+    "scope": "Prototype identity references, not human-validated tracking ground truth",
+    "sampling": "300 fixed reference frames; nearest replay update within 100ms; observed only",
+    "references_with_nearby_update": 223,
+    "identity_metrics": {
+      "frames": 300,
+      "ground_truth_observations": 12008,
+      "predicted_observations": 7558,
+      "tp": 4923,
+      "fp": 2635,
+      "fn": 7085,
+      "id_switches": 2006,
+      "fragmentations": 1440,
+      "identity_tp": 1917,
+      "identity_fp": 5641,
+      "identity_fn": 10091,
+      "identity_f1": 0.19595216191352346
+    },
+    "per_clip": {
+      "clip-1:": {
+        "matching_policy": "CLASS_AWARE_IOU_0.5_GLOBAL_ID_COUNTS",
+        "frames": 100,
+        "ground_truth_observations": 3298,
+        "predicted_observations": 2848,
+        "ground_truth_tracks": 245,
+        "predicted_tracks": 250,
+        "tp": 1790,
+        "fp": 1058,
+        "fn": 1508,
+        "id_switches": 674,
+        "fragmentations": 472,
+        "duplicate_observations": 229,
+        "identity_tp": 734,
+        "identity_fp": 2114,
+        "identity_fn": 2564,
+        "identity_precision": 0.2577247191011236,
+        "identity_recall": 0.22255912674348088,
+        "identity_f1": 0.23885453953791083,
+        "track_recall": 0.8,
+        "mostly_tracked": 50,
+        "mostly_lost": 56,
+        "false_track_ids": 47,
+        "mota_like": 0.0175864160097029,
+        "mean_matched_iou": 0.8032006829121058
+      },
+      "clip-2:": {
+        "matching_policy": "CLASS_AWARE_IOU_0.5_GLOBAL_ID_COUNTS",
+        "frames": 100,
+        "ground_truth_observations": 4148,
+        "predicted_observations": 3843,
+        "ground_truth_tracks": 251,
+        "predicted_tracks": 273,
+        "tp": 2450,
+        "fp": 1393,
+        "fn": 1698,
+        "id_switches": 1017,
+        "fragmentations": 619,
+        "duplicate_observations": 226,
+        "identity_tp": 947,
+        "identity_fp": 2896,
+        "identity_fn": 3201,
+        "identity_precision": 0.24642206609419723,
+        "identity_recall": 0.22830279652844745,
+        "identity_f1": 0.2370166437241897,
+        "track_recall": 0.8844621513944223,
+        "mostly_tracked": 64,
+        "mostly_lost": 32,
+        "false_track_ids": 24,
+        "mota_like": 0.009643201542912205,
+        "mean_matched_iou": 0.8065991539679314
+      },
+      "clip-3:": {
+        "matching_policy": "CLASS_AWARE_IOU_0.5_GLOBAL_ID_COUNTS",
+        "frames": 100,
+        "ground_truth_observations": 4562,
+        "predicted_observations": 867,
+        "ground_truth_tracks": 231,
+        "predicted_tracks": 408,
+        "tp": 683,
+        "fp": 184,
+        "fn": 3879,
+        "id_switches": 315,
+        "fragmentations": 349,
+        "duplicate_observations": 18,
+        "identity_tp": 236,
+        "identity_fp": 631,
+        "identity_fn": 4326,
+        "identity_precision": 0.2722029988465975,
+        "identity_recall": 0.051731696624287594,
+        "identity_f1": 0.0869405046969976,
+        "track_recall": 0.5670995670995671,
+        "mostly_tracked": 3,
+        "mostly_lost": 170,
+        "false_track_ids": 65,
+        "mota_like": 0.04033318719859713,
+        "mean_matched_iou": 0.838179352180059
+      }
+    },
+    "observed_track_lifetimes": {
+      "count": 6983,
+      "scope": "whole_run_exact",
+      "max_ns": 49633333333,
+      "mean_ns": 2230020526.030073,
+      "p50_ns": 900000000,
+      "p90_ns": 5800000000,
+      "p95_ns": 9500000000,
+      "p99_ns": 20533333333
+    },
+    "prediction_only_observation_age": {
+      "count": 30407,
+      "scope": "whole_run_exact",
+      "max_ns": 1000000000,
+      "mean_ns": 309559202.1468083,
+      "p50_ns": 166666666,
+      "p90_ns": 733333333,
+      "p95_ns": 866666666,
+      "p99_ns": 1000000000
+    },
+    "gap_resets": 1
+  },
+  "first_freshness_failure_final": {
+    "detector": 97,
+    "NONE": 2419,
+    "trajectory": 15,
+    "interaction": 21,
+    "attention": 11,
+    "world_model": 14,
+    "acquisition_and_conversion": 4,
+    "tracking": 50,
+    "publication": 2,
+    "risk": 4,
+    "corridor": 3,
+    "ego_motion": 1
+  },
+  "geometry_parity": {
+    "finite_cases": 20000,
+    "exact_mismatches": 0,
+    "batch_seconds": {
+      "original": [
+        0.1654273000003741, 0.12738309999986086, 0.11680429999978514,
+        0.12223029999950086, 0.12346210000032443
+      ],
+      "prepared": [
+        0.07138089999898511, 0.06284930000038003, 0.0527206999995542,
+        0.054647800001475844, 0.054059599999163765
+      ]
+    },
+    "scope": "Paired local geometry microbenchmark; no frame decisions cached"
+  }
+}

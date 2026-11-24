@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="en">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sentinel semantic mask review</title>
+  <style>
+    body {
+      font: 16px system-ui;
+      background: #101820;
+      color: #eef4f5;
+      margin: 20px;
+    }
+    button,
+    select,
+    input {
+      font: inherit;
+      margin: 4px;
+      padding: 7px;
+    }
+    canvas {
+      width: 100%;
+      max-width: 1400px;
+      border: 1px solid #667;
+      cursor: crosshair;
+    }
+    .note {
+      max-width: 1000px;
+      color: #bdcbd3;
+    }
+    #status {
+      padding: 10px;
+      background: #243340;
+    }
+    label {
+      display: inline-block;
+    }
+    button {
+      cursor: pointer;
+    }
+  </style>
+  <h1>Sentinel · semantic review</h1>
+  <p class="note">
+    Local prototype evidence only. Coloured proposals are predictions, not
+    truth. All pixels start ignored. Check visible surfaces and obstacles,
+    correct boundaries, and leave uncertain areas ignored. A sidewalk label does
+    not mean safe. Export regularly; closing this page loses unsaved work.
+  </p>
+  <div>
+    <button id="previous">Previous</button><button id="next">Next</button
+    ><span id="position"></span>
+  </div>
+  <label
+    >Proposal
+    <select id="provider"></select
+  ></label>
+  <label
+    >Class
+    <select id="label"></select
+  ></label>
+  <label
+    >Action
+    <select id="mode">
+      <option value="accept">Accept clicked proposal region</option>
+      <option value="relabel">Change clicked region to selected class</option>
+      <option value="polygon">Draw polygon with selected class</option>
+      <option value="paint">Paint selected class</option>
+    </select></label
+  >
+  <label
+    >Brush pixels <input id="brush" type="number" min="1" max="100" value="20"
+  /></label>
+  <div>
+    <button id="finish">Finish polygon</button
+    ><button id="cancel">Cancel polygon</button
+    ><button id="undo">Undo last edit</button
+    ><button id="mark">Mark this frame reviewed</button
+    ><button id="save">Export review JSON</button
+    ><label>Resume <input id="load" type="file" accept=".json" /></label>
+  </div>
+  <label
+    >View
+    <select id="view">
+      <option value="review">Reviewed labels</option>
+      <option value="proposal">Model proposal</option>
+      <option value="image">Image only</option>
+    </select></label
+  >
+  <div id="status" role="status"></div>
+  <canvas id="canvas"></canvas>
+  <script>
+    "use strict";
+    const packet = JSON.parse(atob("__PACKET_BASE64__"));
+    const el = (id) => document.getElementById(id),
+      canvas = el("canvas"),
+      ctx = canvas.getContext("2d");
+    let index = 0,
+      labels,
+      proposal,
+      photo,
+      polygon = [],
+      undo = null,
+      dirty = false,
+      painting = false;
+    const palette = Array.from({ length: 20 }, (_, i) => [
+      50 + ((i * 79) % 206),
+      50 + ((i * 131) % 206),
+      50 + ((i * 47) % 206),
+    ]);
+    function decode(runs, size) {
+      const a = new Uint8Array(size);
+      let p = 0;
+      for (const [v, n] of runs) {
+        if (
+          !Number.isInteger(v) ||
+          !(v === 255 || (v >= 0 && v < 20)) ||
+          !Number.isInteger(n) ||
+          n <= 0 ||
+          p + n > size
+        )
+          throw Error("Invalid mask");
+        a.fill(v, p, p + n);
+        p += n;
+      }
+      if (p !== size) throw Error("Incomplete mask");
+      return a;
+    }
+    function encode(a) {
+      const r = [];
+      let v = a[0],
+        n = 0;
+      for (const x of a) {
+        if (x !== v) {
+          r.push([v, n]);
+          v = x;
+          n = 0;
+        }
+        n++;
+      }
+      r.push([v, n]);
+      return r;
+    }
+    function store() {
+      if (labels) packet.frames[index].review_runs = encode(labels);
+    }
+    function message(text) {
+      el("status").textContent = text;
+    }
+    function render() {
+      if (!photo?.complete) return;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(photo, 0, 0);
+      const mode = el("view").value;
+      if (mode !== "image") {
+        const mask = mode === "review" ? labels : proposal;
+        const overlay = ctx.createImageData(canvas.width, canvas.height);
+        for (let i = 0; i < mask.length; i++) {
+          if (mask[i] === 255) continue;
+          overlay.data.set([...palette[mask[i]], 105], i * 4);
+        }
+        const layer = document.createElement("canvas");
+        layer.width = canvas.width;
+        layer.height = canvas.height;
+        layer.getContext("2d").putImageData(overlay, 0, 0);
+        ctx.drawImage(layer, 0, 0);
+      }
+      if (polygon.length) {
+        ctx.strokeStyle = "white";
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        polygon.forEach(([x, y], i) =>
+          i ? ctx.lineTo(x, y) : ctx.moveTo(x, y),
+        );
+        ctx.stroke();
+      }
+      el("position").textContent =
+        `${index + 1}/${packet.frames.length} · ${packet.frames[index].split} · ${packet.frames[index].review_status}`;
+    }
+    function show() {
+      const row = packet.frames[index];
+      canvas.width = row.width;
+      canvas.height = row.height;
+      labels = decode(row.review_runs, row.width * row.height);
+      proposal = decode(row.predictions[el("provider").value], labels.length);
+      polygon = [];
+      undo = null;
+      photo = new Image();
+      photo.onload = render;
+      photo.onerror = () =>
+        message("Image missing. Keep review.html beside images/.");
+      photo.src = row.image;
+      message(
+        "Select a region or draw corrections. IGNORE erases review; UNKNOWN is an explicit reviewed uncertainty label.",
+      );
+    }
+    function edit() {
+      undo = labels.slice();
+      dirty = true;
+      packet.frames[index].review_status = "DRAFT_MODEL_ASSISTED";
+    }
+    function point(event) {
+      const r = canvas.getBoundingClientRect();
+      return [
+        Math.max(
+          0,
+          Math.min(
+            canvas.width - 1,
+            Math.floor(((event.clientX - r.left) * canvas.width) / r.width),
+          ),
+        ),
+        Math.max(
+          0,
+          Math.min(
+            canvas.height - 1,
+            Math.floor(((event.clientY - r.top) * canvas.height) / r.height),
+          ),
+        ),
+      ];
+    }
+    function region(x, y, value) {
+      const w = canvas.width,
+        h = canvas.height,
+        start = y * w + x,
+        target = proposal[start];
+      const seen = new Uint8Array(labels.length),
+        queue = new Int32Array(labels.length);
+      let head = 0,
+        tail = 1;
+      queue[0] = start;
+      seen[start] = 1;
+      while (head < tail) {
+        const p = queue[head++];
+        labels[p] = value;
+        const px = p % w,
+          py = Math.floor(p / w);
+        for (const q of [
+          px > 0 ? p - 1 : -1,
+          px + 1 < w ? p + 1 : -1,
+          py > 0 ? p - w : -1,
+          py + 1 < h ? p + w : -1,
+        ]) {
+          if (q >= 0 && !seen[q] && proposal[q] === target) {
+            seen[q] = 1;
+            queue[tail++] = q;
+          }
+        }
+      }
+    }
+    function paint(x, y) {
+      const radius = Math.min(100, Math.max(1, Number(el("brush").value) || 1));
+      for (
+        let yy = Math.max(0, y - radius);
+        yy < Math.min(canvas.height, y + radius + 1);
+        yy++
+      )
+        for (
+          let xx = Math.max(0, x - radius);
+          xx < Math.min(canvas.width, x + radius + 1);
+          xx++
+        )
+          if ((xx - x) ** 2 + (yy - y) ** 2 <= radius ** 2)
+            labels[yy * canvas.width + xx] = Number(el("label").value);
+    }
+    canvas.onpointerdown = (e) => {
+      const [x, y] = point(e),
+        mode = el("mode").value;
+      if (mode === "polygon") {
+        if (polygon.length >= 256)
+          return message("Polygon limit: finish this region first.");
+        polygon.push([x, y]);
+        render();
+        return;
+      }
+      edit();
+      if (mode === "paint") {
+        painting = true;
+        canvas.setPointerCapture(e.pointerId);
+        paint(x, y);
+      } else
+        region(
+          x,
+          y,
+          mode === "accept"
+            ? proposal[y * canvas.width + x]
+            : Number(el("label").value),
+        );
+      render();
+    };
+    canvas.onpointermove = (e) => {
+      if (painting) {
+        paint(...point(e));
+        render();
+      }
+    };
+    canvas.onpointerup = () => {
+      painting = false;
+    };
+    canvas.onpointercancel = () => {
+      painting = false;
+    };
+    el("finish").onclick = () => {
+      if (polygon.length < 3)
+        return message("Draw at least three polygon points.");
+      edit();
+      const path = new Path2D();
+      polygon.forEach(([x, y], i) =>
+        i ? path.lineTo(x, y) : path.moveTo(x, y),
+      );
+      path.closePath();
+      const xs = polygon.map((p) => p[0]),
+        ys = polygon.map((p) => p[1]);
+      for (let y = Math.min(...ys); y <= Math.max(...ys); y++)
+        for (let x = Math.min(...xs); x <= Math.max(...xs); x++)
+          if (ctx.isPointInPath(path, x + 0.5, y + 0.5))
+            labels[y * canvas.width + x] = Number(el("label").value);
+      polygon = [];
+      render();
+    };
+    el("cancel").onclick = () => {
+      polygon = [];
+      render();
+    };
+    el("undo").onclick = () => {
+      if (undo) {
+        labels = undo;
+        undo = null;
+        packet.frames[index].review_status = "DRAFT_MODEL_ASSISTED";
+        dirty = true;
+        render();
+      }
+    };
+    el("mark").onclick = () => {
+      if (!labels.some((v) => v !== 255))
+        return message(
+          "Review at least one visible region; unreviewed pixels remain ignored.",
+        );
+      if (polygon.length) return message("Finish or cancel the polygon first.");
+      packet.frames[index].review_status = "HUMAN_REVIEWED";
+      dirty = true;
+      store();
+      render();
+      message("Frame marked reviewed. Export regularly to save progress.");
+    };
+    el("previous").onclick = () => {
+      store();
+      index = Math.max(0, index - 1);
+      show();
+    };
+    el("next").onclick = () => {
+      store();
+      index = Math.min(packet.frames.length - 1, index + 1);
+      show();
+    };
+    el("provider").onchange = () => {
+      store();
+      show();
+    };
+    el("view").onchange = render;
+    el("save").onclick = () => {
+      store();
+      const result = {
+        schema_version: packet.schema_version,
+        taxonomy: packet.taxonomy,
+        manifest_sha256: packet.manifest_sha256,
+        frames: packet.frames.map(({ predictions, ...row }) => row),
+      };
+      const a = document.createElement("a"),
+        url = URL.createObjectURL(
+          new Blob([JSON.stringify(result)], { type: "application/json" }),
+        );
+      a.href = url;
+      a.download = "sentinel-semantic-review.json";
+      a.click();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+      dirty = false;
+      message("Review exported. Keep this file and use Resume to continue.");
+    };
+    el("load").onchange = async (e) => {
+      try {
+        const file = e.target.files[0];
+        if (file.size > 100000000) throw Error("File too large");
+        const data = JSON.parse(await file.text());
+        if (
+          data.schema_version !== 1 ||
+          data.taxonomy !== packet.taxonomy ||
+          data.manifest_sha256 !== packet.manifest_sha256 ||
+          data.frames.length !== packet.frames.length
+        )
+          throw Error("Wrong review packet");
+        const checked = data.frames.map((r, i) => {
+          const p = packet.frames[i];
+          for (const k of [
+            "image_id",
+            "sha256",
+            "sequence_id",
+            "split",
+            "observation_ns",
+            "width",
+            "height",
+          ])
+            if (r[k] !== p[k]) throw Error("Frame identity mismatch");
+          decode(r.review_runs, p.width * p.height);
+          if (
+            !["DRAFT_MODEL_ASSISTED", "HUMAN_REVIEWED"].includes(
+              r.review_status,
+            )
+          )
+            throw Error("Invalid status");
+          return r;
+        });
+        checked.forEach((r, i) =>
+          Object.assign(packet.frames[i], {
+            review_runs: r.review_runs,
+            review_status: r.review_status,
+          }),
+        );
+        dirty = false;
+        show();
+      } catch (error) {
+        message("Cannot load: " + error.message);
+      }
+    };
+    for (const [v, name] of Object.entries({
+      ...packet.classes,
+      255: "IGNORE / erase",
+    })) {
+      const option = document.createElement("option");
+      option.value = v;
+      option.textContent = name;
+      el("label").append(option);
+    }
+    el("label").value = "1";
+    for (const name of Object.keys(packet.frames[0].predictions)) {
+      const o = document.createElement("option");
+      o.value = name;
+      o.textContent = name;
+      el("provider").append(o);
+    }
+    window.onbeforeunload = (e) => {
+      if (dirty) {
+        e.preventDefault();
+        e.returnValue = "";
+      }
+    };
+    show();
+  </script>
+</html>

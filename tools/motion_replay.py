@@ -44,6 +44,7 @@ def replay(source, calibration, output, seconds, interval_ms):
     counts = Counter(decoded=0, sampled=0, skipped_before_conversion=0, pairs=0, motion_available=0)
     started = time.perf_counter_ns()
     next_ns = 0
+    previous_ns = -1
     last_ns = None
     memory_samples = []
     # Open a local handle, not a URL; same protocol/demux restrictions as Task005.
@@ -59,8 +60,9 @@ def replay(source, calibration, output, seconds, interval_ms):
             stream.codec_context.thread_count = 1
             for sequence, native in enumerate(container.decode(video=0)):
                 ns = pts_to_ns(native.pts, native.time_base)
-                if ns is None:
-                    raise ValueError("Missing source PTS")
+                if ns is None or ns <= previous_ns or native.is_corrupt:
+                    raise ValueError("Invalid/corrupt source observation")
+                previous_ns = ns
                 if ns >= seconds * 1_000_000_000:
                     break
                 counts["decoded"] += 1

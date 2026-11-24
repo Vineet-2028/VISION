@@ -17,11 +17,13 @@ export default async function LabLayout({
   return (
     <>
       <nav className="lab-nav" aria-label="Private Lab">
-        {["replay", "metrics", "review", "live", "session"].map((p) => (
-          <Link href={`/lab/${p}`} key={p}>
-            {p}
-          </Link>
-        ))}
+        {["replay", "metrics", "review", "live", "session", "diagnostics"].map(
+          (p) => (
+            <Link href={`/lab/${p}`} key={p}>
+              {p}
+            </Link>
+          ),
+        )}
       </nav>
       {children}
     </>

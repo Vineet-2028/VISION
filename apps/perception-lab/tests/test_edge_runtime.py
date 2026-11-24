@@ -6,11 +6,12 @@ import pytest
 from perception_lab.config import PreprocessConfig
 from perception_lab.contracts import ComponentProvenance
 from perception_lab.edge_runtime import PicoDetDetector, YoloXDetector, yolox_rows
+from perception_lab.field_detector_diagnostics import DiagnosticPicoDet, ObservedSession
 from perception_lab.preprocessing import BasicPreprocessor
 from perception_lab.sources import SyntheticSource
 
 
-@pytest.mark.parametrize("adapter", [YoloXDetector, PicoDetDetector])
+@pytest.mark.parametrize("adapter", [YoloXDetector, PicoDetDetector, DiagnosticPicoDet])
 def test_adapter_restores_analytical_boxes_and_preserves_identity(geometry, adapter):
     frame = next(iter(SyntheticSource(iter([123_456_789]))))
     prepared = BasicPreprocessor(geometry, PreprocessConfig()).prepare(frame)
@@ -39,6 +40,8 @@ def test_adapter_restores_analytical_boxes_and_preserves_identity(geometry, adap
     detector.session = SimpleNamespace(
         get_inputs=lambda: [SimpleNamespace(name="image")], run=infer
     )
+    if adapter == DiagnosticPicoDet:
+        detector.session = ObservedSession(detector.session, detector)
     batch = detector.detect(prepared, frame.identity)
     assert batch.identity == frame.identity
     assert batch.provenance == detector.provenance
@@ -47,6 +50,11 @@ def test_adapter_restores_analytical_boxes_and_preserves_identity(geometry, adap
     core = geometry.detection_to_core(batch.detections[0], batch.identity)
     assert geometry.model.groundContactRayCandidate(core).isPresent()
     assert batch.transform_hash != prepared.mapping.fingerprint
+    if adapter == DiagnosticPicoDet:
+        assert detector.diagnostic["source_sequence"] == frame.identity.sequence
+        assert detector.diagnostic["accepted_samples"][0]["original_box"] == pytest.approx(
+            (2, 1, 6, 5), abs=1e-5
+        )
 
 
 def test_yolox_invalid_output_never_empty_success():

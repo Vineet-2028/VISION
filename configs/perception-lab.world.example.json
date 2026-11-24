@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "mode": "OFFLINE_REPLAY",
+  "source_id": "local-semantic-research",
+  "input": "../datasets/raw/your-local-video.mp4",
+  "calibration": "calibration.synthetic.example.json",
+  "intervals_ns": {
+    "segmentation": 1000000000
+  },
+  "segmentation": {
+    "provider": "synthetic",
+    "pattern": "split"
+  },
+  "record_session": false,
+  "visualization": false,
+  "world_model": {}
+}

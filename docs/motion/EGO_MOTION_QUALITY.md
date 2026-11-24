@@ -7,3 +7,5 @@ Reasons include INSUFFICIENT_FEATURES, POOR_SPATIAL_DISTRIBUTION, CALIBRATION_UN
 All available visual/PnP estimates are DEGRADED in this prototype. Unavailable transforms produce no compensated residual, rather than fabricated zero motion. Pure rotation and low parallax are deliberately not over-separated. A coherent dynamic majority is fundamentally ambiguous without additional evidence; current logic does not claim reliable detection of every such scene.
 
 UNVALIDATED: physical pose accuracy, metric scale, safety, night/crowd performance, rolling-shutter compensation and calibrated uncertainty. Research decisions must retain these limitations downstream.
+
+Calibration gate: UNKNOWN/INVALID calibration cannot produce visual ego-motion, research PnP or projected compensation. The available real recording uses an identity-only UNKNOWN calibration, so real camera-motion/residual metrics are unavailable. Analytical tests use explicit synthetic valid geometry. Supply measured calibration before interpreting real camera-motion evidence.
